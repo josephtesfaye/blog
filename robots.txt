@@ -1,1 +1,1 @@
-Sitemap: https://josephtesfaye.com/josephs-blog/sitemap.xml
+Sitemap: https://josephtesfaye.com/blog/sitemap.xml

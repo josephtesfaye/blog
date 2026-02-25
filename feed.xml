@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/josephs-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/josephs-blog/" rel="alternate" type="text/html" /><updated>2026-02-25T14:54:03+00:00</updated><id>https://josephtesfaye.com/josephs-blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-02-25T15:10:47+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
   existing Markdown method. Here’s how I configure it. This article is written in
   an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact.
@@ -75,7 +75,7 @@
 
     </figcaption></figure>
 
-<p>A gallery (with <a href="/josephs-blog/web/custom-gallery/">customization</a>):</p>
+<p>A gallery (with <a href="/blog/web/custom-gallery/">customization</a>):</p>
 
 
 
@@ -85,26 +85,26 @@
 <figure class="custom-grid " style="grid-template-columns: repeat(3, 1fr);">
   
     <figure>
-      <a href="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/josephs-blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'>
-        <img src="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
+      <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'>
+        <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/josephs-blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'>
         <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
-      <a href="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;">
-        <img src="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
+      <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;">
+        <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
-      <a href="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg">
-        <img src="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
+      <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg">
+        <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
@@ -250,7 +250,7 @@ descriptor + subject + taxonomic rank
             </div>
           
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">Enabling Private Posts</title><link href="https://josephtesfaye.com/josephs-blog/web/private-posts/" rel="alternate" type="text/html" title="Enabling Private Posts" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">Enabling Private Posts</title><link href="https://josephtesfaye.com/blog/web/private-posts/" rel="alternate" type="text/html" title="Enabling Private Posts" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
   someone with a password, and not by any other person, any search engine, any
   other means.</p>
 <h1 id="the-ideas">The Ideas</h1>
@@ -364,7 +364,7 @@ descriptor + subject + taxonomic rank
   </li>
 </ol>
 <h1 id="the-procedures">The Procedures</h1>
-<h2 id="1-use-the-two-repository-strategy">1. Use the Two-Repository Strategy</h2>
+<h2 id="using-the-two-repository-strategy">Using the Two-Repository Strategy</h2>
 <p>The most efficient and robust way to manage the Two-Repository Strategy is to
   completely decouple your local testing environment from your deployment process.</p>
 <p>Attempting to turn the local <code>_site</code> folder into a Git repository is a constant
@@ -372,7 +372,7 @@ descriptor + subject + taxonomic rank
   The best approach is to treat your local <code>_site</code> folder as a purely temporary,
   disposable directory, and let GitHub Actions act as the bridge between Repo A
   (Private Source) and Repo B (Public HTML).</p>
-<h3 id="1-the-local-workflow-repo-a">1. The Local Workflow (Repo A)</h3>
+<h3 id="the-local-workflow-repo-a">The Local Workflow (Repo A)</h3>
 <p>Make sure you stop tracking the built site entirely in your source repository.</p>
 <ol>
   <li>Add <code>_site/</code> to the <code>.gitignore</code> file in Repo A.</li>
@@ -381,7 +381,7 @@ descriptor + subject + taxonomic rank
   <li>You never run <code>git commit</code> inside the <code>_site</code> folder. You only commit your source
     Markdown, Org files, and configurations to Repo A.</li>
 </ol>
-<h3 id="2-creating-and-serving-repo-b">2. Creating and serving Repo B</h3>
+<h3 id="creating-and-serving-repo-b">Creating and serving Repo B</h3>
 <p>Now you can create a new repository (<a href="https://github.com/josephtesfaye/blog">Repo B</a>) on GitHub to host the static <code>_site</code>
   contents.</p>
 <p>To serve your public site from Repo B using GitHub Pages, you need to configure
@@ -435,7 +435,7 @@ descriptor + subject + taxonomic rank
       custom domain, if you add one in the Pages settings).</p>
   </li>
 </ol>
-<h3 id="3-the-deployment-bridge-github-actions">3. The Deployment Bridge (GitHub Actions)</h3>
+<h3 id="the-deployment-bridge-github-actions">The Deployment Bridge (GitHub Actions)</h3>
 <p>When you push your source code to the private Repo A, a GitHub Action spins
   up, builds the site in a clean cloud environment, and pushes the resulting
   HTML directly to Repo B.</p>
@@ -453,20 +453,22 @@ descriptor + subject + taxonomic rank
       permissions needed to push files.</p>
     <p>Here is how to generate the fine-grained token for this exact deployment
       setup:</p>
-    <p>a. Go to your GitHub Settings &gt; Developer settings (at the very bottom) &gt;
-      Personal access tokens &gt; Fine-grained tokens.
-      b. Click the <code>Generate new token</code> button.
-      c. Give your token a name (e.g., “Jekyll Deploy to Repo B”) and set an
-      expiration date.
-      d. Under Repository access, select <code>Only select repositories</code>. In the
-      dropdown that appears, find and select Repo B (your destination
-      repository).
-      e. Scroll down to Permissions and click on <code>Add permissions</code> to expand it.
-      Find <code>Contents</code> and change the access level to Read and write. (This is
-      all the action needs to push your built <code>_site</code> files).
-      f. Click <code>Generate token</code> at the bottom of the page.
-      g. Copy the generated token immediately, as GitHub will only show it to
-      you this one time.</p>
+    <ol>
+      <li>Go to your GitHub Settings &gt; Developer settings (at the very bottom) &gt;
+        Personal access tokens &gt; Fine-grained tokens.</li>
+      <li>Click the <code>Generate new token</code> button.</li>
+      <li>Give your token a name (e.g., “Jekyll Deploy to Repo B”) and set an
+        expiration date.</li>
+      <li>Under Repository access, select <code>Only select repositories</code>. In the
+        dropdown that appears, find and select Repo B (your destination
+        repository).</li>
+      <li>Scroll down to Permissions and click on <code>Add permissions</code> to expand it.
+        Find <code>Contents</code> and change the access level to Read and write. (This is
+        all the action needs to push your built <code>_site</code> files).</li>
+      <li>Click <code>Generate token</code> at the bottom of the page.</li>
+      <li>Copy the generated token immediately, as GitHub will only show it to
+        you this one time.</li>
+    </ol>
   </li>
   <li>Go to the Settings of Repo A, navigate to Secrets and variables &gt; Actions,
     and add a new repository secret. Name it <code>DEPLOY_PAT</code> and paste your token.</li>
@@ -605,7 +607,7 @@ rm -rf .jekyll-cache .jekyll-metadata
     <p>This instantly deletes the Jekyll caches and wipes everything inside <code>_site/</code>
       except the .git/ directory.</p>
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to make a post private, that is, it can only be seen by me, or someone with a password, and not by any other person, any search engine, any other means.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to make a post private, that is, it can only be seen by me, or someone with a password, and not by any other person, any search engine, any other means.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
 <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a>
 feature of Minimal Mistakes:</p>
 
@@ -682,7 +684,7 @@ gallery:
     </figure>
   
     <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;Link to post: &lt;a href=&quot;/josephs-blog/web/local-images/&quot;&gt;Local images&lt;/a&gt;&lt;/p&gt;">
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;Link to post: &lt;a href=&quot;/blog/web/local-images/&quot;&gt;Local images&lt;/a&gt;&lt;/p&gt;">
         <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
       </a>
     </figure>
@@ -840,7 +842,7 @@ evaluates Liquid syntax inside front matter strings:</p>
 <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:]]></summary></entry><entry><title type="html">Enabling link abbreviations in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/link-abbr/" rel="alternate" type="text/html" title="Enabling link abbreviations in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/link-abbr</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/link-abbr/"><![CDATA[<p>I want to be able to use link abbreviations in Minimal Mistakes, for example,
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:]]></summary></entry><entry><title type="html">Enabling link abbreviations in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/link-abbr/" rel="alternate" type="text/html" title="Enabling link abbreviations in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/link-abbr</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/link-abbr/"><![CDATA[<p>I want to be able to use link abbreviations in Minimal Mistakes, for example,
 use <code class="language-plaintext highlighter-rouge">foo:&lt;filename&gt;</code> in place of the full link for images and images in a
 gallery like the following:</p>
 
@@ -886,7 +888,7 @@ abbreviations:</p>
     <span class="c1"># 1. Replaces "](key:filename)" inside the Markdown body content</span>
     <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\]\(</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^\)]+)\)/</span><span class="p">)</span> <span class="k">do</span>
       <span class="n">escaped_path</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span>
-      <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/josephs-blog"</span> <span class="p">:</span> <span class="s2">""</span>
+      <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/blog"</span> <span class="p">:</span> <span class="s2">""</span>
       <span class="s2">"](</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}#{</span><span class="n">escaped_path</span><span class="si">}</span><span class="s2">)"</span>
     <span class="k">end</span>
 
@@ -910,7 +912,7 @@ abbreviations:</p>
           <span class="k">if</span> <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
             <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\]\(</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^\)]+)\)/</span><span class="p">)</span> <span class="k">do</span>
               <span class="n">escaped_path</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span>
-              <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/josephs-blog"</span> <span class="p">:</span> <span class="s2">""</span>
+              <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/blog"</span> <span class="p">:</span> <span class="s2">""</span>
               <span class="s2">"](</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}#{</span><span class="n">escaped_path</span><span class="si">}</span><span class="s2">)"</span>
             <span class="k">end</span>
           <span class="k">end</span>
@@ -973,7 +975,7 @@ Pages.</p>
 
 <p>With this workflow active, GitHub will read your updated Gemfile, run the
 <code class="language-plaintext highlighter-rouge">link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML
-to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry><entry><title type="html">Loading Local Images in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/local-images/" rel="alternate" type="text/html" title="Loading Local Images in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/local-images</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/local-images/"><![CDATA[<p>I want to be able to load local images when the site is served locally. However,
+to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry><entry><title type="html">Loading Local Images in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/local-images/" rel="alternate" type="text/html" title="Loading Local Images in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/local-images</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/local-images/"><![CDATA[<p>I want to be able to load local images when the site is served locally. However,
 the URL format <code class="language-plaintext highlighter-rouge">file:///Users/&lt;username&gt;/archive/image/20260218184820.png</code>
 doesn’t work.</p>
 
@@ -1001,7 +1003,7 @@ gallery:
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
 
-&lt;img src="https://josephtesfaye.com/josephs-blog/assets/images/filename.jpg" alt=""&gt;
+&lt;img src="https://josephtesfaye.com/blog/assets/images/filename.jpg" alt=""&gt;
 
 {% include gallery %}
 </code></pre></div></div>
@@ -1227,7 +1229,7 @@ python3 server.py
     <span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">MountHandler</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Serving </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s"> at http://</span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}{</span><span class="n">MOUNT</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
     <span class="n">httpd</span><span class="p">.</span><span class="n">serve_forever</span><span class="p">()</span>
-</code></pre></div></div>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.]]></summary></entry><entry><title type="html">Executing SQL Source Code Blocks in Org Mode</title><link href="https://josephtesfaye.com/josephs-blog/emacs/org-sqls/" rel="alternate" type="text/html" title="Executing SQL Source Code Blocks in Org Mode" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/emacs/org-sqls</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/emacs/org-sqls/"><![CDATA[<p>You can execute SQL source code blocks in Org Mode.</p>
+</code></pre></div></div>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.]]></summary></entry><entry><title type="html">Executing SQL Source Code Blocks in Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/org-sqls/" rel="alternate" type="text/html" title="Executing SQL Source Code Blocks in Org Mode" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/org-sqls</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/org-sqls/"><![CDATA[<p>You can execute SQL source code blocks in Org Mode.</p>
 
 <h2 id="using-built-in-package-ob-sql">Using built-in package <code class="language-plaintext highlighter-rouge">ob-sql</code></h2>
 
@@ -1313,8 +1315,8 @@ DESC users;
 <h2 id="related">Related</h2>
 
 <ul>
-  <li><a href="/josephs-blog/emacs/spacemacs-sqls/">Connecting Databases and executing SQLs in Spacemacs</a></li>
-</ul>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Org Mode" /><category term="Database" /><summary type="html"><![CDATA[You can execute SQL source code blocks in Org Mode.]]></summary></entry><entry><title type="html">Connecting Databases and executing SQLs in Spacemacs</title><link href="https://josephtesfaye.com/josephs-blog/emacs/spacemacs-sqls/" rel="alternate" type="text/html" title="Connecting Databases and executing SQLs in Spacemacs" /><published>2026-02-16T00:00:00+00:00</published><updated>2026-02-16T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/emacs/spacemacs-sqls</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/emacs/spacemacs-sqls/"><![CDATA[<p>Here’s how you can connect to databases and execute SQLs in Spacemacs (Emacs).</p>
+  <li><a href="/blog/emacs/spacemacs-sqls/">Connecting Databases and executing SQLs in Spacemacs</a></li>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Org Mode" /><category term="Database" /><summary type="html"><![CDATA[You can execute SQL source code blocks in Org Mode.]]></summary></entry><entry><title type="html">Connecting Databases and executing SQLs in Spacemacs</title><link href="https://josephtesfaye.com/blog/emacs/spacemacs-sqls/" rel="alternate" type="text/html" title="Connecting Databases and executing SQLs in Spacemacs" /><published>2026-02-16T00:00:00+00:00</published><updated>2026-02-16T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/spacemacs-sqls</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/spacemacs-sqls/"><![CDATA[<p>Here’s how you can connect to databases and execute SQLs in Spacemacs (Emacs).</p>
 
 <h2 id="configuration">Configuration</h2>
 
@@ -1694,8 +1696,8 @@ buffer using <code class="language-plaintext highlighter-rouge">sql-set-sqli-buf
 <h2 id="related">Related</h2>
 
 <ul>
-  <li><a href="/josephs-blog/emacs/org-sqls/">Executing SQL Source Code Blocks in Org Mode</a></li>
-</ul>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Database" /><summary type="html"><![CDATA[Here’s how you can connect to databases and execute SQLs in Spacemacs (Emacs).]]></summary></entry><entry><title type="html">Differences between the commands `gem` and `bundle`</title><link href="https://josephtesfaye.com/josephs-blog/web/gem-bundle/" rel="alternate" type="text/html" title="Differences between the commands `gem` and `bundle`" /><published>2026-02-15T00:00:00+00:00</published><updated>2026-02-15T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/gem-bundle</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/gem-bundle/"><![CDATA[<p>In the Ruby ecosystem, <code class="language-plaintext highlighter-rouge">gem</code> and <code class="language-plaintext highlighter-rouge">bundle</code> serve distinct but complementary roles
+  <li><a href="/blog/emacs/org-sqls/">Executing SQL Source Code Blocks in Org Mode</a></li>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Database" /><summary type="html"><![CDATA[Here’s how you can connect to databases and execute SQLs in Spacemacs (Emacs).]]></summary></entry><entry><title type="html">Differences between the commands `gem` and `bundle`</title><link href="https://josephtesfaye.com/blog/web/gem-bundle/" rel="alternate" type="text/html" title="Differences between the commands `gem` and `bundle`" /><published>2026-02-15T00:00:00+00:00</published><updated>2026-02-15T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/gem-bundle</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/gem-bundle/"><![CDATA[<p>In the Ruby ecosystem, <code class="language-plaintext highlighter-rouge">gem</code> and <code class="language-plaintext highlighter-rouge">bundle</code> serve distinct but complementary roles
 in managing code libraries (known as <strong>gems</strong>). While <code class="language-plaintext highlighter-rouge">gem</code> is the primary
 interface for the <strong>RubyGems</strong> package manager, <code class="language-plaintext highlighter-rouge">bundle</code> is the command used for
 <strong>Bundler</strong>, a tool built on top of RubyGems to manage project-specific
@@ -1799,7 +1801,7 @@ like a Ruby version manager or Bundler itself.</li>
   <li>Use <code class="language-plaintext highlighter-rouge">bundle</code> for almost everything related to your actual application code,
 such as adding new libraries to your project or running project-specific
 tasks.</li>
-</ul>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Ruby" /><summary type="html"><![CDATA[In the Ruby ecosystem, gem and bundle serve distinct but complementary roles in managing code libraries (known as gems). While gem is the primary interface for the RubyGems package manager, bundle is the command used for Bundler, a tool built on top of RubyGems to manage project-specific dependencies.]]></summary></entry><entry><title type="html">Renaming a Swift project using Xcode and Emacs</title><link href="https://josephtesfaye.com/josephs-blog/apple/renaming-xcode/" rel="alternate" type="text/html" title="Renaming a Swift project using Xcode and Emacs" /><published>2026-02-03T00:00:00+00:00</published><updated>2026-02-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/apple/renaming-xcode</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/apple/renaming-xcode/"><![CDATA[<p>You may need to rename a project to better reflect the app’s evolved feature
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Ruby" /><summary type="html"><![CDATA[In the Ruby ecosystem, gem and bundle serve distinct but complementary roles in managing code libraries (known as gems). While gem is the primary interface for the RubyGems package manager, bundle is the command used for Bundler, a tool built on top of RubyGems to manage project-specific dependencies.]]></summary></entry><entry><title type="html">Renaming a Swift project using Xcode and Emacs</title><link href="https://josephtesfaye.com/blog/apple/renaming-xcode/" rel="alternate" type="text/html" title="Renaming a Swift project using Xcode and Emacs" /><published>2026-02-03T00:00:00+00:00</published><updated>2026-02-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/apple/renaming-xcode</id><content type="html" xml:base="https://josephtesfaye.com/blog/apple/renaming-xcode/"><![CDATA[<p>You may need to rename a project to better reflect the app’s evolved feature
 set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename
 to your codebase.</p>
 
@@ -1896,7 +1898,7 @@ the settings list).</p>
 
     <p class="notice--danger">Build input file cannot be found: ‘/path/to/LiveTranscribeJP/Info.plist’. Did you forget to declare this file as an output of a script phase or custom build rule which produces it?</p>
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Apple" /><category term="Xcode" /><category term="Swift" /><summary type="html"><![CDATA[You may need to rename a project to better reflect the app’s evolved feature set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename to your codebase.]]></summary></entry><entry><title type="html">Best TTS software for Japanese</title><link href="https://josephtesfaye.com/josephs-blog/software/tts-best-natural/" rel="alternate" type="text/html" title="Best TTS software for Japanese" /><published>2026-01-18T00:00:00+00:00</published><updated>2026-01-18T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/software/tts-best-natural</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/software/tts-best-natural/"><![CDATA[<p>As of 2026, the software that provides the most natural Japanese pronunciation
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Apple" /><category term="Xcode" /><category term="Swift" /><summary type="html"><![CDATA[You may need to rename a project to better reflect the app’s evolved feature set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename to your codebase.]]></summary></entry><entry><title type="html">Best TTS software for Japanese</title><link href="https://josephtesfaye.com/blog/software/tts-best-natural/" rel="alternate" type="text/html" title="Best TTS software for Japanese" /><published>2026-01-18T00:00:00+00:00</published><updated>2026-01-18T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/software/tts-best-natural</id><content type="html" xml:base="https://josephtesfaye.com/blog/software/tts-best-natural/"><![CDATA[<p>As of 2026, the software that provides the most natural Japanese pronunciation
 depends on whether you value <strong>emotional expression</strong> or <strong>precision in pitch
 and grammar</strong>.</p>
 
@@ -1996,5 +1998,5 @@ intonation side-by-side.</p>
 <p><strong>Links</strong></p>
 
 <ul>
-  <li><a href="/josephs-blog/software/tts-japanese/">Built-in TTS for Japanese on macOS</a></li>
+  <li><a href="/blog/software/tts-japanese/">Built-in TTS for Japanese on macOS</a></li>
 </ul>]]></content><author><name>Joseph Huang</name></author><category term="Software" /><category term="TTS" /><summary type="html"><![CDATA[As of 2026, the software that provides the most natural Japanese pronunciation depends on whether you value emotional expression or precision in pitch and grammar.]]></summary></entry></feed>

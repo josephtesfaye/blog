@@ -24,7 +24,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Orcharinth">
 <meta property="og:title" content="Sharing one keyboard and mouse across multiple devices using Barrier">
-<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/software/barrier/">
+<meta property="og:url" content="https://josephtesfaye.com/blog/software/barrier/">
 
 
   <meta property="og:description" content="If you have more than one computers you may want to use just one set of keyboard and mouse for all the computers. I’m not talking about using multiple screens, albeit similar to what I’m going to talk about to some extent. I’m talking about using multiple computers, or devices which have their own monitors, motherboards, OS-es, and keyboards and mice. If you are in this situation it’s natural to think that it would be very nice if you can control all of them with just one keyboard and one mouse, instead of cramming your workspace with many keyboards and mice. There are many ways to achieve this. There are hardware ways such as using a KVM switch, and there are software ways such as using Barrier.">
@@ -44,7 +44,7 @@
 
 
 
-<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/software/barrier/">
+<link rel="canonical" href="https://josephtesfaye.com/blog/software/barrier/">
 
 
 
@@ -61,7 +61,7 @@
 
 
 
-  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+  <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script type="text/javascript">
@@ -70,7 +70,7 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="stylesheet" href="/blog/assets/css/main.css">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
@@ -99,7 +99,7 @@
 
 
 
-<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+<script src="/blog/assets/js/dark_mode_toggle.js"></script>
 
 
 <script>
@@ -129,21 +129,21 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         
-        <a class="site-title" href="/josephs-blog/">
+        <a class="site-title" href="/blog/">
           Orcharinth
           <span class="site-subtitle">Code. Culture. Cultivation.</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-            <a href="/josephs-blog/year-archive/" 
+            <a href="/blog/year-archive/" 
               >Posts</a>
           </li><li class="masthead__menu-item">
-            <a href="/josephs-blog/projects/" 
+            <a href="/blog/projects/" 
               >Projects</a>
           </li><li class="masthead__menu-item">
-            <a href="/josephs-blog/collections/" 
+            <a href="/blog/collections/" 
               >Collections</a>
           </li><li class="masthead__menu-item">
-            <a href="/josephs-blog/about/" 
+            <a href="/blog/about/" 
               >About</a>
           </li></ul>
         
@@ -188,7 +188,7 @@
     
       
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="/blog/" itemprop="item"><span itemprop="name">Home</span></a>
 
           <meta itemprop="position" content="1" />
         </li>
@@ -197,7 +197,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/josephs-blog/categories/#software" itemprop="item"><span itemprop="name">Software</span></a>
+          <a href="/blog/categories/#software" itemprop="item"><span itemprop="name">Software</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -228,7 +228,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://josephtesfaye.com/josephs-blog/software/barrier/" itemprop="url">Sharing one keyboard and mouse across multiple devices using Barrier
+            <a href="https://josephtesfaye.com/blog/software/barrier/" itemprop="url">Sharing one keyboard and mouse across multiple devices using Barrier
 </a>
           </h1>
           
@@ -288,7 +288,7 @@ screen.</li>
 </ol>
 
 <p>When I started Barrier (version: 2.4.0-release-3e0d758b) I saw this error in the
-<a href="/josephs-blog/_demo/barrier-log-1.txt">log</a>:</p>
+<a href="/blog/_demo/barrier-log-1.txt">log</a>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2023-01-25T23:40:29] ERROR: ssl certificate doesn't exist: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
 </code></pre></div></div>
@@ -308,7 +308,7 @@ the following steps should fix the problem:</p>
 
 <p>After the 3rd step a file named “Barrier.pem” was generated. But then
 after clicking “Reload” on Barrier although the former error was gone, a new
-error occurred as shown in the <a href="/josephs-blog/_demo/barrier-log-2.txt">log</a>:</p>
+error occurred as shown in the <a href="/blog/_demo/barrier-log-2.txt">log</a>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2023-01-25T23:51:15] INFO: OpenSSL 1.0.2l  25 May 2017
 [2023-01-25T23:51:15] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
@@ -318,7 +318,7 @@ error occurred as shown in the <a href="/josephs-blog/_demo/barrier-log-2.txt">l
 [2023-01-25T23:51:31] ERROR: error:140AD009:SSL routines:SSL_CTX_use_certificate_file:PEM lib
 </code></pre></div></div>
 
-<p>Restarting Barrier was of no avail at this point (<a href="/josephs-blog/_demo/barrier-log-3.txt">log</a>).</p>
+<p>Restarting Barrier was of no avail at this point (<a href="/blog/_demo/barrier-log-3.txt">log</a>).</p>
 
 <p>So actually in the 3rd step the command produced an error which I missed:</p>
 
@@ -403,7 +403,7 @@ The workaround is to edit the configuration file:</p>
   </li>
   <li>
     <p>Click Barrier &gt; Save configuration to save the configuration to a
-file. For example, this is the <a href="/josephs-blog/_demo/barrier.sgc">configuration</a>
+file. For example, this is the <a href="/blog/_demo/barrier.sgc">configuration</a>
 of connecting my ThinkPad with the other PC called moon.</p>
   </li>
   <li>
@@ -443,9 +443,9 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/josephs-blog/tags/#barrier" class="page__taxonomy-item p-category" rel="tag">Barrier</a><span class="sep">, </span>
+      <a href="/blog/tags/#barrier" class="page__taxonomy-item p-category" rel="tag">Barrier</a><span class="sep">, </span>
     
-      <a href="/josephs-blog/tags/#productivity" class="page__taxonomy-item p-category" rel="tag">Productivity</a>
+      <a href="/blog/tags/#productivity" class="page__taxonomy-item p-category" rel="tag">Productivity</a>
     
     </span>
   </p>
@@ -462,7 +462,7 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/josephs-blog/categories/#software" class="page__taxonomy-item p-category" rel="tag">Software</a>
+      <a href="/blog/categories/#software" class="page__taxonomy-item p-category" rel="tag">Software</a>
     
     </span>
   </p>
@@ -477,22 +477,22 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Sharing+one+keyboard+and+mouse+across+multiple+devices+using+Barrier%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fsoftware%2Fbarrier%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Sharing+one+keyboard+and+mouse+across+multiple+devices+using+Barrier%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fsoftware%2Fbarrier%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fsoftware%2Fbarrier%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fsoftware%2Fbarrier%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/software/barrier/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/software/barrier/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/josephs-blog/emacs/generate-git-texinfo/" class="pagination--pager" title="Generate and use TexInfo documentation for Git
+      <a href="/blog/emacs/generate-git-texinfo/" class="pagination--pager" title="Generate and use TexInfo documentation for Git
 ">Previous</a>
     
     
-      <a href="/josephs-blog/diary/queen/" class="pagination--pager" title="Queen Rock Montreal in IMAX
+      <a href="/blog/diary/queen/" class="pagination--pager" title="Queen Rock Montreal in IMAX
 ">Next</a>
     
   </nav>
@@ -529,7 +529,7 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+        <a href="/blog/web/private-posts/" rel="permalink">Enabling Private Posts
 </a>
       
     </h2>
@@ -554,7 +554,7 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          13 minute read
+          12 minute read
         
       </span>
     
@@ -577,7 +577,7 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+        <a href="/blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
 </a>
       
     </h2>
@@ -625,7 +625,7 @@ bit annoying. So I ended up using another key-binding <code class="language-plai
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+        <a href="/blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
 </a>
       
     </h2>
@@ -676,7 +676,7 @@ feature of Minimal Mistakes:
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+        <a href="/blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
 </a>
       
     </h2>
@@ -763,7 +763,7 @@ the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...<
     
 
     
-      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+      <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
     
   </ul>
 </div>
@@ -778,14 +778,14 @@ the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...<
     </div>
 
     
-  <script src="/josephs-blog/assets/js/main.min.js"></script>
+  <script src="/blog/assets/js/main.min.js"></script>
 
 
 
 
-<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
-<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
-<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
 
 
 
@@ -808,7 +808,7 @@ the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...<
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://josephtesfaye.com/josephs-blog/software/barrier/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.url = "https://josephtesfaye.com/blog/software/barrier/";  /* Replace PAGE_URL with your page's canonical URL variable */
       this.page.identifier = "/software/barrier"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
