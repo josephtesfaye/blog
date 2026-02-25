@@ -1,0 +1,928 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Loading Local Images in Minimal Mistakes | Orcharinth</title>
+<meta name="description" content="I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Loading Local Images in Minimal Mistakes">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/web/local-images/">
+
+
+  <meta property="og:description" content="I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-02-19T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-02-19T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/web/local-images/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Loading Local Images in Minimal Mistakes</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Loading Local Images in Minimal Mistakes">
+    <meta itemprop="description" content="I want to be able to load local images when the site is served locally. However,the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.pngdoesn’t work.">
+    <meta itemprop="datePublished" content="2026-02-19T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-02-19T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/web/local-images/" itemprop="url">Loading Local Images in Minimal Mistakes
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#why-img-srcfileusers-wont-load">Why &lt;img src="file:///Users/..."&gt; won’t load?</a></li><li><a href="#method-1-copying-files-to-project-assets">Method 1: Copying files to project assets</a></li><li><a href="#method-2-using-symlinks">Method 2: Using symlinks</a></li><li><a href="#method-3-serving-the-files-locally-with-a-web-server">Method 3: Serving the files locally with a web server</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p>I want to be able to load local images when the site is served locally. However,
+the URL format <code class="language-plaintext highlighter-rouge">file:///Users/&lt;username&gt;/archive/image/20260218184820.png</code>
+doesn’t work.</p>
+
+<h2 id="why-img-srcfileusers-wont-load">Why <code class="language-plaintext highlighter-rouge">&lt;img src="file:///Users/..."&gt;</code> won’t load?</h2>
+
+<p>Your page is being served over HTTP (e.g. <a href="http://localhost:4000">http://localhost:4000</a>). Modern
+browsers block pages from <code class="language-plaintext highlighter-rouge">http(s)://…</code> from loading local files via <code class="language-plaintext highlighter-rouge">file://…</code>
+for security (“cross-origin” / local file access). So even though the HTML is
+“correctly parsed”, the browser refuses to fetch it.</p>
+
+<p>That means: a <code class="language-plaintext highlighter-rouge">file://</code> URL will not work on a website (local dev server or
+deployed site). It only works when the page itself is also opened via <code class="language-plaintext highlighter-rouge">file://</code>
+(and even then, policies vary).</p>
+
+<h2 id="method-1-copying-files-to-project-assets">Method 1: Copying files to project assets</h2>
+
+<p>The simplest method is to copy the images to <code class="language-plaintext highlighter-rouge">&lt;project-root&gt;/assets/images/</code> and
+then refer to them using the standard syntax:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+gallery:
+  - url: /assets/images/20260218184820.png
+    image_path: /assets/images/20260218184820.png
+---
+
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
+
+&lt;img src="https://josephtesfaye.com/josephs-blog/assets/images/filename.jpg" alt=""&gt;
+
+{% include gallery %}
+</code></pre></div></div>
+
+<p>However, this has the overhead of managing files manually, which can be tedious.
+The following methods give you better experience.</p>
+
+<h2 id="method-2-using-symlinks">Method 2: Using symlinks</h2>
+
+<ol>
+  <li>
+    <p>Create a symlink to the target data inside the site root. Say, if the local
+images reside in <code class="language-plaintext highlighter-rouge">~/Downloads/temp/archive/image/foo/</code> you can create a
+symlink to it under <code class="language-plaintext highlighter-rouge">&lt;project-root&gt;/_site/assets/archive/image/foo</code>:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;project-root&gt;/_site/
+<span class="nb">mkdir</span> <span class="nt">-p</span> assets/archive/image/
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then you can refer to the images using the symlink like the following:</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+gallery:
+  - url: /assets/archive/image/foo/20260218184820.png
+    image_path: /assets/archive/image/foo/20260218184820.png
+  - url: /assets/archive/image/foo/20260218184820.png
+    image_path: /assets/archive/image/foo/20260218184820.png
+---
+
+![]({{site.url}}{{site.baseurl}}/assets/archive/image/foo/20260218184820.png)
+
+{% include gallery %}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The symlinks created this way are cleared every time the site is re-built.
+To make them persist we can write a plugin
+<code class="language-plaintext highlighter-rouge">_plugins/symlink_external_assets.rb</code> to create them automatically according
+to the following front matter of a post:</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+symlinks:
+  - /assets/archive/image/foo ~/Downloads/temp/archive/image/foo
+  - /assets/archive/video/foo ~/Downloads/temp/archive/video/foo
+---
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">symlink_external_assets.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'fileutils'</span>
+<span class="nb">require</span> <span class="s1">'shellwords'</span>
+
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_read</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">env</span> <span class="o">==</span> <span class="s1">'production'</span>
+
+  <span class="c1"># Store the intended symlinks so we can recreate them in the _site folder later</span>
+  <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">{}</span>
+
+  <span class="n">docs</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">pages</span> <span class="o">+</span> <span class="n">site</span><span class="p">.</span><span class="nf">collections</span><span class="p">.</span><span class="nf">values</span><span class="p">.</span><span class="nf">flat_map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:docs</span><span class="p">)</span>
+  <span class="n">docs</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'symlinks'</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
+
+    <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'symlinks'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">symlink_def</span><span class="o">|</span>
+      <span class="k">next</span> <span class="k">unless</span> <span class="n">symlink_def</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">String</span><span class="p">)</span>
+
+      <span class="n">parts</span> <span class="o">=</span> <span class="no">Shellwords</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="n">symlink_def</span><span class="p">)</span>
+      <span class="k">next</span> <span class="k">unless</span> <span class="n">parts</span><span class="p">.</span><span class="nf">size</span> <span class="o">==</span> <span class="mi">2</span>
+
+      <span class="n">link_path_raw</span><span class="p">,</span> <span class="n">target_path_raw</span> <span class="o">=</span> <span class="n">parts</span>
+
+      <span class="n">target_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">target_path_raw</span><span class="p">)</span>
+      <span class="n">relative_link_path</span> <span class="o">=</span> <span class="n">link_path_raw</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">%r{^/}</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+      <span class="n">link_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">site</span><span class="p">.</span><span class="nf">dest</span><span class="p">,</span> <span class="n">relative_link_path</span><span class="p">)</span>
+
+      <span class="c1"># Verify target exists</span>
+      <span class="k">unless</span> <span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin:"</span><span class="p">,</span> <span class="s2">"Skipped. Target does not exist: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">#{</span><span class="n">target_path</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">next</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Save for the post_write phase</span>
+      <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">][</span><span class="n">relative_link_path</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">target: </span><span class="n">target_path</span><span class="p">,</span>
+        <span class="ss">link: </span><span class="n">link_path</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Inject the symlinks directly into the final build folder</span>
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_write</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">env</span> <span class="o">==</span> <span class="s1">'production'</span>
+
+  <span class="n">symlinks</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
+  <span class="n">symlinks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">relative_path</span><span class="p">,</span> <span class="n">link</span><span class="o">|</span>
+    <span class="n">target_path</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="ss">:target</span><span class="p">]</span>
+    <span class="n">link_path</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="ss">:link</span><span class="p">]</span>
+    <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">false</span>
+
+    <span class="c1"># If the link already exists but is broken, recreate it. If it's not broken</span>
+    <span class="c1"># or is a file or directory, leave it. Otherwise, create the link.</span>
+    <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">symlink?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+      <span class="k">if</span> <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+        <span class="no">File</span><span class="p">.</span><span class="nf">unlink</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+        <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">true</span>
+      <span class="k">elsif</span> <span class="no">File</span><span class="p">.</span><span class="nf">readlink</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span> <span class="o">!=</span> <span class="n">target_path</span> <span class="c1"># Link has valid target</span>
+        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin: Symlink already exists: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+    <span class="k">elsif</span> <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+      <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="k">else</span>                        <span class="c1"># Link path is taken by a file or directory</span>
+      <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin: Symlink path is taken: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="n">needs_creation</span>
+      <span class="no">FileUtils</span><span class="p">.</span><span class="nf">mkdir_p</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">link_path</span><span class="p">))</span>
+      <span class="k">begin</span>
+        <span class="no">File</span><span class="p">.</span><span class="nf">symlink</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="n">link_path</span><span class="p">)</span>
+        <span class="c1"># Jekyll.logger.info "Symlink Plugin:", "Symlink created: #{link_path} -&gt; #{target_path}"</span>
+      <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin:"</span><span class="p">,</span> <span class="s2">"Failed to create symlink </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="method-3-serving-the-files-locally-with-a-web-server">Method 3: Serving the files locally with a web server</h2>
+
+<p>For example, you can serve the images locally with Python’s built-in web server:</p>
+
+<ol>
+  <li>
+    <p>Serve your image folder</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
+python3 <span class="nt">-m</span> http.server 8123 <span class="nt">--bind</span> 127.0.0.1
+</code></pre></div>    </div>
+
+    <p>If you want the server to run in the background:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup </span>python3 <span class="nt">-m</span> http.server 8123 <span class="nt">--bind</span> 127.0.0.1 <span class="o">&gt;</span>/tmp/imgserver.log 2&gt;&amp;1 &amp;
+</code></pre></div>    </div>
+
+    <p>To stop it later:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsof <span class="nt">-iTCP</span>:8123 <span class="nt">-sTCP</span>:LISTEN
+<span class="nb">kill</span> &lt;PID&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use that URL in your post</p>
+
+    <pre><code class="language-example">![](http://127.0.0.1:8123/foo/20260218184820.png)
+</code></pre>
+  </li>
+</ol>
+
+<p>You can serve from the directory <code class="language-plaintext highlighter-rouge">~/Downloads/temp/archive/image/foo/</code> but use a
+different mount path in the URL to refer to that directory, e.g.,
+<a href="http://localhost:8123/igps/20260218184820.png">http://localhost:8123/igps/20260218184820.png</a>. To achieve this we can write
+and run this python script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
+python3 server.py
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">server.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">ThreadingHTTPServer</span><span class="p">,</span> <span class="n">SimpleHTTPRequestHandler</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Directory you want to expose
+</span><span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">"~/Downloads/temp/archive/image/foo"</span><span class="p">)).</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="n">MOUNT</span> <span class="o">=</span> <span class="s">"/igps/"</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">"127.0.0.1"</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8123</span>
+
+
+<span class="k">class</span> <span class="nc">MountHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">translate_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="s">"""
+        Map URLs under /igps/... to files under ROOT/...
+        Reject everything else with a 404.
+        """</span>
+        <span class="c1"># Strip query/fragment
+</span>        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"?"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">"#"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">MOUNT</span><span class="p">):</span>
+            <span class="c1"># Send 404 for non-mounted paths
+</span>            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s">"__nonexistent__"</span><span class="p">)</span>
+
+        <span class="n">rel</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">MOUNT</span><span class="p">):]</span>  <span class="c1"># e.g. "20260218184820.png"
+</span>        <span class="c1"># Normalize and prevent path traversal
+</span>        <span class="n">rel_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">rel</span><span class="p">)</span>
+        <span class="n">full</span> <span class="o">=</span> <span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="n">rel_path</span><span class="p">).</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">ROOT</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">full</span><span class="p">.</span><span class="n">parents</span> <span class="ow">and</span> <span class="n">full</span> <span class="o">!=</span> <span class="n">ROOT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s">"__nonexistent__"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">full</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">log_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># optional: quieter logs
+</span>        <span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"%s - - [%s] %s</span><span class="se">\n</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">client_address</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                              <span class="bp">self</span><span class="p">.</span><span class="n">log_date_time_string</span><span class="p">(),</span>
+                                              <span class="n">fmt</span> <span class="o">%</span> <span class="n">args</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ROOT</span><span class="p">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"ERROR: directory does not exist: </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s">"</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">MountHandler</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Serving </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s"> at http://</span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}{</span><span class="n">MOUNT</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="p">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/tags/#minimal-mistakes" class="page__taxonomy-item p-category" rel="tag">Minimal Mistakes</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#web" class="page__taxonomy-item p-category" rel="tag">Web</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-02-19">February 19, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Loading+Local+Images+in+Minimal+Mistakes%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fweb%2Flocal-images%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fweb%2Flocal-images%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/web/local-images/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/web/link-abbr/" class="pagination--pager" title="Enabling link abbreviations in Minimal Mistakes
+">Previous</a>
+    
+    
+      <a href="/josephs-blog/web/custom-gallery/" class="pagination--pager" title="Customizing Gallery in Minimal Mistakes
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, a...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/link-abbr/" rel="permalink">Enabling link abbreviations in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to use link abbreviations in Minimal Mistakes, for example,
+use foo:&lt;filename&gt; in place of the full link for images and images in a
+g...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/web/local-images/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/web/local-images"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

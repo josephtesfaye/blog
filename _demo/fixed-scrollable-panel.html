@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Fixed scrollable panel</title>
+    <style>
+	  body {
+		  background-color: grey;
+	  }
+
+	  #parent {
+		  width: 256px;
+		  height: 300px;
+		  background-color: white;
+		  position: fixed;
+		  overflow: auto;
+	  }
+
+	  .square {
+		  width: 50px;
+		  height: 50px;
+		  background-color: red;
+		  position: relative;
+	  }
+
+	  #square1 {
+		  top: 400px;
+		  left: 20px;
+	  }
+
+	  #square2 {
+		  top: 1024px;
+		  left: 500px;
+	  }
+
+	  .square:hover {
+		  width: 1000px;
+	  }
+    </style>
+  </head>
+  <body>
+	<div id="parent">
+      <div id="square1" class="square"></div>
+	</div>
+	<div id="square2" class="square"></div>
+  </body>
+</html>

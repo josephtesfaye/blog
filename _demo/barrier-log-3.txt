@@ -1,0 +1,81 @@
+[2023-01-26T00:07:18] INFO: connecting to service...
+[2023-01-26T00:07:18] INFO: Error loading default certificate file to memory.
+[2023-01-26T00:07:19] INFO: SSL certificate generated.
+[2023-01-26T00:07:20] INFO: connection established
+server status: not active
+[2023-01-26T00:07:55] DEBUG: starting process
+
+[2023-01-26T00:07:55] INFO: starting server
+[2023-01-26T00:07:55] DEBUG: command: "D:/programs/Barrier/barriers.exe" -f --no-tray --debug DEBUG --name ThinkPad-T470 --ipc --stop-on-desk-switch --enable-drag-drop --profile-dir "C:\Users\josep\AppData\Local\Barrier" --disable-client-cert-checking -c "C:/Users/josep/AppData/Local/Temp/Barrier.RijSot" --address :24800
+[2023-01-26T00:07:55] INFO: config file: C:/Users/josep/AppData/Local/Temp/Barrier.KfdcSJ
+[2023-01-26T00:07:55] INFO: log level: DEBUG
+[2023-01-26T00:07:55] INFO: service command updated
+[2023-01-26T00:07:55] DEBUG: found desktop name: 
+[2023-01-26T00:07:55] DEBUG: getting elevated token, at login screen
+[2023-01-26T00:07:55] DEBUG: processes in session 1: csrss.exe, winlogon.exe, fontdrvhost.exe, dwm.exe, NVDisplay.Container.exe, SynTPEnh.exe, tposd.exe, RAVBg64.exe, SensorDBSynch.exe, shtctky.exe, conhost.exe, svchost.exe, sihost.exe, svchost.exe, svchost.exe, Wacom_TabletUser.exe, PowerMgr.exe, taskhostw.exe, WacomHost.exe, SynTPLpr.exe, WpcMon.exe, SynLenovoHelper.exe, ctfmon.exe, igfxEM.exe, Wacom_Tablet.exe, SynTPHelper.exe, Wacom_TouchUser.exe, ChsIME.exe, explorer.exe, TabTip.exe, svchost.exe, svchost.exe, dllhost.exe, StartMenuExperienceHost.exe, RuntimeBroker.exe, SearchApp.exe, RuntimeBroker.exe, TextInputHost.exe, igfxext.exe, RuntimeBroker.exe, SecurityHealthSystray.exe, Everything.exe, AvastUI.exe, RAVBg64.exe, RAVCpl64.exe, GoldenDict.exe, BingSvc.exe, BingWallpaperApp.exe, Resilio Sync.exe, Cortana.exe, RuntimeBroker.exe, svchost.exe, snipaste.exe, jusched.exe, RuntimeBroker.exe, ApplicationFrameHost.exe, PhoneExperienceHost.exe, AvastUI.exe, AvastUI.exe, AvastUI.exe, LenovoVantage-(MultimediaAddin).exe, dllhost.exe, crashpad_handler.exe, jucheck.exe, ShellExperienceHost.exe, RuntimeBroker.exe, ant.exe, ant_vpn.exe, UserOOBEBroker.exe, emacs.exe, conhost.exe, LockApp.exe, RuntimeBroker.exe, Video.UI.exe, Microsoft.Photos.exe, RuntimeBroker.exe, RuntimeBroker.exe, crashpad_handler.exe, wps.exe, wpspdf.exe, promecefpluginhost.exe, promecefpluginhost.exe, wps.exe, express.exe, CefSharp.BrowserSubprocess.exe, CefSharp.BrowserSubprocess.exe, conhost.exe, ssh-agent.exe, vlc.exe, svchost.exe, SystemSettingsBroker.exe, anki.exe, QtWebEngineProcess.exe, QtWebEngineProcess.exe, QtWebEngineProcess.exe, mpv.exe, QtWebEngineProcess.exe, ChsIME.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, chrome.exe, SystemSettings.exe, chrome.exe, chrome.exe, AvastUI.exe, promecefpluginhost.exe, QtWebEngineProcess.exe, CefSharp.BrowserSubprocess.exe, chrome.exe, chrome.exe, git-bash.exe, mintty.exe, conhost.exe, bash.exe, crashpad_handler.exe, chrome.exe, smartscreen.exe, barrier.exe, 
+[2023-01-26T00:07:55] DEBUG: found winlogon.exe in session 1
+[2023-01-26T00:07:55] DEBUG: got token 780, duplicating
+[2023-01-26T00:07:55] DEBUG: duplicated, new token: 776
+[2023-01-26T00:07:55] INFO: starting new process as privileged user
+[2023-01-26T00:07:55] INFO: drag and drop enabled
+[2023-01-26T00:07:55] DEBUG: opening configuration "C:/Users/josep/AppData/Local/Temp/Barrier.RijSot"
+[2023-01-26T00:07:55] DEBUG: configuration read successfully
+[2023-01-26T00:07:55] DEBUG: screen shape: 0,0 1536x864 
+[2023-01-26T00:07:55] DEBUG: window is 0x00050a5e
+[2023-01-26T00:07:55] DEBUG: adopting new buffer
+[2023-01-26T00:07:55] DEBUG: opened display
+[2023-01-26T00:07:55] DEBUG: active sides: 0
+[2023-01-26T00:07:55] DEBUG: active sides: 0
+[2023-01-26T00:07:55] DEBUG: desk Default window is 0x00a4066e
+[2023-01-26T00:07:55] DEBUG: switched to desk "Default"
+[2023-01-26T00:07:55] DEBUG: desktop is now accessible
+[2023-01-26T00:07:55] DEBUG: Found 0 immune keys in C:\Users\josep\AppData\Local\Barrier\ImmuneKeys.txt
+[2023-01-26T00:07:55] DEBUG: registered hotkey ScrollLock (id=ef14 mask=0000) as id=1
+started server (IPv4/IPv6), waiting for clients
+[2023-01-26T00:07:55] DEBUG: Opening new socket: D0CF6BA0
+[2023-01-26T00:07:55] DEBUG: event queue is ready
+[2023-01-26T00:07:55] DEBUG: add pending events to buffer
+[2023-01-26T00:07:55] DEBUG: Opening new socket: E888D0B0
+[2023-01-26T00:07:55] DEBUG: screen "ThinkPad-T470" shape changed
+[2023-01-26T00:07:55] DEBUG: accepted ipc client connection
+[2023-01-26T00:07:55] DEBUG: start ipc handle data
+[2023-01-26T00:07:55] DEBUG: ipc read: IHEL
+[2023-01-26T00:07:55] DEBUG: finished ipc handle data
+[2023-01-26T00:07:55] DEBUG: ipc hello, type=node
+server status: active
+[2023-01-26T00:07:56] DEBUG: started process, session=1, elevated: yes, command="D:/programs/Barrier/barriers.exe" -f --no-tray --debug DEBUG --name ThinkPad-T470 --ipc --stop-on-desk-switch --enable-drag-drop --profile-dir "C:\Users\josep\AppData\Local\Barrier" --disable-client-cert-checking -c "C:/Users/josep/AppData/Local/Temp/Barrier.RijSot" --address :24800
+[2023-01-26T00:08:05] DEBUG: Opening new socket: D0CF7200
+[2023-01-26T00:08:05] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:08:05] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:08:05] ERROR: error:0906D06C:PEM routines:PEM_read_bio:no start line
+[2023-01-26T00:08:05] DEBUG: Closing socket: D0CF7200
+[2023-01-26T00:08:20] DEBUG: Opening new socket: D0CF7110
+[2023-01-26T00:08:20] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:08:20] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:08:20] ERROR: error:140AD009:SSL routines:SSL_CTX_use_certificate_file:PEM lib
+[2023-01-26T00:08:20] DEBUG: Closing socket: D0CF7110
+[2023-01-26T00:08:36] DEBUG: Opening new socket: D0CF7200
+[2023-01-26T00:08:36] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:08:36] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:08:36] ERROR: error:0906D06C:PEM routines:PEM_read_bio:no start line
+[2023-01-26T00:08:36] DEBUG: Closing socket: D0CF7200
+[2023-01-26T00:08:52] DEBUG: Opening new socket: D0CF7110
+[2023-01-26T00:08:52] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:08:52] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:08:52] ERROR: error:140AD009:SSL routines:SSL_CTX_use_certificate_file:PEM lib
+[2023-01-26T00:08:52] DEBUG: Closing socket: D0CF7110
+[2023-01-26T00:09:08] DEBUG: Opening new socket: D0CF7110
+[2023-01-26T00:09:08] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:09:08] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:09:08] ERROR: error:0906D06C:PEM routines:PEM_read_bio:no start line
+[2023-01-26T00:09:08] DEBUG: Closing socket: D0CF7110
+[2023-01-26T00:09:24] DEBUG: Opening new socket: D0CF6D50
+[2023-01-26T00:09:24] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:09:24] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:09:24] ERROR: error:140AD009:SSL routines:SSL_CTX_use_certificate_file:PEM lib
+[2023-01-26T00:09:24] DEBUG: Closing socket: D0CF6D50
+[2023-01-26T00:09:40] DEBUG: Opening new socket: D0CF6CC0
+[2023-01-26T00:09:40] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-26T00:09:40] ERROR: could not use ssl certificate: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-26T00:09:40] ERROR: error:0906D06C:PEM routines:PEM_read_bio:no start line
+[2023-01-26T00:09:40] DEBUG: Closing socket: D0CF6CC0

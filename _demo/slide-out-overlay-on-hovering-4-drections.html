@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Slide-out overlay on hovering</title>
+    <style>
+	  .parent-panel {
+		  width: 200px;
+		  height: 200px;
+		  background-color: purple;
+		  margin-top: 10px;
+		  position: relative;
+		  z-index: 0;
+	  }
+
+	  .parent-panel::before {
+		  content: "";
+		  position: absolute;
+		  z-index: 2;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background: inherit;
+		  transition: all 0.5s ease;
+	  }
+
+	  .child-panel {
+		  background-color: yellow;
+		  overflow: hidden;
+	  }
+
+	  .content {
+		  width: 50px;
+		  height: 100px;
+		  background-color: blue;
+		  margin: 50px auto;
+	  }
+
+	  #slide-down:hover::before {
+		  top: 100%;
+	  }
+
+	  #slide-up:hover::before {
+		  bottom: 100%;
+	  }
+
+	  #slide-right:hover::before {
+		  left: 100%;
+	  }
+
+	  #slide-left:hover::before {
+		  right: 100%;
+	  }
+
+    </style>
+  </head>
+  <body>
+	<div id="slide-down" class="parent-panel">
+      <div class="child-panel">
+        <div class="content"></div>
+      </div>
+	</div>
+	<div id="slide-up" class="parent-panel">
+      <div class="child-panel">
+        <div class="content"></div>
+      </div>
+	</div>
+	<div id="slide-right" class="parent-panel">
+      <div class="child-panel">
+        <div class="content"></div>
+      </div>
+	</div>
+	<div id="slide-left" class="parent-panel">
+      <div class="child-panel">
+        <div class="content"></div>
+      </div>
+	</div>
+  </body>
+</html>

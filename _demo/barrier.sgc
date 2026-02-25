@@ -1,0 +1,39 @@
+section: screens
+	ThinkPad-T470:
+		halfDuplexCapsLock = false
+		halfDuplexNumLock = false
+		halfDuplexScrollLock = false
+		xtestIsXineramaUnaware = false
+		preserveFocus = false
+		switchCorners = none 
+		switchCornerSize = 0
+	moon:
+		halfDuplexCapsLock = false
+		halfDuplexNumLock = false
+		halfDuplexScrollLock = false
+		xtestIsXineramaUnaware = false
+		preserveFocus = false
+		switchCorners = none 
+		switchCornerSize = 0
+end
+
+section: aliases
+end
+
+section: links
+	ThinkPad-T470:
+		right = moon
+	moon:
+		left = ThinkPad-T470
+end
+
+section: options
+	relativeMouseMoves = false
+	screenSaverSync = false
+	win32KeepForeground = false
+	clipboardSharing = true
+	switchCorners = none +top-left +top-right +bottom-left +bottom-right 
+	switchCornerSize = 75
+	keystroke(Super+n) = toggleScreen
+end
+

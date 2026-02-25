@@ -1,0 +1,933 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>The Apartment &amp; The Street: Understanding Public vs. Private IP Addresses | Orcharinth</title>
+<meta name="description" content="The Difference Between Public and Private IP">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="The Apartment &amp; The Street: Understanding Public vs. Private IP Addresses">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/network/public-private-ip/">
+
+
+  <meta property="og:description" content="The Difference Between Public and Private IP">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-01-16T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-01-16T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/network/public-private-ip/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#network" itemprop="item"><span itemprop="name">Network</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">The Apartment & The Street: Understanding Public vs. Private IP Addresses</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="The Apartment &amp; The Street: Understanding Public vs. Private IP Addresses">
+    <meta itemprop="description" content="The Difference Between Public and Private IP">
+    <meta itemprop="datePublished" content="2026-01-16T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-01-16T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/network/public-private-ip/" itemprop="url">The Apartment &amp; The Street: Understanding Public vs. Private IP Addresses
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-01-16T00:00:00+00:00">January 16, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#the-difference-between-public-and-private-ip">The Difference Between Public and Private IP</a><ul><li><a href="#the-public-ip-address">The Public IP Address</a></li><li><a href="#the-private-ip-address">The Private IP Address</a></li><li><a href="#the-translator-nat">The “Translator” (NAT)</a></li><li><a href="#why-do-we-do-this">Why do we do this?</a></li></ul></li><li><a href="#does-public-ip-address-change-over-time-when-and-why">Does Public IP Address change over time? When and Why?</a><ul><li><a href="#when-does-it-change">When does it change?</a></li><li><a href="#why-do-isps-change-it">Why do ISPs change it?</a></li><li><a href="#what-if-you-need-it-to-stay-the-same">What if you need it to stay the same?</a></li></ul></li><li><a href="#can-you-host-servers-without-a-static-ip">Can you host servers without a static IP?</a><ul><li><a href="#20260116203517">The Standard Workaround: Dynamic DNS (DDNS)</a></li><li><a href="#the-modern-zero-config-way-tunnels-cloudflare">The Modern “Zero-Config” Way: Tunnels (Cloudflare)</a></li><li><a href="#the-private-way-mesh-vpns-tailscale--zerotier">The Private Way: Mesh VPNs (Tailscale / ZeroTier)</a></li><li><a href="#when-is-a-static-ip-non-negotiable">When is a Static IP “Non-Negotiable”?</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <h2 id="the-difference-between-public-and-private-ip">The Difference Between Public and Private IP</h2>
+
+<p>When you search for “what is my IP” on Google or sites like
+<a href="https://whatismyipaddress.com/">whatismyipaddress.com</a> and
+<a href="https://ip.me/">ip.me</a>, you may find the IP address (e.g., <code class="language-plaintext highlighter-rouge">210.252.239.212</code>)
+different from what you find from your terminal (e.g., <code class="language-plaintext highlighter-rouge">10.20.19.110</code>). You are
+seeing the distinction between your <strong>Public IP Address</strong> and your <strong>Private
+(Local) IP Address</strong>.</p>
+
+<p>Think of your network like an apartment building:</p>
+
+<ul>
+  <li>
+    <p><strong>The Public IP (<code class="language-plaintext highlighter-rouge">210.252.239.212</code>)</strong> is the street address of the entire
+building. This is what the mailman (the Internet) sees.</p>
+  </li>
+  <li>
+    <p><strong>The Private IP (<code class="language-plaintext highlighter-rouge">10.20.19.110</code>)</strong> is your specific apartment number. It only
+makes sense <em>inside</em> the building.</p>
+  </li>
+</ul>
+
+<h3 id="the-public-ip-address">The Public IP Address</h3>
+
+<p>The address <code class="language-plaintext highlighter-rouge">210.252.239.212</code> belongs to your <strong>Router</strong> (or your ISP’s
+gateway).</p>
+
+<ul>
+  <li>Who gives it to you? — Your Internet Service Provider (ISP).</li>
+  <li>What is it for? — It identifies your entire home or office network to the rest
+of the global internet.</li>
+  <li>Visibility: Every website you visit sees this address. If you have five people
+in your house all visiting Google at the same time, Google sees all of them
+coming from this same single address.</li>
+</ul>
+
+<h3 id="the-private-ip-address">The Private IP Address</h3>
+
+<p>The address <code class="language-plaintext highlighter-rouge">10.20.19.110</code> belongs specifically to your <strong>Device</strong> (laptop,
+phone, etc.).</p>
+
+<ul>
+  <li>Who gives it to you? — Your Router.</li>
+  <li>What is it for? — It allows your router to distinguish between your laptop and
+your roommate’s phone. When the router receives data from the internet, it
+uses this address to know which “apartment” to send the data to.</li>
+  <li>Visibility: This address is invisible to the outside world. It is part of a
+reserved range (the <code class="language-plaintext highlighter-rouge">10.x.x.x</code> block) that is specifically designated for
+private use and cannot be “routed” on the public internet.</li>
+</ul>
+
+<h3 id="the-translator-nat">The “Translator” (NAT)</h3>
+
+<p>You might wonder: <em>If the internet only sees the Public IP, how does the data
+get back to my specific laptop?</em></p>
+
+<p>This is handled by a process called <strong>NAT (Network Address Translation)</strong>.</p>
+
+<ol>
+  <li>Request: Your laptop (<code class="language-plaintext highlighter-rouge">10.20.19.110</code>) sends a request to a website.</li>
+  <li>Translation: The router “strips off” your private IP, replaces it with the
+public IP (<code class="language-plaintext highlighter-rouge">210.252.239.212</code>), and makes a note in its internal table:
+<em>“Traffic on Port X belongs to the laptop.”</em></li>
+  <li>Response: The website sends the data back to the Public IP.</li>
+  <li>Delivery: The router looks at its table, sees Port X, and forwards the data
+to your laptop’s Private IP.</li>
+</ol>
+
+<h3 id="why-do-we-do-this">Why do we do this?</h3>
+
+<ul>
+  <li>
+    <p>Security: Because your private IP is hidden, hackers on the internet cannot
+“see” your computer directly; they only see your router, which acts as a
+shield.</p>
+  </li>
+  <li>
+    <p>IP Scarcity: There are only about 4 billion IPv4 addresses in existence. If
+every single smartphone, smart bulb, and laptop in the world needed a unique
+public address, we would have run out of addresses decades ago. NAT allows
+millions of devices to share a single public address.</p>
+  </li>
+</ul>
+
+<h2 id="does-public-ip-address-change-over-time-when-and-why">Does Public IP Address change over time? When and Why?</h2>
+
+<p>For most residential users, your Public IP address is <strong>dynamic</strong>, meaning it
+will eventually change. It isn’t tied permanently to your house like a physical
+street address; it’s more like a temporary “lease” on a parking spot.</p>
+
+<h3 id="when-does-it-change">When does it change?</h3>
+
+<p>There isn’t a fixed schedule for everyone, but a change is typically triggered
+by:</p>
+
+<ul>
+  <li>
+    <p><strong>Router Reboots/Power Outages:</strong> If your router is turned off or loses power
+for a while, the “lease” on your current IP might expire. When you turn it
+back on, the ISP might give that old IP to someone else and hand you a new
+one.</p>
+  </li>
+  <li>
+    <p><strong>Lease Expiration:</strong> Even if your router stays on, your ISP sets a “lease
+time” (often 24 hours to a week). When the time is up, your router asks to
+renew it. Usually, it keeps the same one, but the ISP can force a change at
+this point.</p>
+  </li>
+  <li>
+    <p><strong>ISP Maintenance:</strong> If your provider performs network upgrades or
+reconfigures their hardware in your area, they may “refresh” all connections,
+resulting in new IPs for everyone in the neighborhood.</p>
+  </li>
+</ul>
+
+<h3 id="why-do-isps-change-it">Why do ISPs change it?</h3>
+
+<p>It seems like a lot of work to keep moving addresses around, but it’s actually
+more efficient for the ISP:</p>
+
+<ul>
+  <li>
+    <p><strong>Conserving Addresses:</strong> There is a global shortage of IPv4 addresses. Not
+every customer is online 24/7. By using a “pool” of addresses, the ISP only
+needs enough for the people currently connected, rather than one for every
+single customer they’ve ever signed.</p>
+  </li>
+  <li>
+    <p><strong>Monetization:</strong> ISPs know that businesses need an address that <em>never</em>
+changes (a <strong>Static IP</strong>) so they can host servers. Because this is a premium
+requirement, they usually charge extra—often $10–$20 more per month—for the
+privilege of a fixed address.</p>
+  </li>
+  <li>
+    <p><strong>Security:</strong> A changing IP makes you a “moving target.” It’s slightly harder
+for a hacker to target your specific home network over a long period if your
+address keeps shifting.</p>
+  </li>
+</ul>
+
+<p><strong>Comparison: Dynamic vs. Static IP</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Dynamic IP (Standard)</th>
+      <th>Static IP (Business/Add-on)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Price</td>
+      <td>Included in your plan</td>
+      <td>Extra monthly fee</td>
+    </tr>
+    <tr>
+      <td>Consistency</td>
+      <td>Changes periodically</td>
+      <td>Never changes</td>
+    </tr>
+    <tr>
+      <td>Best For</td>
+      <td>Browsing, Streaming, Gaming</td>
+      <td>Hosting websites, Home Servers, CCTV</td>
+    </tr>
+    <tr>
+      <td>Setup</td>
+      <td>Automatic (DHCP)</td>
+      <td>Manual configuration</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="what-if-you-need-it-to-stay-the-same">What if you <em>need</em> it to stay the same?</h3>
+
+<p>If you want to access your home computer from work, or run a small game server,
+a changing IP is a headache. Since Static IPs are expensive, most people use
+<a href="#20260116203517">DDNS (Dynamic DNS)</a>.</p>
+
+<p>DDNS is a service that gives you a name (like <code class="language-plaintext highlighter-rouge">myhome.ddns.net</code>) and a tiny app
+on your router. Every time your Public IP changes, the app tells the DDNS
+service: <em>“Hey, I’m at a new address now!”</em> The name then automatically points
+to your new IP, so you never have to memorize the numbers.</p>
+
+<h2 id="can-you-host-servers-without-a-static-ip">Can you host servers without a static IP?</h2>
+
+<p>Strictly speaking, you do not need a static IP to host a server, but it is the
+“easy mode” for hosting. Without one, you simply need a way to track the “moving
+target” that is your dynamic IP address.</p>
+
+<p>For a home server, there are three main ways to handle a changing IP, ranging
+from “easy” to “professional.”</p>
+
+<h3 id="20260116203517">The Standard Workaround: Dynamic DNS (DDNS)</h3>
+
+<p>This is the most popular solution for home users. Instead of giving people your
+IP address (which changes), you give them a <strong>hostname</strong> (like
+<code class="language-plaintext highlighter-rouge">my-cool-server.ddns.net</code>).</p>
+
+<ul>
+  <li>
+    <p>How it works: You run a tiny piece of software (a “Client”) on your server or
+router.</p>
+  </li>
+  <li>
+    <p>The Process: Every 5–10 minutes, the client checks: <em>“What is my Public IP?”</em>
+If it has changed, it sends an update to the DDNS provider. The provider
+immediately updates the DNS records so your hostname points to the new IP.</p>
+  </li>
+  <li>
+    <p>Popular Services: <a href="https://www.noip.com/">No-IP</a>,
+<a href="https://www.duckdns.org/">DuckDNS</a> (Free), and <a href="https://dyn.com/">DynDNS</a>.</p>
+  </li>
+</ul>
+
+<h3 id="the-modern-zero-config-way-tunnels-cloudflare">The Modern “Zero-Config” Way: Tunnels (Cloudflare)</h3>
+
+<p>If you don’t want to deal with IP addresses or port forwarding at all, you can
+use a <strong>Tunnel</strong>.</p>
+
+<ul>
+  <li>
+    <p>How it works: You install a small program (like <code class="language-plaintext highlighter-rouge">cloudflared</code>) on your server.
+This program creates an <em>outbound</em> connection to Cloudflare’s network.</p>
+  </li>
+  <li>
+    <p>The Benefit: Since your server reaches out to the internet first, it doesn’t
+matter what your IP is. Users visit your domain (e.g.,
+<code class="language-plaintext highlighter-rouge">server.yourdomain.com</code>), Cloudflare receives the request, and sends it down
+the “tunnel” directly to your server.</p>
+  </li>
+  <li>
+    <p>Security Bonus: This hides your Public IP entirely, protecting you from direct
+attacks.</p>
+  </li>
+</ul>
+
+<h3 id="the-private-way-mesh-vpns-tailscale--zerotier">The Private Way: Mesh VPNs (Tailscale / ZeroTier)</h3>
+
+<p>If your server is only for <strong>you</strong> or a few friends, you don’t even need a
+public domain or a public IP.</p>
+
+<ul>
+  <li>
+    <p>How it works: You install a Mesh VPN like Tailscale. It assigns your server a
+permanent, “virtual” IP address (usually starting with <code class="language-plaintext highlighter-rouge">100.x.x.x</code>).</p>
+  </li>
+  <li>
+    <p>The Result: No matter where your server moves or how the ISP changes your real
+IP, you can always find it at that same virtual address, as long as your
+laptop is also logged into the same Tailscale account.</p>
+  </li>
+</ul>
+
+<h3 id="when-is-a-static-ip-non-negotiable">When is a Static IP “Non-Negotiable”?</h3>
+
+<p>You only truly <em>need</em> a static IP if you are running <strong>Email Servers</strong>. Most big
+providers (Gmail, Outlook) will automatically block or “spam-bin” any emails
+coming from a Dynamic IP range because they assume it’s a compromised home
+computer sending spam.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/tags/#ip-address" class="page__taxonomy-item p-category" rel="tag">IP Address</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#network" class="page__taxonomy-item p-category" rel="tag">Network</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-01-16">January 16, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=The+Apartment+%26+The+Street%3A+Understanding+Public+vs.+Private+IP+Addresses%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fnetwork%2Fpublic-private-ip%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fnetwork%2Fpublic-private-ip%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/network/public-private-ip/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/web/exclude-ip/" class="pagination--pager" title="How to exclude your own IP address from Google Analytics
+">Previous</a>
+    
+    
+      <a href="/josephs-blog/health/workout-sets/" class="pagination--pager" title="Alternating Sets vs. Straight Sets
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, a...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/network/public-private-ip/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/network/public-private-ip"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

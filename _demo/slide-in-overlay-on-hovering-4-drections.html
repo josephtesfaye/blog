@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Slide-in overlay on hovering</title>
+    <style>
+	  .parent-panel {
+		  width: 200px;
+		  height: 200px;
+		  background-color: purple;
+		  position: relative;
+		  margin-top: 10px;
+	  }
+
+	  .child-panel {
+		  background-color: yellow;
+		  position: absolute;
+		  transition: 0.5s ease;
+	  }
+
+	  #slide-down .child-panel {
+		  width: 100%;
+		  height: 0;
+		  bottom: 100%;
+	  }
+
+	  #slide-down:hover .child-panel {
+		  height: 100%;
+		  bottom: 0;
+	  }
+
+	  #slide-up .child-panel {
+		  width: 100%;
+		  height: 0;
+		  bottom: 0;
+	  }
+
+	  #slide-up:hover .child-panel {
+		  height: 100%;
+	  }
+
+	  #slide-right .child-panel {
+		  width: 0;
+		  height: 100%;
+		  right: 100%;
+	  }
+
+	  #slide-right:hover .child-panel {
+		  width: 100%;
+		  right: 0;
+	  }
+
+	  #slide-left .child-panel {
+		  width: 0;
+		  height: 100%;
+		  left: 100%;
+	  }
+
+	  #slide-left:hover .child-panel {
+		  width: 100%;
+		  left: 0;
+	  }
+    </style>
+  </head>
+  <body>
+	<div id="slide-down" class="parent-panel">
+      <div class="child-panel"></div>
+	</div>
+	<div id="slide-up" class="parent-panel">
+      <div class="child-panel"></div>
+	</div>
+	<div id="slide-right" class="parent-panel">
+      <div class="child-panel"></div>
+	</div>
+	<div id="slide-left" class="parent-panel">
+      <div class="child-panel"></div>
+	</div>
+  </body>
+</html>

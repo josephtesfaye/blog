@@ -1,0 +1,2855 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Emacs Commands Quick Reference | Orcharinth</title>
+<meta name="description" content="A collection of most commonly used Emacs commands">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Emacs Commands Quick Reference">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/emacs/emacs-commands-quick-reference/">
+
+
+  <meta property="og:description" content="A collection of most commonly used Emacs commands">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-25T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2020-10-14T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/emacs/emacs-commands-quick-reference/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#emacs" itemprop="item"><span itemprop="name">Emacs</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Emacs Commands Quick Reference</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Emacs Commands Quick Reference">
+    <meta itemprop="description" content="A collection of most commonly used Emacs commands">
+    <meta itemprop="datePublished" content="2020-02-25T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2020-10-14T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/emacs/emacs-commands-quick-reference/" itemprop="url">Emacs Commands Quick Reference
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2020-02-25T00:00:00+00:00">February 25, 2020</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#commands">Commands</a><ul><li><a href="#key-notations">Key notations</a></li><li><a href="#help">Help</a></li><li><a href="#navigation">Navigation</a></li><li><a href="#selection">Selection</a></li><li><a href="#editing">Editing</a></li><li><a href="#searching">Searching</a></li><li><a href="#buffers-windows-and-frames">Buffers, windows and frames</a></li><li><a href="#files-and-directories">Files and directories</a><ul><li><a href="#dired-mode">Dired mode</a></li><li><a href="#diff-mode">Diff mode</a></li></ul></li><li><a href="#meta-commands">Meta commands</a></li><li><a href="#org-mode">Org mode</a><ul><li><a href="#headings-and-subtrees">Headings and subtrees</a></li><li><a href="#lists">Lists</a></li><li><a href="#links">Links</a></li><li><a href="#tables">Tables</a></li><li><a href="#navigation-1">Navigation</a></li><li><a href="#agenda-views">Agenda views</a></li></ul></li><li><a href="#info-mode">Info mode</a></li><li><a href="#programming">Programming</a><ul><li><a href="#project-awareness">Project awareness</a></li><li><a href="#navigation-2">Navigation</a></li><li><a href="#documentation">Documentation</a></li><li><a href="#magit">Magit</a></li><li><a href="#automation">Automation</a></li><li><a href="#rundebug">Run/Debug</a></li><li><a href="#verb">Verb</a></li></ul></li></ul></li><li><a href="#custom-key-bindings">Custom key-bindings</a></li><li><a href="#functions">Functions</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p><strong>NOTE</strong>: As of writing the version of Emacs I used is <code class="language-plaintext highlighter-rouge">GNU Emacs 27.1 (build 1, x86_64-w64-mingw32) of 2020-08-22</code>.</p>
+
+<h1 id="commands">Commands</h1>
+
+<ul>
+  <li>Key-bindings (or shortcuts) are represented with symbols specified
+in the <a href="#key-notations">key notations</a> table.</li>
+  <li>Key-bindings that are not packed with Emacs or other packages are
+marked with an <code class="language-plaintext highlighter-rouge">*</code>.</li>
+</ul>
+
+<h2 id="key-notations">Key notations</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C</td>
+      <td>Ctrl key</td>
+    </tr>
+    <tr>
+      <td>M</td>
+      <td>Meta/Alt key</td>
+    </tr>
+    <tr>
+      <td>S</td>
+      <td>Shift key</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>Hyphen. Keys connected with hyphens should be pressed together</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>White space, indicating a short pause between key pressings</td>
+    </tr>
+    <tr>
+      <td>RET</td>
+      <td>Return/Enter key</td>
+    </tr>
+    <tr>
+      <td>SPC</td>
+      <td>Space key</td>
+    </tr>
+    <tr>
+      <td>DEL</td>
+      <td>Backspace key</td>
+    </tr>
+    <tr>
+      <td>CMD</td>
+      <td>Command</td>
+    </tr>
+    <tr>
+      <td>,</td>
+      <td>Comma, used to separate optional or closely-related commands</td>
+    </tr>
+    <tr>
+      <td>A|B</td>
+      <td>Either A or B</td>
+    </tr>
+    <tr>
+      <td>[A]</td>
+      <td>A is optional, i.e., it can be omitted or present</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td>Repeat the last stroke indefinitely</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="help">Help</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-h ?</td>
+      <td>Show general help commands</td>
+      <td>help-for-help</td>
+    </tr>
+    <tr>
+      <td>C-h C-a</td>
+      <td>Show welcome screen</td>
+      <td>about-emacs</td>
+    </tr>
+    <tr>
+      <td>C-h t</td>
+      <td>Open Emacs tutorial</td>
+      <td>help-with-tutorial</td>
+    </tr>
+    <tr>
+      <td>C-h i</td>
+      <td>Open the info buffer</td>
+      <td>info</td>
+    </tr>
+    <tr>
+      <td>C-h k</td>
+      <td>Look up key</td>
+      <td>describe-key</td>
+    </tr>
+    <tr>
+      <td>C-h f</td>
+      <td>Look up command</td>
+      <td>describe-function</td>
+    </tr>
+    <tr>
+      <td>C-h v</td>
+      <td>Look up variable</td>
+      <td>describe-variable</td>
+    </tr>
+    <tr>
+      <td>C-h P</td>
+      <td>Describe package</td>
+      <td>describe-package</td>
+    </tr>
+    <tr>
+      <td>C-h .</td>
+      <td>Display tooltip in the echo area</td>
+      <td>display-local-help</td>
+    </tr>
+    <tr>
+      <td>&lt;prefix&gt; {C-h|F1}</td>
+      <td>Show the list of key-bindings starting with the prefix key, e.g. <code class="language-plaintext highlighter-rouge">C-x C-h</code> displays the list of key-bindings starting with <code class="language-plaintext highlighter-rouge">C-x</code>.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="navigation">Navigation</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-f</td>
+      <td>Go forward a character</td>
+      <td>forward-char</td>
+    </tr>
+    <tr>
+      <td>C-b</td>
+      <td>Go backward a character</td>
+      <td>backward-char</td>
+    </tr>
+    <tr>
+      <td>M-b</td>
+      <td>Go to word start</td>
+      <td>backward-word</td>
+    </tr>
+    <tr>
+      <td>M-f</td>
+      <td>Go to word end</td>
+      <td>forward-word</td>
+    </tr>
+    <tr>
+      <td>C-p</td>
+      <td>Go to previous line</td>
+      <td>previous-line</td>
+    </tr>
+    <tr>
+      <td>C-n</td>
+      <td>Go to next line</td>
+      <td>next-line</td>
+    </tr>
+    <tr>
+      <td>C-a</td>
+      <td>Go to line start</td>
+      <td>move-beginning-of-line</td>
+    </tr>
+    <tr>
+      <td>C-e</td>
+      <td>Go to line end</td>
+      <td>move-end-of-line</td>
+    </tr>
+    <tr>
+      <td>M-a</td>
+      <td>Go to sentence start</td>
+      <td>backward-sentence</td>
+    </tr>
+    <tr>
+      <td>M-e</td>
+      <td>Go to sentence end</td>
+      <td>forward-sentence</td>
+    </tr>
+    <tr>
+      <td>M-}</td>
+      <td>Go to next paragraph</td>
+      <td>forward-paragraph</td>
+    </tr>
+    <tr>
+      <td>M-{</td>
+      <td>Go to previous paragraph</td>
+      <td>backward-paragraph</td>
+    </tr>
+    <tr>
+      <td>M-]</td>
+      <td>Go to next blank line separated block</td>
+      <td>xah-forward-block <a href="#xah-forward-block">*</a></td>
+    </tr>
+    <tr>
+      <td>M-[</td>
+      <td>Go to previous blank line separated block</td>
+      <td>xah-backward-block <a href="#xah-backward-block">*</a></td>
+    </tr>
+    <tr>
+      <td>M-&lt;</td>
+      <td>Go to buffer start</td>
+      <td>beginning-of-buffer</td>
+    </tr>
+    <tr>
+      <td>M-&gt;</td>
+      <td>Go to buffer end</td>
+      <td>end-of-buffer</td>
+    </tr>
+    <tr>
+      <td>M-r</td>
+      <td>Go to buffer center, top, or bottom</td>
+      <td>move-to-window-line-top-bottom</td>
+    </tr>
+    <tr>
+      <td>C-M-f</td>
+      <td>Go to the matched closing bracket</td>
+      <td>forward-sexp</td>
+    </tr>
+    <tr>
+      <td>C-M-b</td>
+      <td>Go to the matched opening bracket</td>
+      <td>forward-sexp</td>
+    </tr>
+    <tr>
+      <td>C-M-e</td>
+      <td>Go to next end of defun</td>
+      <td>end-of-defun</td>
+    </tr>
+    <tr>
+      <td>C-M-a</td>
+      <td>Go to previous beginning of defun</td>
+      <td>beginning-of-defun</td>
+    </tr>
+    <tr>
+      <td>C-x &lt;</td>
+      <td>Scroll text in the current window to the left</td>
+      <td>scroll-left</td>
+    </tr>
+    <tr>
+      <td>C-x &gt;</td>
+      <td>Scroll text in the current window to the right</td>
+      <td>scroll-right</td>
+    </tr>
+    <tr>
+      <td>C-v</td>
+      <td>Scroll forward one screenful</td>
+      <td>scroll-up-command</td>
+    </tr>
+    <tr>
+      <td>M-v</td>
+      <td>Scroll backward one screenful</td>
+      <td>scroll-down-command</td>
+    </tr>
+    <tr>
+      <td>C-M-v</td>
+      <td>Scroll other window forward one screenful</td>
+      <td>scroll-other-window</td>
+    </tr>
+    <tr>
+      <td>S-C-M-v</td>
+      <td>Scroll other window backward one screenful</td>
+      <td>scroll-other-window-down</td>
+    </tr>
+    <tr>
+      <td>C-l</td>
+      <td>Move the text around the cursor to the center of the screen</td>
+      <td>recenter-top-bottom</td>
+    </tr>
+    <tr>
+      <td>M-g g</td>
+      <td>Go to line</td>
+      <td>goto-line</td>
+    </tr>
+    <tr>
+      <td>M-g c</td>
+      <td>Go to character</td>
+      <td>goto-char</td>
+    </tr>
+    <tr>
+      <td>C-u C-SPC</td>
+      <td>Go to last marked position in current buffer</td>
+      <td>set-mark-command</td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Go to next marked position in current buffer</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C-x C-SPC</td>
+      <td>Go to last marked position in all buffers</td>
+      <td>set-mark-command</td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Go to next marked position in all buffers</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Go to last edited position in current buffer</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Go to next edited position in current buffer</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Go to last edited position in all buffers</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Go to next edited position in all buffers</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="selection">Selection</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-x h</td>
+      <td>Select all.</td>
+      <td>mark-whole-buffer</td>
+    </tr>
+    <tr>
+      <td>C-S-p</td>
+      <td>Up with selection.</td>
+      <td>previous-line</td>
+    </tr>
+    <tr>
+      <td>C-S-n</td>
+      <td>Down with selection.</td>
+      <td>next-line</td>
+    </tr>
+    <tr>
+      <td>C-S-f</td>
+      <td>Forward with selection.</td>
+      <td>forward-char</td>
+    </tr>
+    <tr>
+      <td>C-S-b</td>
+      <td>Backward with selection.</td>
+      <td>backward-char</td>
+    </tr>
+    <tr>
+      <td>M-S-f</td>
+      <td>Forward with selection to word end.</td>
+      <td>forward-word</td>
+    </tr>
+    <tr>
+      <td>M-S-b</td>
+      <td>Backward with selection to word start.</td>
+      <td>backward-word</td>
+    </tr>
+    <tr>
+      <td>C-S-e</td>
+      <td>Forward with selection to line end.</td>
+      <td>move-end-of-line</td>
+    </tr>
+    <tr>
+      <td>C-S-a</td>
+      <td>Backward with selection to line start.</td>
+      <td>move-beginning-of-line</td>
+    </tr>
+    <tr>
+      <td>C-SPC</td>
+      <td>Toggle sticky selection.</td>
+      <td>set-mark-command</td>
+    </tr>
+    <tr>
+      <td>C-x SPC</td>
+      <td>Toggle rectangle mark mode.</td>
+      <td>rectangle-mark-mode</td>
+    </tr>
+    <tr>
+      <td>M-=</td>
+      <td>Show the number of lines, words, and characters in selected region.</td>
+      <td>count-words-region</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="editing">Editing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-d</td>
+      <td>Delete next character.</td>
+      <td>delete-char</td>
+    </tr>
+    <tr>
+      <td>DEL</td>
+      <td>Delete previous character.</td>
+      <td>backward-delete-char-untabify</td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Delete entire line.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>M-d</td>
+      <td>Kill next word.</td>
+      <td>kill-word</td>
+    </tr>
+    <tr>
+      <td>{M¦C}-DEL</td>
+      <td>Kill previous word.</td>
+      <td>backward-kill-word</td>
+    </tr>
+    <tr>
+      <td>C-k</td>
+      <td>Kill to line end. <code class="language-plaintext highlighter-rouge">M-0 ~</code> to kill to line start.</td>
+      <td>kill-line</td>
+    </tr>
+    <tr>
+      <td>C-S-DEL</td>
+      <td>Kill entire line.</td>
+      <td>kill-whole-line</td>
+    </tr>
+    <tr>
+      <td>C-w</td>
+      <td>Kill region.</td>
+      <td>kill-region</td>
+    </tr>
+    <tr>
+      <td>M-w</td>
+      <td>Copy region/rectangle</td>
+      <td>kill-ring-save</td>
+    </tr>
+    <tr>
+      <td>C-y</td>
+      <td>Yank/Paste last killed region/rectangle.</td>
+      <td>yank</td>
+    </tr>
+    <tr>
+      <td>C-x r k</td>
+      <td>Kill rectangle</td>
+      <td>kill-rectangle</td>
+    </tr>
+    <tr>
+      <td>C-x r y</td>
+      <td>Yank rectangle</td>
+      <td>yank-rectangle</td>
+    </tr>
+    <tr>
+      <td>C-/</td>
+      <td>Undo. <code class="language-plaintext highlighter-rouge">C-f ~</code> to redo.</td>
+      <td>undo</td>
+    </tr>
+    <tr>
+      <td>M-c</td>
+      <td>Capitalize word.</td>
+      <td>capitalize-word</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Capitalize region.</td>
+      <td>capitalize-region</td>
+    </tr>
+    <tr>
+      <td>M-u</td>
+      <td>Turn all letters of next word uppercase.</td>
+      <td>upcase-word</td>
+    </tr>
+    <tr>
+      <td>M-l</td>
+      <td>Turn all letters of next word lowercase</td>
+      <td>downcase-word</td>
+    </tr>
+    <tr>
+      <td>C-x C-u</td>
+      <td>Turn all letters of selected region uppercase.</td>
+      <td>upcase-region</td>
+    </tr>
+    <tr>
+      <td>C-x C-l</td>
+      <td>Turn all letters of selected region lowercase.</td>
+      <td>downcase-region</td>
+    </tr>
+    <tr>
+      <td>C-g</td>
+      <td>Quit a command.</td>
+      <td>keyboard-quit</td>
+    </tr>
+    <tr>
+      <td>C-o</td>
+      <td>Insert a new line and leave the cursor unmoved.</td>
+      <td>open-line</td>
+    </tr>
+    <tr>
+      <td>M-\</td>
+      <td>Delete all spaces and tabs around cursor.</td>
+      <td>delete-horizontal-space</td>
+    </tr>
+    <tr>
+      <td>C-x C-o</td>
+      <td>Delete blank lines surrounding the cursor.</td>
+      <td>delete-blank-lines</td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Toggle camelcase-aware editing for current buffer.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>S-RET</td>
+      <td>Open line below without breaking current line.</td>
+      <td>newline-below-without-break (<a href="#newline-below-without-break">*</a>)</td>
+    </tr>
+    <tr>
+      <td>C-S-RET</td>
+      <td>Open line above without breaking current line.</td>
+      <td>newline-above-without-break (<a href="#newline-above-without-break">*</a>)</td>
+    </tr>
+    <tr>
+      <td>TAB</td>
+      <td>Indent current line. Use <code class="language-plaintext highlighter-rouge">C-u &lt;n&gt; C-x Tab</code> to indent the selected region n columns. Use negative number for n to unindent.</td>
+      <td>indent-for-tab-command</td>
+    </tr>
+    <tr>
+      <td>C-q</td>
+      <td>Read next input character and insert it. This is useful for inserting control characters.</td>
+      <td>quoted-insert</td>
+    </tr>
+    <tr>
+      <td>C-x =</td>
+      <td>Describe character at point. <code class="language-plaintext highlighter-rouge">C-u ~</code> to show more details.</td>
+      <td>what-cursor-position</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="searching">Searching</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-s</td>
+      <td>Incremental search forward.</td>
+      <td>isearch-forward</td>
+    </tr>
+    <tr>
+      <td>C-r</td>
+      <td>Incremental finding backward.</td>
+      <td>isearch-backward</td>
+    </tr>
+    <tr>
+      <td>M-%</td>
+      <td>Query and replace.</td>
+      <td>query-replace</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="buffers-windows-and-frames">Buffers, windows and frames</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-x b</td>
+      <td>Switch to buffer in current window. Create new buffer if the given buffer name doesn’t exist.</td>
+      <td>switch-to-buffer</td>
+    </tr>
+    <tr>
+      <td>C-x 4 b</td>
+      <td>Switch to buffer in another window.</td>
+      <td>switch-to-buffer-other-window</td>
+    </tr>
+    <tr>
+      <td>C-x 4 C-o</td>
+      <td>Display buffer in another window.</td>
+      <td>display-buffer</td>
+    </tr>
+    <tr>
+      <td>C-x 5 b</td>
+      <td>Switch to buffer in another frame.</td>
+      <td>switch-to-buffer-other-frame</td>
+    </tr>
+    <tr>
+      <td>C-x &lt;left&gt;</td>
+      <td>Switch to previous buffer.</td>
+      <td>previous-buffer</td>
+    </tr>
+    <tr>
+      <td>C-x &lt;right&gt;</td>
+      <td>Switch to next buffer</td>
+      <td>next-buffer</td>
+    </tr>
+    <tr>
+      <td>C-x C-b</td>
+      <td>List buffers</td>
+      <td>list-buffers</td>
+    </tr>
+    <tr>
+      <td>M-n</td>
+      <td>Go to next window</td>
+      <td>other-window</td>
+    </tr>
+    <tr>
+      <td>M-p</td>
+      <td>Go to previous window</td>
+      <td>prev-window</td>
+    </tr>
+    <tr>
+      <td>C-x k</td>
+      <td>Kill buffer</td>
+      <td>kill-buffer</td>
+    </tr>
+    <tr>
+      <td>C-x C-s</td>
+      <td>Save buffer</td>
+      <td>save-buffer</td>
+    </tr>
+    <tr>
+      <td>C-x s</td>
+      <td>Save some modified file-visiting buffers.</td>
+      <td>save-some-buffers</td>
+    </tr>
+    <tr>
+      <td>C-x 0</td>
+      <td>Close current window.</td>
+      <td>delete-window</td>
+    </tr>
+    <tr>
+      <td>C-x 1</td>
+      <td>Go back to one-window editing.</td>
+      <td>delete-other-windows</td>
+    </tr>
+    <tr>
+      <td>C-x 2</td>
+      <td>Split window below. <code class="language-plaintext highlighter-rouge">C-u &lt;n&gt; ~</code> to specify height.</td>
+      <td>split-window-below</td>
+    </tr>
+    <tr>
+      <td>C-x 3</td>
+      <td>Split window right. <code class="language-plaintext highlighter-rouge">C-u &lt;n&gt; ~</code> to specify width.</td>
+      <td>split-window-right</td>
+    </tr>
+    <tr>
+      <td>S-&lt;arrow&gt;*</td>
+      <td>Switch directionally between windows. By default it’s not enabled. Type `M-x windmove-default-keybingds` to enable it or add `(windmove-default-keybindings)` to init file to enable it for future sessions.</td>
+      <td>windmove-*</td>
+    </tr>
+    <tr>
+      <td>C-x C-c</td>
+      <td>Kill all buffers and exit emacs.</td>
+      <td>save-buffers-kill-terminal</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Open shell. <code class="language-plaintext highlighter-rouge">C-u M-x ~</code> to open another running shell.</td>
+      <td>shell</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Open Emacs shell.</td>
+      <td>eshell</td>
+    </tr>
+    <tr>
+      <td>C-c C-l</td>
+      <td>Display a list of recent inputs entered into the current buffer.</td>
+      <td>comint-dynamic-list-input-ring</td>
+    </tr>
+    <tr>
+      <td>C-x m</td>
+      <td>Open mail buffer.</td>
+      <td>compose-mail</td>
+    </tr>
+    <tr>
+      <td>C-x C-=</td>
+      <td>Adjust font size.</td>
+      <td>text-scale-adjust</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Truncate long lines or wrap them.</td>
+      <td>toggle-word-wrap</td>
+    </tr>
+    <tr>
+      <td>C-z</td>
+      <td>Suspend emacs. In shell type <code class="language-plaintext highlighter-rouge">%emacs</code> to resume.</td>
+      <td>suspend-frame</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="files-and-directories">Files and directories</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-x C-f</td>
+      <td>Open or create a file in current window</td>
+      <td>find-file</td>
+    </tr>
+    <tr>
+      <td>C-x 4 f</td>
+      <td>Open or create a file in another window</td>
+      <td>find-file-other-window</td>
+    </tr>
+    <tr>
+      <td>M-F2</td>
+      <td>Open file in browser. <code class="language-plaintext highlighter-rouge">(global-set-key (kbd "&lt;M-f2&gt;") 'browse-url-of-file)</code></td>
+      <td>browse-url-of-file</td>
+    </tr>
+    <tr>
+      <td>C-x C-d</td>
+      <td>Display a brief directory listing. <code class="language-plaintext highlighter-rouge">C-u ~</code> to display verbosely.</td>
+      <td>list-directory</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="dired-mode">Dired mode</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-x d</td>
+      <td>Enter dired mode in current window.</td>
+      <td>dired</td>
+    </tr>
+    <tr>
+      <td>C-x 4 d</td>
+      <td>Enter dired mode in another window.</td>
+      <td>dired-other-window</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When in dired more:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>d</td>
+      <td>Flag files for deletion.</td>
+      <td>dired-flag-file-deletion</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>Delete file on current line.</td>
+      <td>dired-do-delete</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>Delete flaged files.</td>
+      <td>dired-do-flagged-delete</td>
+    </tr>
+    <tr>
+      <td>g</td>
+      <td>Refresh the mode buffer.</td>
+      <td>revert-buffer</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="diff-mode">Diff mode</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Enter diff mode in current window which compares two files</td>
+      <td>diff</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Enter diff mode in current window which compares current buffer with its file.</td>
+      <td>diff-buffer-with-file</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When in diff mode:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>g</td>
+      <td>Refresh the mode buffer</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="meta-commands">Meta commands</h2>
+<p>Commands on commands</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{M-&lt;n&gt;¦C-u &lt;n&gt;} CMD</td>
+      <td>Run a command n times. See <code class="language-plaintext highlighter-rouge">C-h i (emacs)Arguments</code>.</td>
+      <td>digit-argument</td>
+    </tr>
+    <tr>
+      <td>M-x</td>
+      <td>Run a command.</td>
+      <td>execute-extended-command</td>
+    </tr>
+    <tr>
+      <td>M-!</td>
+      <td>Run a shell command.</td>
+      <td>shell-command</td>
+    </tr>
+    <tr>
+      <td>C-x z</td>
+      <td>Run last command. Press z continuously to repeat more times.</td>
+      <td>repeat</td>
+    </tr>
+    <tr>
+      <td>M-:</td>
+      <td>Evaluate EXP and print value in the echo area.</td>
+      <td>eval-expression</td>
+    </tr>
+    <tr>
+      <td>C-x C-e</td>
+      <td>Evaluate sexp before point; print value in the echo area.</td>
+      <td>eval-last-sexp</td>
+    </tr>
+    <tr>
+      <td>C-j</td>
+      <td>Evaluate sexp before point; print value into current buffer.</td>
+      <td>eval-print-last-sexp</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="org-mode">Org mode</h2>
+
+<h3 id="headings-and-subtrees">Headings and subtrees</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TAB</td>
+      <td>Expand/Collapse outline entry, or indent plain list item</td>
+      <td>org-cycle</td>
+    </tr>
+    <tr>
+      <td>S-TAB</td>
+      <td>Cycle visibility through all top-level headings, all headings, and everything.</td>
+      <td>org-shifttab</td>
+    </tr>
+    <tr>
+      <td>C-c C-n</td>
+      <td>Go to next heading</td>
+      <td>org-next-visible-heading</td>
+    </tr>
+    <tr>
+      <td>C-c C-p</td>
+      <td>Go to previous heading</td>
+      <td>org-previous-visible-heading</td>
+    </tr>
+    <tr>
+      <td>C-c C-f</td>
+      <td>Go to next heading of same level</td>
+      <td>org-forward-heading-same-level</td>
+    </tr>
+    <tr>
+      <td>C-c C-b</td>
+      <td>Go to previous heading of same level</td>
+      <td>org-backward-heading-same-level</td>
+    </tr>
+    <tr>
+      <td>C-c C-u</td>
+      <td>Go to parent heading</td>
+      <td>outline-up-heading</td>
+    </tr>
+    <tr>
+      <td>C-c C-j</td>
+      <td>Go to …</td>
+      <td>org-goto</td>
+    </tr>
+    <tr>
+      <td>M-RET</td>
+      <td>Add a heading below or before current heading</td>
+      <td>org-meta-return</td>
+    </tr>
+    <tr>
+      <td>C-u M-RET</td>
+      <td>Add a heading after current subtree</td>
+      <td>org-meta-return</td>
+    </tr>
+    <tr>
+      <td>C-u C-u M-RET</td>
+      <td>Add a heading at the end of the parent subtree</td>
+      <td>org-meta-return</td>
+    </tr>
+    <tr>
+      <td>C-RET</td>
+      <td>Add a heading after the current subtree</td>
+      <td>org-insert-heading-respect-content</td>
+    </tr>
+    <tr>
+      <td>M-S-RET</td>
+      <td>Add a TODO heading below or before current heading</td>
+      <td>org-insert-todo-heading</td>
+    </tr>
+    <tr>
+      <td>C-S-RET</td>
+      <td>Add a TODO heading after current subtree</td>
+      <td>org-insert-todo-heading-respect-content</td>
+    </tr>
+    <tr>
+      <td>C-c *</td>
+      <td>Toggle heading for current line or region</td>
+      <td>org-ctrl-c-star</td>
+    </tr>
+    <tr>
+      <td>C-c C-t</td>
+      <td>Toggle TODO on current heading</td>
+      <td>org-todo</td>
+    </tr>
+    <tr>
+      <td>M–</td>
+      <td>Cycle the thing at point</td>
+      <td>org-shiftleft</td>
+    </tr>
+    <tr>
+      <td>M-+</td>
+      <td>Cycle the thing at point</td>
+      <td>org-shiftright</td>
+    </tr>
+    <tr>
+      <td>M-n</td>
+      <td>Cycle the thing at point</td>
+      <td>org-shiftdown</td>
+    </tr>
+    <tr>
+      <td>M-p</td>
+      <td>Cycle the thing at point</td>
+      <td>org-shiftup</td>
+    </tr>
+    <tr>
+      <td>C-c C-s</td>
+      <td>Add scheduled date</td>
+      <td>org-schedule</td>
+    </tr>
+    <tr>
+      <td>C-c C-d</td>
+      <td>Add deadline</td>
+      <td>org-deadline</td>
+    </tr>
+    <tr>
+      <td>&lt;M-up&gt;</td>
+      <td>Move current subtree up</td>
+      <td>org-metaup</td>
+    </tr>
+    <tr>
+      <td>&lt;M-down&gt;</td>
+      <td>Move current subtree down</td>
+      <td>org-metadown</td>
+    </tr>
+    <tr>
+      <td>&lt;M-left&gt;</td>
+      <td>Promote current heading by one level</td>
+      <td>org-metaleft</td>
+    </tr>
+    <tr>
+      <td>&lt;M-right&gt;</td>
+      <td>Demote current heading by one level</td>
+      <td>org-metaright</td>
+    </tr>
+    <tr>
+      <td>&lt;M-S-left&gt;</td>
+      <td>Promote current subtree by one level</td>
+      <td>org-shiftmetaleft</td>
+    </tr>
+    <tr>
+      <td>&lt;M-S-right&gt;</td>
+      <td>Demote current subtree by one level</td>
+      <td>org-shiftmetaright</td>
+    </tr>
+    <tr>
+      <td>M-h</td>
+      <td>Select current element (and subsequent elements)</td>
+      <td>org-mark-element</td>
+    </tr>
+    <tr>
+      <td>C-c @</td>
+      <td>Select current subtree (and subsequent subtrees)</td>
+      <td>org-mark-subtree</td>
+    </tr>
+    <tr>
+      <td>C-c C-x C-w</td>
+      <td>Kill subtree (and the next N subtrees)</td>
+      <td>org-cut-special</td>
+    </tr>
+    <tr>
+      <td>C-c C-x M-w</td>
+      <td>Copy subtree (and the next N subtrees)</td>
+      <td>org-copy-special</td>
+    </tr>
+    <tr>
+      <td>C-c C-x C-y</td>
+      <td>Yank subtree</td>
+      <td>org-paste-special</td>
+    </tr>
+    <tr>
+      <td>C-c C-x c</td>
+      <td>Clone subtree</td>
+      <td>org-clone-subtree-with-time-shift</td>
+    </tr>
+    <tr>
+      <td>C-c C-x b</td>
+      <td>Show the current subtree in an indirect buffer</td>
+      <td>org-tree-to-indirect-buffer</td>
+    </tr>
+    <tr>
+      <td>C-c ^</td>
+      <td>Sort same-level entries</td>
+      <td>org-sort</td>
+    </tr>
+    <tr>
+      <td>C-c /</td>
+      <td>Search and show results in a sparse tree</td>
+      <td>org-sparse-tree</td>
+    </tr>
+    <tr>
+      <td>M-g n</td>
+      <td>Go to next match in sparse tree</td>
+      <td>next-error</td>
+    </tr>
+    <tr>
+      <td>M-g p</td>
+      <td>Go to previous match in sparse tree</td>
+      <td>previous-error</td>
+    </tr>
+    <tr>
+      <td>C-c C-c</td>
+      <td>While in sparse tree view, abort matching hightlights</td>
+      <td>org-ctrl-c-ctrl-c</td>
+    </tr>
+    <tr>
+      <td>C-c C-x d</td>
+      <td>Insert a drawer. <code class="language-plaintext highlighter-rouge">C-u ~</code> to insert a property drawer</td>
+      <td>org-insert-drawer</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="lists">Lists</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M-RET</td>
+      <td>Insert an item of same level on next line.</td>
+      <td>org-meta-return</td>
+    </tr>
+    <tr>
+      <td>&lt;M-up&gt;</td>
+      <td>Move item and its children up to the same level.</td>
+      <td>org-metaup</td>
+    </tr>
+    <tr>
+      <td>&lt;M-down&gt;</td>
+      <td>Move item and its children down to the same level.</td>
+      <td>org-metadown</td>
+    </tr>
+    <tr>
+      <td>&lt;M-left&gt;</td>
+      <td>Promote item but not its children.</td>
+      <td>org-metaleft</td>
+    </tr>
+    <tr>
+      <td>&lt;M-right&gt;</td>
+      <td>Demote item but not its children.</td>
+      <td>org-metaright</td>
+    </tr>
+    <tr>
+      <td>&lt;M-S-left&gt;</td>
+      <td>Promote list item and its children.</td>
+      <td>org-shiftmetaleft</td>
+    </tr>
+    <tr>
+      <td>&lt;M-S-right&gt;</td>
+      <td>Demote list item and its children.</td>
+      <td>org-shiftmetaright</td>
+    </tr>
+    <tr>
+      <td>C-c -</td>
+      <td>Toggle bullet presence at current line or region, or cycle bullet styles.</td>
+      <td>org-ctrl-c-minus</td>
+    </tr>
+    <tr>
+      <td>C-c C-*</td>
+      <td>Convert the whole plain list into a subtree of the heading at point.</td>
+      <td>org-list-make-subtree</td>
+    </tr>
+    <tr>
+      <td>M-S-RET</td>
+      <td>Insert an empty checkbox on next line.</td>
+      <td>org-insert-todo-heading</td>
+    </tr>
+    <tr>
+      <td>C-c C-c</td>
+      <td>Toggle checkbox status on current item.</td>
+      <td>org-ctrl-c-ctrl-c</td>
+    </tr>
+    <tr>
+      <td>C-u C-c C-c</td>
+      <td>Toggle checkbox presence on current item.</td>
+      <td>^</td>
+    </tr>
+    <tr>
+      <td>???</td>
+      <td>Toggle checkbox status for selected region.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>C-u C-u C-c C-c</td>
+      <td>Set checkbox to intermediate state <code class="language-plaintext highlighter-rouge">[-]</code>.</td>
+      <td>^</td>
+    </tr>
+    <tr>
+      <td>C-c C-x C-b</td>
+      <td>Toggle checkbox status or presence on current item.</td>
+      <td>org-toggle-checkbox</td>
+    </tr>
+    <tr>
+      <td>C-u C-c C-x C-b</td>
+      <td>Toggle checkbox presence for selected list or list under a heading.</td>
+      <td>^</td>
+    </tr>
+    <tr>
+      <td>C-u C-u C-c C-x C-b</td>
+      <td>Same as above but set the checkboxes to <code class="language-plaintext highlighter-rouge">[-]</code>.</td>
+      <td>^</td>
+    </tr>
+    <tr>
+      <td>C-c C-x o</td>
+      <td>Toggle if the checkboxes must be checked off in sequence.</td>
+      <td>org-toggle-ordered-property</td>
+    </tr>
+    <tr>
+      <td>C-c #</td>
+      <td>Update the statistics cookie in current heading.</td>
+      <td>org-update-statistics-cookies</td>
+    </tr>
+    <tr>
+      <td>C-u C-c #</td>
+      <td>Update all cookies in the buffer.</td>
+      <td>^</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="links">Links</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-c C-l</td>
+      <td>Insert or edit link.</td>
+      <td>org-insert-link</td>
+    </tr>
+    <tr>
+      <td>C-c C-o</td>
+      <td>Follow link.</td>
+      <td>org-open-at-point</td>
+    </tr>
+    <tr>
+      <td>C-c &amp;</td>
+      <td>Return to link after following it.</td>
+      <td>org-mark-ring-goto</td>
+    </tr>
+    <tr>
+      <td>C-c C-x C-n</td>
+      <td>Go to next link. <code class="language-plaintext highlighter-rouge">C-u ~</code> to go to previous link.</td>
+      <td>org-next-link</td>
+    </tr>
+    <tr>
+      <td>C-c C-x C-p</td>
+      <td>Go to previous link</td>
+      <td>org-previous-link</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tables">Tables</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TAB</td>
+      <td>Re-align the table, move to the next field. Creates a new row if necessary.</td>
+      <td>org-cycle</td>
+    </tr>
+    <tr>
+      <td>S-TAB</td>
+      <td>Re-align, move to previous field.</td>
+      <td>org-shifttab</td>
+    </tr>
+    <tr>
+      <td>C-c C-c</td>
+      <td>Re-align the table and don’t move to another field.</td>
+      <td>org-ctrl-c-ctrl-c</td>
+    </tr>
+    <tr>
+      <td>C-c RET</td>
+      <td>Create a table with horizontal line or insert a horizontal line below.</td>
+      <td>org-ctrl-c-ret</td>
+    </tr>
+    <tr>
+      <td>C-c ¦</td>
+      <td>Create a table or convert an active region into a table.</td>
+      <td>org-table-create-or-convert-from-region</td>
+    </tr>
+    <tr>
+      <td>M-e</td>
+      <td>Move to end of the current table field, or on to the next field.</td>
+      <td>org-forward-sentence</td>
+    </tr>
+    <tr>
+      <td>M-a</td>
+      <td>Move to beginning of the current table field, or on to the previous field.</td>
+      <td>org-backward-sentence</td>
+    </tr>
+    <tr>
+      <td>C-c SPC</td>
+      <td>Blank the field at point.</td>
+      <td>org-table-blank-field</td>
+    </tr>
+    <tr>
+      <td>C-c `</td>
+      <td>Edit field.</td>
+      <td>org-table-edit-field</td>
+    </tr>
+    <tr>
+      <td>C-c C-c</td>
+      <td>Exit editing field.</td>
+      <td>org-ctrl-c-ctrl-c</td>
+    </tr>
+    <tr>
+      <td>S-RET</td>
+      <td>Copy the field at point to the field below.</td>
+      <td>org-table-copy-down</td>
+    </tr>
+    <tr>
+      <td>&lt;M-right&gt;</td>
+      <td>Move the current column right.</td>
+      <td>org-metaright</td>
+    </tr>
+    <tr>
+      <td>&lt;M-left&gt;</td>
+      <td>Move the current column left.</td>
+      <td>org-metaleft</td>
+    </tr>
+    <tr>
+      <td>&lt;M-up&gt;</td>
+      <td>Move the current row up.</td>
+      <td>org-metaup</td>
+    </tr>
+    <tr>
+      <td>&lt;M-down&gt;</td>
+      <td>Move the current row down.</td>
+      <td>org-metadown</td>
+    </tr>
+    <tr>
+      <td>&lt;M-S-left&gt;</td>
+      <td>Delete current column.</td>
+      <td>org-shiftmetaleft</td>
+    </tr>
+    <tr>
+      <td>&lt;M-S-right&gt;</td>
+      <td>Insert a new column to the left.</td>
+      <td>org-shiftmetaright</td>
+    </tr>
+    <tr>
+      <td>C-o</td>
+      <td>Insert a new row above.</td>
+      <td>org-open-line</td>
+    </tr>
+    <tr>
+      <td>C-c -</td>
+      <td>Insert a horizontal line below current row.</td>
+      <td>org-ctrl-c-minus</td>
+    </tr>
+    <tr>
+      <td>C-u C-c -</td>
+      <td>Insert a horizontal line above current row.</td>
+      <td>^</td>
+    </tr>
+    <tr>
+      <td>C-c ^</td>
+      <td>Sort the table.</td>
+      <td>org-sort</td>
+    </tr>
+    <tr>
+      <td>C-j</td>
+      <td>Goto next table row or insert a newline and indent.</td>
+      <td>org-return-indent</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="navigation-1">Navigation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-c &amp;</td>
+      <td>Go back to previous position (after following a link etc.).</td>
+      <td>org-mark-ring-goto</td>
+    </tr>
+    <tr>
+      <td>C-c %</td>
+      <td>Put the current position into the mark ring and rotate it.</td>
+      <td>org-mark-ring-push</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="agenda-views">Agenda views</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-c a</td>
+      <td>Open agenda views</td>
+      <td>org-agenda</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In agenda
+views:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a</td>
+      <td>Open week view. Use prefix arg <code class="language-plaintext highlighter-rouge">C-u &lt;n&gt;</code> to specify days to display</td>
+      <td>org-agenda-list</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In week view:
+<a href="info:org#Agenda%20commands">ref</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SPC</td>
+      <td>Show original location in another window</td>
+      <td>org-agenda-show-and-scroll-up</td>
+    </tr>
+    <tr>
+      <td>TAB</td>
+      <td>Go to original location in another window</td>
+      <td>org-agenda-goto</td>
+    </tr>
+    <tr>
+      <td>RET</td>
+      <td>Go to the original location of the item and delete other windows.</td>
+      <td>org-agenda-switch-to</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>Toggle follow mode</td>
+      <td>org-agenda-follow-mode</td>
+    </tr>
+    <tr>
+      <td>C-c C-x b</td>
+      <td>Display subtree</td>
+      <td>org-agenda-tree-to-indirect-buffer</td>
+    </tr>
+    <tr>
+      <td>C-c C-o</td>
+      <td>Follow a link in the entry</td>
+      <td>org-agenda-open-link</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="info-mode">Info mode</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Clone buffer</td>
+      <td>clone-buffer</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="programming">Programming</h2>
+
+<h3 id="project-awareness">Project awareness</h3>
+
+<ol>
+  <li>
+    <p>Projectile</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Keys</th>
+          <th>Meaning</th>
+          <th>Command</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>M-p f</td>
+          <td>Find file in current project. <code class="language-plaintext highlighter-rouge">C-u M-p f</code> to clear cache first.</td>
+          <td>projectile-find-file</td>
+        </tr>
+        <tr>
+          <td>M-p F</td>
+          <td>Find file in all projects</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p g</td>
+          <td>Find file in current project based on context</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p e</td>
+          <td>Find recently visited file in project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p T</td>
+          <td>Find test file in current project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p o</td>
+          <td>Find keywords in current project buffers</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p s g</td>
+          <td>Find keywords in current project files with <code class="language-plaintext highlighter-rouge">grep</code></td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p s s</td>
+          <td>Find keywords in current project files with <code class="language-plaintext highlighter-rouge">ag.el</code></td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p d</td>
+          <td>Find directory in current project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p 4 C-o</td>
+          <td>Display a project buffer in another window without selecting it</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p b</td>
+          <td>Switch to project buffer</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p LEFT</td>
+          <td>Switch to previous project buffer</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p RIGHT</td>
+          <td>Switch to next project buffer</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p a</td>
+          <td>Switch between files with the same name but different extensions</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p t</td>
+          <td>Toggle between an implementation file and its test file</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p p</td>
+          <td>Open or switch project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p D</td>
+          <td>Browse project root in dired</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p v</td>
+          <td>Browse project root in vc-dir or magit</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p V</td>
+          <td>Browse dirty version controlled projects</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p r</td>
+          <td>Replace in current project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p S</td>
+          <td>Save all project buffers</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p k</td>
+          <td>Kill all project buffers</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p m</td>
+          <td>Invoke a command</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p i</td>
+          <td>Invalidates the project cache (if existing)</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p R</td>
+          <td>Regenerates the projects TAGS file</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p j</td>
+          <td>Find tag in project’s TAGS file</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p E</td>
+          <td>Open the root dir-locals-file of the project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p !</td>
+          <td>Run shell-command in the root directory of the project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p &amp;</td>
+          <td>Run async-shell-command in the root directory of the project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p E</td>
+          <td>Opens the root dir-locals-file of the project</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p z</td>
+          <td>Add the currently visited file to the cached</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p C-h</td>
+          <td>View all projectile key-bindings</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Treemacs</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Keys</th>
+          <th>Meaning</th>
+          <th>Command</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>C-x t</td>
+          <td>Initialize or toggle treemacs</td>
+          <td>treemacs</td>
+        </tr>
+        <tr>
+          <td>C-c t</td>
+          <td>Select treemacs window</td>
+          <td>treemacs-select-window</td>
+        </tr>
+        <tr>
+          <td>C-c C-p ?</td>
+          <td>Show keys relating to project administration</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h3 id="navigation-2">Navigation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M-.</td>
+      <td>Find or go to definition</td>
+      <td>xref-find-definitions</td>
+    </tr>
+    <tr>
+      <td>C-x 4 .</td>
+      <td>Find or go to definition in another window</td>
+      <td>xref-find-definitions-other-window</td>
+    </tr>
+    <tr>
+      <td>M-?</td>
+      <td>Find references to the identifier at point</td>
+      <td>xref-find-references</td>
+    </tr>
+    <tr>
+      <td>M-S-s</td>
+      <td>Find references to the identifier at point</td>
+      <td>lsp-find-references</td>
+    </tr>
+    <tr>
+      <td>M-h</td>
+      <td>Go to next reference</td>
+      <td>lsp-ui-find-next-reference</td>
+    </tr>
+    <tr>
+      <td>M-S-h</td>
+      <td>Go to previous reference</td>
+      <td>lsp-ui-find-prev-reference</td>
+    </tr>
+    <tr>
+      <td>M-.</td>
+      <td>Go to implementation</td>
+      <td>lsp-goto-implementation</td>
+    </tr>
+    <tr>
+      <td>C-&lt;</td>
+      <td>Go to super</td>
+      <td>lsp-java-open-super-implementation</td>
+    </tr>
+    <tr>
+      <td>M-n</td>
+      <td>Go to next error</td>
+      <td>flymake-goto-next-error</td>
+    </tr>
+    <tr>
+      <td>M-p</td>
+      <td>Go to previous error</td>
+      <td>flymake-goto-prev-error</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="documentation">Documentation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M-;</td>
+      <td>Insert or indent comment on current line <code class="language-plaintext highlighter-rouge">C-u ~</code> to kill the comment.</td>
+      <td>comment-dwim</td>
+    </tr>
+    <tr>
+      <td>M-j</td>
+      <td>Continue comment on another line</td>
+      <td>indent-new-comment-line</td>
+    </tr>
+    <tr>
+      <td>C-x C-;</td>
+      <td>Comment or uncomment current line</td>
+      <td>comment-line</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="magit">Magit</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-x g</td>
+      <td>Open magit buffer (<a href="emacs.org::*Installation">Def</a>)</td>
+      <td>magit-status</td>
+    </tr>
+    <tr>
+      <td>C-c g</td>
+      <td>Show transient command list buffer from any buffer.</td>
+      <td>magit-file-dispatch</td>
+    </tr>
+    <tr>
+      <td>h,?</td>
+      <td>Show command list in a transient buffer.</td>
+      <td>magit-dispatch</td>
+    </tr>
+    <tr>
+      <td>TAB</td>
+      <td>Expand or collapse section at point.</td>
+      <td>magit-section-toggle</td>
+    </tr>
+    <tr>
+      <td>C-TAB</td>
+      <td>Cycle visibility of current section and its children.</td>
+      <td>magit-section-cycle</td>
+    </tr>
+    <tr>
+      <td>s</td>
+      <td>Stage changes.</td>
+      <td>magit-stage-file</td>
+    </tr>
+    <tr>
+      <td>u</td>
+      <td>Unstage changes.</td>
+      <td>magit-unstage-file</td>
+    </tr>
+    <tr>
+      <td>c</td>
+      <td>Show commit buffer.</td>
+      <td>magit-commit</td>
+    </tr>
+    <tr>
+      <td>- c</td>
+      <td>Commit changes and show commit message buffer.</td>
+      <td>magit-commit-create</td>
+    </tr>
+    <tr>
+      <td>- - C-c C-c</td>
+      <td>Submit commit message.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>P</td>
+      <td>Show push commands transient buffer.</td>
+      <td>magit-push</td>
+    </tr>
+    <tr>
+      <td>- p</td>
+      <td>Push commits.</td>
+      <td>magit-push-current-to-pushremote</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>Show pull commands transient buffer.</td>
+      <td>magit-pull</td>
+    </tr>
+    <tr>
+      <td>- p</td>
+      <td>Pull commits.</td>
+      <td>magit-pull-from-pushremote</td>
+    </tr>
+    <tr>
+      <td>q</td>
+      <td>Quit status buffer.</td>
+      <td>magit-mode-bury-buffer</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="automation">Automation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>M-/</td>
+      <td>Auto-completing</td>
+      <td>dabbrev-expand</td>
+    </tr>
+    <tr>
+      <td>C-f5</td>
+      <td>Format buffer</td>
+      <td>lsp-format-buffer</td>
+    </tr>
+    <tr>
+      <td>C-S-f5</td>
+      <td>Format region</td>
+      <td>lsp-format-region</td>
+    </tr>
+    <tr>
+      <td>C-f2</td>
+      <td>Rename</td>
+      <td>lsp-rename</td>
+    </tr>
+    <tr>
+      <td>C-c c</td>
+      <td>Show company candidates</td>
+      <td>company-complete</td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>
+    <p>Company mode</p>
+
+    <p>After the suggestion window is started, run the following commands
+to select or navigate through the
+candidates.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Keys</th>
+          <th>Meaning</th>
+          <th>Command</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>M-n</td>
+          <td>Move highlighting down</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-p</td>
+          <td>Move highlighting up</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>C-v</td>
+          <td>Next page</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-v</td>
+          <td>Previous page</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>C-s</td>
+          <td>Search for candidates</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>C-M-s</td>
+          <td>Filter candidates</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>M-0 .. 9</td>
+          <td>Select the N-th candidates (1)</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>C-h/F1</td>
+          <td>Show doc of highlighted item in another buffer</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>C-g</td>
+          <td>Abort</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<h3 id="rundebug">Run/Debug</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-f9</td>
+      <td>Debug</td>
+      <td>dap-debug</td>
+    </tr>
+    <tr>
+      <td>C-S-f9</td>
+      <td>Restart</td>
+      <td>dap-debug-restart</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="verb">Verb</h3>
+
+<p>Keys below are used after prefix keys <code class="language-plaintext highlighter-rouge">C-c
+C-r</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keys</th>
+      <th>Meaning</th>
+      <th>Command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C-r</td>
+      <td>Send request. <code class="language-plaintext highlighter-rouge">C-u C-c C-r C-r</code> to see complete request before sending</td>
+      <td>verb-send-request-on-point-other-window-stay</td>
+    </tr>
+    <tr>
+      <td>C-f</td>
+      <td>Resend request.</td>
+      <td>verb-send-request-on-point</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="custom-key-bindings">Custom key-bindings</h1>
+
+<ul>
+  <li>
+    <p><span id="newline-below-without-break">newline-below-without-break</span> and <span id="newline-above-without-break">newline-above-without-break</span></p>
+
+    <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; Open new line below current line without breaking current line</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">newline-below-without-break</span> <span class="p">()</span>
+<span class="s">"1.Move to end of line; 2. Insert newline with index"</span>
+<span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">oldpos</span> <span class="p">(</span><span class="nv">point</span><span class="p">)))</span> <span class="p">(</span><span class="nv">end-of-line</span><span class="p">)</span> <span class="p">(</span><span class="nv">newline-and-indent</span><span class="p">)))</span>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"&lt;S-return&gt;"</span><span class="p">)</span> <span class="ss">'newline-below-without-break</span><span class="p">)</span>
+    
+<span class="c1">;; Open new line above current line without breaking current line</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">newline-above-without-break</span> <span class="p">()</span>
+<span class="s">"Insert an empty line above the currentline. Position the cursor at its beginning, according the current mode"</span>
+<span class="p">(</span><span class="nv">interactive</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">move-beginning-of-line</span> <span class="no">nil</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">newline-and-indent</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">forward-line</span> <span class="mi">-1</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">indent-according-to-mode</span><span class="p">))</span>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"&lt;C-S-return&gt;"</span><span class="p">)</span> <span class="ss">'newline-above-without-break</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><span id="xah-forward-block">xah-forward-block</span> and <span id="xah-backward-block">xah-backward-block</span></p>
+
+    <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; Move to next blank line separated block</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">xah-forward-block</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="nv">n</span><span class="p">)</span>
+<span class="s">"Move cursor beginning of next text block.
+A text block is separated by blank lines.
+This command similar to `forward-paragraph', but this command's behavior is the same regardless of syntax table.
+URL `http://ergoemacs.org/emacs/emacs_move_by_paragraph.html'
+Version 2016-06-15"</span>
+<span class="p">(</span><span class="nv">interactive</span> <span class="s">"p"</span><span class="p">)</span>
+<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">n</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null</span> <span class="nv">n</span><span class="p">)</span> <span class="mi">1</span> <span class="nv">n</span><span class="p">)))</span>
+<span class="p">(</span><span class="nv">re-search-forward</span> <span class="s">"\n[\t\n ]*\n+"</span> <span class="no">nil</span> <span class="s">"NOERROR"</span> <span class="nv">n</span><span class="p">)))</span>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"M-]"</span><span class="p">)</span> <span class="ss">'xah-forward-block</span><span class="p">)</span>
+    
+<span class="c1">;; Move to previous blank line separated block</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">xah-backward-block</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="nv">n</span><span class="p">)</span>
+<span class="s">"Move cursor to previous text block.
+See: `xah-forward-block'
+URL `http://ergoemacs.org/emacs/emacs_move_by_paragraph.html'
+Version 2016-06-15"</span>
+<span class="p">(</span><span class="nv">interactive</span> <span class="s">"p"</span><span class="p">)</span>
+<span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nv">n</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null</span> <span class="nv">n</span><span class="p">)</span> <span class="mi">1</span> <span class="nv">n</span><span class="p">))</span>
+      <span class="p">(</span><span class="nv">$i</span> <span class="mi">1</span><span class="p">))</span>
+      <span class="p">(</span><span class="nv">while</span> <span class="p">(</span><span class="nb">&lt;=</span> <span class="nv">$i</span> <span class="nv">n</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nv">re-search-backward</span> <span class="s">"\n[\t\n ]*\n+"</span> <span class="no">nil</span> <span class="s">"NOERROR"</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">progn</span> <span class="p">(</span><span class="nv">skip-chars-backward</span> <span class="s">"\n\t "</span><span class="p">))</span>
+      <span class="p">(</span><span class="k">progn</span> <span class="p">(</span><span class="nv">goto-char</span> <span class="p">(</span><span class="nv">point-min</span><span class="p">))</span>
+      <span class="p">(</span><span class="k">setq</span> <span class="nv">$i</span> <span class="nv">n</span><span class="p">)))</span>
+      <span class="p">(</span><span class="k">setq</span> <span class="nv">$i</span> <span class="p">(</span><span class="nb">1+</span> <span class="nv">$i</span><span class="p">)))))</span>
+<span class="p">(</span><span class="nv">global-set-key</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"M-["</span><span class="p">)</span> <span class="ss">'xah-backward-block</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h1 id="functions">Functions</h1>
+
+<p>format, user-full-name, read-string</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/tags/#cheat-sheet" class="page__taxonomy-item p-category" rel="tag">Cheat Sheet</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#emacs" class="page__taxonomy-item p-category" rel="tag">Emacs</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2020-10-14">October 14, 2020</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Emacs+Commands+Quick+Reference%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Femacs%2Femacs-commands-quick-reference%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Femacs%2Femacs-commands-quick-reference%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/emacs/emacs-commands-quick-reference/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/web/html-models/" class="pagination--pager" title="HTML models
+">Previous</a>
+    
+    
+      <a href="/josephs-blog/git/git-fatal-could-not-read-from-remote/" class="pagination--pager" title="Git “fatal: Could not read from remote repository”
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, a...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/emacs/emacs-commands-quick-reference/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/emacs/emacs-commands-quick-reference"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

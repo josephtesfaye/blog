@@ -1,0 +1,1028 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Enabling Private Posts | Orcharinth</title>
+<meta name="description" content="I want to be able to make a post private, that is, it can only be seen by me, or   someone with a password, and not by any other person, any search engine, any   other means.">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Enabling Private Posts">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/web/private-posts/">
+
+
+  <meta property="og:description" content="I want to be able to make a post private, that is, it can only be seen by me, or   someone with a password, and not by any other person, any search engine, any   other means.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-02-23T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-02-23T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/web/private-posts/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Enabling Private Posts</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Enabling Private Posts">
+    <meta itemprop="description" content="I want to be able to make a post private, that is, it can only be seen by me, or  someone with a password, and not by any other person, any search engine, any  other means.">
+    <meta itemprop="datePublished" content="2026-02-23T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-02-23T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/web/private-posts/" itemprop="url">Enabling Private Posts
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          12 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#the-ideas">The Ideas</a><ul><li><a href="#idea-1-client-side-content-encryption-the-best-static-approach">Idea 1: Client-Side Content Encryption (The Best Static Approach)</a></li><li><a href="#idea-2-edge-level-access-control-the-infrastructure-approach">Idea 2: Edge-Level Access Control (The Infrastructure Approach)</a></li><li><a href="#what-about-the-the-source-files">What about the the source files?</a></li></ul></li><li><a href="#the-procedures">The Procedures</a><ul><li><a href="#1-use-the-two-repository-strategy">1. Use the Two-Repository Strategy</a><ul><li><a href="#1-the-local-workflow-repo-a">1. The Local Workflow (Repo A)</a></li><li><a href="#2-creating-and-serving-repo-b">2. Creating and serving Repo B</a></li><li><a href="#3-the-deployment-bridge-github-actions">3. The Deployment Bridge (GitHub Actions)</a></li></ul></li></ul></li><li><a href="#side-notes">Side Notes</a><ul><li><a href="#the-jekyll-build-process">The Jekyll Build Process</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, any
+  other means.</p>
+<h1 id="the-ideas">The Ideas</h1>
+<p>Because Jekyll generates a completely static site, there is no backend server to
+  check a user’s session or validate a password before sending the HTML to the
+  browser. If a page exists on the server, anyone who guesses the URL can
+  technically download it.</p>
+<p>To achieve true privacy on a static site, you have to shift the protection
+  mechanism. Here are the two most effective architectural ideas for implementing
+  this:</p>
+<h2 id="idea-1-client-side-content-encryption-the-best-static-approach">Idea 1: Client-Side Content Encryption (The Best Static Approach)</h2>
+<p>Instead of hiding the file, you scramble its contents. You would use a custom
+  Jekyll plugin (or an existing gem like <code>jekyll-crypt</code>) that hooks into the build
+  process.</p>
+<ul>
+  <li>How it works: In the front matter of your private post, you define a <code>password:
+    "mysecret"~ and a ~published: true</code> flag. During <code>jekyll build</code>, the plugin
+    intercepts the post’s rendered HTML and encrypts it using an algorithm like
+    AES-256, using the password as the key.</li>
+  <li>What gets published: The output HTML file contains zero actual content. It
+    only contains a JavaScript password prompt, the decryption logic, and a giant
+    block of ciphertext.</li>
+  <li>The User Experience: When you visit the URL, the page loads a password box.
+    Entering the correct password triggers the JavaScript to decrypt the
+    ciphertext locally in the browser and inject the readable HTML into the DOM.</li>
+  <li>Security: Search engines and scrapers only see the JavaScript and ciphertext,
+    making it completely impossible for them to index the real content. Anyone
+    poking around your GitHub repository (if public) or the site’s source code
+    will only see gibberish.</li>
+</ul>
+<p>If you want to keep everything self-contained within Jekyll and easily hostable
+  anywhere (like basic GitHub Pages), this is the definitive way to go.</p>
+<h2 id="idea-2-edge-level-access-control-the-infrastructure-approach">Idea 2: Edge-Level Access Control (The Infrastructure Approach)</h2>
+<p>If you want to protect the files at the network level rather than encrypting the
+  contents, you must rely on the hosting provider rather than Jekyll.</p>
+<ul>
+  <li>How it works: Instead of relying on a backend server, you use a modern CDN or
+    hosting provider that supports “Edge Functions” or zero-trust access (like
+    Cloudflare Pages, Netlify, or Vercel).</li>
+  <li>The Architecture: You set up a routing rule at the CDN level stating that any
+    URL matching <code>/private/*</code> requires authentication.</li>
+  <li>The User Experience: When a user navigates to the private post, the CDN
+    intercepts the request before it even reaches the static HTML files. It serves
+    a login page. If the password is correct, the CDN sets a secure cookie and
+    forwards the static file.</li>
+  <li>Security: Highly secure. The static files are never transmitted over the
+    network until authentication is verified at the edge node.</li>
+</ul>
+<h2 id="what-about-the-the-source-files">What about the the source files?</h2>
+<p>What about the the source markdown or org files? How do you also hide them from
+  the public, since currently I have the site hosted on Github through Github
+  Actions, which requires the repository to be public? How can you make the
+  repository private to still be able to serve the site?</p>
+<p>Yes, you can hide your source files by making the repository private, but how
+  you achieve this depends on your GitHub account tier and where you want to host
+  the site.</p>
+<p>Here is the breakdown of your options:</p>
+<ol>
+  <li>The Native GitHub Way (Requires Paid Account)
+    <p>If you have a GitHub Pro, Team, or Enterprise account, you can simply go to
+      your repository settings and change the visibility to Private. GitHub Pages
+      natively supports publishing from private repositories on these paid tiers.
+      You can even set access controls so the site itself is only visible to
+      specific people in your organization.</p>
+  </li>
+  <li>The Alternative Hosting Way (Free &amp; Easiest)
+    <p>If you are on a GitHub Free account, GitHub Pages requires the repository to
+      be public to serve the site.</p>
+    <p>The easiest way to keep your source code private for free is to move your
+      hosting to Cloudflare Pages, Netlify, or Vercel.</p>
+    <ol>
+      <li>Make your GitHub repository Private. This instantly breaks GitHub Pages.</li>
+      <li>Link your private GitHub repository to a free Cloudflare Pages or Netlify
+        account.</li>
+      <li>They will automatically run your Jekyll build commands (just like GitHub
+        Actions) and serve the compiled HTML globally. Your source files remain
+        completely hidden in your private GitHub repo.</li>
+    </ol>
+  </li>
+  <li>The Two-Repository Strategy (Free, GitHub-Only)
+    <p>If you are on a free account but absolutely want to keep using GitHub Pages,
+      you can separate your raw source files from your generated HTML using two
+      repositories and GitHub Actions.</p>
+    <ol>
+      <li>Create Repo A (Private): This holds your Jekyll source files (Markdown,
+        Org files, _config.yml, etc.).</li>
+      <li>Create Repo B (Public): This will only hold the generated, static HTML
+        site.</li>
+      <li>Configure GitHub Actions in Repo A: You update your existing
+        <code>.github/workflows/jekyll.yml</code> file to build the site, but instead of
+        deploying to the local repository, it pushes the compiled <code>_site</code> folder
+        directly to Repo B.</li>
+    </ol>
+    <p>To do this, you would use an action like <code>peaceiris/actions-gh-pages</code> in your
+      workflow. It allows deploying to an external repository by using a Personal
+      Access Token (PAT):</p>
+    
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to external public repository</span>
+  <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">personal_token</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">external_repository</span><span class="pi">:</span> <span class="s">your-username/your-public-repo-B</span>
+    <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">main</span>
+    <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span></code></pre></div>
+            </div>
+          
+    <p>This way, anyone looking at Repo B only sees the final compiled web pages,
+      while your Org and Markdown source files safely remain in your private
+      Repo A.</p>
+  </li>
+</ol>
+<h1 id="the-procedures">The Procedures</h1>
+<h2 id="1-use-the-two-repository-strategy">1. Use the Two-Repository Strategy</h2>
+<p>The most efficient and robust way to manage the Two-Repository Strategy is to
+  completely decouple your local testing environment from your deployment process.</p>
+<p>Attempting to turn the local <code>_site</code> folder into a Git repository is a constant
+  battle against Jekyll’s internal cleaning mechanisms (see <a href="#20260225232548">Jekyll Build Process</a>).
+  The best approach is to treat your local <code>_site</code> folder as a purely temporary,
+  disposable directory, and let GitHub Actions act as the bridge between Repo A
+  (Private Source) and Repo B (Public HTML).</p>
+<h3 id="1-the-local-workflow-repo-a">1. The Local Workflow (Repo A)</h3>
+<p>Make sure you stop tracking the built site entirely in your source repository.</p>
+<ol>
+  <li>Add <code>_site/</code> to the <code>.gitignore</code> file in Repo A.</li>
+  <li>When writing posts or testing configurations, simply run <code>bundle exec jekyll
+    serve</code> on your Mac.</li>
+  <li>You never run <code>git commit</code> inside the <code>_site</code> folder. You only commit your source
+    Markdown, Org files, and configurations to Repo A.</li>
+</ol>
+<h3 id="2-creating-and-serving-repo-b">2. Creating and serving Repo B</h3>
+<p>Now you can create a new repository (<a href="https://github.com/josephtesfaye/blog">Repo B</a>) on GitHub to host the static <code>_site</code>
+  contents.</p>
+<p>To serve your public site from Repo B using GitHub Pages, you need to configure
+  it to act purely as a static file host. Since Repo A has already done the heavy
+  lifting of building the Jekyll site, Repo B just needs to serve the finished
+  HTML.</p>
+<ol>
+  <li>Ensure Repo B is Public
+    <p>If you are on a free GitHub account, Repo B must be set to Public. Go to
+      Settings &gt; General in Repo B, scroll down to the “Danger Zone,” and ensure
+      the repository visibility is public.</p>
+  </li>
+  <li>Configure GitHub Pages
+    <ol>
+      <li>In Repo B, go to the Settings &gt; Pages.</li>
+      <li>Under the Build and deployment section, set the Source dropdown to
+        Deploy from a branch.</li>
+      <li>Under the Branch section, select the branch that your GitHub Action
+        from Repo A is pushing to (usually main, master, or gh-pages).</li>
+      <li>Select the <code>/ (root)</code> folder.</li>
+      <li>Click Save.</li>
+    </ol>
+  </li>
+  <li>Bypass GitHub’s Default Jekyll Build (Crucial)
+    <p>By default, GitHub Pages assumes any repository is a raw Jekyll site and will
+      try to build it again. Since your site is already compiled by Repo A, running
+      it through Jekyll a second time can break your CSS, strip out folders that
+      start with an underscore (like <code>_page</code> or <code>_site</code>), or cause build failures.</p>
+    <p>To tell GitHub Pages to serve the files exactly as they are without
+      processing them, you need a file named <code>.nojekyll</code> (with no extension) in
+      the root of Repo B.</p>
+    <p>If you are using the <code>peaceiris/actions-gh-pages</code> action in Repo A (which we
+      are using in the following step), the action automatically generates and
+      includes the file for you by default, so you don’t need to do anything
+      manually.</p>
+    <p>If you are using a different deployment method, make sure your workflow in
+      Repo A creates an empty <code>.nojekyll</code> file in the <code>_site</code> directory before pushing
+      it to Repo B. You can add a quick step in your workflow right before the
+      deployment step:</p>
+    
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Add .nojekyll file</span>
+  <span class="na">run</span><span class="pi">:</span> <span class="s">touch ./_site/.nojekyll</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>Wait for the Deployment
+    <p>Once you save the Pages settings, GitHub will trigger a very fast deployment
+      (since it’s just copying static files). Within a minute or two, your site
+      will be live at https://your-username.github.io/your-public-repo-B/ (or your
+      custom domain, if you add one in the Pages settings).</p>
+  </li>
+</ol>
+<h3 id="3-the-deployment-bridge-github-actions">3. The Deployment Bridge (GitHub Actions)</h3>
+<p>When you push your source code to the private Repo A, a GitHub Action spins
+  up, builds the site in a clean cloud environment, and pushes the resulting
+  HTML directly to Repo B.</p>
+<p>To set this up:</p>
+<ol>
+  <li>Generate a Personal Access Token (PAT) in your GitHub Developer Settings
+    with the repo scope checked.
+    <p>I highly recommend creating a Fine-grained personal access token.</p>
+    <p>While the “Tokens (classic)” will absolutely work, they grant sweeping
+      access to every repository in your account. If a classic token with the
+      repo scope is ever compromised, the attacker has full control over all
+      your code.</p>
+    <p>A fine-grained token allows you to restrict the token’s access strictly to
+      Repo B (your public HTML repository) and limit it to only the specific
+      permissions needed to push files.</p>
+    <p>Here is how to generate the fine-grained token for this exact deployment
+      setup:</p>
+    <p>a. Go to your GitHub Settings &gt; Developer settings (at the very bottom) &gt;
+      Personal access tokens &gt; Fine-grained tokens.
+      b. Click the <code>Generate new token</code> button.
+      c. Give your token a name (e.g., “Jekyll Deploy to Repo B”) and set an
+      expiration date.
+      d. Under Repository access, select <code>Only select repositories</code>. In the
+      dropdown that appears, find and select Repo B (your destination
+      repository).
+      e. Scroll down to Permissions and click on <code>Add permissions</code> to expand it.
+      Find <code>Contents</code> and change the access level to Read and write. (This is
+      all the action needs to push your built <code>_site</code> files).
+      f. Click <code>Generate token</code> at the bottom of the page.
+      g. Copy the generated token immediately, as GitHub will only show it to
+      you this one time.</p>
+  </li>
+  <li>Go to the Settings of Repo A, navigate to Secrets and variables &gt; Actions,
+    and add a new repository secret. Name it <code>DEPLOY_PAT</code> and paste your token.</li>
+  <li>In Repo A, update your <code>.github/workflows/jekyll.yml</code> file to look like
+    this:
+    
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Deploy Jekyll site to Repo B</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>  <span class="c1"># Or main, depending on your default branch in Repo A</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build_and_deploy</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout Source Code</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.1'</span>
+          <span class="na">bundler-cache</span><span class="pi">:</span> <span class="no">true</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Site</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to External Repository</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">personal_token</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="c1"># Replace with actual Repo B name</span>
+          <span class="na">external_repository</span><span class="pi">:</span> <span class="s">your-username/Repo-B</span>
+          <span class="c1"># Branch to push to in Repo B</span>
+          <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">master</span>
+          <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span>
+          <span class="c1"># Ensures stale files in Repo B are deleted</span>
+          <span class="na">keep_files</span><span class="pi">:</span> <span class="no">false</span></code></pre></div>
+            </div>
+          
+  </li>
+</ol>
+<p>The <code>peaceiris/actions-gh-pages</code> action automatically creates the <code>.nojekyll</code>
+  file in Repo B, preventing GitHub Pages from trying to rebuild your
+  already-built files.</p>
+<p>Repo B’s history will strictly be clean, automated deployment commits, while
+  Repo A retains your actual human commit history and draft iterations.</p>
+<h1 id="side-notes">Side Notes</h1>
+<h2 id="the-jekyll-build-process">The Jekyll Build Process</h2>By default, Jekyll completely empties the destination directory (<code>_site/</code>) every
+  time you run a build or start the local server. It does this to ensure no stale,
+  orphaned files from previous builds are left behind.
+<p>Because of this cleaning process, if you initialize a Git repository directly
+  inside the <code>_site/</code> folder, the <code>.git/</code> directory is at the risk of being instantly
+  deleted the next time Jekyll builds the site.</p>
+<p>I say “risk” because there is a built-in safety feature of Jekyll. In general,
+  to prevent Jekyll from deleting the specific files/folders inside <code>_site/</code>, you
+  can use the <code>keep_files</code> array in your <code>_config.yml</code> file, like this:</p>
+
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="na">keep_files</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">.git</span></code></pre></div>
+            </div>
+          
+<p>However, even if you do not explicitly define <code>keep_files</code>, Jekyll has underlying
+  default settings designed specifically to prevent catastrophic data loss. By
+  default, Jekyll’s internal configuration automatically sets <code>keep_files: [".git",
+  ".svn"]</code>.</p>
+<p>Here is exactly what happens to the <code>_site</code> directory when you trigger a build:</p>
+<ol>
+  <li>Configuration Merge
+    <p>When you run <code>jekyll build</code> or <code>jekyll serve</code>, Jekyll first loads its system-wide
+      default configuration. It then layers your <code>_config.yml</code> on top of it. Unless
+      you explicitly override <code>keep_files</code> with an empty array or tell Jekyll to
+      overwrite the defaults entirely, <code>.git</code> remains in the internal “safe list.”</p>
+  </li>
+  <li>The Cleanup Phase (<code>Jekyll::Cleaner</code>)
+    <p>Before reading any of your new source files, Jekyll instantiates a Cleaner
+      class. This class scans the entire destination folder (<code>_site/</code>). It iterates
+      through every file and directory currently sitting in <code>_site/</code> and checks them
+      against the merged <code>keep_files</code> array.</p>
+    <ul>
+      <li>If a file or folder is not in the array, it is permanently deleted.</li>
+      <li>Because <code>.git</code> is in the default array, the cleaner skips it, leaving your
+        version control history untouched.</li>
+    </ul>
+  </li>
+  <li>The Read and Render Phase
+    <p>Jekyll scans your root directory (ignoring files that start with <code>_</code>, <code>.</code>, or are
+      explicitly excluded), processes Liquid tags, converts Markdown and Org files
+      into HTML, and compiles your SCSS.</p>
+  </li>
+  <li>The Write Phase
+    <p>Jekyll writes the newly generated HTML files and copies static assets (like
+      images and JS files) directly into the clean <code>_site/</code> folder, effectively
+      surrounding the preserved <code>.git</code> directory with the fresh build.</p>
+  </li>
+</ol>
+<p>The risk is that when you run <code>bundle exec jekyll clean</code> the entire <code>_site</code>
+  directory is deleted, including the <code>.git/</code> directory in it, even if you
+  explicitly specify it in <code>keep_files</code> in your <code>_config.yml</code>.</p>
+<p>The reason this happens is that jekyll clean is a brute-force command. Its
+  explicit purpose is to completely obliterate the generated site and all cache
+  folders to ensure a perfectly clean slate. It intentionally bypasses the
+  <code>keep_files</code> array, which is only evaluated by the internal cleaner during <code>jekyll
+  build</code> or <code>jekyll serve</code>.</p>
+<p>Here are the best ways to handle this:</p>
+<ol>
+  <li>Stop using jekyll clean (Recommended)
+    <p>You rarely actually need to run <code>jekyll clean</code>. Because <code>jekyll build</code> and <code>jekyll
+      serve</code> automatically invoke their own safe cleanup phase before generating new
+      files (the phase that does respect <code>keep_files</code>), stale files are already
+      removed automatically. You can safely rely entirely on the build/serve
+      commands.</p>
+  </li>
+  <li>Clear only the caches manually
+    <p>If you are running <code>jekyll clean</code> because you are experiencing caching issues
+      (like SCSS not updating or plugin changes not registering), you can safely
+      delete the cache folders without touching the <code>_site/</code> directory at all.</p>
+    <p>Instead of bundle exec jekyll clean, run:</p>
+    <pre class="example">
+rm -rf .jekyll-cache .jekyll-metadata
+    </pre>
+  </li>
+  <li>Create a custom clean command
+    <p>If you want a command that mimics <code>jekyll clean</code> but preserves your <code>.git</code> folder
+      inside <code>_site/</code>, you can add an alias to your shell profile (like <code>~/.bashrc</code> or
+      <code>~/.zshrc</code>) or create a simple bash script:</p>
+    
+            <div class="language-sh highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">jclean</span><span class="o">=</span><span class="s2">"rm -rf .jekyll-cache .jekyll-metadata &amp;&amp; find _site -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +"</span></code></pre></div>
+            </div>
+          
+    <p>This instantly deletes the Jekyll caches and wipes everything inside <code>_site/</code>
+      except the .git/ directory.</p>
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/tags/#minimal-mistakes" class="page__taxonomy-item p-category" rel="tag">Minimal Mistakes</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#web" class="page__taxonomy-item p-category" rel="tag">Web</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-02-23">February 23, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Enabling+Private+Posts%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fweb%2Fprivate-posts%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fweb%2Fprivate-posts%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/web/private-posts/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/web/enable-org-mode/" class="pagination--pager" title="Enabling drafting in Org Mode in Minimal Mistakes
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/link-abbr/" rel="permalink">Enabling link abbreviations in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to use link abbreviations in Minimal Mistakes, for example,
+use foo:&lt;filename&gt; in place of the full link for images and images in a
+g...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/web/private-posts/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/web/private-posts"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

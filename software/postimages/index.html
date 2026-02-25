@@ -1,0 +1,757 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Weird behavior of direct links from postimages.org | Orcharinth</title>
+<meta name="description" content="In this demo:">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Weird behavior of direct links from postimages.org">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/software/postimages/">
+
+
+  <meta property="og:description" content="In this demo:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-06-01T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2022-06-01T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/software/postimages/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#software" itemprop="item"><span itemprop="name">Software</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Weird behavior of direct links from postimages.org</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Weird behavior of direct links from postimages.org">
+    <meta itemprop="description" content="In this demo:">
+    <meta itemprop="datePublished" content="2022-06-01T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2022-06-01T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/software/postimages/" itemprop="url">Weird behavior of direct links from postimages.org
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-06-01T00:00:00+00:00">June 1, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>In this <a href="/josephs-blog/_demo/postimages.org_image_test.html">demo</a>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Image size test<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/kXzT5mbK/screenshot-2021-09-09-eshell-coding-mismatch.png"</span> <span class="na">alt=</span><span class="s">"1"</span><span class="nt">&gt;&lt;br&gt;</span>
+	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/kXzT5-mbK/screenshot-2021-09-09-eshell-coding-mismatch.png"</span> <span class="na">alt=</span><span class="s">"2"</span><span class="nt">&gt;&lt;br&gt;</span>
+	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/Hx4Swwdp/Piano-Roll-How-to-Chord-sounding-Indefinitely-Solved.jpg"</span> <span class="na">alt=</span><span class="s">"3"</span><span class="nt">&gt;&lt;br&gt;</span>
+	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/Hx4Sw-wdp/Piano-Roll-How-to-Chord-sounding-Indefinitely-Solved.jpg"</span> <span class="na">alt=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>there are four direct links, which are all supposed to load the original-sized images when used in <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tags. However, in reality they have been shown differently in Chrome and Firefox. Their behaviors are summed up to the following table, where each image numbered 1 to 4 (marked in their <code class="language-plaintext highlighter-rouge">alt</code> value) is opened directly in the browser and from the <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tag, and “original” means the link is opend as the original-sized image, “redirect” means it redirects to another webpage, and “thumbnail” means it is opend as a resolution-reduced thumbnail.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Firefox</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Directly</td>
+      <td>original</td>
+      <td>redirect</td>
+      <td>redirect</td>
+      <td>original</td>
+    </tr>
+    <tr>
+      <td>&lt;img&gt;</td>
+      <td>thumbnail</td>
+      <td>original</td>
+      <td>original</td>
+      <td>original</td>
+    </tr>
+    <tr>
+      <td>Chrome</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Directly</td>
+      <td>original</td>
+      <td>redirect</td>
+      <td>redirect</td>
+      <td>redirect</td>
+    </tr>
+    <tr>
+      <td>&lt;img&gt;</td>
+      <td>original</td>
+      <td>original</td>
+      <td>original</td>
+      <td>original</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Link 1 is the direct link copied from <a href="https://postimg.cc/YhN6XT8C">https://postimg.cc/YhN6XT8C</a></p>
+
+<figure>
+	<a href="https://i.postimg.cc/z5LPFBms/Snipaste-2022-06-01-13-03-30.png"><img src="https://i.postimg.cc/z5LPFBms/Snipaste-2022-06-01-13-03-30.png" /></a>
+</figure>
+
+<p>and is the one that I thought should display the original-sized image but actually displayed a blurry thumbnail. But this only occurred on Firefox. In Chrome it was displayed as the original-sized image. From the inspector of Firefox I could see the actual image retrieved was a much smaller one. Then I found link 3 and 4 that could be displayed in their original size. You can see a slight difference between them, that is, link 4 has an extra hypen. So I tried to mimic this to get link 2 and it worked!</p>
+
+<p>This problem was spotted when I wrote this <a href="/josephs-blog/emacs/emacs-encoding">post</a> where the screenshots were displayed as blurry thumbnails. At first I thought it’s a problem of <a href="https://mmistakes.github.io/minimal-mistakes/">minimal-mistakes</a> but then narrowed it down to the links themselves. The solution is adding an extra hypen before the antepenultimate character!</p>
+
+<p><strong>Update</strong>: After I fiddled around with the demo suddenly the original link (link 1) somehow displayed the original-sized image in Firefox! Now I have no idea what’s going on. Maybe it’s because of the network because I turned on my proxy for a while. Maybe it’s because the server of <a href="https://postimages.org">https://postimages.org</a> detected that someone was trying desperately to get this link right…</p>
+
+<p><strong>Update</strong>: After I cleared the cookies and cache all links above if opend from <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> couldn’t be displayed as original-sized images but returned to blurry thumbnails no matter the browser in use. I guess the reason why they could display as original-sized images at some point is because the browsers were loading them from the cache and those original-sized images were cached at some point! I still don’t know why they weren’t always displayed and how to force them to display in their original size. Guess I just have to change to another image hosting service provider.</p>
+
+<p><strong>Update</strong>: Finally I can say for sure what’s causing all the fuss. It’s because of the network! As all the troubles the GFW has caused this is just yet another one. When I cleared the cache and turned on my proxy every link could display in their original size no matter the browser. It appears postimages.org could still send a thumbnail even if the link was blocked. I feel the effort in making information more transcendent!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/tags/#file-management" class="page__taxonomy-item p-category" rel="tag">File Management</a><span class="sep">, </span>
+    
+      <a href="/josephs-blog/tags/#images" class="page__taxonomy-item p-category" rel="tag">Images</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#software" class="page__taxonomy-item p-category" rel="tag">Software</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-06-01">June 1, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Weird+behavior+of+direct+links+from+postimages.org%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fsoftware%2Fpostimages%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fsoftware%2Fpostimages%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/software/postimages/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/emacs/emacs-encoding/" class="pagination--pager" title="Non-ascii characters displayed as code points in files
+">Previous</a>
+    
+    
+      <a href="/josephs-blog/emacs/generate-git-texinfo/" class="pagination--pager" title="Generate and use TexInfo documentation for Git
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, a...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/software/postimages/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/software/postimages"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

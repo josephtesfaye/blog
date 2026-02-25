@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Auto expanding parent vertical</title>
+    <style>
+	  .parent {
+		  width: 64px;
+		  min-height: 64px;
+		  height: auto;
+		  background-color: purple;
+	  }
+
+	  .child {
+		  width: 24px;
+		  height: 24px;
+		  background-color: yellow;
+		  transition: all 0.5s ease;
+	  }
+
+	  .child:hover {
+		  height: 256px;
+	  }
+    </style>
+  </head>
+  <body>
+	<div class="parent">
+      <div class="child"></div>
+	</div>
+	<div class="parent">
+      <div class="child"></div>
+	</div>
+	<div class="parent">
+      <div class="child"></div>
+	</div>
+  </body>
+</html>

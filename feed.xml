@@ -1,0 +1,2000 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/josephs-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/josephs-blog/" rel="alternate" type="text/html" /><updated>2026-02-25T14:54:03+00:00</updated><id>https://josephtesfaye.com/josephs-blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is written in
+  an Org file and also serves as a demonstration of this new feature.</p>
+<p>First, you can do everything in the original Markdown way, which is kept intact.
+  Now you can write everything in Org Mode with the extra benefit of using front
+  matter, Liquid syntax, figures, galleries, etc. exactly the same as in Markdown.</p>
+<p>Here are the basic elements demonstrated:</p>
+<h1 id="org-elements-examples">Org Elements Examples</h1>
+<h2 id="tables">Tables</h2>
+<p>Here is the morphological breakdown:</p>
+<table>
+  
+  
+  
+  
+<thead><tr>
+<th>Component</th>
+<th>Origin</th>
+<th>Meaning</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Erythro-</td>
+<td>Greek (erythros)</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>-xyl-</td>
+<td>Greek (xylon)</td>
+<td>Wood</td>
+</tr>
+<tr>
+<td>-aceae</td>
+<td>Latin (Suffix)</td>
+<td>Belonging to the family of</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lists">Lists</h2>
+<p>A multi-level list of mixed types:</p>
+<ol>
+  <li>First item</li>
+  <li>Second item
+    <ol>
+      <li>Sub-item A (Indented 3 spaces)
+        <p>Some text</p>
+        <ol>
+          <li>Sub-item A (Indented 3 spaces)</li>
+          <li>Sub-item A (Indented 3 spaces)
+            <ol>
+              <li>Sub-item A (Indented 3 spaces)</li>
+              <li>Sub-item A (Indented 3 spaces)</li>
+            </ol>
+          </li>
+          <li>Sub-item A (Indented 3 spaces)</li>
+        </ol>
+      </li>
+      <li>Sub-item B
+        <ul>
+          <li>Deeply nested bullet (Indented another 3 spaces)</li>
+          <li>Deeply nested bullet (Indented another 3 spaces)</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>Third item</li>
+</ol>
+<h2 id="images">Images</h2>
+<p>A simple image:</p>
+<p><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"></p>
+<p>A figure:</p>
+<figure class=""><a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" class="image-popup" title="This is a figure caption
+"><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="This is a figure alt text"></a><figcaption>
+      This is a figure caption
+
+    </figcaption></figure>
+
+<p>A gallery (with <a href="/josephs-blog/web/custom-gallery/">customization</a>):</p>
+
+
+
+
+
+
+<figure class="custom-grid " style="grid-template-columns: repeat(3, 1fr);">
+  
+    <figure>
+      <a href="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/josephs-blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'>
+        <img src="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/josephs-blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'>
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;">
+        <img src="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg">
+        <img src="/josephs-blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+  
+    <figcaption>This is a gallery caption
+</figcaption>
+  
+</figure>
+
+
+
+<h2 id="code-highlighting">Code highlighting</h2>
+<p>Inline codes: <code>print</code>, <code>hello</code></p>
+<p>Using <code>:</code> to start a line of code:</p>
+<pre class="example">
+descriptor + subject + taxonomic rank
+</pre>
+<p>Using structure template (code block):</p>
+
+            <div class="language-ruby highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></div>
+            </div>
+          
+<h1 id="configurations">Configurations</h1>
+<p>Here’s how I did the configurations.</p>
+<ol>
+  <li>Add <code>org-ruby</code> to your <code>Gemfile</code>:
+    
+            <div class="language-ruby highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+  <span class="o">...</span>
+  <span class="n">gem</span> <span class="s2">"org-ruby"</span>
+<span class="k">end</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>Write a new plugin: <code>_plugins/org_converter.rb</code>
+    
+            <div class="language-ruby highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'rouge'</span>
+
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:pre_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+  <span class="c1"># Enable Liquid syntax</span>
+  <span class="k">if</span> <span class="n">doc</span><span class="p">.</span><span class="nf">extname</span><span class="p">.</span><span class="nf">downcase</span> <span class="o">==</span> <span class="s1">'.org'</span>
+    <span class="c1"># Enable {% raw %}...{% endraw %}</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^[ \t]*(\{%[ \t]*raw[ \t]*%\})[ \t]*\n?/</span><span class="p">,</span> <span class="s1">'\1'</span><span class="p">)</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^[ \t]*(\{%[ \t]*endraw[ \t]*%\})[ \t]*\n?/</span><span class="p">,</span> <span class="s1">'\1'</span><span class="p">)</span>
+    <span class="c1"># Enable figures, galleries, and links to posts</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^[ \t]*(\{%[ \t]*include[ \t]+(?:figure|gallery)(?:(?!%\}).|\{%.*?%\})*%\})[ \t]*$/m</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">match</span><span class="o">|</span>
+      <span class="s2">"</span><span class="se">\n</span><span class="s2">#+BEGIN_HTML</span><span class="se">\n</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="se">\n</span><span class="s2">#+END_HTML</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+
+    <span class="n">block_regex</span> <span class="o">=</span> <span class="sr">/(?mi:^[ \t]*#\+(?:begin_src|BEGIN_HTML).*?^[ \t]*#\+(?:end_src|END_HTML))/</span>
+    <span class="n">inline_code</span> <span class="o">=</span> <span class="sr">/[=~][^=~\n]+[=~]/</span>
+    <span class="n">markdown_link</span> <span class="o">=</span> <span class="sr">/(?&lt;!\!)\[([^\]]+)\]\(([^)]+)\)/</span>
+
+    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/</span><span class="si">#{</span><span class="n">block_regex</span><span class="si">}</span><span class="sr">|^[ \t]*:[^\n]*$|</span><span class="si">#{</span><span class="n">inline_code</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">markdown_link</span><span class="si">}</span><span class="sr">/</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">match</span><span class="o">|</span>
+      <span class="n">match</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'['</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">match</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'[['</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"[[</span><span class="si">#{</span><span class="vg">$2</span><span class="si">}</span><span class="s2">][</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="s2">]]"</span> <span class="p">:</span> <span class="n">match</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">class</span> <span class="nc">OrgConverter</span> <span class="o">&lt;</span> <span class="no">Converter</span>
+    <span class="n">safe</span> <span class="kp">true</span>
+    <span class="n">priority</span> <span class="ss">:low</span>
+
+    <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+      <span class="n">ext</span> <span class="o">=~</span> <span class="sr">/^\.org$/i</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">output_ext</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+      <span class="s2">".html"</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+      <span class="nb">require</span> <span class="s1">'org-ruby'</span>
+      <span class="n">html</span> <span class="o">=</span> <span class="no">Orgmode</span><span class="o">::</span><span class="no">Parser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">content</span><span class="p">).</span><span class="nf">to_html</span>
+      <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">fragment</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+
+      <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'h1, h2, h3, h4, h5, h6'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">node</span><span class="o">|</span>
+        <span class="n">node</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^a-z0-9\s-]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Add &lt;thead&gt; to tables</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+        <span class="n">trs</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="nf">xpath</span><span class="p">(</span><span class="s1">'./tr'</span><span class="p">)</span>
+        <span class="k">next</span> <span class="k">if</span> <span class="n">trs</span><span class="p">.</span><span class="nf">empty?</span>
+
+        <span class="k">if</span> <span class="n">trs</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">at_xpath</span><span class="p">(</span><span class="s1">'./th'</span><span class="p">)</span>
+          <span class="n">thead</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'thead'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+          <span class="n">thead</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">trs</span><span class="p">.</span><span class="nf">first</span><span class="p">)</span>
+          <span class="n">tbody</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'tbody'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+          <span class="n">trs</span><span class="p">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">tr</span><span class="o">|</span> <span class="n">tbody</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="p">}</span>
+          <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">thead</span><span class="p">)</span>
+          <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
+        <span class="k">else</span>
+          <span class="n">tbody</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'tbody'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+          <span class="n">trs</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">tr</span><span class="o">|</span> <span class="n">tbody</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="p">}</span>
+          <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Process code blocks to enable code highlighting</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'pre.src[lang]'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">pre</span><span class="o">|</span>
+        <span class="n">lang</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]</span>
+        <span class="n">lexer</span> <span class="o">=</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Lexer</span><span class="p">.</span><span class="nf">find_fancy</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span> <span class="o">||</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Lexers</span><span class="o">::</span><span class="no">PlainText</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Formatters</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">new</span>
+
+        <span class="c1"># .sub(/\A[\r\n]+/, '') targets the absolute beginning of the string</span>
+        <span class="c1"># (\A) and removes any leading line breaks or carriage returns.</span>
+        <span class="c1"># .sub(/\s+\z/, '') targets the absolute end of the string (\z) and</span>
+        <span class="c1"># removes any trailing whitespace, including empty lines and spaces.</span>
+        <span class="n">code_text</span> <span class="o">=</span> <span class="n">pre</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\A[\r\n]+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\s+\z/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+
+        <span class="n">highlighted</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">lexer</span><span class="p">.</span><span class="nf">lex</span><span class="p">(</span><span class="n">code_text</span><span class="p">))</span>
+        <span class="n">new_node</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">fragment</span><span class="p">(</span><span class="sx">%Q{
+            &lt;div class="language-</span><span class="si">#{</span><span class="n">lang</span><span class="si">}</span><span class="sx"> highlighter-rouge"&gt;
+              &lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;</span><span class="si">#{</span><span class="n">highlighted</span><span class="si">}</span><span class="sx">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          }</span><span class="p">)</span>
+        <span class="n">pre</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">doc</span><span class="p">.</span><span class="nf">to_html</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>Install the gems with bundler and run:
+    
+            <div class="language-sh highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div>
+            </div>
+          
+  </li>
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">Enabling Private Posts</title><link href="https://josephtesfaye.com/josephs-blog/web/private-posts/" rel="alternate" type="text/html" title="Enabling Private Posts" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, any
+  other means.</p>
+<h1 id="the-ideas">The Ideas</h1>
+<p>Because Jekyll generates a completely static site, there is no backend server to
+  check a user’s session or validate a password before sending the HTML to the
+  browser. If a page exists on the server, anyone who guesses the URL can
+  technically download it.</p>
+<p>To achieve true privacy on a static site, you have to shift the protection
+  mechanism. Here are the two most effective architectural ideas for implementing
+  this:</p>
+<h2 id="idea-1-client-side-content-encryption-the-best-static-approach">Idea 1: Client-Side Content Encryption (The Best Static Approach)</h2>
+<p>Instead of hiding the file, you scramble its contents. You would use a custom
+  Jekyll plugin (or an existing gem like <code>jekyll-crypt</code>) that hooks into the build
+  process.</p>
+<ul>
+  <li>How it works: In the front matter of your private post, you define a <code>password:
+    "mysecret"~ and a ~published: true</code> flag. During <code>jekyll build</code>, the plugin
+    intercepts the post’s rendered HTML and encrypts it using an algorithm like
+    AES-256, using the password as the key.</li>
+  <li>What gets published: The output HTML file contains zero actual content. It
+    only contains a JavaScript password prompt, the decryption logic, and a giant
+    block of ciphertext.</li>
+  <li>The User Experience: When you visit the URL, the page loads a password box.
+    Entering the correct password triggers the JavaScript to decrypt the
+    ciphertext locally in the browser and inject the readable HTML into the DOM.</li>
+  <li>Security: Search engines and scrapers only see the JavaScript and ciphertext,
+    making it completely impossible for them to index the real content. Anyone
+    poking around your GitHub repository (if public) or the site’s source code
+    will only see gibberish.</li>
+</ul>
+<p>If you want to keep everything self-contained within Jekyll and easily hostable
+  anywhere (like basic GitHub Pages), this is the definitive way to go.</p>
+<h2 id="idea-2-edge-level-access-control-the-infrastructure-approach">Idea 2: Edge-Level Access Control (The Infrastructure Approach)</h2>
+<p>If you want to protect the files at the network level rather than encrypting the
+  contents, you must rely on the hosting provider rather than Jekyll.</p>
+<ul>
+  <li>How it works: Instead of relying on a backend server, you use a modern CDN or
+    hosting provider that supports “Edge Functions” or zero-trust access (like
+    Cloudflare Pages, Netlify, or Vercel).</li>
+  <li>The Architecture: You set up a routing rule at the CDN level stating that any
+    URL matching <code>/private/*</code> requires authentication.</li>
+  <li>The User Experience: When a user navigates to the private post, the CDN
+    intercepts the request before it even reaches the static HTML files. It serves
+    a login page. If the password is correct, the CDN sets a secure cookie and
+    forwards the static file.</li>
+  <li>Security: Highly secure. The static files are never transmitted over the
+    network until authentication is verified at the edge node.</li>
+</ul>
+<h2 id="what-about-the-the-source-files">What about the the source files?</h2>
+<p>What about the the source markdown or org files? How do you also hide them from
+  the public, since currently I have the site hosted on Github through Github
+  Actions, which requires the repository to be public? How can you make the
+  repository private to still be able to serve the site?</p>
+<p>Yes, you can hide your source files by making the repository private, but how
+  you achieve this depends on your GitHub account tier and where you want to host
+  the site.</p>
+<p>Here is the breakdown of your options:</p>
+<ol>
+  <li>The Native GitHub Way (Requires Paid Account)
+    <p>If you have a GitHub Pro, Team, or Enterprise account, you can simply go to
+      your repository settings and change the visibility to Private. GitHub Pages
+      natively supports publishing from private repositories on these paid tiers.
+      You can even set access controls so the site itself is only visible to
+      specific people in your organization.</p>
+  </li>
+  <li>The Alternative Hosting Way (Free &amp; Easiest)
+    <p>If you are on a GitHub Free account, GitHub Pages requires the repository to
+      be public to serve the site.</p>
+    <p>The easiest way to keep your source code private for free is to move your
+      hosting to Cloudflare Pages, Netlify, or Vercel.</p>
+    <ol>
+      <li>Make your GitHub repository Private. This instantly breaks GitHub Pages.</li>
+      <li>Link your private GitHub repository to a free Cloudflare Pages or Netlify
+        account.</li>
+      <li>They will automatically run your Jekyll build commands (just like GitHub
+        Actions) and serve the compiled HTML globally. Your source files remain
+        completely hidden in your private GitHub repo.</li>
+    </ol>
+  </li>
+  <li>The Two-Repository Strategy (Free, GitHub-Only)
+    <p>If you are on a free account but absolutely want to keep using GitHub Pages,
+      you can separate your raw source files from your generated HTML using two
+      repositories and GitHub Actions.</p>
+    <ol>
+      <li>Create Repo A (Private): This holds your Jekyll source files (Markdown,
+        Org files, _config.yml, etc.).</li>
+      <li>Create Repo B (Public): This will only hold the generated, static HTML
+        site.</li>
+      <li>Configure GitHub Actions in Repo A: You update your existing
+        <code>.github/workflows/jekyll.yml</code> file to build the site, but instead of
+        deploying to the local repository, it pushes the compiled <code>_site</code> folder
+        directly to Repo B.</li>
+    </ol>
+    <p>To do this, you would use an action like <code>peaceiris/actions-gh-pages</code> in your
+      workflow. It allows deploying to an external repository by using a Personal
+      Access Token (PAT):</p>
+    
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to external public repository</span>
+  <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+  <span class="na">with</span><span class="pi">:</span>
+    <span class="na">personal_token</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">external_repository</span><span class="pi">:</span> <span class="s">your-username/your-public-repo-B</span>
+    <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">main</span>
+    <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span></code></pre></div>
+            </div>
+          
+    <p>This way, anyone looking at Repo B only sees the final compiled web pages,
+      while your Org and Markdown source files safely remain in your private
+      Repo A.</p>
+  </li>
+</ol>
+<h1 id="the-procedures">The Procedures</h1>
+<h2 id="1-use-the-two-repository-strategy">1. Use the Two-Repository Strategy</h2>
+<p>The most efficient and robust way to manage the Two-Repository Strategy is to
+  completely decouple your local testing environment from your deployment process.</p>
+<p>Attempting to turn the local <code>_site</code> folder into a Git repository is a constant
+  battle against Jekyll’s internal cleaning mechanisms (see <a href="#20260225232548">Jekyll Build Process</a>).
+  The best approach is to treat your local <code>_site</code> folder as a purely temporary,
+  disposable directory, and let GitHub Actions act as the bridge between Repo A
+  (Private Source) and Repo B (Public HTML).</p>
+<h3 id="1-the-local-workflow-repo-a">1. The Local Workflow (Repo A)</h3>
+<p>Make sure you stop tracking the built site entirely in your source repository.</p>
+<ol>
+  <li>Add <code>_site/</code> to the <code>.gitignore</code> file in Repo A.</li>
+  <li>When writing posts or testing configurations, simply run <code>bundle exec jekyll
+    serve</code> on your Mac.</li>
+  <li>You never run <code>git commit</code> inside the <code>_site</code> folder. You only commit your source
+    Markdown, Org files, and configurations to Repo A.</li>
+</ol>
+<h3 id="2-creating-and-serving-repo-b">2. Creating and serving Repo B</h3>
+<p>Now you can create a new repository (<a href="https://github.com/josephtesfaye/blog">Repo B</a>) on GitHub to host the static <code>_site</code>
+  contents.</p>
+<p>To serve your public site from Repo B using GitHub Pages, you need to configure
+  it to act purely as a static file host. Since Repo A has already done the heavy
+  lifting of building the Jekyll site, Repo B just needs to serve the finished
+  HTML.</p>
+<ol>
+  <li>Ensure Repo B is Public
+    <p>If you are on a free GitHub account, Repo B must be set to Public. Go to
+      Settings &gt; General in Repo B, scroll down to the “Danger Zone,” and ensure
+      the repository visibility is public.</p>
+  </li>
+  <li>Configure GitHub Pages
+    <ol>
+      <li>In Repo B, go to the Settings &gt; Pages.</li>
+      <li>Under the Build and deployment section, set the Source dropdown to
+        Deploy from a branch.</li>
+      <li>Under the Branch section, select the branch that your GitHub Action
+        from Repo A is pushing to (usually main, master, or gh-pages).</li>
+      <li>Select the <code>/ (root)</code> folder.</li>
+      <li>Click Save.</li>
+    </ol>
+  </li>
+  <li>Bypass GitHub’s Default Jekyll Build (Crucial)
+    <p>By default, GitHub Pages assumes any repository is a raw Jekyll site and will
+      try to build it again. Since your site is already compiled by Repo A, running
+      it through Jekyll a second time can break your CSS, strip out folders that
+      start with an underscore (like <code>_page</code> or <code>_site</code>), or cause build failures.</p>
+    <p>To tell GitHub Pages to serve the files exactly as they are without
+      processing them, you need a file named <code>.nojekyll</code> (with no extension) in
+      the root of Repo B.</p>
+    <p>If you are using the <code>peaceiris/actions-gh-pages</code> action in Repo A (which we
+      are using in the following step), the action automatically generates and
+      includes the file for you by default, so you don’t need to do anything
+      manually.</p>
+    <p>If you are using a different deployment method, make sure your workflow in
+      Repo A creates an empty <code>.nojekyll</code> file in the <code>_site</code> directory before pushing
+      it to Repo B. You can add a quick step in your workflow right before the
+      deployment step:</p>
+    
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Add .nojekyll file</span>
+  <span class="na">run</span><span class="pi">:</span> <span class="s">touch ./_site/.nojekyll</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>Wait for the Deployment
+    <p>Once you save the Pages settings, GitHub will trigger a very fast deployment
+      (since it’s just copying static files). Within a minute or two, your site
+      will be live at https://your-username.github.io/your-public-repo-B/ (or your
+      custom domain, if you add one in the Pages settings).</p>
+  </li>
+</ol>
+<h3 id="3-the-deployment-bridge-github-actions">3. The Deployment Bridge (GitHub Actions)</h3>
+<p>When you push your source code to the private Repo A, a GitHub Action spins
+  up, builds the site in a clean cloud environment, and pushes the resulting
+  HTML directly to Repo B.</p>
+<p>To set this up:</p>
+<ol>
+  <li>Generate a Personal Access Token (PAT) in your GitHub Developer Settings
+    with the repo scope checked.
+    <p>I highly recommend creating a Fine-grained personal access token.</p>
+    <p>While the “Tokens (classic)” will absolutely work, they grant sweeping
+      access to every repository in your account. If a classic token with the
+      repo scope is ever compromised, the attacker has full control over all
+      your code.</p>
+    <p>A fine-grained token allows you to restrict the token’s access strictly to
+      Repo B (your public HTML repository) and limit it to only the specific
+      permissions needed to push files.</p>
+    <p>Here is how to generate the fine-grained token for this exact deployment
+      setup:</p>
+    <p>a. Go to your GitHub Settings &gt; Developer settings (at the very bottom) &gt;
+      Personal access tokens &gt; Fine-grained tokens.
+      b. Click the <code>Generate new token</code> button.
+      c. Give your token a name (e.g., “Jekyll Deploy to Repo B”) and set an
+      expiration date.
+      d. Under Repository access, select <code>Only select repositories</code>. In the
+      dropdown that appears, find and select Repo B (your destination
+      repository).
+      e. Scroll down to Permissions and click on <code>Add permissions</code> to expand it.
+      Find <code>Contents</code> and change the access level to Read and write. (This is
+      all the action needs to push your built <code>_site</code> files).
+      f. Click <code>Generate token</code> at the bottom of the page.
+      g. Copy the generated token immediately, as GitHub will only show it to
+      you this one time.</p>
+  </li>
+  <li>Go to the Settings of Repo A, navigate to Secrets and variables &gt; Actions,
+    and add a new repository secret. Name it <code>DEPLOY_PAT</code> and paste your token.</li>
+  <li>In Repo A, update your <code>.github/workflows/jekyll.yml</code> file to look like
+    this:
+    
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Deploy Jekyll site to Repo B</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>  <span class="c1"># Or main, depending on your default branch in Repo A</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build_and_deploy</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout Source Code</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.1'</span>
+          <span class="na">bundler-cache</span><span class="pi">:</span> <span class="no">true</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Site</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to External Repository</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">personal_token</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="c1"># Replace with actual Repo B name</span>
+          <span class="na">external_repository</span><span class="pi">:</span> <span class="s">your-username/Repo-B</span>
+          <span class="c1"># Branch to push to in Repo B</span>
+          <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">master</span>
+          <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span>
+          <span class="c1"># Ensures stale files in Repo B are deleted</span>
+          <span class="na">keep_files</span><span class="pi">:</span> <span class="no">false</span></code></pre></div>
+            </div>
+          
+  </li>
+</ol>
+<p>The <code>peaceiris/actions-gh-pages</code> action automatically creates the <code>.nojekyll</code>
+  file in Repo B, preventing GitHub Pages from trying to rebuild your
+  already-built files.</p>
+<p>Repo B’s history will strictly be clean, automated deployment commits, while
+  Repo A retains your actual human commit history and draft iterations.</p>
+<h1 id="side-notes">Side Notes</h1>
+<h2 id="the-jekyll-build-process">The Jekyll Build Process</h2>By default, Jekyll completely empties the destination directory (<code>_site/</code>) every
+  time you run a build or start the local server. It does this to ensure no stale,
+  orphaned files from previous builds are left behind.
+<p>Because of this cleaning process, if you initialize a Git repository directly
+  inside the <code>_site/</code> folder, the <code>.git/</code> directory is at the risk of being instantly
+  deleted the next time Jekyll builds the site.</p>
+<p>I say “risk” because there is a built-in safety feature of Jekyll. In general,
+  to prevent Jekyll from deleting the specific files/folders inside <code>_site/</code>, you
+  can use the <code>keep_files</code> array in your <code>_config.yml</code> file, like this:</p>
+
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="na">keep_files</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">.git</span></code></pre></div>
+            </div>
+          
+<p>However, even if you do not explicitly define <code>keep_files</code>, Jekyll has underlying
+  default settings designed specifically to prevent catastrophic data loss. By
+  default, Jekyll’s internal configuration automatically sets <code>keep_files: [".git",
+  ".svn"]</code>.</p>
+<p>Here is exactly what happens to the <code>_site</code> directory when you trigger a build:</p>
+<ol>
+  <li>Configuration Merge
+    <p>When you run <code>jekyll build</code> or <code>jekyll serve</code>, Jekyll first loads its system-wide
+      default configuration. It then layers your <code>_config.yml</code> on top of it. Unless
+      you explicitly override <code>keep_files</code> with an empty array or tell Jekyll to
+      overwrite the defaults entirely, <code>.git</code> remains in the internal “safe list.”</p>
+  </li>
+  <li>The Cleanup Phase (<code>Jekyll::Cleaner</code>)
+    <p>Before reading any of your new source files, Jekyll instantiates a Cleaner
+      class. This class scans the entire destination folder (<code>_site/</code>). It iterates
+      through every file and directory currently sitting in <code>_site/</code> and checks them
+      against the merged <code>keep_files</code> array.</p>
+    <ul>
+      <li>If a file or folder is not in the array, it is permanently deleted.</li>
+      <li>Because <code>.git</code> is in the default array, the cleaner skips it, leaving your
+        version control history untouched.</li>
+    </ul>
+  </li>
+  <li>The Read and Render Phase
+    <p>Jekyll scans your root directory (ignoring files that start with <code>_</code>, <code>.</code>, or are
+      explicitly excluded), processes Liquid tags, converts Markdown and Org files
+      into HTML, and compiles your SCSS.</p>
+  </li>
+  <li>The Write Phase
+    <p>Jekyll writes the newly generated HTML files and copies static assets (like
+      images and JS files) directly into the clean <code>_site/</code> folder, effectively
+      surrounding the preserved <code>.git</code> directory with the fresh build.</p>
+  </li>
+</ol>
+<p>The risk is that when you run <code>bundle exec jekyll clean</code> the entire <code>_site</code>
+  directory is deleted, including the <code>.git/</code> directory in it, even if you
+  explicitly specify it in <code>keep_files</code> in your <code>_config.yml</code>.</p>
+<p>The reason this happens is that jekyll clean is a brute-force command. Its
+  explicit purpose is to completely obliterate the generated site and all cache
+  folders to ensure a perfectly clean slate. It intentionally bypasses the
+  <code>keep_files</code> array, which is only evaluated by the internal cleaner during <code>jekyll
+  build</code> or <code>jekyll serve</code>.</p>
+<p>Here are the best ways to handle this:</p>
+<ol>
+  <li>Stop using jekyll clean (Recommended)
+    <p>You rarely actually need to run <code>jekyll clean</code>. Because <code>jekyll build</code> and <code>jekyll
+      serve</code> automatically invoke their own safe cleanup phase before generating new
+      files (the phase that does respect <code>keep_files</code>), stale files are already
+      removed automatically. You can safely rely entirely on the build/serve
+      commands.</p>
+  </li>
+  <li>Clear only the caches manually
+    <p>If you are running <code>jekyll clean</code> because you are experiencing caching issues
+      (like SCSS not updating or plugin changes not registering), you can safely
+      delete the cache folders without touching the <code>_site/</code> directory at all.</p>
+    <p>Instead of bundle exec jekyll clean, run:</p>
+    <pre class="example">
+rm -rf .jekyll-cache .jekyll-metadata
+    </pre>
+  </li>
+  <li>Create a custom clean command
+    <p>If you want a command that mimics <code>jekyll clean</code> but preserves your <code>.git</code> folder
+      inside <code>_site/</code>, you can add an alias to your shell profile (like <code>~/.bashrc</code> or
+      <code>~/.zshrc</code>) or create a simple bash script:</p>
+    
+            <div class="language-sh highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">jclean</span><span class="o">=</span><span class="s2">"rm -rf .jekyll-cache .jekyll-metadata &amp;&amp; find _site -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +"</span></code></pre></div>
+            </div>
+          
+    <p>This instantly deletes the Jekyll caches and wipes everything inside <code>_site/</code>
+      except the .git/ directory.</p>
+  </li>
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to make a post private, that is, it can only be seen by me, or someone with a password, and not by any other person, any search engine, any other means.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
+<a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a>
+feature of Minimal Mistakes:</p>
+
+<ol>
+  <li>
+    <p>Add a <code class="language-plaintext highlighter-rouge">columns</code> parameter to each gallery to control the columns of a
+gallery such as:</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}
+</code></pre></div>    </div>
+
+    <p>The image size should be adjusted automatically.</p>
+  </li>
+  <li>
+    <p>Make the images able to pop-up when there is only the <code class="language-plaintext highlighter-rouge">image_path</code> parameter
+in the front matter such as:</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gallery:
+<span class="p">  -</span> image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
+<span class="p">  -</span> image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
+<span class="p">  -</span> image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
+</code></pre></div>    </div>
+
+    <p>The gallery originally requires both <code class="language-plaintext highlighter-rouge">url</code> and <code class="language-plaintext highlighter-rouge">image_path</code> in order to have
+a pop-up view of the images. But I think it’s more convenient to write only
+one parameter. But you can still use both.</p>
+  </li>
+  <li>
+    <p>Use <code class="language-plaintext highlighter-rouge">alt</code> for <code class="language-plaintext highlighter-rouge">title</code> if <code class="language-plaintext highlighter-rouge">title</code> is unspecified.</p>
+  </li>
+  <li>
+    <p>Support Liquid links in the image title, e.g.,</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+gallery:
+  - image_path: https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg
+    title: "Prompt: [Local images]({{ site.baseurl }}{% post_url 2026-02-19-local-images %})"
+---
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>All of these customizations are backward-compatible, that is, you can still
+write a gallery in the original way to get the original feel.</p>
+
+<p>Here’s a demo gallery with the above customizations:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+link_abbrs:
+  - link_abbr: foo https://i.postimg.cc/Vv8jFw8D/
+gallery:
+  - image_path: foo:unsplash-gallery-image-1.jpg
+    alt: "Use alt for title"
+  - image_path: foo:unsplash-gallery-image-1.jpg
+    title: "Link to post: [Local images]({{ site.baseurl }}{% post_url 2026-02-19-local-images %})"
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - image_path: foo:unsplash-gallery-image-1.jpg
+---
+
+{% include gallery columns=6 caption="My custom gallery" %}
+</code></pre></div></div>
+
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);">
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="Use alt for title">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="Use alt for title" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;Link to post: &lt;a href=&quot;/josephs-blog/web/local-images/&quot;&gt;Local images&lt;/a&gt;&lt;/p&gt;">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      </a>
+    </figure>
+  
+  
+    <figcaption>My custom gallery
+</figcaption>
+  
+</figure>
+
+<p>Here are the steps to make the changes:</p>
+
+<ol>
+  <li>
+    <p>Copy the default gallery layout from the Minimal Mistakes gem (e.g.
+<code class="language-plaintext highlighter-rouge">~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>)
+into your local <code class="language-plaintext highlighter-rouge">_includes</code> directory.</p>
+  </li>
+  <li>
+    <p>Apply these changes:</p>
+
+    <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
+</span><span class="gd">--- minimal-mistakes/_includes/gallery	2023-12-15 19:03:51
+</span><span class="gi">+++ josephs-blog/_includes/gallery	2026-02-21 16:05:53
+</span><span class="p">@@ -6,6 +6,8 @@</span>
+
+ {% if include.layout %}
+   {% assign gallery_layout = include.layout %}
+<span class="gi">+{% elsif include.columns %}
++  {% assign gallery_layout = "custom-grid" %}
+</span> {% else %}
+   {% if gallery.size == 2 %}
+     {% assign gallery_layout = 'half' %}
+<span class="p">@@ -16,6 +18,36 @@</span>
+   {% endif %}
+ {% endif %}
+
++{% if include.columns %}
+<span class="gi">+
++&lt;figure class="{{ gallery_layout }} {{ include.class }}"
++        style="grid-template-columns: repeat({{ include.columns }}, 1fr);"&gt;
++  {% for img in gallery %}
++    &lt;figure&gt;
++      &lt;a {% if img.url %}
++           href="{{ img.url | relative_url }}"
++         {% else %}
++           href="{{ img.image_path | relative_url }}"
++         {% endif %}
++         {% if img.title %}
++         {% comment %} Parse Liquid syntax in titles {% endcomment %}
++           title="{{ img.title | liquify | markdownify | remove: '&lt;p&gt;' | remove: '&lt;/p&gt;' | escape }}"
++         {% elsif img.alt %}
++           title="{{ img.alt }}"
++         {% endif %}&gt;
++        &lt;img src="{{ img.image_path | relative_url }}"
++             alt="{% if img.alt %}{{ img.alt }}{% endif %}"&gt;
++      &lt;/a&gt;
++    &lt;/figure&gt;
++  {% endfor %}
++  {% if include.caption %}
++    &lt;figcaption&gt;{{ include.caption | markdownify | remove: "&lt;p&gt;" | remove: "&lt;/p&gt;" }}&lt;/figcaption&gt;
++  {% endif %}
++&lt;/figure&gt;
++
++{% else %}
++
++&lt;!-- Preserve the original style --&gt;
+</span> &lt;figure class="{{ gallery_layout }} {{ include.class }}"&gt;
+   {% for img in gallery %}
+     {% if img.url %}
+<span class="p">@@ -33,3 +65,5 @@</span>
+     &lt;figcaption&gt;{{ include.caption | markdownify | remove: "&lt;p&gt;" | remove: "&lt;/p&gt;" }}&lt;/figcaption&gt;
+   {% endif %}
+ &lt;/figure&gt;
+<span class="gi">+
++{% endif %}
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Add these styles in your <code class="language-plaintext highlighter-rouge">assets/css/main.scss</code>:</p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
+<span class="nc">.page__content</span> <span class="nc">.custom-grid</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
+  <span class="py">gap</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.custom-grid</span> <span class="nt">figure</span> <span class="p">{</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.custom-grid</span> <span class="nt">figcaption</span> <span class="p">{</span>
+  <span class="nl">grid-column</span><span class="p">:</span> <span class="m">1</span> <span class="p">/</span> <span class="m">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.custom-grid</span> <span class="nt">img</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Create a new plugin file <code class="language-plaintext highlighter-rouge">_plugins/liquify.rb</code> to add a filter that
+evaluates Liquid syntax inside front matter strings:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">module</span> <span class="nn">LiquifyFilter</span>
+    <span class="k">def</span> <span class="nf">liquify</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+      <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="nf">to_s</span><span class="p">).</span><span class="nf">render</span><span class="p">(</span><span class="vi">@context</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:]]></summary></entry><entry><title type="html">Enabling link abbreviations in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/link-abbr/" rel="alternate" type="text/html" title="Enabling link abbreviations in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/link-abbr</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/link-abbr/"><![CDATA[<p>I want to be able to use link abbreviations in Minimal Mistakes, for example,
+use <code class="language-plaintext highlighter-rouge">foo:&lt;filename&gt;</code> in place of the full link for images and images in a
+gallery like the following:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+link_abbrs:
+  - link_abbr: foo http://127.0.0.1:8123/archive/image/foo/
+gallery:
+  - url: foo:20260218184820.png
+    image_path: foo:20260218184820.png
+  - url: foo:20260218184820.png
+    image_path: foo:20260218184820.png
+  - url: foo:20260218184820.png
+    image_path: foo:20260218184820.png
+---
+
+![](foo:20260218184820.png)
+
+{% include gallery caption="Link abbreviations" %}
+</code></pre></div></div>
+
+<p>The links can then be translated to their full forms in the built result such
+as:</p>
+
+<pre><code class="language-example">http://127.0.0.1:8123/archive/image/foo/20260218184820.png
+</code></pre>
+
+<p><strong>Create a new Ruby plugin file</strong></p>
+
+<p>We can create a plugin under <code class="language-plaintext highlighter-rouge">_plugins/link_abbr.rb</code> which handles the link
+abbreviations:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'addressable/uri'</span>
+
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:pre_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'link_abbrs'</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
+
+  <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'link_abbrs'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">item</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">item</span><span class="p">[</span><span class="s1">'link_abbr'</span><span class="p">]</span>
+
+    <span class="n">key</span><span class="p">,</span> <span class="n">base_url</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">'link_abbr'</span><span class="p">].</span><span class="nf">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">key</span> <span class="o">&amp;&amp;</span> <span class="n">base_url</span>
+
+    <span class="c1"># 1. Replaces "](key:filename)" inside the Markdown body content</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\]\(</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^\)]+)\)/</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">escaped_path</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span>
+      <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/josephs-blog"</span> <span class="p">:</span> <span class="s2">""</span>
+      <span class="s2">"](</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}#{</span><span class="n">escaped_path</span><span class="si">}</span><span class="s2">)"</span>
+    <span class="k">end</span>
+
+    <span class="c1"># 2. Replace image_path in figures</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/image_path="</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^"]+)"/</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"image_path=</span><span class="se">\"</span><span class="si">#{</span><span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span> <span class="p">}</span>
+
+    <span class="c1"># 3. Replace inside ANY front matter array (gallery, gallery1, gallery2, etc.)</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">_</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
+      <span class="k">if</span> <span class="n">value</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
+        <span class="n">value</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">list_item</span><span class="o">|</span>
+          <span class="k">next</span> <span class="k">unless</span> <span class="n">list_item</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span>
+
+          <span class="p">[</span><span class="s1">'url'</span><span class="p">,</span> <span class="s1">'image_path'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="kp">attr</span><span class="o">|</span>
+            <span class="k">if</span> <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">:"</span><span class="p">)</span>
+              <span class="c1"># Replace the exact abbreviation prefix with the base URL</span>
+              <span class="n">full_path</span> <span class="o">=</span> <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:/</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+              <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">]</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+            <span class="k">end</span>
+          <span class="k">end</span>
+
+          <span class="k">if</span> <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
+            <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\]\(</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^\)]+)\)/</span><span class="p">)</span> <span class="k">do</span>
+              <span class="n">escaped_path</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span>
+              <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/josephs-blog"</span> <span class="p">:</span> <span class="s2">""</span>
+              <span class="s2">"](</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}#{</span><span class="n">escaped_path</span><span class="si">}</span><span class="s2">)"</span>
+            <span class="k">end</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">github-pages</code> gem enforces strict safe mode and completely disables the
+<code class="language-plaintext highlighter-rouge">_plugins</code> directory to mimic GitHub’s legacy deployment environment, overriding
+any <code class="language-plaintext highlighter-rouge">safe: false</code> settings in your configuration.</p>
+
+<p>To allow custom plugins to run locally, you need to replace it with the standard
+Jekyll gem. Since you already have all your plugins explicitly listed in your
+Gemfile, this is a safe swap.</p>
+
+<p>Gemfile:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-gem "github-pages", group: :jekyll_plugins
+</span><span class="gi">+gem "jekyll"
++gem "kramdown-parser-gfm"
++gem "faraday-retry"
+</span></code></pre></div></div>
+
+<p>_config.yml:</p>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-remote_theme: mmistakes/minimal-mistakes@4.20.2
+</span><span class="gi">+theme: minimal-mistakes-jekyll
+</span></code></pre></div></div>
+
+<p>Terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p><strong>Use GitHub Actions to build your GitHub Pages site</strong></p>
+
+<p>This affects the default GitHub Pages build. The classic GitHub Pages build
+environment strictly enforces safe mode and ignores all files in the <code class="language-plaintext highlighter-rouge">_plugins</code>
+directory. If you push the site using the default settings, it will still host
+successfully, but your custom plugin will not run and the link abbreviations
+will remain unparsed.</p>
+
+<p>To use custom plugins while hosting on GitHub Pages, you must switch your
+deployment method to GitHub Actions. This modern approach uses your exact
+Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub
+Pages.</p>
+
+<ol>
+  <li>Go to your repository on GitHub.</li>
+  <li>Click on Settings, then select Pages from the left sidebar.</li>
+  <li>Under Build and deployment, change the Source from “Deploy from a branch” to
+“GitHub Actions”.</li>
+  <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li>
+  <li>Commit the provided <code class="language-plaintext highlighter-rouge">.github/workflows/jekyll.yml</code> file to your repository.</li>
+</ol>
+
+<p>With this workflow active, GitHub will read your updated Gemfile, run the
+<code class="language-plaintext highlighter-rouge">link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML
+to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry><entry><title type="html">Loading Local Images in Minimal Mistakes</title><link href="https://josephtesfaye.com/josephs-blog/web/local-images/" rel="alternate" type="text/html" title="Loading Local Images in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/local-images</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/local-images/"><![CDATA[<p>I want to be able to load local images when the site is served locally. However,
+the URL format <code class="language-plaintext highlighter-rouge">file:///Users/&lt;username&gt;/archive/image/20260218184820.png</code>
+doesn’t work.</p>
+
+<h2 id="why-img-srcfileusers-wont-load">Why <code class="language-plaintext highlighter-rouge">&lt;img src="file:///Users/..."&gt;</code> won’t load?</h2>
+
+<p>Your page is being served over HTTP (e.g. <a href="http://localhost:4000">http://localhost:4000</a>). Modern
+browsers block pages from <code class="language-plaintext highlighter-rouge">http(s)://…</code> from loading local files via <code class="language-plaintext highlighter-rouge">file://…</code>
+for security (“cross-origin” / local file access). So even though the HTML is
+“correctly parsed”, the browser refuses to fetch it.</p>
+
+<p>That means: a <code class="language-plaintext highlighter-rouge">file://</code> URL will not work on a website (local dev server or
+deployed site). It only works when the page itself is also opened via <code class="language-plaintext highlighter-rouge">file://</code>
+(and even then, policies vary).</p>
+
+<h2 id="method-1-copying-files-to-project-assets">Method 1: Copying files to project assets</h2>
+
+<p>The simplest method is to copy the images to <code class="language-plaintext highlighter-rouge">&lt;project-root&gt;/assets/images/</code> and
+then refer to them using the standard syntax:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+gallery:
+  - url: /assets/images/20260218184820.png
+    image_path: /assets/images/20260218184820.png
+---
+
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
+
+&lt;img src="https://josephtesfaye.com/josephs-blog/assets/images/filename.jpg" alt=""&gt;
+
+{% include gallery %}
+</code></pre></div></div>
+
+<p>However, this has the overhead of managing files manually, which can be tedious.
+The following methods give you better experience.</p>
+
+<h2 id="method-2-using-symlinks">Method 2: Using symlinks</h2>
+
+<ol>
+  <li>
+    <p>Create a symlink to the target data inside the site root. Say, if the local
+images reside in <code class="language-plaintext highlighter-rouge">~/Downloads/temp/archive/image/foo/</code> you can create a
+symlink to it under <code class="language-plaintext highlighter-rouge">&lt;project-root&gt;/_site/assets/archive/image/foo</code>:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;project-root&gt;/_site/
+<span class="nb">mkdir</span> <span class="nt">-p</span> assets/archive/image/
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Then you can refer to the images using the symlink like the following:</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+gallery:
+  - url: /assets/archive/image/foo/20260218184820.png
+    image_path: /assets/archive/image/foo/20260218184820.png
+  - url: /assets/archive/image/foo/20260218184820.png
+    image_path: /assets/archive/image/foo/20260218184820.png
+---
+
+![]({{site.url}}{{site.baseurl}}/assets/archive/image/foo/20260218184820.png)
+
+{% include gallery %}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The symlinks created this way are cleared every time the site is re-built.
+To make them persist we can write a plugin
+<code class="language-plaintext highlighter-rouge">_plugins/symlink_external_assets.rb</code> to create them automatically according
+to the following front matter of a post:</p>
+
+    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+symlinks:
+  - /assets/archive/image/foo ~/Downloads/temp/archive/image/foo
+  - /assets/archive/video/foo ~/Downloads/temp/archive/video/foo
+---
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">symlink_external_assets.rb</code>:</p>
+
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'fileutils'</span>
+<span class="nb">require</span> <span class="s1">'shellwords'</span>
+
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_read</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">env</span> <span class="o">==</span> <span class="s1">'production'</span>
+
+  <span class="c1"># Store the intended symlinks so we can recreate them in the _site folder later</span>
+  <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">{}</span>
+
+  <span class="n">docs</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">pages</span> <span class="o">+</span> <span class="n">site</span><span class="p">.</span><span class="nf">collections</span><span class="p">.</span><span class="nf">values</span><span class="p">.</span><span class="nf">flat_map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:docs</span><span class="p">)</span>
+  <span class="n">docs</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'symlinks'</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
+
+    <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'symlinks'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">symlink_def</span><span class="o">|</span>
+      <span class="k">next</span> <span class="k">unless</span> <span class="n">symlink_def</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">String</span><span class="p">)</span>
+
+      <span class="n">parts</span> <span class="o">=</span> <span class="no">Shellwords</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="n">symlink_def</span><span class="p">)</span>
+      <span class="k">next</span> <span class="k">unless</span> <span class="n">parts</span><span class="p">.</span><span class="nf">size</span> <span class="o">==</span> <span class="mi">2</span>
+
+      <span class="n">link_path_raw</span><span class="p">,</span> <span class="n">target_path_raw</span> <span class="o">=</span> <span class="n">parts</span>
+
+      <span class="n">target_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">target_path_raw</span><span class="p">)</span>
+      <span class="n">relative_link_path</span> <span class="o">=</span> <span class="n">link_path_raw</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">%r{^/}</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+      <span class="n">link_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">site</span><span class="p">.</span><span class="nf">dest</span><span class="p">,</span> <span class="n">relative_link_path</span><span class="p">)</span>
+
+      <span class="c1"># Verify target exists</span>
+      <span class="k">unless</span> <span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
+        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin:"</span><span class="p">,</span> <span class="s2">"Skipped. Target does not exist: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">#{</span><span class="n">target_path</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">next</span>
+      <span class="k">end</span>
+
+      <span class="c1"># Save for the post_write phase</span>
+      <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">][</span><span class="n">relative_link_path</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">target: </span><span class="n">target_path</span><span class="p">,</span>
+        <span class="ss">link: </span><span class="n">link_path</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Inject the symlinks directly into the final build folder</span>
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_write</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">env</span> <span class="o">==</span> <span class="s1">'production'</span>
+
+  <span class="n">symlinks</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
+  <span class="n">symlinks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">relative_path</span><span class="p">,</span> <span class="n">link</span><span class="o">|</span>
+    <span class="n">target_path</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="ss">:target</span><span class="p">]</span>
+    <span class="n">link_path</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="ss">:link</span><span class="p">]</span>
+    <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">false</span>
+
+    <span class="c1"># If the link already exists but is broken, recreate it. If it's not broken</span>
+    <span class="c1"># or is a file or directory, leave it. Otherwise, create the link.</span>
+    <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">symlink?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+      <span class="k">if</span> <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+        <span class="no">File</span><span class="p">.</span><span class="nf">unlink</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+        <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">true</span>
+      <span class="k">elsif</span> <span class="no">File</span><span class="p">.</span><span class="nf">readlink</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span> <span class="o">!=</span> <span class="n">target_path</span> <span class="c1"># Link has valid target</span>
+        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin: Symlink already exists: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+    <span class="k">elsif</span> <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
+      <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="k">else</span>                        <span class="c1"># Link path is taken by a file or directory</span>
+      <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin: Symlink path is taken: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+
+    <span class="k">if</span> <span class="n">needs_creation</span>
+      <span class="no">FileUtils</span><span class="p">.</span><span class="nf">mkdir_p</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">link_path</span><span class="p">))</span>
+      <span class="k">begin</span>
+        <span class="no">File</span><span class="p">.</span><span class="nf">symlink</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="n">link_path</span><span class="p">)</span>
+        <span class="c1"># Jekyll.logger.info "Symlink Plugin:", "Symlink created: #{link_path} -&gt; #{target_path}"</span>
+      <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin:"</span><span class="p">,</span> <span class="s2">"Failed to create symlink </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="method-3-serving-the-files-locally-with-a-web-server">Method 3: Serving the files locally with a web server</h2>
+
+<p>For example, you can serve the images locally with Python’s built-in web server:</p>
+
+<ol>
+  <li>
+    <p>Serve your image folder</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
+python3 <span class="nt">-m</span> http.server 8123 <span class="nt">--bind</span> 127.0.0.1
+</code></pre></div>    </div>
+
+    <p>If you want the server to run in the background:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup </span>python3 <span class="nt">-m</span> http.server 8123 <span class="nt">--bind</span> 127.0.0.1 <span class="o">&gt;</span>/tmp/imgserver.log 2&gt;&amp;1 &amp;
+</code></pre></div>    </div>
+
+    <p>To stop it later:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsof <span class="nt">-iTCP</span>:8123 <span class="nt">-sTCP</span>:LISTEN
+<span class="nb">kill</span> &lt;PID&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use that URL in your post</p>
+
+    <pre><code class="language-example">![](http://127.0.0.1:8123/foo/20260218184820.png)
+</code></pre>
+  </li>
+</ol>
+
+<p>You can serve from the directory <code class="language-plaintext highlighter-rouge">~/Downloads/temp/archive/image/foo/</code> but use a
+different mount path in the URL to refer to that directory, e.g.,
+<a href="http://localhost:8123/igps/20260218184820.png">http://localhost:8123/igps/20260218184820.png</a>. To achieve this we can write
+and run this python script:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
+python3 server.py
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">server.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">ThreadingHTTPServer</span><span class="p">,</span> <span class="n">SimpleHTTPRequestHandler</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Directory you want to expose
+</span><span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">"~/Downloads/temp/archive/image/foo"</span><span class="p">)).</span><span class="n">resolve</span><span class="p">()</span>
+
+<span class="n">MOUNT</span> <span class="o">=</span> <span class="s">"/igps/"</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s">"127.0.0.1"</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8123</span>
+
+
+<span class="k">class</span> <span class="nc">MountHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">translate_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="s">"""
+        Map URLs under /igps/... to files under ROOT/...
+        Reject everything else with a 404.
+        """</span>
+        <span class="c1"># Strip query/fragment
+</span>        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"?"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">"#"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">MOUNT</span><span class="p">):</span>
+            <span class="c1"># Send 404 for non-mounted paths
+</span>            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s">"__nonexistent__"</span><span class="p">)</span>
+
+        <span class="n">rel</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">MOUNT</span><span class="p">):]</span>  <span class="c1"># e.g. "20260218184820.png"
+</span>        <span class="c1"># Normalize and prevent path traversal
+</span>        <span class="n">rel_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">rel</span><span class="p">)</span>
+        <span class="n">full</span> <span class="o">=</span> <span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="n">rel_path</span><span class="p">).</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">ROOT</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">full</span><span class="p">.</span><span class="n">parents</span> <span class="ow">and</span> <span class="n">full</span> <span class="o">!=</span> <span class="n">ROOT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s">"__nonexistent__"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">full</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">log_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># optional: quieter logs
+</span>        <span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"%s - - [%s] %s</span><span class="se">\n</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">client_address</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                              <span class="bp">self</span><span class="p">.</span><span class="n">log_date_time_string</span><span class="p">(),</span>
+                                              <span class="n">fmt</span> <span class="o">%</span> <span class="n">args</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ROOT</span><span class="p">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"ERROR: directory does not exist: </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s">"</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">MountHandler</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Serving </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s"> at http://</span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}{</span><span class="n">MOUNT</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="p">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</code></pre></div></div>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.]]></summary></entry><entry><title type="html">Executing SQL Source Code Blocks in Org Mode</title><link href="https://josephtesfaye.com/josephs-blog/emacs/org-sqls/" rel="alternate" type="text/html" title="Executing SQL Source Code Blocks in Org Mode" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/emacs/org-sqls</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/emacs/org-sqls/"><![CDATA[<p>You can execute SQL source code blocks in Org Mode.</p>
+
+<h2 id="using-built-in-package-ob-sql">Using built-in package <code class="language-plaintext highlighter-rouge">ob-sql</code></h2>
+
+<p>Emacs has a built-in way to run SQL source code blocks in Org Mode through the
+packages <a href="p:emacs/lisp/progmodes/sql.el">sql</a> and
+<a href="p:emacs/lisp/org/ob-sql.el">ob-sql</a>. In order to evaluate an SQL source code
+block you must have a properly installed RDBMS. Org mode supports mysql,
+postgresql, oracle, etc.</p>
+
+<p>You’ll need to activate SQL source code blocks in your init file.</p>
+
+<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">org-babel-do-load-languages</span>
+ <span class="ss">'org-babel-load-languages</span>
+ <span class="o">'</span><span class="p">((</span><span class="nv">sql</span> <span class="o">.</span> <span class="no">t</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>Examples:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Put the header arguments on the same line:
+
+#+begin_src sql :engine mysql :dbhost localhost :dbport 3306 :dbuser root :dbpassword "123456" :database nocobase
+SELECT * FROM mytable WHERE id &gt; 500
+#+end_src
+
+Put the header arguments on separate lines:
+
+#+name: my-query
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser root
+#+header: :dbpassword "123456"
+#+header: :database nocobase
+#+begin_src sql
+DESC users;
+#+end_src
+</code></pre></div></div>
+
+<p>See <a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-sql.html">SQL Source Code Blocks in Org
+Mode</a> for
+more.</p>
+
+<h2 id="using-the-package-ob-sql-mode">Using the package <code class="language-plaintext highlighter-rouge">ob-sql-mode</code></h2>
+
+<p>The built-in package <code class="language-plaintext highlighter-rouge">ob-sql</code> currently doesn’t support sessions, that is, it
+makes a connection (session) every time you run the block, which is somewhat
+slower than using an existing session. A better approach is to use the package
+<a href="https://github.com/nikclayton/ob-sql-mode">ob-sql-mode</a>, which supports
+sessions.</p>
+
+<p>You can evaluate SQLs in Org mode directly via the package <code class="language-plaintext highlighter-rouge">ob-sql-mode</code>, which
+is an Org-Babel support for evaluating SQL using sql-mode.</p>
+
+<p>Install the package:</p>
+
+<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">setq-default</span> <span class="nv">dotspacemacs-additional-packages</span> <span class="o">'</span><span class="p">(</span><span class="nv">ob-sql-mode</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">use-package</span> <span class="nv">ob-sql-mode</span> <span class="ss">:after</span> <span class="p">(</span><span class="nv">org</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Examples:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Header 1
+Now you can run the following code block with ~org-ctrl-c-ctrl-c~ (=C-c C-c=):
+
+#+begin_src sql-mode :product mysql :session local
+DESC users;
+#+end_src
+
+** Header 2
+:PROPERTIES:
+:header-args:sql-mode: :product mysql
+:header-args:sql-mode+: :session local
+:END:
+
+You can put the header arguments in a drawer.
+
+#+begin_src sql-mode
+DESC users;
+#+end_src
+</code></pre></div></div>
+
+<p>See <code class="language-plaintext highlighter-rouge">(describe-package 'ob-sql-mode)</code> for more details on setup.</p>
+
+<h2 id="related">Related</h2>
+
+<ul>
+  <li><a href="/josephs-blog/emacs/spacemacs-sqls/">Connecting Databases and executing SQLs in Spacemacs</a></li>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Org Mode" /><category term="Database" /><summary type="html"><![CDATA[You can execute SQL source code blocks in Org Mode.]]></summary></entry><entry><title type="html">Connecting Databases and executing SQLs in Spacemacs</title><link href="https://josephtesfaye.com/josephs-blog/emacs/spacemacs-sqls/" rel="alternate" type="text/html" title="Connecting Databases and executing SQLs in Spacemacs" /><published>2026-02-16T00:00:00+00:00</published><updated>2026-02-16T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/emacs/spacemacs-sqls</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/emacs/spacemacs-sqls/"><![CDATA[<p>Here’s how you can connect to databases and execute SQLs in Spacemacs (Emacs).</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Prerequisites:</p>
+
+<ul>
+  <li>Ruby</li>
+  <li>Go</li>
+</ul>
+
+<p>Make sure these are already installed on your system.</p>
+
+<p>Configuration:</p>
+
+<ol>
+  <li>
+    <p>Enable <code class="language-plaintext highlighter-rouge">sql</code> layer</p>
+
+    <p>Add <code class="language-plaintext highlighter-rouge">sql</code> to the existing <code class="language-plaintext highlighter-rouge">dotspacemacs-configuration-layers</code> list in your
+init file.</p>
+  </li>
+  <li>
+    <p>Install external dependencies</p>
+
+    <ol>
+      <li>
+        <p>Syntax Checking: Install the <code class="language-plaintext highlighter-rouge">sqlint</code> gem.</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>sqlint
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Formatting: Install <code class="language-plaintext highlighter-rouge">sqlfmt</code> and move it to your <code class="language-plaintext highlighter-rouge">$PATH</code>.</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>sqlfmt
+sqlfmt <span class="nt">-v</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>LSP supporting: Use <code class="language-plaintext highlighter-rouge">sqls</code> (Go implementation)</p>
+
+        <ol>
+          <li>
+            <p>Install <code class="language-plaintext highlighter-rouge">sqls</code></p>
+
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go <span class="nb">install </span>github.com/sqls-server/sqls@latest
+</code></pre></div>            </div>
+
+            <p>This installs <code class="language-plaintext highlighter-rouge">sqls</code> under <code class="language-plaintext highlighter-rouge">go env GOPATH</code> (e.g., <code class="language-plaintext highlighter-rouge">~/go/bin</code>). Check:</p>
+
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/go/bin/sqls <span class="nt">--version</span>
+</code></pre></div>            </div>
+
+            <p>Ensure Emacs can find the bin by either adding it to <code class="language-plaintext highlighter-rouge">$PATH</code>:</p>
+
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HOME</span>/go/bin
+</code></pre></div>            </div>
+
+            <p>Or set the variable <code class="language-plaintext highlighter-rouge">lsp-sqls-server</code> to its absolute path:</p>
+
+            <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">with-eval-after-load</span> <span class="ss">'lsp-sqls</span> <span class="p">(</span><span class="k">setq</span> <span class="nv">lsp-sqls-server</span> <span class="s">"~/go/bin/sqls"</span><span class="p">))</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>Set the variable <code class="language-plaintext highlighter-rouge">sql-backend</code> to <code class="language-plaintext highlighter-rouge">'lsp</code>, and the variable
+<code class="language-plaintext highlighter-rouge">sql-lsp-sqls-workspace-config-path</code> to <code class="language-plaintext highlighter-rouge">'workspace</code> or <code class="language-plaintext highlighter-rouge">'root</code>.</p>
+
+            <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">setq-default</span>
+ <span class="nv">dotspacemacs-configuration-layers</span>
+ <span class="o">'</span><span class="p">((</span><span class="nv">sql</span> <span class="ss">:variables</span>
+        <span class="nv">sql-backend</span> <span class="ss">'lsp</span>
+        <span class="nv">sql-lsp-sqls-workspace-config-path</span> <span class="ss">'workspace</span><span class="p">)))</span>
+</code></pre></div>            </div>
+
+            <p>The difference between <code class="language-plaintext highlighter-rouge">'workspace</code> and <code class="language-plaintext highlighter-rouge">'root</code> depends on whether you
+are working in a simple project or a multi-module project (monorepo).
+For a simple project, they are usually the same. The distinction matters
+when your project has nested folders.</p>
+
+            <ul>
+              <li>
+                <p><code class="language-plaintext highlighter-rouge">'root</code> (Project Root):</p>
+
+                <ul>
+                  <li>
+                    <p>This is the top-level directory of your entire project, usually
+determined by the version control system (e.g., where the <code class="language-plaintext highlighter-rouge">.git/</code>
+folder lives).</p>
+                  </li>
+                  <li>
+                    <p>Use Case: You want one single configuration file to apply to the
+entire repository, regardless of which sub-folder you are working
+in.</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p><code class="language-plaintext highlighter-rouge">'workspace</code> (LSP Workspace Folder):</p>
+
+                <ul>
+                  <li>
+                    <p>This is the specific directory that lsp-mode considers the “root”
+for the current server instance. In a monorepo, this is often a
+subdirectory of the Git root.</p>
+                  </li>
+                  <li>
+                    <p>Use Case: You have a monorepo with multiple distinct services (e.g.,
+<code class="language-plaintext highlighter-rouge">backend/</code> and <code class="language-plaintext highlighter-rouge">frontend/</code>), and you want a different SQL
+configuration for each one.</p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>Put <code class="language-plaintext highlighter-rouge">.sqls/config.json</code> files under those directories, and <code class="language-plaintext highlighter-rouge">lsp-sqls</code>
+will automatically connect DB when a <code class="language-plaintext highlighter-rouge">.sqls</code> file is first opened.</p>
+
+            <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"sqls"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"connections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mysql"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dataSourceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user1:password1@tcp(localhost:3306)/sample_db"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"driver"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sqlite3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"dataSourceName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/path/to/file.db"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sqlite-local"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>            </div>
+
+            <p>To add multiple connections of the same driver (e.g., two different
+SQLite databases or two PostgreSQL environments), you simply add
+another object to the connections array in your configuration file.
+Each connection entry is independent, even if they share the same
+“driver”. You can use the “alias” field to give them unique names.</p>
+
+            <p>By default, <code class="language-plaintext highlighter-rouge">sqls</code> automatically selects the first connection listed
+in your connections array in <code class="language-plaintext highlighter-rouge">.sqls/config.json</code>. If you open a
+<code class="language-plaintext highlighter-rouge">.sql</code> file and do not manually switch connections, the LSP server
+will attempt to provide completions and run queries against that
+top-most entry. There is no explicit <code class="language-plaintext highlighter-rouge">"default": true</code> property in
+the <code class="language-plaintext highlighter-rouge">sqls</code> configuration schema. To change the default connection,
+you simply reorder the list in your configuration file.</p>
+          </li>
+          <li>
+            <p>Another way to connect DB is through the variable <code class="language-plaintext highlighter-rouge">lsp-sqls-connections</code>.</p>
+
+            <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">lsp-sqls-connections</span>
+      <span class="o">'</span><span class="p">(((</span><span class="nv">driver</span> <span class="o">.</span> <span class="s">"mysql"</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">dataSourceName</span> <span class="o">.</span> <span class="s">"&lt;user&gt;:&lt;password&gt;@tcp(localhost:3306)/&lt;database&gt;"</span><span class="p">))</span>
+        <span class="p">((</span><span class="nv">driver</span> <span class="o">.</span> <span class="s">"mssql"</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">dataSourceName</span> <span class="o">.</span> <span class="s">"Server=localhost;Database=sammy;User Id=yyoncho;Password=hunter2;"</span><span class="p">))</span>
+        <span class="p">((</span><span class="nv">driver</span> <span class="o">.</span> <span class="s">"postgresql"</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">dataSourceName</span> <span class="o">.</span> <span class="s">"host=127.0.0.1 port=5432 user=yyoncho password=123456 dbname=sammy sslmode=disable"</span><span class="p">))))</span>
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="notes-on-the-difference-between-sqls-and-sql-ls">Notes on the difference between <code class="language-plaintext highlighter-rouge">sqls</code> and <code class="language-plaintext highlighter-rouge">sql-ls</code></h3>
+
+<p>I want to enable and use the <code class="language-plaintext highlighter-rouge">sql</code> layer in Spacemacs. I’ve installed
+<a href="https://github.com/sqls-server/sqls">sqls</a> as per the
+<a href="https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Blang/sql/README.org">doc</a>.
+But when I opened a <code class="language-plaintext highlighter-rouge">.sql</code> file it’s the language server
+<a href="https://github.com/joe-re/sql-language-server">sql-language-server</a> (<code class="language-plaintext highlighter-rouge">sql-ls</code>)
+that is installed and started automatically.</p>
+
+<p>Under the <span class="spurious-link" target="~/projects/spacemacs/elpa/29.1/develop/lsp-mode-20250708.39"><em>lsp-mode
+installation directory</em></span> I find two files related to SQL support:
+<code class="language-plaintext highlighter-rouge">lsp-sql.el</code> and <code class="language-plaintext highlighter-rouge">lsp-sqls.el</code>.</p>
+
+<p>It seems the first one is an implementation using the language server <code class="language-plaintext highlighter-rouge">sql-ls</code>
+(written in TypeScript) and the second is another implementation using the
+language server <code class="language-plaintext highlighter-rouge">sqls</code> (written in Go).</p>
+
+<p>How do you use the Go version only? — You can disable <code class="language-plaintext highlighter-rouge">sql-ls</code> with:</p>
+
+<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'lsp-disabled-clients</span> <span class="ss">'sql-ls</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="connecting-db-and-executing-sqls">Connecting DB and Executing SQLs</h2>
+
+<p>You can connect to a database by opening an interactive REPL buffer (SQLi) using
+any of these commands:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sql-show-sqli-buffer</code> (<code class="language-plaintext highlighter-rouge">C-c C-z</code>, <code class="language-plaintext highlighter-rouge">M-m m b b</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">sql-product-interactive</code> (<code class="language-plaintext highlighter-rouge">C-c TAB</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-start</code> (<code class="language-plaintext highlighter-rouge">M-m m '</code>, <code class="language-plaintext highlighter-rouge">M-m m s i</code>)</li>
+</ul>
+
+<p>They ask for the connection parameters from user input and create a new session
+if there isn’t an existing SQLi session.</p>
+
+<p>Another method is using <code class="language-plaintext highlighter-rouge">sql-connect</code> and <code class="language-plaintext highlighter-rouge">sql-connection-alist</code>:</p>
+
+<ol>
+  <li>
+    <p>Set an alist of connection parameters in variable <code class="language-plaintext highlighter-rouge">sql-connection-alist</code>.</p>
+
+    <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">sql-connection-alist</span>
+      <span class="o">'</span><span class="p">((</span><span class="s">"mysql-local"</span>                  <span class="c1">; Used in the SQLi buffer name</span>
+         <span class="p">(</span><span class="nv">sql-product</span> <span class="ss">'mysql</span><span class="p">)</span>           <span class="c1">; See sql-add-product</span>
+         <span class="p">(</span><span class="nv">sql-server</span> <span class="s">"localhost"</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">sql-port</span> <span class="mi">3306</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">sql-user</span> <span class="s">"root"</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">sql-password</span> <span class="s">"123456"</span><span class="p">)</span>
+         <span class="p">(</span><span class="nv">sql-database</span> <span class="s">"mybase"</span><span class="p">))))</span>
+</code></pre></div>    </div>
+
+    <p>Connections defined here appear in the submenu SQL-&gt;Start… for making new
+SQLi sessions.</p>
+  </li>
+  <li>
+    <p>Start a SQLi session by calling <code class="language-plaintext highlighter-rouge">sql-connect</code> (<code class="language-plaintext highlighter-rouge">M-m m b c</code>), which asks for
+the above configured connection name.</p>
+
+    <div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">sql-connect</span> <span class="s">"mysql-local"</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Once a connection is created you can execute SQLs in the SQLi buffer directly.
+You can also send the SQLs from elsewhere to the SQLi buffer. For example, from
+a <code class="language-plaintext highlighter-rouge">sql-mode</code> buffer you can send SQLs in the current line or region with
+<code class="language-plaintext highlighter-rouge">sql-send-line-and-next</code> (<code class="language-plaintext highlighter-rouge">C-c C-n</code>) or <code class="language-plaintext highlighter-rouge">sql-send-region</code> (<code class="language-plaintext highlighter-rouge">C-c C-r</code>) among
+others.</p>
+
+<p>The SQLs are sent to the last created SQLi buffer by default. You can change the
+associated SQLi buffer for a <code class="language-plaintext highlighter-rouge">sql-mode</code> buffer or the globally default SQLi
+buffer using <code class="language-plaintext highlighter-rouge">sql-set-sqli-buffer</code>.</p>
+
+<h2 id="commands-in-sql-mode">Commands in <code class="language-plaintext highlighter-rouge">sql-mode</code></h2>
+
+<ul>
+  <li>
+    <p>Change SQL dialect for the current buffer: <code class="language-plaintext highlighter-rouge">spacemacs/sql-highlight</code>
+(<code class="language-plaintext highlighter-rouge">M-m m h k</code>)</p>
+  </li>
+  <li>
+    <p>Capitalize keywords in region: <code class="language-plaintext highlighter-rouge">sqlup-capitalize-keywords-in-region</code>
+(<code class="language-plaintext highlighter-rouge">M-m m c</code>)</p>
+  </li>
+  <li>
+    <p>Format codes</p>
+
+    <ul>
+      <li>in buffer: <code class="language-plaintext highlighter-rouge">sqlfmt-buffer</code> (<code class="language-plaintext highlighter-rouge">M-m m = =</code>)</li>
+      <li>in region: <code class="language-plaintext highlighter-rouge">lsp-format-region</code> (<code class="language-plaintext highlighter-rouge">M-m m = r</code>)</li>
+    </ul>
+  </li>
+  <li>Connections
+    <ul>
+      <li>LSP (sqls)
+        <ul>
+          <li>Show all connection: <code class="language-plaintext highlighter-rouge">lsp-sql-show-connections</code></li>
+          <li>Switch to another connection: <code class="language-plaintext highlighter-rouge">lsp-sql-switch-connection</code></li>
+        </ul>
+      </li>
+      <li>Connect DB in a SQLi buffer
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-show-sqli-buffer</code> (<code class="language-plaintext highlighter-rouge">C-c C-z</code>, <code class="language-plaintext highlighter-rouge">M-m m b b</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">sql-product-interactive</code> (<code class="language-plaintext highlighter-rouge">C-c TAB</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-start</code> (M-m m ‘, M-m m s i)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Databases:</p>
+
+    <ul>
+      <li>Show all: <code class="language-plaintext highlighter-rouge">lsp-sql-show-databases</code></li>
+      <li>Switch: <code class="language-plaintext highlighter-rouge">lsp-sql-switch-database</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>Tables</p>
+
+    <ul>
+      <li>Show all tables in the current database:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-list-all</code> (<code class="language-plaintext highlighter-rouge">C-c C-l a</code>, <code class="language-plaintext highlighter-rouge">M-m m l a</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">lsp-sql-show-tables</code>,  <code class="language-plaintext highlighter-rouge">lsp-execute-code-action</code> (<code class="language-plaintext highlighter-rouge">M-m m a a</code>)</li>
+        </ul>
+      </li>
+      <li>Show all fields in a table:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-list-table</code> (<code class="language-plaintext highlighter-rouge">C-c C-l t</code>, <code class="language-plaintext highlighter-rouge">M-m m l t</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">lsp-describe-thing-at-point</code> (<code class="language-plaintext highlighter-rouge">C-.</code>)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Switch associated SQLi buffer to another: <code class="language-plaintext highlighter-rouge">sql-set-sqli-buffer</code>,
+<code class="language-plaintext highlighter-rouge">sql-set-sqli-buffer-generally</code></p>
+  </li>
+  <li>
+    <p>Execute SQLs in the current:</p>
+
+    <ul>
+      <li>line:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-send-line-and-next</code> (<code class="language-plaintext highlighter-rouge">C-c C-n</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-line-and-next</code> (<code class="language-plaintext highlighter-rouge">M-m m s l</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-line-and-next-and-focus</code> (<code class="language-plaintext highlighter-rouge">M-m m s L</code>)</li>
+        </ul>
+      </li>
+      <li>region:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-send-region</code> (<code class="language-plaintext highlighter-rouge">C-c C-r</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-region</code> (<code class="language-plaintext highlighter-rouge">M-m m s r</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-region-and-focus</code> (<code class="language-plaintext highlighter-rouge">M-m m s R</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">lsp-sql-execute-query</code></li>
+        </ul>
+      </li>
+      <li>paragraph:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-send-paragraph</code> (<code class="language-plaintext highlighter-rouge">C-c C-c</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-paragraph</code> (<code class="language-plaintext highlighter-rouge">M-m m s f</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-paragraph-and-focus</code> (<code class="language-plaintext highlighter-rouge">M-m m s F</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">lsp-sql-execute-paragraph</code></li>
+        </ul>
+      </li>
+      <li>buffer:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-send-buffer</code> (<code class="language-plaintext highlighter-rouge">C-c C-b</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-buffer</code> (<code class="language-plaintext highlighter-rouge">M-m m s b</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-buffer-and-focus</code> (<code class="language-plaintext highlighter-rouge">M-m m s B</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">lsp-sql-execute-query</code></li>
+        </ul>
+      </li>
+      <li>minibuffer:
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">sql-send-string</code> (<code class="language-plaintext highlighter-rouge">C-c C-s</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-string</code> (<code class="language-plaintext highlighter-rouge">M-m m s q</code>)</li>
+          <li><code class="language-plaintext highlighter-rouge">spacemacs/sql-send-string-and-focus</code> (<code class="language-plaintext highlighter-rouge">M-m m s Q</code>)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="commands-in-sql-interactive-mode">Commands in <code class="language-plaintext highlighter-rouge">sql-interactive-mode</code></h2>
+
+<ul>
+  <li>Rename buffer
+    <ul>
+      <li>by appending a number: <code class="language-plaintext highlighter-rouge">sql-rename-buffer</code> (<code class="language-plaintext highlighter-rouge">M-m m b r</code>)</li>
+      <li>to another name: Pass a <code class="language-plaintext highlighter-rouge">universal-argument</code> to the above</li>
+    </ul>
+  </li>
+  <li>Save the connection information of the current session to
+<code class="language-plaintext highlighter-rouge">sql-connection-alist</code> if it wasn’t started with a connection name:
+<code class="language-plaintext highlighter-rouge">sql-save-connection</code> (<code class="language-plaintext highlighter-rouge">M-m m b S</code>)</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://emacs-lsp.github.io/lsp-mode/page/lsp-sqls/">https://emacs-lsp.github.io/lsp-mode/page/lsp-sqls/</a></li>
+  <li><a href="https://www.spacemacs.org/layers/+lang/sql/README.html">https://www.spacemacs.org/layers/+lang/sql/README.html</a></li>
+  <li><a href="https://github.com/sqls-server/sqls">https://github.com/sqls-server/sqls</a></li>
+  <li>help:sql-help</li>
+</ul>
+
+<h2 id="related">Related</h2>
+
+<ul>
+  <li><a href="/josephs-blog/emacs/org-sqls/">Executing SQL Source Code Blocks in Org Mode</a></li>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Database" /><summary type="html"><![CDATA[Here’s how you can connect to databases and execute SQLs in Spacemacs (Emacs).]]></summary></entry><entry><title type="html">Differences between the commands `gem` and `bundle`</title><link href="https://josephtesfaye.com/josephs-blog/web/gem-bundle/" rel="alternate" type="text/html" title="Differences between the commands `gem` and `bundle`" /><published>2026-02-15T00:00:00+00:00</published><updated>2026-02-15T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/web/gem-bundle</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/web/gem-bundle/"><![CDATA[<p>In the Ruby ecosystem, <code class="language-plaintext highlighter-rouge">gem</code> and <code class="language-plaintext highlighter-rouge">bundle</code> serve distinct but complementary roles
+in managing code libraries (known as <strong>gems</strong>). While <code class="language-plaintext highlighter-rouge">gem</code> is the primary
+interface for the <strong>RubyGems</strong> package manager, <code class="language-plaintext highlighter-rouge">bundle</code> is the command used for
+<strong>Bundler</strong>, a tool built on top of RubyGems to manage project-specific
+dependencies.</p>
+
+<h2 id="core-differences-at-a-glance">Core Differences at a Glance</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th><code class="language-plaintext highlighter-rouge">gem</code> (RubyGems)</th>
+      <th><code class="language-plaintext highlighter-rouge">bundle</code> (Bundler)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Primary Goal</td>
+      <td>General package management (install/uninstall/search).</td>
+      <td>Project-specific dependency management.</td>
+    </tr>
+    <tr>
+      <td>Scope</td>
+      <td>System-wide: Installs gems for the entire Ruby environment.</td>
+      <td>Project-local: Manages exact versions needed for a specific app.</td>
+    </tr>
+    <tr>
+      <td>Config File</td>
+      <td>None (uses direct command arguments).</td>
+      <td>Uses a Gemfile to list and lock dependencies.</td>
+    </tr>
+    <tr>
+      <td>Installation</td>
+      <td>Built into Ruby (v1.9+).</td>
+      <td>Must be installed as a gem itself (via <code class="language-plaintext highlighter-rouge">gem install bundler</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-gem-command-the-package-manager">The <code class="language-plaintext highlighter-rouge">gem</code> Command: The Package Manager</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">gem</code> command interacts with the global Ruby environment. It is used for
+broad administrative tasks rather than managing a specific application's needs.</p>
+
+<ul>
+  <li>
+    <p>Key Functions: Used to search, install, list, and uninstall libraries from
+<a href="https://rubygems.org">https://rubygems.org</a>.</p>
+  </li>
+  <li>
+    <p>Common Commands:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">gem install &lt;gem_name&gt;</code>: Downloads and installs a library to your system.</li>
+      <li><code class="language-plaintext highlighter-rouge">gem list</code>: Shows all gems currently installed in your global Ruby
+environment.</li>
+      <li><code class="language-plaintext highlighter-rouge">gem search &lt;query&gt;</code>: Finds available libraries on remote servers.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Limitation: It does not track which versions of a gem a specific project
+needs, often leading to "dependency hell" if different projects require
+conflicting versions of the same gem.</p>
+  </li>
+</ul>
+
+<h2 id="the-bundle-command-the-dependency-manager">The <code class="language-plaintext highlighter-rouge">bundle</code> Command: The Dependency Manager</h2>
+
+<p>Bundler solves the version conflict problem by creating an isolated environment
+for each project. It ensures that every developer on a team uses the exact same
+gem versions.</p>
+
+<ul>
+  <li>
+    <p>How It Works: It reads a <code class="language-plaintext highlighter-rouge">Gemfile</code>, resolves all dependencies, and creates a
+<code class="language-plaintext highlighter-rouge">Gemfile.lock</code> to record the specific versions used.</p>
+  </li>
+  <li>
+    <p>Key Functions:</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">bundle install</code>: Reads the <code class="language-plaintext highlighter-rouge">Gemfile</code>, resolves dependencies, and installs
+missing gems.</li>
+      <li><code class="language-plaintext highlighter-rouge">bundle exec &lt;command&gt;</code>: Runs a script (like <code class="language-plaintext highlighter-rouge">jekyll</code> or <code class="language-plaintext highlighter-rouge">rake</code>)
+specifically using the gem versions defined in the project's lock file.</li>
+      <li><code class="language-plaintext highlighter-rouge">bundle update</code>: Updates gems to the latest allowed versions and updates the
+lock file.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Consistency: It guarantees that the development, staging, and production
+environments are identical, preventing "it works on my machine" bugs.</p>
+  </li>
+</ul>
+
+<h2 id="when-to-use-which">When to Use Which?</h2>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">gem</code> when you want to install a general-purpose tool on your computer,
+like a Ruby version manager or Bundler itself.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">bundle</code> for almost everything related to your actual application code,
+such as adding new libraries to your project or running project-specific
+tasks.</li>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Ruby" /><summary type="html"><![CDATA[In the Ruby ecosystem, gem and bundle serve distinct but complementary roles in managing code libraries (known as gems). While gem is the primary interface for the RubyGems package manager, bundle is the command used for Bundler, a tool built on top of RubyGems to manage project-specific dependencies.]]></summary></entry><entry><title type="html">Renaming a Swift project using Xcode and Emacs</title><link href="https://josephtesfaye.com/josephs-blog/apple/renaming-xcode/" rel="alternate" type="text/html" title="Renaming a Swift project using Xcode and Emacs" /><published>2026-02-03T00:00:00+00:00</published><updated>2026-02-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/apple/renaming-xcode</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/apple/renaming-xcode/"><![CDATA[<p>You may need to rename a project to better reflect the app’s evolved feature
+set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename
+to your codebase.</p>
+
+<p><strong>Step 1: Update the Name throughout the Codebase</strong></p>
+
+<p>In Emacs, you can use <code class="language-plaintext highlighter-rouge">projectile-ripgrep</code> or <code class="language-plaintext highlighter-rouge">projectile-replace</code> to find and
+replace the name tokens. Do this only to those in the source code files, and
+skip files associated with project management.</p>
+
+<p><strong>Step 2: Perform the Project Rename in Xcode</strong></p>
+
+<p>To fully rename the app (including the icon name on the dock and the file
+structure), follow these steps in Xcode:</p>
+
+<ol>
+  <li>
+    <p>Rename Project:</p>
+
+    <ol>
+      <li>In the Project Navigator (left sidebar), click on the blue project icon
+LiveTranscribeJP.</li>
+      <li>Press Enter to rename it. Type OmniScribe and press Enter.</li>
+      <li>Xcode will ask to rename targets and schemes. Click Rename.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Rename the source folder:</p>
+
+    <ol>
+      <li>In the Project Navigator (left sidebar), click on the source folder icon
+LiveTranscribeJP.</li>
+      <li>Press Enter to rename it. Type OmniScribe and press Enter.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Rename Scheme:</p>
+
+    <ol>
+      <li>Click the scheme selector (top bar, next to the Play button).</li>
+      <li>
+        <p>Select Manage Schemes….</p>
+
+        <p><img src="https://i.postimg.cc/XqbXkTqr/20260203204557.png" alt="" /></p>
+      </li>
+      <li>Select LiveTranscribeJP, press Enter or click on it, and rename it to
+OmniScribe.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Update Bundle Identifier (Optional):</p>
+
+    <ol>
+      <li>Click the Project icon -&gt; Select the Target -&gt; Signing &amp; Capabilities.</li>
+      <li>Change <code class="language-plaintext highlighter-rouge">Bundle Identifier</code> to <code class="language-plaintext highlighter-rouge">com.yourname.OmniScribe</code>.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Update Info.plist:</p>
+
+    <p>If you see <code class="language-plaintext highlighter-rouge">Bundle name</code> or <code class="language-plaintext highlighter-rouge">Bundle display name</code> in your <code class="language-plaintext highlighter-rouge">Info.plist</code>,
+ensure they use <code class="language-plaintext highlighter-rouge">$(PRODUCT_NAME)</code> or are manually updated to OmniScribe.</p>
+  </li>
+  <li>
+    <p>Update Info.plist path in Build Settings:</p>
+
+    <ol>
+      <li>
+        <p>Open Project Settings: Click on the blue project icon (now named
+OmniScribe) in the left Project Navigator.</p>
+      </li>
+      <li>
+        <p>Select the Target: In the center panel, select the OmniScribe target
+(under "Targets").</p>
+      </li>
+      <li>
+        <p>Go to Build Settings: Click the Build Settings tab at the top.</p>
+      </li>
+      <li>
+        <p>Search for Info.plist: Type Info.plist in the search bar (top right of
+the settings list).</p>
+      </li>
+      <li>
+        <p>Update "Info.plist File":</p>
+
+        <ol>
+          <li>Locate the row named <code class="language-plaintext highlighter-rouge">Info.plist File</code> (Key: <code class="language-plaintext highlighter-rouge">INFOPLIST_FILE</code>).</li>
+          <li>Double-click the value on the right.</li>
+          <li>Change the path to point to the correct location of your file.</li>
+        </ol>
+      </li>
+    </ol>
+
+    <p>If this path isn't set correctly you may see this error:</p>
+
+    <p class="notice--danger">Build input file cannot be found: ‘/path/to/LiveTranscribeJP/Info.plist’. Did you forget to declare this file as an output of a script phase or custom build rule which produces it?</p>
+  </li>
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Apple" /><category term="Xcode" /><category term="Swift" /><summary type="html"><![CDATA[You may need to rename a project to better reflect the app’s evolved feature set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename to your codebase.]]></summary></entry><entry><title type="html">Best TTS software for Japanese</title><link href="https://josephtesfaye.com/josephs-blog/software/tts-best-natural/" rel="alternate" type="text/html" title="Best TTS software for Japanese" /><published>2026-01-18T00:00:00+00:00</published><updated>2026-01-18T00:00:00+00:00</updated><id>https://josephtesfaye.com/josephs-blog/software/tts-best-natural</id><content type="html" xml:base="https://josephtesfaye.com/josephs-blog/software/tts-best-natural/"><![CDATA[<p>As of 2026, the software that provides the most natural Japanese pronunciation
+depends on whether you value <strong>emotional expression</strong> or <strong>precision in pitch
+and grammar</strong>.</p>
+
+<p><strong>Top Recommendations for Natural Japanese TTS</strong></p>
+
+<ul>
+  <li>
+    <p><a href="https://elevenlabs.io/app/speech-synthesis/text-to-speech">ElevenLabs</a>:
+Currently regarded as a leader for <strong>**emotional range and cinematic
+performance</strong>**. Its generative models excel at capturing human-like nuances
+such as whispering, shouting, and natural prosody that traditional systems
+struggle to replicate.</p>
+  </li>
+  <li>
+    <p><strong>OpenAI Realtime API</strong>: Recommended for <strong>conversational AI</strong>. Unlike
+traditional “transcribe-then-speak” pipelines, it offers a “breathable” flow
+where the AI can laugh or whisper natively, reducing the robotic lag typical
+of older models.</p>
+  </li>
+  <li>
+    <p><strong>A.I.VOICE / AITalk</strong>: A Japanese-specific engine that is highly accurate for
+<strong>pitch accent and intonation</strong>. It allows for fine-tuning technical terms and
+proper nouns, making it a favorite for long-form narration.</p>
+  </li>
+  <li>
+    <p><strong>Microsoft Azure AI Speech</strong>: The default choice for professional or
+<strong>corporate use</strong> where consistency is key. It utilizes neural networks to
+overcome limitations in stress and intonation, providing highly polished and
+safe outputs.</p>
+  </li>
+  <li>
+    <p><strong>VOICEVOX</strong>: A high-quality <strong>open-source</strong> option widely used in Japan. It
+is known for its character-driven voices and unique accents, making it popular
+for content creation and video production.</p>
+  </li>
+  <li>
+    <p>Google Cloud (WaveNet)</p>
+  </li>
+</ul>
+
+<p><strong>Comparison of Strengths</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Software</th>
+      <th>Best For</th>
+      <th>Unique Strength</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ElevenLabs</td>
+      <td>Media &amp; Storytelling</td>
+      <td>Best emotional range and expressive performance.</td>
+    </tr>
+    <tr>
+      <td>Azure AI Speech</td>
+      <td>Business/Enterprise</td>
+      <td>Highly consistent and supports granular SSML control.</td>
+    </tr>
+    <tr>
+      <td>OpenAI</td>
+      <td>Interactive Apps</td>
+      <td>Lowest latency with a natural conversational flow.</td>
+    </tr>
+    <tr>
+      <td>A.I.VOICE</td>
+      <td>Narration</td>
+      <td>Exceptional accuracy for Japanese-specific pitch accents.</td>
+    </tr>
+    <tr>
+      <td>VOICEVOX</td>
+      <td>Content Creation</td>
+      <td>Free, character-based voices with manual pitch adjustment.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For a standard professional result without complex setup, <strong>Microsoft Azure</strong> or
+<strong>Google Cloud (WaveNet)</strong> are reliable starting points. If you want a voice
+that sounds like a real actor, <strong>ElevenLabs</strong> is the superior choice for
+naturalness in 2026.</p>
+
+<p>Compare five different Japanese-made synthetic voices:</p>
+
+<!-- Courtesy of embedresponsively.com -->
+
+<div class="responsive-video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/VljBw7mV-r4" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+  </div>
+
+<p>This video provides a direct audio comparison of top Japanese synthesis software
+like VOICEVOX and VOICEPEAK, allowing you to hear the naturalness of their
+intonation side-by-side.</p>
+
+<p><strong>Links</strong></p>
+
+<ul>
+  <li><a href="/josephs-blog/software/tts-japanese/">Built-in TTS for Japanese on macOS</a></li>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Software" /><category term="TTS" /><summary type="html"><![CDATA[As of 2026, the software that provides the most natural Japanese pronunciation depends on whether you value emotional expression or precision in pitch and grammar.]]></summary></entry></feed>

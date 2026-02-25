@@ -1,0 +1,19 @@
+[2023-01-25T23:29:30] INFO: connecting to service...
+[2023-01-25T23:29:31] INFO: connection established
+server status: not active
+[2023-01-25T23:30:39] INFO: downloading 64-bit Bonjour
+[2023-01-25T23:31:13] INFO: Bonjour install finished
+[2023-01-25T23:31:39] INFO: downloading 64-bit Bonjour
+
+[2023-01-25T23:33:13] INFO: starting server
+[2023-01-25T23:33:13] INFO: config file: C:/Users/josep/AppData/Local/Temp/Barrier.QTdawF
+[2023-01-25T23:33:13] INFO: log level: INFO
+[2023-01-25T23:33:13] INFO: service command updated
+[2023-01-25T23:33:13] INFO: starting new process as privileged user
+[2023-01-25T23:33:15] INFO: drag and drop enabled
+started server (IPv4/IPv6), waiting for clients
+server status: active
+[2023-01-25T23:40:28] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-25T23:40:29] ERROR: ssl certificate doesn't exist: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem
+[2023-01-25T23:40:44] INFO: OpenSSL 1.0.2l  25 May 2017
+[2023-01-25T23:40:44] ERROR: ssl certificate doesn't exist: C:\Users\josep\AppData\Local\Barrier\SSL\Barrier.pem

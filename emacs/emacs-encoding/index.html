@@ -1,0 +1,704 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Non-ascii characters displayed as code points in files | Orcharinth</title>
+<meta name="description" content="Sometimes when opening files in Emacs you may see them containing non-ascii characters displayed as code points. It’s because the file is displayed in the wrong encoding…">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Non-ascii characters displayed as code points in files">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/emacs/emacs-encoding/">
+
+
+  <meta property="og:description" content="Sometimes when opening files in Emacs you may see them containing non-ascii characters displayed as code points. It’s because the file is displayed in the wrong encoding…">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-05-25T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2022-06-05T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/emacs/emacs-encoding/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#emacs" itemprop="item"><span itemprop="name">Emacs</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Non-ascii characters displayed as code points in files</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Non-ascii characters displayed as code points in files">
+    <meta itemprop="description" content="Sometimes when opening files in Emacs you may see them containing non-ascii characters displayed as code points. It’s because the file is displayed in the wrong encoding…">
+    <meta itemprop="datePublished" content="2022-05-25T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2022-06-05T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/emacs/emacs-encoding/" itemprop="url">Non-ascii characters displayed as code points in files
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-25T00:00:00+00:00">May 25, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><strong>NOTE</strong>: As of writing the version of Emacs I used is <code class="language-plaintext highlighter-rouge">GNU Emacs 27.2 (build 1, x86_64-w64-mingw32) of 2021-03-26</code>.</p>
+
+<p>Sometimes when opening files in Emacs you may see them containing non-ascii characters displayed as code points. It’s because the file is displayed in the wrong encoding. This happens because files don’t really have an accurate description of what encoding they should be displayed with in themselves (see this <a href="https://softwareengineering.stackexchange.com/q/187169/173891">discussion</a>). So Emacs has to do some guesswork according to the current language environment. If the encoding with which the file should be displayed is not supported by the current language environment, it would be displayed in a wrong encoding so the characters would look messed up. For example, when you open a file originally encoded in Chinese-GBK in the English language environment it would display code points in place of Chinese characters because the English language environment doesn’t have an encoding scheme that supports Chinese characters.</p>
+
+<p>To see your current language environment check the variable <code class="language-plaintext highlighter-rouge">current-language-environment</code>. To see what coding systems are supported by a language environment use the command <code class="language-plaintext highlighter-rouge">describe-language-environment</code> (<code class="language-plaintext highlighter-rouge">C-h L</code>). To check the current encoding of the character at point use <code class="language-plaintext highlighter-rouge">what-cursor-position</code> (<code class="language-plaintext highlighter-rouge">C-u C-x =</code>). The leftmost character on the mode line indicates the current buffer’s encoding. For example, <code class="language-plaintext highlighter-rouge">U</code> indicates the UTF-8 encoding. You can hover mouse on it to show the tooltip. The area right next to the encoding area tells the EOL (End of Line) style used for the current buffer, such as Unix (LF), Windows (CRLF), or Mac (CR).</p>
+
+<p><img src="https://i.postimg.cc/yxn2GrQn/Snipaste-2022-05-25-15-30-36.png" alt="" /></p>
+
+<p>To change the current buffer’s encoding you can right click the encoding area on the mode line, or call <code class="language-plaintext highlighter-rouge">set-buffer-file-coding-system</code>, and then choose a desired coding system. Emacs coding systems can specify both character encoding and EOL style. For example, <code class="language-plaintext highlighter-rouge">utf-8-unix</code> means using UTF-8 and UNIX EOL. You can see details about a coding system with <code class="language-plaintext highlighter-rouge">describe-coding-system</code>. You can also see the current buffer’s encoding by checking the variable <code class="language-plaintext highlighter-rouge">buffer-file-coding-system</code>.</p>
+
+<p>To fix this problem, you can use a compatible language environment. If you know what language the characters are supposed to be, or better what encoding they should be displayed with, you can narrow down the choices under <code class="language-plaintext highlighter-rouge">Options &gt; Multilingual Environment &gt; Set Language Environment</code>, which sets the value of the variable <code class="language-plaintext highlighter-rouge">current-language-environment</code> to the selected one. You can also use the command <code class="language-plaintext highlighter-rouge">set-language-environment</code> (<code class="language-plaintext highlighter-rouge">C-x RET l</code>). For example, if a file is originally encoded in Chinese-GBK, to display it correctly, change the language environment to <code class="language-plaintext highlighter-rouge">Chinese-GBK</code> (<code class="language-plaintext highlighter-rouge">C-x RET l Chinese-GBK</code>), then kill the file without saving and open it again.</p>
+
+<p>You may use <code class="language-plaintext highlighter-rouge">decode-coding-string</code> and <code class="language-plaintext highlighter-rouge">encode-coding-string</code> to find out the correct encoding of the characters. For example,</p>
+
+<div class="language-elisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">decode-coding-string</span> <span class="s">"\304\343\272\303\243\254\312\300\275\347"</span> <span class="ss">'gbk</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">encode-coding-string</span> <span class="s">"你好，世界"</span> <span class="ss">'gbk</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You can also display the characters correctly without changing the language environment, that is, using the command <code class="language-plaintext highlighter-rouge">universal-coding-system-argument</code> (<code class="language-plaintext highlighter-rouge">C-x RET c</code>) before opening the file, e.g. <code class="language-plaintext highlighter-rouge">C-x RET c chinse-gbk C-x C-f &lt;your-file&gt;</code>. Or if the file is already open, you can run the command <code class="language-plaintext highlighter-rouge">revert-buffer-with-coding-system</code> (<code class="language-plaintext highlighter-rouge">C-x RET r</code>) to revert the buffer in the desired encoding, e.g., <code class="language-plaintext highlighter-rouge">C-x RET r chinese-gbk</code>.</p>
+
+<p>When the file is displayed correctly you can save it in another encoding. Use either <code class="language-plaintext highlighter-rouge">universal-coding-system-argument</code> (<code class="language-plaintext highlighter-rouge">C-x RET c</code>) or <code class="language-plaintext highlighter-rouge">set-buffer-file-coding-system</code> (<code class="language-plaintext highlighter-rouge">C-x RET f</code>) before saving it. Some examples:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>C-x RET c utf-8 RET C-x C-w &lt;new file name&gt; RET
+C-x RET f utf-8 RET C-x C-w &lt;new file name&gt; RET
+</code></pre></div></div>
+
+<p>These commands are also listed under <code class="language-plaintext highlighter-rouge">Options &gt; Multilingual Environment &gt; Set Coding Systems</code>.</p>
+
+<p>Some other utility buffers may also display non-ascii characters incorrectcly. You can follow a similar approach as described above to resolve these kinds of problems. For example, Eshell buffers may not display or read Chinese characters as expected if your <code class="language-plaintext highlighter-rouge">current-language-environment</code> is English and your native shell’s encoding is <code class="language-plaintext highlighter-rouge">Chinese-GB</code>:</p>
+
+<p>The Eshell buffer couldn’t display the output of the <code class="language-plaintext highlighter-rouge">tree</code> command correctly:</p>
+
+<p><img src="https://i.postimg.cc/kXzT5mbK/screenshot-2021-09-09-eshell-coding-mismatch.png" alt="" /></p>
+
+<p>The Eshell buffer couldn’t find the file with Chinese characters in its name using <code class="language-plaintext highlighter-rouge">es</code>:</p>
+
+<p><img src="https://i.postimg.cc/KvR9FzRm/screenshot-2021-09-09-eshell-coding-mismatch-es1.png" alt="" /></p>
+
+<p><img src="https://i.postimg.cc/Vs773Ms7/screenshot-2021-09-09-eshell-coding-mismatch-es2.png" alt="" /></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/tags/#unicode" class="page__taxonomy-item p-category" rel="tag">Unicode</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#emacs" class="page__taxonomy-item p-category" rel="tag">Emacs</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-06-05">June 5, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Non-ascii+characters+displayed+as+code+points+in+files%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Femacs%2Femacs-encoding%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Femacs%2Femacs-encoding%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/emacs/emacs-encoding/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/diary/everything/" class="pagination--pager" title="Everything Everywhere All at Once
+">Previous</a>
+    
+    
+      <a href="/josephs-blog/software/postimages/" class="pagination--pager" title="Weird behavior of direct links from postimages.org
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, a...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/emacs/emacs-encoding/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/emacs/emacs-encoding"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

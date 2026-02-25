@@ -1,0 +1,1197 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Java: Elements of Statements | Orcharinth</title>
+<meta name="description" content="Literals, identifiers, symbols, values, types">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Java: Elements of Statements">
+<meta property="og:url" content="https://josephtesfaye.com/josephs-blog/java/java-elements-of-statements/">
+
+
+  <meta property="og:description" content="Literals, identifiers, symbols, values, types">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2015-12-29T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2020-10-14T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/josephs-blog/java/java-elements-of-statements/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/josephs-blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/josephs-blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/josephs-blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/josephs-blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/josephs-blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/josephs-blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/josephs-blog/categories/#java" itemprop="item"><span itemprop="name">Java</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Java: Elements of Statements</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Java: Elements of Statements">
+    <meta itemprop="description" content="Literals, identifiers, symbols, values, types">
+    <meta itemprop="datePublished" content="2015-12-29T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2020-10-14T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/josephs-blog/java/java-elements-of-statements/" itemprop="url">Java: Elements of Statements
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2015-12-29T00:00:00+00:00">December 29, 2015</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          12 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#literals-identifiers-symbols-values-types">Literals, identifiers, symbols, values, types</a><ul><li><a href="#identifiers">Identifiers</a></li><li><a href="#symbols">Symbols</a></li><li><a href="#types-of-types">Types of types</a></li><li><a href="#numbers">Numbers</a></li><li><a href="#characters">Characters</a></li><li><a href="#boolean-values">Boolean values</a></li><li><a href="#strings">Strings</a></li></ul></li><li><a href="#operators">Operators</a><ul><li><a href="#arithmetic">Arithmetic</a></li><li><a href="#assignment">Assignment</a></li><li><a href="#comparisonrelational">Comparison/Relational</a></li><li><a href="#logicalconditional">Logical/Conditional</a></li><li><a href="#bitwise">Bitwise</a></li></ul></li><li><a href="#variables">Variables</a><ul><li><a href="#type-conversion">Type conversion</a></li><li><a href="#declaration">Declaration</a></li><li><a href="#assignment-1">Assignment</a></li><li><a href="#initializtion">Initializtion</a></li><li><a href="#usages">Usages</a></li><li><a href="#mutable-and-immutable-variables">Mutable and immutable variables</a></li></ul></li><li><a href="#reserved-words">Reserved words</a></li></ul>
+            </nav>
+          </aside>
+        
+        <h2 id="literals-identifiers-symbols-values-types">Literals, identifiers, symbols, values, types</h2>
+
+<p>A value is a number, a character, a string of characters, or a boolean,
+etc.</p>
+
+<p>Literals make the names of values. A literal could be a digit, a
+character, or a “symbol”. For example, 100 contains the literals “1”,
+“0”, “0” and represents the value of one hundred.</p>
+
+<p>A type is a set of values. Java is a statically-typed language which
+means every value has a designated type, or in other words, there’s no
+values that don’t have a type. Java types can be divided into two
+categories, <strong>primitive types</strong> and <strong>reference types</strong> (or <strong>object
+types</strong>).</p>
+
+<h3 id="identifiers">Identifiers</h3>
+
+<p>An identifier is an unlimited-length sequence of Unicode letters and
+digits used as the names of variables, methods and classes. An
+indentifier can start with a letter, an underscore <code class="language-plaintext highlighter-rouge">_</code>, or a dollar sign
+<code class="language-plaintext highlighter-rouge">$</code>, but it’s good practice to always begin with a letter. It cannot
+start with any other kind of characters including digits, whitespace,
+hyphen, asterisk, equal sign, etc, and it cannot contain whitespaces. In
+Java identifiers are case sensitive, for example, <code class="language-plaintext highlighter-rouge">foo</code> and <code class="language-plaintext highlighter-rouge">Foo</code> are
+different identifiers.</p>
+
+<p>Identifiers cannot be reserved words such as <code class="language-plaintext highlighter-rouge">class</code>, <code class="language-plaintext highlighter-rouge">public</code>,
+<code class="language-plaintext highlighter-rouge">static</code>, <code class="language-plaintext highlighter-rouge">if</code>, <code class="language-plaintext highlighter-rouge">else</code>, <code class="language-plaintext highlighter-rouge">while</code>, etc.</p>
+
+<p>It’s a good practice to always use meaningful names for variables
+instead of abbreviations. If the name consists of only one word, spell
+it in all lowercase letters, and if it consists of more than one word,
+capitalize the first letter of each subsequent word, such as
+<code class="language-plaintext highlighter-rouge">firstTime</code>. This is called <strong>camel casing</strong>. If the variable contains a
+constant value, capitalize every letter and separate subsequent words
+with underscores, such as <code class="language-plaintext highlighter-rouge">DEFAULT_VALUE</code>.</p>
+
+<p>By convention class names should begin with upper case letters, and
+variable and method names should begin with lower case letters.</p>
+
+<p>Periods are used to indicate different levels of containment in compound
+names (also called <strong>qualified names</strong>), e.g. <code class="language-plaintext highlighter-rouge">System.out.println()</code>.</p>
+
+<h3 id="symbols">Symbols</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">{ }</code> Used to group things together. If there are no curly braces in above structures only the first line of the statements will be performed.</li>
+  <li><code class="language-plaintext highlighter-rouge">//</code> In-line comment</li>
+  <li><code class="language-plaintext highlighter-rouge">/*…*/</code> Block comment</li>
+  <li><code class="language-plaintext highlighter-rouge">/**…*/</code> Javadoc comment <code class="language-plaintext highlighter-rouge">Spaces</code> They do not affect the program, but are useful for organizing code.</li>
+</ul>
+
+<h3 id="types-of-types">Types of types</h3>
+
+<p>Java is a strictly-typed language. Every value and every variable has
+their own type, and each variable can only store a value of the same
+type. There are two types of Java types: primitive types and reference
+types.</p>
+
+<ol>
+  <li>
+    <p>Primitive types</p>
+
+    <p>Primitive types of values are represented using only a certain
+finite number of bits (a bit is a 0 or 1 and 8 bits is one byte).</p>
+
+    <p>Names of primitive types begin with lower-case letters.</p>
+
+    <p>When you declare a primitive variable you get a storage space for a
+primitive value.</p>
+
+    <p>You can not create new primitive types in Java.</p>
+
+    <p>There are 8 primitive types in Java: <code class="language-plaintext highlighter-rouge">byte</code>, <code class="language-plaintext highlighter-rouge">short</code>, <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">long</code>,
+<code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">double</code>, <code class="language-plaintext highlighter-rouge">char</code>, <code class="language-plaintext highlighter-rouge">boolean</code>.</p>
+  </li>
+  <li>
+    <p>Reference types</p>
+
+    <p>Reference types (also called <strong>object types</strong>) usually represent
+more complicated data.</p>
+
+    <p>Names of object types should begin with upper-case letters.</p>
+
+    <p>When you declare an object variable you get a storage space for a
+reference to the object. To get space for the object itself you
+should use <code class="language-plaintext highlighter-rouge">new</code>.</p>
+
+    <p>You can create new object types.</p>
+
+    <p>Java is an object-oriented programming language and most Java types
+are object types, such as <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">Point</code>, <code class="language-plaintext highlighter-rouge">Rectangle</code>, etc.
+Arrays are also object types. <code class="language-plaintext highlighter-rouge">null</code> is a special value that means
+“no objects” and can be assign to any object type variable.</p>
+  </li>
+</ol>
+
+<h3 id="numbers">Numbers</h3>
+
+<ul>
+  <li>Numerical literals can include underscores as separators of digit
+groups, e.g. 1<sub>000000</sub>, 2<sub>000</sub>.000<sub>001</sub></li>
+  <li>Numbers can be represented using scientific notation, e.g. 1.3e10,
+3.5E200, 10e10.</li>
+</ul>
+
+<ol>
+  <li>
+    <p>Integers</p>
+
+    <p>Whole numbers. Integers are represented bitwise using <a href="https://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html">Two’s
+Complement</a>.
+See integer clock.</p>
+
+    <p>A <code class="language-plaintext highlighter-rouge">byte</code> type integer takes up a single byte (a sequence of 8 bits)
+of memory, which makes this type of numbers range from -128
+(-2<sup>7</sup>) to 127 (2<sup>7</sup>-1), inclusive. See <a href="http://stackoverflow.com/questions/3621067/why-is-the-range-of-bytes-128-to-127-in-java">Why is
+the range of bytes 128 to 127 in
+Java</a>.</p>
+
+    <p>A <code class="language-plaintext highlighter-rouge">short</code> type integer takes up 2 bytes (16 bits) and ranges from
+-2<sup>15</sup> to 2<sup>15</sup>-1.</p>
+
+    <p>An <code class="language-plaintext highlighter-rouge">int</code> type integer takes up 4 bytes (32 bits) and ranges from
+-2<sup>31</sup> and 2<sup>31</sup>-1 [&gt;] (approx. four billion
+numbers). It’s the default type for integers in Java. See
+<a href="d:Stack Overflow - Java the range of int.pdf">StackOverflow: The range of
+int</a>.</p>
+
+    <p>A <code class="language-plaintext highlighter-rouge">long</code> type integer takes up 8 bytes (64 bits) and ranges from
+-2<sup>63</sup> to 2<sup>63</sup>-1. Integers of this type are
+represented by appending an “l” or “L’ at the end of the number,
+e.g. 500L.</p>
+  </li>
+  <li>
+    <p>Floating-point numbers</p>
+
+    <p>Fractional numbers, real numbers.</p>
+
+    <p>A <code class="language-plaintext highlighter-rouge">float</code> type number takes up 4 bytes and ranges up to
+10<sup>38</sup> with 7 significant digits at most. Numbers of this
+type end with an “f” or “F”, e.g. 1.0F, 2f.</p>
+
+    <p>A <code class="language-plaintext highlighter-rouge">double</code> type number takes up 8 bytes and ranges up to
+1.7x10<sup>308</sup> with 15 significant digits at most. It’s the
+default type in Java for floating-point numbers.</p>
+  </li>
+  <li>
+    <p>Radices</p>
+
+    <p>Numbers can be in different radices:</p>
+
+    <ul>
+      <li>Binary: beginning with <code class="language-plaintext highlighter-rouge">0b</code> or <code class="language-plaintext highlighter-rouge">0B</code>, e.g. <code class="language-plaintext highlighter-rouge">0b101</code></li>
+      <li>Octal: beginning with with <code class="language-plaintext highlighter-rouge">0</code>, e.g. <code class="language-plaintext highlighter-rouge">077</code></li>
+      <li>Hexadecimal: beginning with <code class="language-plaintext highlighter-rouge">0x</code> or <code class="language-plaintext highlighter-rouge">0X</code>, e.g. <code class="language-plaintext highlighter-rouge">0x9a</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="characters">Characters</h3>
+
+<p>Characters are of type <code class="language-plaintext highlighter-rouge">char</code> and a character takes up 2 bytes of
+memory. A character is specified in the Unicode character set, which may
+be a letter, a number, or a symbol, and should be enclosed in single
+quotes when represented, such as ‘a’, ‘1’, etc.</p>
+
+<p>A character is stored as a 16-bits (short) integer which represents its
+position in the Unicode set, called Unicode number. In Java the
+character and its Unicode number is equivalent and can be used
+interchangeably. For example, you can assign a number to a <code class="language-plaintext highlighter-rouge">char</code> type
+variable or convert a number to a character with typecasting:</p>
+
+<pre><code class="language-example">char character = 233;
+int number = 'é';
+System.out.println((char) 233); // output: é
+</code></pre>
+
+<p>A character can be represented with <code class="language-plaintext highlighter-rouge">\u</code> followed by four hexadecimal
+digits. e.g. <code class="language-plaintext highlighter-rouge">'\u00E9'</code> -&gt; <code class="language-plaintext highlighter-rouge">'é'</code>. You can check a character’s hex
+number in the character map (Windows).</p>
+
+<p>Not all characters can be represented with one letter or symbol either
+because they are invisible functional characters such as a tab or a
+linefeed, or the letters and symbols conflict with reserved literals.
+These special characters could be represented as escaped characters by
+using a backslash <code class="language-plaintext highlighter-rouge">\</code>. Some common escaped characters are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">\t</code>: a tab</li>
+  <li><code class="language-plaintext highlighter-rouge">\r</code>: a carriage return</li>
+  <li><code class="language-plaintext highlighter-rouge">\n</code>: a linefeed</li>
+  <li><code class="language-plaintext highlighter-rouge">\b</code>: a backspace</li>
+  <li><code class="language-plaintext highlighter-rouge">\f</code>: a formfeed</li>
+  <li><code class="language-plaintext highlighter-rouge">\'</code>: a single quote</li>
+  <li><code class="language-plaintext highlighter-rouge">\"</code>: a double quote</li>
+  <li><code class="language-plaintext highlighter-rouge">\\</code>: a back slash</li>
+</ul>
+
+<h3 id="boolean-values">Boolean values</h3>
+
+<p>The results of logical propositions. A <code class="language-plaintext highlighter-rouge">boolean</code> value is either <code class="language-plaintext highlighter-rouge">true</code>
+or <code class="language-plaintext highlighter-rouge">false</code> and has type <code class="language-plaintext highlighter-rouge">boolean</code>.</p>
+
+<h3 id="strings">Strings</h3>
+
+<p>A sequence of one or more characters enclosed in double quotes.</p>
+
+<h2 id="operators">Operators</h2>
+
+<ul>
+  <li>For these operators the order of operations is based on the rules of
+precedence.</li>
+  <li>They only work with primitive types.</li>
+</ul>
+
+<h3 id="arithmetic">Arithmetic</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">+</code>: Add (numbers, characters), concatenating (strings)</li>
+  <li><code class="language-plaintext highlighter-rouge">-</code>: Subtract</li>
+  <li><code class="language-plaintext highlighter-rouge">*</code>: Multiply</li>
+  <li><code class="language-plaintext highlighter-rouge">/</code>: Divide</li>
+  <li><code class="language-plaintext highlighter-rouge">%</code>: Modulus operation, works on integers and yields the remainder of the first operand divided by the second. It also works on real numbers and yields the residue of the first operand subtracted as many copies as possible of the second.</li>
+  <li><code class="language-plaintext highlighter-rouge">i++</code>: Increment the value of <code class="language-plaintext highlighter-rouge">i</code> by 1 for its next use. <code class="language-plaintext highlighter-rouge">i</code> can be
+of type int or char.</li>
+  <li><code class="language-plaintext highlighter-rouge">i--</code>: Decrement the value of <code class="language-plaintext highlighter-rouge">i</code> by 1 for its next use. <code class="language-plaintext highlighter-rouge">i</code> can be
+of type int or char.</li>
+  <li><code class="language-plaintext highlighter-rouge">++i</code>: Increment the value of <code class="language-plaintext highlighter-rouge">i</code> by 1 immediately. <code class="language-plaintext highlighter-rouge">i</code> can be of
+type int or char.</li>
+  <li><code class="language-plaintext highlighter-rouge">--i</code>: Decrement the value of <code class="language-plaintext highlighter-rouge">i</code> by 1 immediately. <code class="language-plaintext highlighter-rouge">i</code> can be of
+type int or char.</li>
+</ul>
+
+<p>NOTE:</p>
+
+<ul>
+  <li>For <code class="language-plaintext highlighter-rouge">+,-,*,/</code> if the operands are all integers, the result is also
+an integer or otherwise a floating-point number. For the division of
+two integers the result always rounds down to the nearest integer.</li>
+  <li>A char is converted into its Unicode code number when it is used
+with an arithmetic operator.</li>
+</ul>
+
+<h3 id="assignment">Assignment</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">=</code> Assign</li>
+  <li><code class="language-plaintext highlighter-rouge">+=</code> Add a value to the current value of an int or double, e.g. x +=
+y ⇔ x = x + y</li>
+  <li><code class="language-plaintext highlighter-rouge">-=</code> Subtract a value from the current value of an int or double,
+e.g. x -= y ⇔ x = x - y</li>
+  <li><code class="language-plaintext highlighter-rouge">*=</code> x *= y ⇔ x = x*y</li>
+  <li><code class="language-plaintext highlighter-rouge">/=</code> x /= y ⇔ x = x/y</li>
+  <li><code class="language-plaintext highlighter-rouge">%=</code> x %= y ⇔ x = x % y</li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;&amp;=</code> p &amp;&amp;= q ⇔ p = p &amp;&amp; q</li>
+</ul>
+
+<h3 id="comparisonrelational">Comparison/Relational</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">==</code> Equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">!=</code> Not equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;</code> Greater than</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;</code> Less than</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;=</code> Greater than or equal to</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;=</code> Less than or equal to</li>
+</ul>
+
+<p>NOTE:</p>
+
+<ul>
+  <li>The two sides of of a condition operator have to be the same type.</li>
+  <li>
+    <p>They can be used to compare values of type char according to their
+numeric Unicode values.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">instanceof</code>: Compares an object to a specified type. You can use it to
+test if an object is an instance of a class, an instance of a subclass,
+or an instance of a class that implements a particular interface. null
+is not an instance of anything.</li>
+</ul>
+
+<h3 id="logicalconditional">Logical/Conditional</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;&amp;</code> Short-circuit and</li>
+  <li><code class="language-plaintext highlighter-rouge">||</code> Short-circuit or</li>
+  <li><code class="language-plaintext highlighter-rouge">!</code> Not</li>
+  <li><code class="language-plaintext highlighter-rouge">? :</code> The ternary operator. <code class="language-plaintext highlighter-rouge">var = &lt;exp1&gt; ? &lt;exp2&gt; : &lt;exp3&gt;;</code> If
+exp1 is true, returns exp2, or else returns
+    <ul>
+      <li>exp3</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Precedence of logical operators:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">!</code> High</li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;&amp;</code> Medium</li>
+  <li><code class="language-plaintext highlighter-rouge">||</code> Low</li>
+</ul>
+
+<h3 id="bitwise">Bitwise</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> Bitwise AND</li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> Bitwise inclusive OR</li>
+  <li><code class="language-plaintext highlighter-rouge">^</code> Bitwise exclusive OR, XOR, e.g.
+0<sup>0</sup>=0，1<sup>0</sup>=1，0<sup>1</sup>=1，1<sup>1</sup>=0</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code> Unary bitwise complement, which inverts every bit of a value,
+e.g. if x = 1 is a byte, then ~x == -2, because ~00000001 == 11111110. A negative integer is
+    represented by inverting its positive counterpart plus 1, e.g.
+    -1 == ~1 + 1, which is called Two’s Complement. If a is an
+    integer, then ~a=−a−1. The first bit of negative integers is
+    always 1.</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;&lt;</code> Signed left shift</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;</code> Signed right shift</li>
+  <li><code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code> Unsigned right shift</li>
+</ul>
+
+<h2 id="variables">Variables</h2>
+
+<h3 id="type-conversion">Type conversion</h3>
+
+<p>Variables have types. A type is a set of values. A variable is either a
+<em>primitive types</em> or a <em>reference type</em>. A variable can only hold a
+value of same type, or type which is a subset of the variable type. For
+example, an <code class="language-plaintext highlighter-rouge">int</code> variable can hold a <code class="language-plaintext highlighter-rouge">byte</code> or <code class="language-plaintext highlighter-rouge">short</code> value, but not a
+<code class="language-plaintext highlighter-rouge">long</code> value, neither a <code class="language-plaintext highlighter-rouge">float</code> or <code class="language-plaintext highlighter-rouge">double</code> value. But you can convert
+these values to <code class="language-plaintext highlighter-rouge">int</code>.</p>
+
+<ol>
+  <li>
+    <p>Automatic conversion</p>
+
+    <p>In some cases values are converted automatically.</p>
+
+    <p>When an integer is assigned to a <code class="language-plaintext highlighter-rouge">double</code> variable it is
+automatically converted to <code class="language-plaintext highlighter-rouge">double</code>. When the right side of the
+assingment is an expression with all operands being integers, Java
+evaluates the expression before the conversion. Thus, the result of
+the statement <code class="language-plaintext highlighter-rouge">double q = 1/2;</code> is 0.0, not 0.5. To gain 0.5 just
+write either or both of the operands to float-point, i.e., 1.0/2.0.</p>
+
+    <p>When assigning <code class="language-plaintext highlighter-rouge">char</code> values to <code class="language-plaintext highlighter-rouge">int</code> variables, or <code class="language-plaintext highlighter-rouge">int</code> values
+between 0 and 65545 to <code class="language-plaintext highlighter-rouge">char</code> variables, the values are
+automatically converted. This is because <code class="language-plaintext highlighter-rouge">char</code> is in fact
+equivalent to <code class="language-plaintext highlighter-rouge">int</code>.</p>
+
+    <p>When evaluating an arithmetic expression if all operands are
+integers then the result is an integer, and if one of the operands
+is a float-point number the result is a float-point number.</p>
+
+    <p>When use <code class="language-plaintext highlighter-rouge">+</code> to concatenate strings the result is a string. For
+example, <code class="language-plaintext highlighter-rouge">1 + "foo"</code> produces <code class="language-plaintext highlighter-rouge">"1foo"</code>.</p>
+  </li>
+  <li>
+    <p>Typecast</p>
+
+    <p>Typecast is to convert the type of a value to another type by using
+the typecasting operator <code class="language-plaintext highlighter-rouge">(&lt;type&gt;)</code> before the value or variable to
+convert. Not all types can be typecasted to one another. Typecast
+can happen between numeric types, between a numeric type and a
+<code class="language-plaintext highlighter-rouge">char</code> type, and between objects.</p>
+
+    <p>Type conversion from a numeric type to a higher-bit numeric type is
+automatic, e.g. from <code class="language-plaintext highlighter-rouge">short</code> to <code class="language-plaintext highlighter-rouge">int</code>, but converting a numeric type
+to a lower-bit numeric type is forced by using the operator
+<code class="language-plaintext highlighter-rouge">(&lt;type&gt;)</code>, e.g. <code class="language-plaintext highlighter-rouge">short foo = (short) 100000</code>. The result of this
+type of conversion is</p>
+
+    <pre><code class="language-example">(n - max) % range - 1 + min
+</code></pre>
+
+    <ul>
+      <li>n: the integer to be converted</li>
+      <li>max: the max value of the the type to be converted into</li>
+      <li>range: the range of the values of the type from min to max</li>
+      <li>min: the min value of the type</li>
+    </ul>
+
+    <p>Type conversion from a floating-point to an integer always rounds
+down. For example, <code class="language-plaintext highlighter-rouge">(int) 0.9</code> produces 0.</p>
+
+    <p>Typecast takes precedence over arithmetic operations. For example,
+in</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">;</span> 
+<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">pi</span> <span class="o">*</span> <span class="mf">20.0</span><span class="o">;</span> 
+</code></pre></div>    </div>
+
+    <p>x gives 60 rather than 62.</p>
+
+    <p>Between char and int: <code class="language-plaintext highlighter-rouge">(char) 233</code> -&gt; é, <code class="language-plaintext highlighter-rouge">(int) 'é'</code> -&gt; 233</p>
+
+    <p>Between object types that have inheritance relationship.</p>
+  </li>
+  <li>
+    <p>Using methods</p>
+
+    <p><code class="language-plaintext highlighter-rouge">int</code> to <code class="language-plaintext highlighter-rouge">String</code>:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">number</span><span class="o">);</span> 
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">);</span> 
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">""</span> <span class="o">+</span> <span class="n">number</span><span class="o">;</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">String</code> to <code class="language-plaintext highlighter-rouge">int</code>:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">foo</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="s">"5"</span><span class="o">);</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">String</code> to <code class="language-plaintext highlighter-rouge">double</code>:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">double</span> <span class="n">dou</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="s">"3.14"</span><span class="o">);</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">int</code> to <code class="language-plaintext highlighter-rouge">Double</code>:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Double</span> <span class="n">n</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">doubleValue</span><span class="o">();</span>
+<span class="nc">Double</span> <span class="n">n</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">doubleValue</span><span class="o">();</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="declaration">Declaration</h3>
+
+<ul>
+  <li>It is the process of deciding the type of the variable before
+assigning the value.</li>
+  <li>It is marked by putting the value type before the variable name,
+e.g. String bob.</li>
+  <li>You can declare a list of variable names such as String bob, dylan,
+felix.</li>
+</ul>
+
+<h3 id="assignment-1">Assignment</h3>
+
+<ul>
+  <li>The left side of an assignment has to be a variable name for it
+indicates the storage location where the value will go.</li>
+  <li>Expressions do not represent storage locations, only values.</li>
+  <li>The type of the value and the variable in an assignment must be the
+same.</li>
+</ul>
+
+<h3 id="initializtion">Initializtion</h3>
+
+<p>The process of declaring a variable and assigning a value to it at the
+same time. e.g. <code class="language-plaintext highlighter-rouge">String name = "Bob";</code></p>
+
+<p>You can initialize multiple variables with only one type declaration.
+E.g. <code class="language-plaintext highlighter-rouge">String name1 = "Bob", name2 = "John", name3 = "Felix";</code></p>
+
+<p>Default values: Variables that are not initialized have default values
+that depends on their types.</p>
+
+<ul>
+  <li>int variable defaults to 0</li>
+  <li>boolean variable defaults to false</li>
+  <li>object variable defaults to null</li>
+</ul>
+
+<h3 id="usages">Usages</h3>
+
+<ul>
+  <li>
+    <p>Intermediate/Temporary variables: Variables that are used in
+computation but never printed</p>
+  </li>
+  <li>
+    <p>Flags: Variables that flag the presence or absence of some
+condition, e.g. evenFlag in</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">boolean</span> <span class="n">evenFlag</span> <span class="o">=</span> <span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span><span class="o">);</span> 
+<span class="k">if</span> <span class="o">(</span><span class="n">evenFlag</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"n is even"</span><span class="o">);</span> 
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Local variables:</p>
+
+    <ul>
+      <li>variables declared inside a method definition</li>
+      <li>only exist inside the method</li>
+    </ul>
+  </li>
+  <li>
+    <p>Member variables/Global variables:</p>
+
+    <ul>
+      <li>Variables that are declared outside any method</li>
+      <li>Can be marked with modifiers such as static, public and private
+        <ul>
+          <li>static member variables</li>
+          <li>non-static member variables</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Parameters</p>
+  </li>
+  <li>
+    <p>Class variables</p>
+  </li>
+  <li>
+    <p>Instance variables</p>
+  </li>
+  <li>
+    <p>Fields: refer to both class variables and instance variables.
+Variables refer to all of the above.</p>
+  </li>
+</ul>
+
+<h3 id="mutable-and-immutable-variables">Mutable and immutable variables</h3>
+
+<ul>
+  <li>A variable is mutable if its orignal value can be modified by using
+some methods, and immutable if its original value can’t be modified
+through invoking methods.</li>
+  <li>Primitive variables are immutable, while object (except string)
+variables are mutable.</li>
+</ul>
+
+<h2 id="reserved-words">Reserved words</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">println</code> short for “print line”, adds a special character called
+newline after each line, which moves the cursor to the next line of the display</li>
+  <li><code class="language-plaintext highlighter-rouge">print</code> displays the output from multiple print statements all on
+one line. The inside of a print statement can be an expression.</li>
+  <li><code class="language-plaintext highlighter-rouge">return</code></li>
+  <li><code class="language-plaintext highlighter-rouge">new</code></li>
+  <li><code class="language-plaintext highlighter-rouge">import</code></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/josephs-blog/categories/#java" class="page__taxonomy-item p-category" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2020-10-14">October 14, 2020</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Java%3A+Elements+of+Statements%20https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fjava%2Fjava-elements-of-statements%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fjosephs-blog%2Fjava%2Fjava-elements-of-statements%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/josephs-blog/java/java-elements-of-statements/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/josephs-blog/java/java-introduction/" class="pagination--pager" title="Java: Introduction
+">Previous</a>
+    
+    
+      <a href="/josephs-blog/java/java-algorithms/" class="pagination--pager" title="Java: Algorithms
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/private-posts/" rel="permalink">Enabling Private Posts
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          13 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
+  someone with a password, and not by any other person, any search engine, a...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the
+gallery
+feature of Minimal Mistakes:
+
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/josephs-blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/josephs-blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/josephs-blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/josephs-blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/josephs-blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/josephs-blog/java/java-elements-of-statements/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/java/java-elements-of-statements"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>
