@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-02-25T15:10:47+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-02-28T18:53:42+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
   existing Markdown method. Here’s how I configure it. This article is written in
   an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact.
@@ -250,7 +250,7 @@ descriptor + subject + taxonomic rank
             </div>
           
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">Enabling Private Posts</title><link href="https://josephtesfaye.com/blog/web/private-posts/" rel="alternate" type="text/html" title="Enabling Private Posts" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">🔒 Protected Content</title><link href="https://josephtesfaye.com/blog/web/private-posts/" rel="alternate" type="text/html" title="🔒 Protected Content" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
   someone with a password, and not by any other person, any search engine, any
   other means.</p>
 <h1 id="the-ideas">The Ideas</h1>
@@ -519,6 +519,320 @@ descriptor + subject + taxonomic rank
   already-built files.</p>
 <p>Repo B’s history will strictly be clean, automated deployment commits, while
   Repo A retains your actual human commit history and draft iterations.</p>
+<h2 id="enabling-client-side-content-encryption">Enabling Client-Side Content Encryption</h2>
+<p>To make a post “private” you have several natively supported keys to add to the
+  post’s front matter:</p>
+<ul>
+  <li>
+<code>published: false</code> —handled by Jekyll natively during its read phase—if a post
+    has this set, Jekyll completely ignores the file, meaning no HTML is ever
+    generated.</li>
+  <li>
+<code>hidden: true</code> —handled by Minimal Mistakes natively to exclude the post from
+    pagination loops and recent post lists. You can still visit the post via its
+    link.</li>
+  <li>
+<code>search: false</code> —handled by Minimal Mistakes to exclude a post from the search
+    index. It only works when the search engine is Lunr.</li>
+</ul>
+<p>Now we will enable true private posts by implementing client-side content
+  encryption. We will add an <code>encrypted</code> key to control the encryption of a post. It
+  has the following values and their corresponding meanings:</p>
+<ul>
+  <li>
+<code>true</code>: Encrypt everything of the post, including the title, TOC, tags, etc.</li>
+  <li>
+<code>false</code>: No encryption, the default when unset.</li>
+  <li>
+<code>buttitle</code>: Encrypt everything but the title.</li>
+</ul>
+<p>Then we use a single, secure master password to decrypt the contents.</p>
+<p>Here is an efficient, dependency-free approach to implement this. By utilizing
+  Ruby’s standard <code>openssl</code> library during the build phase, you can encrypt the post
+  content before it’s injected into the layout. On the client side, we will use
+  the standard <code>CryptoJS</code> library via CDN to prompt for the password and decrypt the
+  content directly in the browser.</p>
+<ol>
+  <li>Create the Encryption Plugin
+    <p>Why write custom encryption instead of using a gem like <code>jekyll-crypt</code>?</p>
+    <ul>
+      <li>Dependency Rot: Most Jekyll encryption gems (like <code>jekyll-crypt</code>) haven’t
+        been updated in over 5 to 8 years. They often rely on outdated versions of
+        CryptoJS or deprecated Ruby OpenSSL methods, which can pose security risks
+        or cause build failures on modern Ruby 3.x environments.</li>
+      <li>UI Integration: Gems force their own rigid HTML/CSS structures for the
+        password prompt. A custom plugin allows you to seamlessly integrate the
+        prompt into your Minimal Mistakes theme so it matches your site’s exact
+        aesthetic.</li>
+      <li>Zero Bloat: You avoid adding third-party dependencies to your <code>Gemfile</code>.
+        Ruby’s native <code>openssl</code> library is already present, making the custom script
+        the fastest, most lightweight solution.</li>
+    </ul>
+    <p>Create a new file at <code>_plugins/encrypt_post.rb</code> and add the following code.
+      This hooks into Jekyll’s build process right after the markdown/org file is
+      converted to HTML, but before it gets wrapped in your site’s layout.</p>
+    
+            <div class="language-ruby highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'openssl'</span>
+<span class="nb">require</span> <span class="s1">'base64'</span>
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'erb'</span>
+
+<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:post_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+  <span class="n">enc</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'encrypted'</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">enc</span> <span class="o">==</span> <span class="kp">true</span> <span class="o">||</span> <span class="n">enc</span> <span class="o">==</span> <span class="s1">'true'</span> <span class="o">||</span> <span class="n">enc</span> <span class="o">==</span> <span class="s1">'buttitle'</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'excerpt'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"This post is password protected."</span>
+
+    <span class="k">if</span> <span class="n">enc</span> <span class="o">==</span> <span class="kp">true</span> <span class="o">||</span> <span class="n">enc</span> <span class="o">==</span> <span class="s1">'true'</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"🔒 Protected Content"</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'read_time'</span><span class="p">]</span> <span class="o">=</span> <span class="kp">false</span>
+    <span class="k">end</span>
+
+    <span class="n">password</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'BLOG_PASSWORD'</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">password</span><span class="p">.</span><span class="nf">nil?</span> <span class="o">||</span> <span class="n">password</span><span class="p">.</span><span class="nf">empty?</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="sr">/&lt;body&gt;.*&lt;\/body&gt;/m</span><span class="p">,</span> <span class="s2">"&lt;body&gt;&lt;p style='color:red;'&gt;Configuration error: Environment variable BLOG_PASSWORD is missing.&lt;/p&gt;&lt;/body&gt;"</span><span class="p">)</span>
+      <span class="k">next</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Parse the fully generated HTML page</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">enc</span> <span class="o">==</span> <span class="kp">true</span> <span class="o">||</span> <span class="n">enc</span> <span class="o">==</span> <span class="s1">'true'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'real_title'</span><span class="p">]</span>
+      <span class="n">title_node</span> <span class="o">=</span> <span class="n">html</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s1">'h1.page__title'</span><span class="p">)</span>
+      <span class="n">title_node</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'real_title'</span><span class="p">]</span> <span class="k">if</span> <span class="n">title_node</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Target the specific Minimal Mistakes layout blocks</span>
+    <span class="n">selectors</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="s1">'section.page__content'</span><span class="p">,</span>  <span class="c1"># The main text + TOC</span>
+      <span class="s1">'footer.page__meta'</span><span class="p">,</span>      <span class="c1"># Tags and categories</span>
+      <span class="s1">'div.page__related'</span><span class="p">,</span>      <span class="c1"># Related posts grid</span>
+      <span class="s1">'section.page__comments'</span><span class="p">,</span> <span class="c1"># Comments block</span>
+      <span class="s1">'section.page__share'</span>     <span class="c1"># Comments block</span>
+    <span class="p">]</span>
+
+    <span class="c1"># If fully encrypted, we also strip and encrypt the title header</span>
+    <span class="k">if</span> <span class="n">enc</span> <span class="o">==</span> <span class="kp">true</span> <span class="o">||</span> <span class="n">enc</span> <span class="o">==</span> <span class="s1">'true'</span>
+      <span class="n">selectors</span><span class="p">.</span><span class="nf">unshift</span><span class="p">(</span><span class="s1">'nav.breadcrumbs'</span><span class="p">,</span> <span class="s1">'header'</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Extract the HTML of the targets and replace them with placeholders</span>
+    <span class="n">selectors</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">selector</span><span class="o">|</span>
+      <span class="n">node</span> <span class="o">=</span> <span class="n">html</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">node</span>
+        <span class="n">payload</span><span class="p">[</span><span class="n">selector</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">to_html</span>
+        <span class="n">safe_id</span> <span class="o">=</span> <span class="s2">"secure-placeholder-</span><span class="si">#{</span><span class="n">selector</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^a-zA-Z0-9]/</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">node</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s2">"&lt;div id='</span><span class="si">#{</span><span class="n">safe_id</span><span class="si">}</span><span class="s2">'&gt;&lt;/div&gt;"</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Skip if none of the elements are found (e.g., custom layouts)</span>
+    <span class="k">next</span> <span class="k">if</span> <span class="n">payload</span><span class="p">.</span><span class="nf">empty?</span>
+
+    <span class="c1"># Encrypt the extracted HTML bundle</span>
+    <span class="n">cipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'aes-256-cbc'</span><span class="p">)</span>
+    <span class="n">cipher</span><span class="p">.</span><span class="nf">encrypt</span>
+    <span class="n">iv</span> <span class="o">=</span> <span class="n">cipher</span><span class="p">.</span><span class="nf">random_iv</span>
+    <span class="n">salt</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Random</span><span class="p">.</span><span class="nf">random_bytes</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">PKCS5</span><span class="p">.</span><span class="nf">pbkdf2_hmac</span><span class="p">(</span><span class="n">password</span><span class="p">.</span><span class="nf">to_s</span><span class="p">,</span> <span class="n">salt</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">cipher</span><span class="p">.</span><span class="nf">key_len</span><span class="p">,</span> <span class="s1">'sha256'</span><span class="p">)</span>
+    <span class="n">cipher</span><span class="p">.</span><span class="nf">key</span> <span class="o">=</span> <span class="n">key</span>
+
+    <span class="n">encrypted_data</span> <span class="o">=</span> <span class="n">cipher</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)</span> <span class="o">+</span> <span class="n">cipher</span><span class="p">.</span><span class="nf">final</span>
+
+    <span class="n">b64_iv</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span><span class="p">(</span><span class="n">iv</span><span class="p">)</span>
+    <span class="n">b64_salt</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span><span class="p">(</span><span class="n">salt</span><span class="p">)</span>
+    <span class="n">b64_ciphertext</span> <span class="o">=</span> <span class="no">Base64</span><span class="p">.</span><span class="nf">strict_encode64</span><span class="p">(</span><span class="n">encrypted_data</span><span class="p">)</span>
+
+    <span class="c1"># Build the injection UI</span>
+    <span class="n">template_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">source</span><span class="p">,</span> <span class="s1">'_includes'</span><span class="p">,</span> <span class="s1">'secure_ui.html'</span><span class="p">)</span>
+    <span class="n">secure_ui</span> <span class="o">=</span> <span class="no">ERB</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="n">template_path</span><span class="p">)).</span><span class="nf">result</span><span class="p">(</span><span class="nb">binding</span><span class="p">)</span>
+
+    <span class="c1"># Inject the UI strictly inside div#main by targeting an inner placeholder</span>
+    <span class="n">target_selector</span> <span class="o">=</span> <span class="p">(</span><span class="n">enc</span> <span class="o">==</span> <span class="kp">true</span> <span class="o">||</span> <span class="n">enc</span> <span class="o">==</span> <span class="s1">'true'</span><span class="p">)</span> <span class="p">?</span> <span class="s1">'header'</span> <span class="p">:</span> <span class="s1">'section.page__content'</span>
+    <span class="n">target_id</span> <span class="o">=</span> <span class="s2">"secure-placeholder-</span><span class="si">#{</span><span class="n">target_selector</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^a-zA-Z0-9]/</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">injection_node</span> <span class="o">=</span> <span class="n">html</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"#</span><span class="si">#{</span><span class="n">target_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="o">||</span> <span class="n">html</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"#secure-placeholder-section-page--content"</span><span class="p">)</span>
+    <span class="n">injection_node</span><span class="p">.</span><span class="nf">add_previous_sibling</span><span class="p">(</span><span class="n">secure_ui</span><span class="p">)</span> <span class="k">if</span> <span class="n">injection_node</span>
+
+    <span class="c1"># Save the modified HTML back to the document</span>
+    <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">html</span><span class="p">.</span><span class="nf">to_html</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+            </div>
+          
+    <p>Create a new file at <code>_includes/secure_ui.html</code>:</p>
+    
+            <div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"secure-post-container"</span> <span class="na">class=</span><span class="s">"page__content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"secure-prompt"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">style=</span><span class="s">"margin-top: 0;"</span><span class="nt">&gt;</span>🔒 Protected Content<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">id=</span><span class="s">"secure-password"</span> <span class="na">placeholder=</span><span class="s">"Enter password"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"decryptPost()"</span><span class="nt">&gt;</span>Unlock<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"secure-error"</span><span class="nt">&gt;</span>Incorrect password.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+  <span class="nf">#secure-prompt</span> <span class="p">{</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">40px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0.05</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nf">#secure-prompt</span> <span class="nt">input</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+    <span class="nl">margin-right</span><span class="p">:</span> <span class="m">8px</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="m">200px</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nf">#secure-prompt</span> <span class="nt">button</span> <span class="p">{</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span> <span class="m">20px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">4px</span><span class="p">;</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="m">#333</span><span class="p">;</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nf">#secure-error</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#d9534f</span><span class="p">;</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+    <span class="nl">margin-top</span><span class="p">:</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">decryptPost</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pwd</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-password</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">encryptedData</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">&lt;%= b64_ciphertext %&gt;</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">salt</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;%= b64_salt %&gt;</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">iv</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;%= b64_iv %&gt;</span><span class="dl">"</span><span class="p">);</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">PBKDF2</span><span class="p">(</span><span class="nx">pwd</span><span class="p">,</span> <span class="nx">salt</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">keySize</span><span class="p">:</span> <span class="mi">256</span> <span class="o">/</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="na">iterations</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="na">hasher</span><span class="p">:</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">algo</span><span class="p">.</span><span class="nx">SHA256</span>
+      <span class="p">});</span>
+      <span class="kd">var</span> <span class="nx">cipherParams</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">lib</span><span class="p">.</span><span class="nx">CipherParams</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="na">ciphertext</span><span class="p">:</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Base64</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">encryptedData</span><span class="p">)</span>
+      <span class="p">});</span>
+      <span class="kd">var</span> <span class="nx">decrypted</span> <span class="o">=</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">AES</span><span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span><span class="nx">cipherParams</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">iv</span><span class="p">:</span> <span class="nx">iv</span>
+      <span class="p">});</span>
+      <span class="kd">var</span> <span class="nx">decryptedJson</span> <span class="o">=</span> <span class="nx">decrypted</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">enc</span><span class="p">.</span><span class="nx">Utf8</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">decryptedJson</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Decryption failed</span><span class="dl">"</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">decryptedJson</span><span class="p">);</span>
+
+      <span class="c1">// Restore each element exactly where its placeholder is</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">selector</span> <span class="k">in</span> <span class="nx">elements</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">safeId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">secure-placeholder-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">selector</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[^</span><span class="sr">a-zA-Z0-9</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">placeholder</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">safeId</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">placeholder</span><span class="p">)</span> <span class="nx">placeholder</span><span class="p">.</span><span class="nx">outerHTML</span> <span class="o">=</span> <span class="nx">elements</span><span class="p">[</span><span class="nx">selector</span><span class="p">];</span>
+      <span class="p">}</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-post-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+
+      <span class="c1">// Re-initialize Gumshoe scroll spy init</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav.toc</span><span class="dl">"</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">spy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gumshoe</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav.toc a</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+          <span class="c1">// Active classes</span>
+          <span class="na">navClass</span><span class="p">:</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// applied to the nav list item</span>
+          <span class="na">contentClass</span><span class="p">:</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// applied to the content</span>
+
+          <span class="c1">// Nested navigation</span>
+          <span class="na">nested</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">// if true, add classes to parents of active link</span>
+          <span class="na">nestedClass</span><span class="p">:</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// applied to the parent items</span>
+
+          <span class="c1">// Offset &amp; reflow</span>
+          <span class="na">offset</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="c1">// how far from the top of the page to activate a content area</span>
+          <span class="na">reflow</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// if true, listen for reflows</span>
+
+          <span class="c1">// Event support</span>
+          <span class="na">events</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// if true, emit custom events</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-error</span><span class="dl">'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">pwdInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-password</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">pwdInput</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">pwdInput</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">keypress</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">key</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">Enter</span><span class="dl">'</span><span class="p">)</span> <span class="nx">decryptPost</span><span class="p">();</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>Use a single, secure master password
+    <p>The industry-standard way to handle secrets without hardcoding them in
+      configuration files or front matter is through Environment Variables. You
+      will store the password as a GitHub Secret for your automated deployments,
+      and pass it inline when testing locally.</p>
+    <ol>
+      <li>Update the GitHub Action
+        <p>First, go to your private repository settings on GitHub (Settings &gt;
+          Secrets and variables &gt; Actions). Add a new Repository Secret named
+          POST_PASSWORD and enter your master password.</p>
+        <p>Then, update your workflow file to pass this secret into the build
+          environment:</p>
+        
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="gd">--- .github/workflows/jekyll.yml
+</span><span class="gi">+++ .github/workflows/jekyll.yml
+</span><span class="p">@@ -25,2 +25,3 @@</span>
+         env:
+           JEKYLL_ENV: production
+<span class="gi">+          POST_PASSWORD: $</span></code></pre></div>
+            </div>
+          
+      </li>
+      <li>Local Usage
+        <p>When you are writing locally and need to test an encrypted post, you
+          simply pass the variable directly into your terminal command before
+          serving:</p>
+        
+            <div class="language-sh highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nv">POST_PASSWORD</span><span class="o">=</span><span class="s2">"your_master_password"</span> bundle <span class="nb">exec </span>jekyll serve</code></pre></div>
+            </div>
+          
+        <p>If you don’t want to type it every time, you can add to your <code>~/.zshrc</code> or
+          <code>~/.bashrc</code> file:</p>
+        
+            <div class="language-sh highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">POST_PASSWORD</span><span class="o">=</span><span class="s2">"your_master_password"</span></code></pre></div>
+            </div>
+          
+      </li>
+    </ol>
+  </li>
+  <li>Usage in Front Matter
+    <p>Now, you can define your visibility state across your Markdown or Org files
+      effortlessly.</p>
+    
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>---
+title: "My Post"
+published: true
+hidden: false
+search: false
+encrypted: true
+---</code></pre></div>
+            </div>
+          
+  </li>
+</ol>
 <h1 id="side-notes">Side Notes</h1>
 <h2 id="the-jekyll-build-process">The Jekyll Build Process</h2>By default, Jekyll completely empties the destination directory (<code>_site/</code>) every
   time you run a build or start the local server. It does this to ensure no stale,
@@ -607,7 +921,7 @@ rm -rf .jekyll-cache .jekyll-metadata
     <p>This instantly deletes the Jekyll caches and wipes everything inside <code>_site/</code>
       except the .git/ directory.</p>
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to make a post private, that is, it can only be seen by me, or someone with a password, and not by any other person, any search engine, any other means.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[This post is password protected.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
 <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a>
 feature of Minimal Mistakes:</p>
 
