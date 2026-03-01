@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-01T07:08:22+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-01T08:10:31+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
   existing Markdown method. Here’s how I configure it. This article is written in
   an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact.
@@ -647,26 +647,24 @@ This is a warning notice inside an Org file.
   content before it’s injected into the layout. On the client side, we will use
   the standard <code>CryptoJS</code> library via CDN to prompt for the password and decrypt the
   content directly in the browser.</p>
-<ol>
-  <li>Create the Encryption Plugin
-    <p>Why write custom encryption instead of using a gem like <code>jekyll-crypt</code>?</p>
-    <ul>
-      <li>Dependency Rot: Most Jekyll encryption gems (like <code>jekyll-crypt</code>) haven’t
-        been updated in over 5 to 8 years. They often rely on outdated versions of
-        CryptoJS or deprecated Ruby OpenSSL methods, which can pose security risks
-        or cause build failures on modern Ruby 3.x environments.</li>
-      <li>UI Integration: Gems force their own rigid HTML/CSS structures for the
-        password prompt. A custom plugin allows you to seamlessly integrate the
-        prompt into your Minimal Mistakes theme so it matches your site’s exact
-        aesthetic.</li>
-      <li>Zero Bloat: You avoid adding third-party dependencies to your <code>Gemfile</code>.
-        Ruby’s native <code>openssl</code> library is already present, making the custom script
-        the fastest, most lightweight solution.</li>
-    </ul>
-    <p>Create a new file at <code>_plugins/encrypt_post.rb</code> and add the following code.
-      This hooks into Jekyll’s build process right after the markdown/org file is
-      converted to HTML, but before it gets wrapped in your site’s layout.</p>
-    
+<h3 id="create-the-encryption-plugin">Create the Encryption Plugin</h3>
+<p>Why write custom encryption instead of using a gem like <code>jekyll-crypt</code>?</p>
+<ul>
+  <li>Dependency Rot: Most Jekyll encryption gems (like <code>jekyll-crypt</code>) haven’t been
+    updated in over 5 to 8 years. They often rely on outdated versions of CryptoJS
+    or deprecated Ruby OpenSSL methods, which can pose security risks or cause
+    build failures on modern Ruby 3.x environments.</li>
+  <li>UI Integration: Gems force their own rigid HTML/CSS structures for the
+    password prompt. A custom plugin allows you to seamlessly integrate the prompt
+    into your Minimal Mistakes theme so it matches your site’s exact aesthetic.</li>
+  <li>Zero Bloat: You avoid adding third-party dependencies to your <code>Gemfile</code>. Ruby’s
+    native <code>openssl</code> library is already present, making the custom script the
+    fastest, most lightweight solution.</li>
+</ul>
+<p>Create a new file at <code>_plugins/encrypt_post.rb</code> and add the following code. This
+  hooks into Jekyll’s build process right after the markdown/org file is converted
+  to HTML, but before it gets wrapped in your site’s layout.</p>
+
             <div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'openssl'</span>
 <span class="nb">require</span> <span class="s1">'base64'</span>
@@ -757,8 +755,8 @@ This is a warning notice inside an Org file.
 <span class="k">end</span></code></pre></div>
             </div>
           
-    <p>Create a new file at <code>_includes/secure_ui.html</code>:</p>
-    
+<p>Create a new file at <code>_includes/secure_ui.html</code>:</p>
+
             <div class="language-html highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"secure-post-container"</span> <span class="na">class=</span><span class="s">"page__content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"secure-prompt"</span><span class="nt">&gt;</span>
@@ -833,9 +831,14 @@ This is a warning notice inside an Org file.
         <span class="k">if</span> <span class="p">(</span><span class="nx">placeholder</span><span class="p">)</span> <span class="nx">placeholder</span><span class="p">.</span><span class="nx">outerHTML</span> <span class="o">=</span> <span class="nx">elements</span><span class="p">[</span><span class="nx">selector</span><span class="p">];</span>
       <span class="p">}</span>
       <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-post-container</span><span class="dl">'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-error</span><span class="dl">'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+      <span class="k">return</span><span class="p">;</span> <span class="c1">// Stop execution if decryption fails</span>
+    <span class="p">}</span>
 
-      <span class="c1">// Re-initialize Gumshoe scroll spy init</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav.toc</span><span class="dl">"</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Re-initialize Gumshoe scroll spy init</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">Gumshoe</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav.toc a</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">spy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gumshoe</span><span class="p">(</span><span class="dl">"</span><span class="s2">nav.toc a</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
           <span class="c1">// Active classes</span>
           <span class="na">navClass</span><span class="p">:</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// applied to the nav list item</span>
@@ -853,15 +856,44 @@ This is a warning notice inside an Org file.
           <span class="na">events</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// if true, emit custom events</span>
         <span class="p">});</span>
       <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Gumshoe failed to load</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+    <span class="p">}</span>
 
-      <span class="c1">// Re-initialize Disqus comments</span>
+    <span class="c1">// Re-initialize Disqus comments</span>
+    <span class="k">try</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">DISQUS</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">DISQUS</span><span class="p">.</span><span class="nx">reset</span><span class="p">({</span>
           <span class="na">reload</span><span class="p">:</span> <span class="kc">true</span>
         <span class="p">});</span>
       <span class="p">}</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">secure-error</span><span class="dl">'</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">block</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Disqus failed to load</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Re-apply image-popup class and re-initialize Magnific Popup</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">jQuery</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">magnificPopup</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">$imgLinks</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="dl">"</span><span class="s2">a[href$='.jpg'],a[href$='.jpeg'],a[href$='.JPG'],a[href$='.png'],a[href$='.gif'],a[href$='.webp']</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">$imgLinks</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">image-popup</span><span class="dl">"</span><span class="p">);</span>
+        <span class="nx">jQuery</span><span class="p">(</span><span class="dl">'</span><span class="s1">.image-popup</span><span class="dl">'</span><span class="p">).</span><span class="nx">magnificPopup</span><span class="p">({</span>
+          <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">image</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">tLoading</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Loading image #%curr%...</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">gallery</span><span class="p">:</span> <span class="p">{</span> <span class="na">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">navigateByImgClick</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">preload</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">},</span>
+          <span class="na">image</span><span class="p">:</span> <span class="p">{</span> <span class="na">tError</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&lt;a href="%url%"&gt;Image #%curr%&lt;/a&gt; could not be loaded.</span><span class="dl">'</span> <span class="p">},</span>
+          <span class="na">removalDelay</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+          <span class="na">mainClass</span><span class="p">:</span> <span class="dl">'</span><span class="s1">mfp-zoom-in</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">callbacks</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">beforeOpen</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="k">this</span><span class="p">.</span><span class="nx">st</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">markup</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">st</span><span class="p">.</span><span class="nx">image</span><span class="p">.</span><span class="nx">markup</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">mfp-figure</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mfp-figure mfp-with-anim</span><span class="dl">'</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="na">closeOnContentClick</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">midClick</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Magnific Popup failed to load</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
@@ -876,20 +908,70 @@ This is a warning notice inside an Org file.
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
             </div>
           
+<p>Can we do the encryption after everything is initialized or generated so that we
+  don’t have to handle the re-initializations of Gumshoe, Disqus, image-popup,
+  etc.?</p>
+<p>No, it is fundamentally impossible to do this without completely destroying the
+  security of your private posts.</p>
+<p>Here is the architectural reason why re-initialization is mathematically
+  unavoidable for true client-side encryption:</p>
+<ul>
+  <li>The Security Paradox
+    <p>For plugins like Gumshoe, Disqus, and Magnific Popup to initialize naturally
+      when the page first loads, the raw, unencrypted HTML (your headings, image
+      links, and text) <b>must</b> physically exist in the browser’s Document Object Model
+      (DOM) at the exact moment the page finishes loading.</p>
+    <p>If the unencrypted HTML is in the DOM when the page loads, the encryption is
+      completely fake. Anyone could simply right-click the page, select “View Page
+      Source,” bypass your password prompt, and read the secret content in plain
+      text. Search engine bots would also scrape it immediately.</p>
   </li>
-  <li>Use a single, secure master password
-    <p>The industry-standard way to handle secrets without hardcoding them in
-      configuration files or front matter is through Environment Variables. You
-      will store the password as a GitHub Secret for your automated deployments,
-      and pass it inline when testing locally.</p>
+  <li>The Secure Timeline
+    <p>True privacy requires the server to scramble the data <i>before</i> it ever travels
+      over the network. Here is the timeline of what currently happens, which is the
+      industry standard for secure client-side decryption:</p>
     <ol>
-      <li>Update the GitHub Action
-        <p>First, go to your private repository settings on GitHub (Settings &gt;
-          Secrets and variables &gt; Actions). Add a new Repository Secret named
-          POST_PASSWORD and enter your master password.</p>
-        <p>Then, update your workflow file to pass this secret into the build
-          environment:</p>
-        
+      <li>
+<b>The Server (Jekyll):</b> Encrypts the HTML and packs it into a scrambled
+        string. The raw content is deleted from the final <code>.html</code> file.</li>
+      <li>
+<b>The Browser Load:</b> The browser downloads the page. The JS plugins (Gumshoe,
+        Disqus) fire immediately. They scan the page, see no headings and no
+        galleries, and do nothing.</li>
+      <li>
+<b>The User Input:</b> The user types the password. The JavaScript decrypts the
+        scrambled string and injects the restored HTML into the page dynamically.</li>
+      <li>
+<b>The Re-initialization:</b> Because the plugins have already run and gone to
+        sleep during Step 2, you <b>must</b> manually wake them up and tell them to scan
+        the page again now that the content has appeared.</li>
+    </ol>
+  </li>
+  <li>The Verdict
+    <p>What you are doing right now—manually triggering <code>.magnificPopup()</code> and
+      <code>DISQUS.reset()</code> inside the success block—is actually the fastest, most
+      efficient, and standard best practice in modern web development for handling
+      dynamically injected DOM content (like in Single Page Applications or AJAX
+      calls).</p>
+    <p>Attempting to delay the entire site’s JavaScript execution until after a user
+      types a password would cause massive performance bottlenecks and break the
+      layout of your public elements (like the site header and navigation menu)
+      while the user is looking at the password prompt.</p>
+  </li>
+</ul>
+<h3 id="use-a-single-secure-master-password">Use a single, secure master password</h3>
+<p>The industry-standard way to handle secrets without hardcoding them in
+  configuration files or front matter is through Environment Variables. You will
+  store the password as a GitHub Secret for your automated deployments, and pass
+  it inline when testing locally.</p>
+<ol>
+  <li>Update the GitHub Action
+    <p>First, go to your private repository settings on GitHub (Settings &gt; Secrets
+      and variables &gt; Actions). Add a new Repository Secret named POST_PASSWORD and
+      enter your master password.</p>
+    <p>Then, update your workflow file to pass this secret into the build
+      environment:</p>
+    
             <div class="language-diff highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="gd">--- .github/workflows/jekyll.yml
 </span><span class="gi">+++ .github/workflows/jekyll.yml
@@ -899,30 +981,28 @@ This is a warning notice inside an Org file.
 <span class="gi">+          POST_PASSWORD: $</span></code></pre></div>
             </div>
           
-      </li>
-      <li>Local Usage
-        <p>When you are writing locally and need to test an encrypted post, you
-          simply pass the variable directly into your terminal command before
-          serving:</p>
-        
+  </li>
+  <li>Local Usage
+    <p>When you are writing locally and need to test an encrypted post, you simply
+      pass the variable directly into your terminal command before serving:</p>
+    
             <div class="language-sh highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="nv">POST_PASSWORD</span><span class="o">=</span><span class="s2">"your_master_password"</span> bundle <span class="nb">exec </span>jekyll serve</code></pre></div>
             </div>
           
-        <p>If you don’t want to type it every time, you can add to your <code>~/.zshrc</code> or
-          <code>~/.bashrc</code> file:</p>
-        
+    <p>If you don’t want to type it every time, you can add to your <code>~/.zshrc</code> or
+      <code>~/.bashrc</code> file:</p>
+    
             <div class="language-sh highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">POST_PASSWORD</span><span class="o">=</span><span class="s2">"your_master_password"</span></code></pre></div>
             </div>
           
-      </li>
-    </ol>
   </li>
-  <li>Usage in Front Matter
-    <p>Now, you can define your visibility state across your Markdown or Org files
-      effortlessly.</p>
-    
+</ol>
+<h3 id="use-in-front-matter">Use in Front Matter</h3>
+<p>Now, you can define your visibility state across your Markdown or Org files
+  effortlessly.</p>
+
             <div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>---
 title: "My Post"
@@ -933,8 +1013,42 @@ encrypted: true
 ---</code></pre></div>
             </div>
           
-  </li>
-</ol>
+<h2 id="testing">Testing</h2>
+<p>This gallery is used to check if gallery works normally after decryption:</p>
+
+
+
+
+
+
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);">
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="Use alt for title">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="Use alt for title">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;Link to post: &lt;a href="/blog/web/local-images/"&gt;Local images&lt;/a&gt;&lt;/p&gt;'>
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+  
+    <figcaption>My custom gallery
+</figcaption>
+  
+</figure>
+
+
+
 <h1 id="side-notes">Side Notes</h1>
 <h2 id="the-jekyll-build-process">The Jekyll Build Process</h2>By default, Jekyll completely empties the destination directory (<code>_site/</code>) every
   time you run a build or start the local server. It does this to ensure no stale,
