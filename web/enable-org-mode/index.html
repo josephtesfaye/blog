@@ -1,13 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--
   Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
   Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-
-<html lang="en" class="no-js">
+--><html lang="en" class="no-js">
   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Enabling drafting in Org Mode in Minimal Mistakes | Orcharinth</title>
@@ -76,8 +75,7 @@
 
 
 
-    <script data-ad-client="ca-pub-2501730911245634" async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script data-ad-client="ca-pub-2501730911245634" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 <!-- Make the post width wider when `author_profile: false` -->
 
@@ -133,19 +131,20 @@
           Orcharinth
           <span class="site-subtitle">Code. Culture. Cultivation.</span>
         </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-            <a href="/blog/year-archive/" 
-              >Posts</a>
-          </li><li class="masthead__menu-item">
-            <a href="/blog/projects/" 
-              >Projects</a>
-          </li><li class="masthead__menu-item">
-            <a href="/blog/collections/" 
-              >Collections</a>
-          </li><li class="masthead__menu-item">
-            <a href="/blog/about/" 
-              >About</a>
-          </li></ul>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+            <a href="/blog/year-archive/">Posts</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/projects/">Projects</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/collections/">Collections</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/about/">About</a>
+          </li>
+</ul>
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
@@ -190,7 +189,7 @@
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/blog/" itemprop="item"><span itemprop="name">Home</span></a>
 
-          <meta itemprop="position" content="1" />
+          <meta itemprop="position" content="1">
         </li>
         <span class="sep">/</span>
       
@@ -198,7 +197,7 @@
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/blog/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
-          <meta itemprop="position" content="2" />
+          <meta itemprop="position" content="2">
         </li>
         <span class="sep">/</span>
       
@@ -252,7 +251,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          6 minute read
+          9 minute read
         
       </span>
     
@@ -266,8 +265,61 @@
         
           <aside class="sidebar__right sticky">
             <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#org-elements-examples">Org Elements Examples</a><ul><li><a href="#tables">Tables</a></li><li><a href="#lists">Lists</a></li><li><a href="#images">Images</a></li><li><a href="#code-highlighting">Code highlighting</a></li><li><a href="#notices">Notices</a></li></ul></li><li><a href="#configurations">Configurations</a><ul><li><a href="#basic-converter">Basic Converter</a></li><li><a href="#notices">Notices</a></li><li><a href="#20260301173459">Custom ID</a></li></ul></li></ul>
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li>
+<a href="#org-elements-examples">Org Elements Examples</a><ul>
+<li>
+<a href="#numbered-headings">Numbered Headings</a><ul>
+<li>
+<a href="#heading-a">Heading A</a><ul>
+<li>
+<a href="#heading-1"><span class="toc-number">1. </span>Heading 1</a><ul>
+<li>
+<a href="#heading-11"><span class="toc-number">1.1. </span>Heading 1.1</a><ul><li><a href="#heading-111"><span class="toc-number">1.1.1. </span>Heading 1.1.1</a></li></ul>
+</li>
+<li><a href="#heading-12"><span class="toc-number">1.2. </span>Heading 1.2</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-2"><span class="toc-number">2. </span>Heading 2</a><ul><li><a href="#heading-21"><span class="toc-number">2.1. </span>Heading 2.1</a></li></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#heading-b">Heading B</a><ul>
+<li>
+<a href="#heading-b1">Heading B1</a><ul>
+<li>
+<a href="#heading-b11"><span class="toc-number">1. </span>Heading B1.1</a><ul><li><a href="#heading-b111"><span class="toc-number">1.1. </span>Heading B1.1.1</a></li></ul>
+</li>
+<li><a href="#heading-b12"><span class="toc-number">2. </span>Heading B1.2</a></li>
+</ul>
+</li>
+<li>
+<a href="#heading-b2">Heading B2</a><ul><li><a href="#heading-b21">Heading B2.1</a></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#code-highlighting">Code highlighting</a></li>
+<li><a href="#notices">Notices</a></li>
+</ul>
+</li>
+<li>
+<a href="#configurations">Configurations</a><ul>
+<li><a href="#basic-converter">Basic Converter</a></li>
+<li><a href="#20260301193852">Notices</a></li>
+<li><a href="#20260301173459">Custom ID</a></li>
+<li><a href="#20260301193839">Numbered Headings</a></li>
+</ul>
+</li>
+</ul>
             </nav>
           </aside>
         
@@ -279,6 +331,86 @@
   matter, Liquid syntax, figures, galleries, etc. exactly the same as in Markdown.</p>
 <p>Here are the basic elements demonstrated:</p>
 <h1 id="org-elements-examples">Org Elements Examples</h1>
+<h2 id="numbered-headings">Numbered Headings</h2>
+<p>Headings can be numbered automatically. You can give numbers to all headings of
+  a post or only the headings of a subtree:</p>
+<ul>
+  <li>For all headings: Add <code>ordered: true</code> to the front matter of the post.</li>
+  <li>For all headings under a subtree: Add the attribute <code>{: .ordered}</code> right under a
+    heading. All of its sub-headings will be numbered. For example:
+    
+            <div class="language-org highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>*** Headings A
+{: .ordered}
+**** Heading 1
+***** Heading 1.1
+****** Heading 1.1.1
+***** Heading 1.2
+**** Heading 2
+***** Heading 2.1
+
+*** Headings B
+**** Heading B1
+{: .ordered}
+***** Heading B1.1
+****** Heading B1.1.1
+***** Heading B1.2
+**** Heading B2
+***** Heading B2.1</code></pre></div>
+            </div>
+          
+    <p>Output:</p>
+    
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>* Headings
+** Headings A
+1. Heading 1
+1.1. Heading 1.1
+1.1.1. Heading 1.1.1
+1.2. Heading 1.2
+2. Heading 2
+2.1. Heading 2.1
+** Headings B
+*** Heading 1
+1. Heading 1.1
+1.1. Heading 1.1.1
+2. Heading 1.2
+*** Heading 2
+**** Heading 2.1</code></pre></div>
+            </div>
+          
+    <p>If a heading is marked with the <code>{: .ordered}</code> attribute the numbering for its
+      sub-headings should always start from <code>1</code> regardless of its level in the
+      document or its position relative its siblings.</p>
+  </li>
+</ul>
+<p>If both <code>ordered: true</code> and <code>{: .ordered}</code> are present for a heading, the rules of
+  the latter should override the former.</p>
+<h3 id="heading-a" class="ordered">Heading A</h3>
+
+<h4 id="heading-1">
+<span class="heading-number">1. </span>Heading 1</h4>
+<h5 id="heading-11">
+<span class="heading-number">1.1. </span>Heading 1.1</h5>
+<h6 id="heading-111">
+<span class="heading-number">1.1.1. </span>Heading 1.1.1</h6>
+<h5 id="heading-12">
+<span class="heading-number">1.2. </span>Heading 1.2</h5>
+<h4 id="heading-2">
+<span class="heading-number">2. </span>Heading 2</h4>
+<h5 id="heading-21">
+<span class="heading-number">2.1. </span>Heading 2.1</h5>
+<h3 id="heading-b">Heading B</h3>
+<h4 id="heading-b1" class="ordered">Heading B1</h4>
+
+<h5 id="heading-b11">
+<span class="heading-number">1. </span>Heading B1.1</h5>
+<h6 id="heading-b111">
+<span class="heading-number">1.1. </span>Heading B1.1.1</h6>
+<h5 id="heading-b12">
+<span class="heading-number">2. </span>Heading B1.2</h5>
+<h4 id="heading-b2">Heading B2</h4>
+<h5 id="heading-b21">Heading B2.1</h5>
 <h2 id="tables">Tables</h2>
 <p>Here is the morphological breakdown:</p>
 <table>
@@ -544,8 +676,7 @@ descriptor + subject + taxonomic rank
           
   </li>
 </ol>
-<h2 id="notices">Notices</h2>
-<p>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:</p>
+<h2 id="20260301193852">Notices</h2>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:
 
             <div class="language-markdown highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="gs">**Watch out!**</span> This paragraph of text has been <span class="p">[</span><span class="nv">emphasized</span><span class="p">](</span><span class="sx">#</span><span class="p">)</span> with the <span class="sb">`{: .notice--warning}`</span> class.
@@ -682,6 +813,80 @@ This is a warning notice inside an Org file.
        # Add &lt;thead&gt; to tables</code></pre></div>
             </div>
           
+<h2 id="20260301193839">Numbered Headings</h2>
+<p>To make this work seamlessly, we must append a <code>:post_render</code> hook to the bottom
+  of <code>org_converter.rb</code>. This is structurally necessary for two reasons:</p>
+<ol>
+  <li>Front Matter Access: Jekyll strips front matter (<code>ordered: true</code>) before
+    passing the text to the convert function, so <code>org_converter</code> cannot natively
+    see it.</li>
+  <li>TOC Availability: Minimal Mistakes injects the Table of Contents via Liquid
+    templates during the layout phase. If we try to inject numbers inside the
+    convert step, the TOC doesn’t exist in the HTML yet, meaning it would remain
+    unnumbered.</li>
+</ol>
+<p>By running this logic in <code>:post_render</code>, we have full access to both the front
+  matter and the fully generated layout (including the TOC).</p>
+<p>Append these lines to the very end of the <code>_plugins/org_converter.rb</code> file:</p>
+
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="p">modified   _plugins/org_converter.rb
+@@ -151,3 +151,53 @@</span> module Jekyll
+     end
+   end
+ end
+<span class="gi">+
++Jekyll::Hooks.register [:pages, :documents], :post_render do |doc|
++  # Only process Org Mode files
++  next unless doc.extname.downcase == '.org'
++
++  is_ordered_post = doc.data['ordered'] == true || doc.data['ordered'] == 'true'
++  fragment = Nokogiri::HTML(doc.output)
++  modified = false
++
++  counters = Array.new(7, 0)
++  anchor_stack = is_ordered_post ? [0] : []
++
++  main_content = fragment.at_css('section.page__content') || fragment.at_css('#main') || fragment
++
++  main_content.css('h1, h2, h3, h4, h5, h6').each do |heading|
++    # Skip structural layout headings
++    next if heading.ancestors('.toc, .page__comments, .page__related, .sidebar').any?
++
++    level = heading.name[1].to_i
++    # Exit any ordered scopes that are at the same or higher level than the current heading
++    anchor_stack.reject! { |a| a &gt;= level }
++
++    counters[level] += 1
++    ((level + 1)..6).each { |i| counters[i] = 0 }
++
++    if anchor_stack.any?
++      active_anchor = anchor_stack.last
++      visible_counters = counters[(active_anchor + 1)..level]
++
++      if visible_counters.any?
++        number_prefix = visible_counters.join('.') + '. '
++        heading.inner_html = "&lt;span class=\"heading-number\"&gt;#{number_prefix}&lt;/span&gt;" + heading.inner_html
++
++        if heading['id']
++          toc_link = fragment.at_css(".toc__menu a[href='##{heading['id']}']")
++          if toc_link
++            toc_link.inner_html = "&lt;span class=\"toc-number\"&gt;#{number_prefix}&lt;/span&gt;" + toc_link.inner_html
++          end
++        end
++        modified = true
++      end
++    end
++
++    if heading['class'] &amp;&amp; heading['class'].split.include?('ordered')
++      anchor_stack &lt;&lt; level
++    end
++  end
++
++  doc.output = fragment.to_html if modified
++end</span></code></pre></div>
+            </div>
+          
 
         
       </section>
@@ -734,7 +939,7 @@ This is a warning notice inside an Org file.
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fenable-org-mode%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/web/enable-org-mode/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://josephtesfaye.com/blog/web/enable-org-mode/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -745,7 +950,7 @@ This is a warning notice inside an Org file.
 ">Previous</a>
     
     
-      <a href="/blog/web/private-posts/" class="pagination--pager" title="Enabling Private Posts
+      <a href="/blog/web/private-posts/" class="pagination--pager" title="Enabling Private Posts in Minimal Mistakes
 ">Next</a>
     
   </nav>
@@ -782,7 +987,7 @@ This is a warning notice inside an Org file.
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/web/private-posts/" rel="permalink">Enabling Private Posts
+        <a href="/blog/web/private-posts/" rel="permalink">Enabling Private Posts in Minimal Mistakes
 </a>
       
     </h2>
@@ -980,13 +1185,15 @@ g...</p>
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
     <label class="sr-only" for="search">
       Enter your search term...
     </label>
-    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
   </form>
-  <div id="results" class="results"></div></div>
+  <div id="results" class="results"></div>
+</div>
 
       </div>
     
@@ -1022,7 +1229,7 @@ g...</p>
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2026
+<div class="page__footer-copyright">© 2026
   <a href="/josephs-blog/about/">
     Joseph Huang
   </a>. Built with Love ♥ ♪ ♫ ♬
@@ -1072,7 +1279,8 @@ g...</p>
       (d.head || d.body).appendChild(s);
     })();
   </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 
 
   

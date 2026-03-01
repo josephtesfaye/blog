@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-01T08:38:14+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-01T11:25:49+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
   existing Markdown method. Here’s how I configure it. This article is written in
   an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact.
@@ -6,6 +6,77 @@
   matter, Liquid syntax, figures, galleries, etc. exactly the same as in Markdown.</p>
 <p>Here are the basic elements demonstrated:</p>
 <h1 id="org-elements-examples">Org Elements Examples</h1>
+<h2 id="numbered-headings">Numbered Headings</h2>
+<p>Headings can be numbered automatically. You can give numbers to all headings of
+  a post or only the headings of a subtree:</p>
+<ul>
+  <li>For all headings: Add <code>ordered: true</code> to the front matter of the post.</li>
+  <li>For all headings under a subtree: Add the attribute <code>{: .ordered}</code> right under a
+    heading. All of its sub-headings will be numbered. For example:
+    
+            <div class="language-org highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>*** Headings A
+{: .ordered}
+**** Heading 1
+***** Heading 1.1
+****** Heading 1.1.1
+***** Heading 1.2
+**** Heading 2
+***** Heading 2.1
+
+*** Headings B
+**** Heading B1
+{: .ordered}
+***** Heading B1.1
+****** Heading B1.1.1
+***** Heading B1.2
+**** Heading B2
+***** Heading B2.1</code></pre></div>
+            </div>
+          
+    <p>Output:</p>
+    
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>* Headings
+** Headings A
+1. Heading 1
+1.1. Heading 1.1
+1.1.1. Heading 1.1.1
+1.2. Heading 1.2
+2. Heading 2
+2.1. Heading 2.1
+** Headings B
+*** Heading 1
+1. Heading 1.1
+1.1. Heading 1.1.1
+2. Heading 1.2
+*** Heading 2
+**** Heading 2.1</code></pre></div>
+            </div>
+          
+    <p>If a heading is marked with the <code>{: .ordered}</code> attribute the numbering for its
+      sub-headings should always start from <code>1</code> regardless of its level in the
+      document or its position relative its siblings.</p>
+  </li>
+</ul>
+<p>If both <code>ordered: true</code> and <code>{: .ordered}</code> are present for a heading, the rules of
+  the latter should override the former.</p>
+<h3 id="heading-a" class="ordered">Heading A</h3>
+
+<h4 id="heading-1">Heading 1</h4>
+<h5 id="heading-11">Heading 1.1</h5>
+<h6 id="heading-111">Heading 1.1.1</h6>
+<h5 id="heading-12">Heading 1.2</h5>
+<h4 id="heading-2">Heading 2</h4>
+<h5 id="heading-21">Heading 2.1</h5>
+<h3 id="heading-b">Heading B</h3>
+<h4 id="heading-b1" class="ordered">Heading B1</h4>
+
+<h5 id="heading-b11">Heading B1.1</h5>
+<h6 id="heading-b111">Heading B1.1.1</h6>
+<h5 id="heading-b12">Heading B1.2</h5>
+<h4 id="heading-b2">Heading B2</h4>
+<h5 id="heading-b21">Heading B2.1</h5>
 <h2 id="tables">Tables</h2>
 <p>Here is the morphological breakdown:</p>
 <table>
@@ -271,8 +342,7 @@ descriptor + subject + taxonomic rank
           
   </li>
 </ol>
-<h2 id="notices">Notices</h2>
-<p>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:</p>
+<h2 id="20260301193852">Notices</h2>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:
 
             <div class="language-markdown highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="gs">**Watch out!**</span> This paragraph of text has been <span class="p">[</span><span class="nv">emphasized</span><span class="p">](</span><span class="sx">#</span><span class="p">)</span> with the <span class="sb">`{: .notice--warning}`</span> class.
@@ -407,6 +477,80 @@ This is a warning notice inside an Org file.
 </span>       end
 
        # Add &lt;thead&gt; to tables</code></pre></div>
+            </div>
+          
+<h2 id="20260301193839">Numbered Headings</h2>
+<p>To make this work seamlessly, we must append a <code>:post_render</code> hook to the bottom
+  of <code>org_converter.rb</code>. This is structurally necessary for two reasons:</p>
+<ol>
+  <li>Front Matter Access: Jekyll strips front matter (<code>ordered: true</code>) before
+    passing the text to the convert function, so <code>org_converter</code> cannot natively
+    see it.</li>
+  <li>TOC Availability: Minimal Mistakes injects the Table of Contents via Liquid
+    templates during the layout phase. If we try to inject numbers inside the
+    convert step, the TOC doesn’t exist in the HTML yet, meaning it would remain
+    unnumbered.</li>
+</ol>
+<p>By running this logic in <code>:post_render</code>, we have full access to both the front
+  matter and the fully generated layout (including the TOC).</p>
+<p>Append these lines to the very end of the <code>_plugins/org_converter.rb</code> file:</p>
+
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="p">modified   _plugins/org_converter.rb
+@@ -151,3 +151,53 @@</span> module Jekyll
+     end
+   end
+ end
+<span class="gi">+
++Jekyll::Hooks.register [:pages, :documents], :post_render do |doc|
++  # Only process Org Mode files
++  next unless doc.extname.downcase == '.org'
++
++  is_ordered_post = doc.data['ordered'] == true || doc.data['ordered'] == 'true'
++  fragment = Nokogiri::HTML(doc.output)
++  modified = false
++
++  counters = Array.new(7, 0)
++  anchor_stack = is_ordered_post ? [0] : []
++
++  main_content = fragment.at_css('section.page__content') || fragment.at_css('#main') || fragment
++
++  main_content.css('h1, h2, h3, h4, h5, h6').each do |heading|
++    # Skip structural layout headings
++    next if heading.ancestors('.toc, .page__comments, .page__related, .sidebar').any?
++
++    level = heading.name[1].to_i
++    # Exit any ordered scopes that are at the same or higher level than the current heading
++    anchor_stack.reject! { |a| a &gt;= level }
++
++    counters[level] += 1
++    ((level + 1)..6).each { |i| counters[i] = 0 }
++
++    if anchor_stack.any?
++      active_anchor = anchor_stack.last
++      visible_counters = counters[(active_anchor + 1)..level]
++
++      if visible_counters.any?
++        number_prefix = visible_counters.join('.') + '. '
++        heading.inner_html = "&lt;span class=\"heading-number\"&gt;#{number_prefix}&lt;/span&gt;" + heading.inner_html
++
++        if heading['id']
++          toc_link = fragment.at_css(".toc__menu a[href='##{heading['id']}']")
++          if toc_link
++            toc_link.inner_html = "&lt;span class=\"toc-number\"&gt;#{number_prefix}&lt;/span&gt;" + toc_link.inner_html
++          end
++        end
++        modified = true
++      end
++    end
++
++    if heading['class'] &amp;&amp; heading['class'].split.include?('ordered')
++      anchor_stack &lt;&lt; level
++    end
++  end
++
++  doc.output = fragment.to_html if modified
++end</span></code></pre></div>
             </div>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">🔒 Protected Content</title><link href="https://josephtesfaye.com/blog/web/private-posts/" rel="alternate" type="text/html" title="🔒 Protected Content" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-02-23T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
   someone with a password, and not by any other person, any search engine, any
   other means.</p>
@@ -520,8 +664,98 @@ This is a warning notice inside an Org file.
       Repo A.</p>
   </li>
 </ol>
-<h1 id="the-procedures">The Procedures</h1>
-<h2 id="using-the-two-repository-strategy">Using the Two-Repository Strategy</h2>
+<h2 id="20260225232548">The Jekyll Build Process</h2>
+<p>By default, Jekyll completely empties the destination directory (<code>_site/</code>) every
+  time you run a build or start the local server. It does this to ensure no stale,
+  orphaned files from previous builds are left behind.</p>
+<p>Because of this cleaning process, if you initialize a Git repository directly
+  inside the <code>_site/</code> folder, the <code>.git/</code> directory is at the risk of being instantly
+  deleted the next time Jekyll builds the site.</p>
+<p>I say “risk” because there is a built-in safety feature of Jekyll. In general,
+  to prevent Jekyll from deleting the specific files/folders inside <code>_site/</code>, you
+  can use the <code>keep_files</code> array in your <code>_config.yml</code> file, like this:</p>
+
+            <div class="language-yaml highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="na">keep_files</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">.git</span></code></pre></div>
+            </div>
+          
+<p>However, even if you do not explicitly define <code>keep_files</code>, Jekyll has underlying
+  default settings designed specifically to prevent catastrophic data loss. By
+  default, Jekyll’s internal configuration automatically sets <code>keep_files: [".git",
+  ".svn"]</code>.</p>
+<p>Here is exactly what happens to the <code>_site</code> directory when you trigger a build:</p>
+<ol>
+  <li>Configuration Merge
+    <p>When you run <code>jekyll build</code> or <code>jekyll serve</code>, Jekyll first loads its system-wide
+      default configuration. It then layers your <code>_config.yml</code> on top of it. Unless
+      you explicitly override <code>keep_files</code> with an empty array or tell Jekyll to
+      overwrite the defaults entirely, <code>.git</code> remains in the internal “safe list.”</p>
+  </li>
+  <li>The Cleanup Phase (<code>Jekyll::Cleaner</code>)
+    <p>Before reading any of your new source files, Jekyll instantiates a Cleaner
+      class. This class scans the entire destination folder (<code>_site/</code>). It iterates
+      through every file and directory currently sitting in <code>_site/</code> and checks them
+      against the merged <code>keep_files</code> array.</p>
+    <ul>
+      <li>If a file or folder is not in the array, it is permanently deleted.</li>
+      <li>Because <code>.git</code> is in the default array, the cleaner skips it, leaving your
+        version control history untouched.</li>
+    </ul>
+  </li>
+  <li>The Read and Render Phase
+    <p>Jekyll scans your root directory (ignoring files that start with <code>_</code>, <code>.</code>, or are
+      explicitly excluded), processes Liquid tags, converts Markdown and Org files
+      into HTML, and compiles your SCSS.</p>
+  </li>
+  <li>The Write Phase
+    <p>Jekyll writes the newly generated HTML files and copies static assets (like
+      images and JS files) directly into the clean <code>_site/</code> folder, effectively
+      surrounding the preserved <code>.git</code> directory with the fresh build.</p>
+  </li>
+</ol>
+<p>The risk is that when you run <code>bundle exec jekyll clean</code> the entire <code>_site</code>
+  directory is deleted, including the <code>.git/</code> directory in it, even if you
+  explicitly specify it in <code>keep_files</code> in your <code>_config.yml</code>.</p>
+<p>The reason this happens is that jekyll clean is a brute-force command. Its
+  explicit purpose is to completely obliterate the generated site and all cache
+  folders to ensure a perfectly clean slate. It intentionally bypasses the
+  <code>keep_files</code> array, which is only evaluated by the internal cleaner during <code>jekyll
+  build</code> or <code>jekyll serve</code>.</p>
+<p>Here are the best ways to handle this:</p>
+<ol>
+  <li>Stop using jekyll clean (Recommended)
+    <p>You rarely actually need to run <code>jekyll clean</code>. Because <code>jekyll build</code> and <code>jekyll
+      serve</code> automatically invoke their own safe cleanup phase before generating new
+      files (the phase that does respect <code>keep_files</code>), stale files are already
+      removed automatically. You can safely rely entirely on the build/serve
+      commands.</p>
+  </li>
+  <li>Clear only the caches manually
+    <p>If you are running <code>jekyll clean</code> because you are experiencing caching issues
+      (like SCSS not updating or plugin changes not registering), you can safely
+      delete the cache folders without touching the <code>_site/</code> directory at all.</p>
+    <p>Instead of bundle exec jekyll clean, run:</p>
+    <pre class="example">
+rm -rf .jekyll-cache .jekyll-metadata
+    </pre>
+  </li>
+  <li>Create a custom clean command
+    <p>If you want a command that mimics <code>jekyll clean</code> but preserves your <code>.git</code> folder
+      inside <code>_site/</code>, you can add an alias to your shell profile (like <code>~/.bashrc</code> or
+      <code>~/.zshrc</code>) or create a simple bash script:</p>
+    
+            <div class="language-sh highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">jclean</span><span class="o">=</span><span class="s2">"rm -rf .jekyll-cache .jekyll-metadata &amp;&amp; find _site -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +"</span></code></pre></div>
+            </div>
+          
+    <p>This instantly deletes the Jekyll caches and wipes everything inside <code>_site/</code>
+      except the .git/ directory.</p>
+  </li>
+</ol>
+<h1 id="the-procedures" class="ordered">The Procedures</h1>
+
+<h2 id="use-the-two-repository-strategy">Use the Two-Repository Strategy</h2>
 <p>The most efficient and robust way to manage the Two-Repository Strategy is to
   completely decouple your local testing environment from your deployment process.</p>
 <p>Attempting to turn the local <code>_site</code> folder into a Git repository is a constant
@@ -538,7 +772,7 @@ This is a warning notice inside an Org file.
   <li>You never run <code>git commit</code> inside the <code>_site</code> folder. You only commit your source
     Markdown, Org files, and configurations to Repo A.</li>
 </ol>
-<h3 id="creating-and-serving-repo-b">Creating and serving Repo B</h3>
+<h3 id="create-and-serving-repo-b">Create and serving Repo B</h3>
 <p>Now you can create a new repository (<a href="https://github.com/josephtesfaye/blog">Repo B</a>) on GitHub to host the static <code>_site</code>
   contents.</p>
 <p>To serve your public site from Repo B using GitHub Pages, you need to configure
@@ -676,7 +910,7 @@ This is a warning notice inside an Org file.
   already-built files.</p>
 <p>Repo B’s history will strictly be clean, automated deployment commits, while
   Repo A retains your actual human commit history and draft iterations.</p>
-<h2 id="enabling-client-side-content-encryption">Enabling Client-Side Content Encryption</h2>
+<h2 id="enable-client-side-content-encryption">Enable Client-Side Content Encryption</h2>
 <p>To make a post “private” you have several natively supported keys to add to the
   post’s front matter:</p>
 <ul>
@@ -762,9 +996,9 @@ This is a warning notice inside an Org file.
     <span class="n">selectors</span> <span class="o">=</span> <span class="p">[</span>
       <span class="s1">'section.page__content'</span><span class="p">,</span>  <span class="c1"># The main text + TOC</span>
       <span class="s1">'footer.page__meta'</span><span class="p">,</span>      <span class="c1"># Tags and categories</span>
-      <span class="s1">'div.page__related'</span><span class="p">,</span>      <span class="c1"># Related posts grid</span>
-      <span class="s1">'section.page__comments'</span><span class="p">,</span> <span class="c1"># Comments block</span>
-      <span class="s1">'section.page__share'</span>     <span class="c1"># Comments block</span>
+      <span class="s1">'section.page__share'</span><span class="p">,</span>    <span class="c1"># Share block</span>
+      <span class="s1">'div.page__comments'</span><span class="p">,</span>     <span class="c1"># Comments block</span>
+      <span class="s1">'div.page__related'</span>       <span class="c1"># Related posts grid</span>
     <span class="p">]</span>
 
     <span class="c1"># If fully encrypted, we also strip and encrypt the title header</span>
@@ -1075,7 +1309,7 @@ encrypted: true
 ---</code></pre></div>
             </div>
           
-<h2 id="testing">Testing</h2>
+<h1 id="testing">Testing</h1>
 <p>This gallery is used to check if gallery works normally after decryption:</p>
 
 
@@ -1107,99 +1341,7 @@ encrypted: true
     <figcaption>My custom gallery
 </figcaption>
   
-</figure>
-
-
-
-<h1 id="side-notes">Side Notes</h1>
-<h2 id="20260225232548">The Jekyll Build Process</h2>By default, Jekyll completely empties the destination directory (<code>_site/</code>) every
-  time you run a build or start the local server. It does this to ensure no stale,
-  orphaned files from previous builds are left behind.
-<p>Because of this cleaning process, if you initialize a Git repository directly
-  inside the <code>_site/</code> folder, the <code>.git/</code> directory is at the risk of being instantly
-  deleted the next time Jekyll builds the site.</p>
-<p>I say “risk” because there is a built-in safety feature of Jekyll. In general,
-  to prevent Jekyll from deleting the specific files/folders inside <code>_site/</code>, you
-  can use the <code>keep_files</code> array in your <code>_config.yml</code> file, like this:</p>
-
-            <div class="language-yaml highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="na">keep_files</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">.git</span></code></pre></div>
-            </div>
-          
-<p>However, even if you do not explicitly define <code>keep_files</code>, Jekyll has underlying
-  default settings designed specifically to prevent catastrophic data loss. By
-  default, Jekyll’s internal configuration automatically sets <code>keep_files: [".git",
-  ".svn"]</code>.</p>
-<p>Here is exactly what happens to the <code>_site</code> directory when you trigger a build:</p>
-<ol>
-  <li>Configuration Merge
-    <p>When you run <code>jekyll build</code> or <code>jekyll serve</code>, Jekyll first loads its system-wide
-      default configuration. It then layers your <code>_config.yml</code> on top of it. Unless
-      you explicitly override <code>keep_files</code> with an empty array or tell Jekyll to
-      overwrite the defaults entirely, <code>.git</code> remains in the internal “safe list.”</p>
-  </li>
-  <li>The Cleanup Phase (<code>Jekyll::Cleaner</code>)
-    <p>Before reading any of your new source files, Jekyll instantiates a Cleaner
-      class. This class scans the entire destination folder (<code>_site/</code>). It iterates
-      through every file and directory currently sitting in <code>_site/</code> and checks them
-      against the merged <code>keep_files</code> array.</p>
-    <ul>
-      <li>If a file or folder is not in the array, it is permanently deleted.</li>
-      <li>Because <code>.git</code> is in the default array, the cleaner skips it, leaving your
-        version control history untouched.</li>
-    </ul>
-  </li>
-  <li>The Read and Render Phase
-    <p>Jekyll scans your root directory (ignoring files that start with <code>_</code>, <code>.</code>, or are
-      explicitly excluded), processes Liquid tags, converts Markdown and Org files
-      into HTML, and compiles your SCSS.</p>
-  </li>
-  <li>The Write Phase
-    <p>Jekyll writes the newly generated HTML files and copies static assets (like
-      images and JS files) directly into the clean <code>_site/</code> folder, effectively
-      surrounding the preserved <code>.git</code> directory with the fresh build.</p>
-  </li>
-</ol>
-<p>The risk is that when you run <code>bundle exec jekyll clean</code> the entire <code>_site</code>
-  directory is deleted, including the <code>.git/</code> directory in it, even if you
-  explicitly specify it in <code>keep_files</code> in your <code>_config.yml</code>.</p>
-<p>The reason this happens is that jekyll clean is a brute-force command. Its
-  explicit purpose is to completely obliterate the generated site and all cache
-  folders to ensure a perfectly clean slate. It intentionally bypasses the
-  <code>keep_files</code> array, which is only evaluated by the internal cleaner during <code>jekyll
-  build</code> or <code>jekyll serve</code>.</p>
-<p>Here are the best ways to handle this:</p>
-<ol>
-  <li>Stop using jekyll clean (Recommended)
-    <p>You rarely actually need to run <code>jekyll clean</code>. Because <code>jekyll build</code> and <code>jekyll
-      serve</code> automatically invoke their own safe cleanup phase before generating new
-      files (the phase that does respect <code>keep_files</code>), stale files are already
-      removed automatically. You can safely rely entirely on the build/serve
-      commands.</p>
-  </li>
-  <li>Clear only the caches manually
-    <p>If you are running <code>jekyll clean</code> because you are experiencing caching issues
-      (like SCSS not updating or plugin changes not registering), you can safely
-      delete the cache folders without touching the <code>_site/</code> directory at all.</p>
-    <p>Instead of bundle exec jekyll clean, run:</p>
-    <pre class="example">
-rm -rf .jekyll-cache .jekyll-metadata
-    </pre>
-  </li>
-  <li>Create a custom clean command
-    <p>If you want a command that mimics <code>jekyll clean</code> but preserves your <code>.git</code> folder
-      inside <code>_site/</code>, you can add an alias to your shell profile (like <code>~/.bashrc</code> or
-      <code>~/.zshrc</code>) or create a simple bash script:</p>
-    
-            <div class="language-sh highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">jclean</span><span class="o">=</span><span class="s2">"rm -rf .jekyll-cache .jekyll-metadata &amp;&amp; find _site -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +"</span></code></pre></div>
-            </div>
-          
-    <p>This instantly deletes the Jekyll caches and wipes everything inside <code>_site/</code>
-      except the .git/ directory.</p>
-  </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[This post is password protected.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
+</figure>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[This post is password protected.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the
 <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a>
 feature of Minimal Mistakes:</p>
 
