@@ -252,7 +252,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          5 minute read
+          6 minute read
         
       </span>
     
@@ -267,7 +267,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#org-elements-examples">Org Elements Examples</a><ul><li><a href="#tables">Tables</a></li><li><a href="#lists">Lists</a></li><li><a href="#images">Images</a></li><li><a href="#code-highlighting">Code highlighting</a></li><li><a href="#notices">Notices</a></li></ul></li><li><a href="#configurations">Configurations</a><ul><li><a href="#basic-converter">Basic Converter</a></li><li><a href="#notices">Notices</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#org-elements-examples">Org Elements Examples</a><ul><li><a href="#tables">Tables</a></li><li><a href="#lists">Lists</a></li><li><a href="#images">Images</a></li><li><a href="#code-highlighting">Code highlighting</a></li><li><a href="#notices">Notices</a></li></ul></li><li><a href="#configurations">Configurations</a><ul><li><a href="#basic-converter">Basic Converter</a></li><li><a href="#notices">Notices</a></li><li><a href="#20260301173459">Custom ID</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -618,6 +618,68 @@ This is a warning notice inside an Org file.
 </span>       doc.to_html
      end
    end</code></pre></div>
+            </div>
+          
+<h2 id="20260301173459">Custom ID</h2>
+<p>In markdown you can write <code>{: id="20260116203517"}</code> to assign a custom ID to a
+  heading. In Org there is the <code>CUSTOM_ID</code> property in a drawer. By default,
+  <code>org-ruby</code> completely drops <code>:PROPERTIES:</code> drawers when converting to HTML, which is
+  why your <code>CUSTOM_ID</code> values are disappearing before Nokogiri even has a chance to
+  see them. Additionally, your current <code>org_converter.rb</code> script forcefully
+  overwrites every heading’s ID with a hyphenated slug.</p>
+<p>The fastest, most efficient way to make this work is to pre-process the Org
+  document line-by-line right before passing it to org-ruby. We can detect the
+  <code>:CUSTOM_ID:</code> inside the drawer, temporarily “smuggle” it directly into the
+  heading’s text as a special marker <code>(%%CUSTOM_ID:...%%)</code>, and then have your
+  Nokogiri loop extract it and safely assign it as the real HTML ID.</p>
+<p>Here are the lines to change in <code>_plugins/org_converter.rb</code>:</p>
+
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="p">modified   _plugins/org_converter.rb
+@@ -36,12 +36,42 @@</span> module Jekyll
+     end
+
+     def convert(content)
+<span class="gi">+      # Parse CUSTOM_ID properties and inject a temporary marker
++      lines = content.lines
++      lines.each_with_index do |line, index|
++        if line =~ /^\*+[ \t]+/
++          j = index + 1
++          if j &lt; lines.length &amp;&amp; lines[j] =~ /^[ \t]*:PROPERTIES:[ \t]*$/i
++            k = j + 1
++            custom_id = nil
++            while k &lt; lines.length &amp;&amp; lines[k] !~ /^[ \t]*:END:[ \t]*$/i &amp;&amp; lines[k] !~ /^\*+[ \t]+/
++              if lines[k] =~ /^[ \t]*:CUSTOM_ID:[ \t]+(\S+)/i
++                custom_id = $1
++              end
++              k += 1
++            end
++            if custom_id &amp;&amp; lines[k] =~ /^[ \t]*:END:[ \t]*$/i
++              lines[index] = lines[index].chomp + " %%CUSTOM_ID:#{custom_id}%%\n"
++            end
++          end
++        end
++      end
++      content = lines.join
++
+</span>       require 'org-ruby'
+       html = Orgmode::Parser.new(content).to_html
+       doc = Nokogiri::HTML.fragment(html)
+
+       doc.css('h1, h2, h3, h4, h5, h6').each do |node|
+<span class="gd">-        node['id'] = node.text.downcase.strip.gsub(/[^a-z0-9\s-]/, '').gsub(/\s+/, '-')
+</span><span class="gi">+        if node.content =~ /%%CUSTOM_ID:(\S+)%%/
++          node['id'] = $1
++          # Clean the marker out of all text nodes inside this heading
++          node.xpath('.//text()').each do |t|
++            t.content = t.content.gsub(/\s*%%CUSTOM_ID:\S+%%/, '')
++          end
++        else
++          node['id'] = node.text.downcase.strip.gsub(/[^a-z0-9\s-]/, '').gsub(/\s+/, '-')
++        end
+</span>       end
+
+       # Add &lt;thead&gt; to tables</code></pre></div>
             </div>
           
 
