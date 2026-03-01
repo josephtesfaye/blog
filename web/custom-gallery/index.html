@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Customizing Gallery in Minimal Mistakes | Orcharinth</title>
-<meta name="description" content="Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:">
+<meta name="description" content="Here are the customizations I’ve made to the gallery feature of Minimal   Mistakes:">
 
 
   <meta name="author" content="Joseph Huang">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://josephtesfaye.com/blog/web/custom-gallery/">
 
 
-  <meta property="og:description" content="Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:">
+  <meta property="og:description" content="Here are the customizations I’ve made to the gallery feature of Minimal   Mistakes:">
 
 
 
@@ -220,7 +220,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Customizing Gallery in Minimal Mistakes">
-    <meta itemprop="description" content="Here are the customizations I’ve made to thegalleryfeature of Minimal Mistakes:">
+    <meta itemprop="description" content="Here are the customizations I’ve made to the gallery feature of Minimal  Mistakes:">
     <meta itemprop="datePublished" content="2026-02-20T00:00:00+00:00">
     <meta itemprop="dateModified" content="2026-02-20T00:00:00+00:00">
 
@@ -252,7 +252,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          3 minute read
         
       </span>
     
@@ -264,62 +264,58 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Here are the customizations I’ve made to the
-<a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a>
-feature of Minimal Mistakes:</p>
-
+        <p>Here are the customizations I’ve made to the <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a> feature of Minimal
+  Mistakes:</p>
 <ol>
-  <li>
-    <p>Add a <code class="language-plaintext highlighter-rouge">columns</code> parameter to each gallery to control the columns of a
-gallery such as:</p>
-
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}
-</code></pre></div>    </div>
-
+  <li>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery
+    such as:
+    
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div>
+            </div>
+          
     <p>The image size should be adjusted automatically.</p>
   </li>
-  <li>
-    <p>Make the images able to pop-up when there is only the <code class="language-plaintext highlighter-rouge">image_path</code> parameter
-in the front matter such as:</p>
-
-    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gallery:
-<span class="p">  -</span> image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
-<span class="p">  -</span> image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
-<span class="p">  -</span> image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
-</code></pre></div>    </div>
-
-    <p>The gallery originally requires both <code class="language-plaintext highlighter-rouge">url</code> and <code class="language-plaintext highlighter-rouge">image_path</code> in order to have
-a pop-up view of the images. But I think it’s more convenient to write only
-one parameter. But you can still use both.</p>
+  <li>Support adding images to a gallery by only using the <code>image_path</code> parameter or
+    the URL in the front matter such as:
+    
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>gallery:
+  - image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
+  - /assets/archive/image/foo/unsplash-gallery-image-1.jpg
+  - /assets/archive/image/foo/unsplash-gallery-image-1.jpg</code></pre></div>
+            </div>
+          
+    <p>The gallery originally requires both <code>url</code> and <code>image_path</code> in order to have a
+      pop-up view of the images. But I think it’s more convenient to write in this
+      way. But you can still use both.</p>
   </li>
-  <li>
-    <p>Use <code class="language-plaintext highlighter-rouge">alt</code> for <code class="language-plaintext highlighter-rouge">title</code> if <code class="language-plaintext highlighter-rouge">title</code> is unspecified.</p>
-  </li>
-  <li>
-    <p>Support Liquid links in the image title, e.g.,</p>
-
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+  <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li>
+  <li>Support Liquid links in the image title, e.g.,
+    
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>---
 gallery:
   - image_path: https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg
-    title: "Prompt: [Local images]({{ site.baseurl }}{% post_url 2026-02-19-local-images %})"
----
-</code></pre></div>    </div>
+    title: "Prompt: [[{{ site.baseurl }}{% post_url 2026-02-19-local-images %}][Local images]]"
+---</code></pre></div>
+            </div>
+          
   </li>
 </ol>
-
 <p>All of these customizations are backward-compatible, that is, you can still
-write a gallery in the original way to get the original feel.</p>
-
+  write a gallery in the original way to get the original feel.</p>
 <p>Here’s a demo gallery with the above customizations:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+            <div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>---
 link_abbrs:
   - link_abbr: foo https://i.postimg.cc/Vv8jFw8D/
 gallery:
   - image_path: foo:unsplash-gallery-image-1.jpg
     alt: "Use alt for title"
   - image_path: foo:unsplash-gallery-image-1.jpg
-    title: "Link to post: [Local images]({{ site.baseurl }}{% post_url 2026-02-19-local-images %})"
+    title: "Link to post: [[{{ site.baseurl }}{% post_url 2026-02-19-local-images %}][Local images]]"
   - image_path: foo:unsplash-gallery-image-1.jpg
   - image_path: foo:unsplash-gallery-image-1.jpg
   - image_path: foo:unsplash-gallery-image-1.jpg
@@ -329,62 +325,78 @@ gallery:
   - image_path: foo:unsplash-gallery-image-1.jpg
 ---
 
-{% include gallery columns=6 caption="My custom gallery" %}
-</code></pre></div></div>
+
+{% include gallery columns=6 caption="My custom gallery" %}</code></pre></div>
+            </div>
+          
+
+
+
+
+
 
 <figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);">
   
     <figure>
       <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="Use alt for title">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="Use alt for title" />
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="Use alt for title">
       </a>
     </figure>
   
     <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;Link to post: &lt;a href=&quot;/blog/web/local-images/&quot;&gt;Local images&lt;/a&gt;&lt;/p&gt;">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;Link to post: &lt;a href="/blog/web/local-images/"&gt;Local images&lt;/a&gt;&lt;/p&gt;'>
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
       <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
       <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
       <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
       <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
     <figure>
       <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="" />
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
+      </a>
+    </figure>
+  
+    <figure>
+      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
+
+        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
       </a>
     </figure>
   
@@ -394,20 +406,19 @@ gallery:
   
 </figure>
 
+
+
 <p>Here are the steps to make the changes:</p>
-
 <ol>
-  <li>
-    <p>Copy the default gallery layout from the Minimal Mistakes gem (e.g.
-<code class="language-plaintext highlighter-rouge">~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>)
-into your local <code class="language-plaintext highlighter-rouge">_includes</code> directory.</p>
-  </li>
-  <li>
-    <p>Apply these changes:</p>
-
-    <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
+  <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g.
+    <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into
+    your local <code>_includes</code> directory.</li>
+  <li>Apply these changes:
+    
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
 </span><span class="gd">--- minimal-mistakes/_includes/gallery	2023-12-15 19:03:51
-</span><span class="gi">+++ josephs-blog/_includes/gallery	2026-02-21 16:05:53
+</span><span class="gi">+++ josephs-blog/_includes/gallery	2026-03-01 23:18:56
 </span><span class="p">@@ -6,6 +6,8 @@</span>
 
  {% if include.layout %}
@@ -417,7 +428,7 @@ into your local <code class="language-plaintext highlighter-rouge">_includes</co
 </span> {% else %}
    {% if gallery.size == 2 %}
      {% assign gallery_layout = 'half' %}
-<span class="p">@@ -16,6 +18,36 @@</span>
+<span class="p">@@ -16,6 +18,48 @@</span>
    {% endif %}
  {% endif %}
 
@@ -429,16 +440,28 @@ into your local <code class="language-plaintext highlighter-rouge">_includes</co
 +    &lt;figure&gt;
 +      &lt;a {% if img.url %}
 +           href="{{ img.url | relative_url }}"
-+         {% else %}
++         {% elsif img.image_path %}
 +           href="{{ img.image_path | relative_url }}"
++         {% else %}
++           href="{{ img | relative_url }}"
 +         {% endif %}
++
 +         {% if img.title %}
 +         {% comment %} Parse Liquid syntax in titles {% endcomment %}
-+           title="{{ img.title | liquify | markdownify | remove: '&lt;p&gt;' | remove: '&lt;/p&gt;' | escape }}"
++           title="{{ img.title | liquify | markdownify | remove: '&lt;p&gt;' |
++                     remove: '&lt;/p&gt;' | strip | newline_to_br | split: '&lt;br /&gt;' |
++                     join: '&lt;/p&gt;&lt;p&gt;' | prepend: '&lt;p&gt;' | append: '&lt;/p&gt;' |
++                     escape }}"
 +         {% elsif img.alt %}
 +           title="{{ img.alt }}"
 +         {% endif %}&gt;
-+        &lt;img src="{{ img.image_path | relative_url }}"
++
++        &lt;img {% if img.image_path %}
++               src="{{ img.image_path | relative_url }}"
++             {% else %}
++               src="{{ img | relative_url }}"
++             {% endif %}
++
 +             alt="{% if img.alt %}{{ img.alt }}{% endif %}"&gt;
 +      &lt;/a&gt;
 +    &lt;/figure&gt;
@@ -454,18 +477,19 @@ into your local <code class="language-plaintext highlighter-rouge">_includes</co
 </span> &lt;figure class="{{ gallery_layout }} {{ include.class }}"&gt;
    {% for img in gallery %}
      {% if img.url %}
-<span class="p">@@ -33,3 +65,5 @@</span>
+<span class="p">@@ -33,3 +77,5 @@</span>
      &lt;figcaption&gt;{{ include.caption | markdownify | remove: "&lt;p&gt;" | remove: "&lt;/p&gt;" }}&lt;/figcaption&gt;
    {% endif %}
  &lt;/figure&gt;
 <span class="gi">+
-+{% endif %}
-</span></code></pre></div>    </div>
++{% endif %}</span></code></pre></div>
+            </div>
+          
   </li>
-  <li>
-    <p>Add these styles in your <code class="language-plaintext highlighter-rouge">assets/css/main.scss</code>:</p>
-
-    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
+  <li>Add these styles in your <code>assets/css/main.scss</code>:
+    
+            <div class="language-css highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
 <span class="nc">.page__content</span> <span class="nc">.custom-grid</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
   <span class="py">gap</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span>
@@ -482,22 +506,24 @@ into your local <code class="language-plaintext highlighter-rouge">_includes</co
 
 <span class="nc">.custom-grid</span> <span class="nt">img</span> <span class="p">{</span>
   <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
+<span class="p">}</span></code></pre></div>
+            </div>
+          
   </li>
-  <li>
-    <p>Create a new plugin file <code class="language-plaintext highlighter-rouge">_plugins/liquify.rb</code> to add a filter that
-evaluates Liquid syntax inside front matter strings:</p>
-
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+  <li>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates
+    Liquid syntax inside front matter strings:
+    
+            <div class="language-ruby highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
   <span class="k">module</span> <span class="nn">LiquifyFilter</span>
     <span class="k">def</span> <span class="nf">liquify</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
       <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="nf">to_s</span><span class="p">).</span><span class="nf">render</span><span class="p">(</span><span class="vi">@context</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span>
-</code></pre></div>    </div>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span></code></pre></div>
+            </div>
+          
   </li>
 </ol>
 
