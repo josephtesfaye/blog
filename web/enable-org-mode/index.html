@@ -252,7 +252,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          5 minute read
         
       </span>
     
@@ -267,7 +267,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#org-elements-examples">Org Elements Examples</a><ul><li><a href="#tables">Tables</a></li><li><a href="#lists">Lists</a></li><li><a href="#images">Images</a></li><li><a href="#code-highlighting">Code highlighting</a></li></ul></li><li><a href="#configurations">Configurations</a></li></ul>
+              <ul class="toc__menu"><li><a href="#org-elements-examples">Org Elements Examples</a><ul><li><a href="#tables">Tables</a></li><li><a href="#lists">Lists</a></li><li><a href="#images">Images</a></li><li><a href="#code-highlighting">Code highlighting</a></li><li><a href="#notices">Notices</a></li></ul></li><li><a href="#configurations">Configurations</a><ul><li><a href="#basic-converter">Basic Converter</a></li><li><a href="#notices">Notices</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -406,7 +406,27 @@ descriptor + subject + taxonomic rank
 <span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></div>
             </div>
           
+<h2 id="notices">Notices</h2>
+
+            <div class="language-markdown highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>{: .notice--warning}
+<span class="ge">*Watch out!*</span> This is a warning notice inside an Org file.</code></pre></div>
+            </div>
+          
+<p class="notice">
+  <b>Watch out!</b> This is a warning notice inside an Org file.</p>
+<p class="notice--primary">
+  <b>Watch out!</b> This is a warning notice inside an Org file.</p>
+<p class="notice--info">
+  <b>Watch out!</b> This is a warning notice inside an Org file.</p>
+<p class="notice--warning">
+  <b>Watch out!</b> This is a warning notice inside an Org file.</p>
+<p class="notice--success">
+  <b>Watch out!</b> This is a warning notice inside an Org file.</p>
+<p class="notice--danger">
+  <b>Watch out!</b> This is a warning notice inside an Org file.</p>
 <h1 id="configurations">Configurations</h1>
+<h2 id="basic-converter">Basic Converter</h2>
 <p>Here’s how I did the configurations.</p>
 <ol>
   <li>Add <code>org-ruby</code> to your <code>Gemfile</code>:
@@ -524,6 +544,82 @@ descriptor + subject + taxonomic rank
           
   </li>
 </ol>
+<h2 id="notices">Notices</h2>
+<p>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:</p>
+
+            <div class="language-markdown highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="gs">**Watch out!**</span> This paragraph of text has been <span class="p">[</span><span class="nv">emphasized</span><span class="p">](</span><span class="sx">#</span><span class="p">)</span> with the <span class="sb">`{: .notice--warning}`</span> class.
+{: .notice--warning}</code></pre></div>
+            </div>
+          
+<p>Because Jekyll processes Org files into HTML using <code>org-ruby</code> before Kramdown can
+  parse them, Kramdown’s block attribute syntax like <code>{: .notice--warning}</code> will not
+  work.</p>
+<p>To achieve the exact same result in <code>org-ruby</code> while still being able to use
+  standard Org formatting (like bold, lists, and links) inside the notice, you
+  must inject the raw HTML wrapper directly using the <code>#+html:</code> directive.</p>
+
+            <div class="language-org highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>#+html: &lt;div class="notice--warning"&gt;
+*Watch out!*
+This is a warning notice inside an Org file.
+#+html: &lt;/div&gt;</code></pre></div>
+            </div>
+          
+<p><code>org-ruby</code> passes the lines starting with <code>#+html:</code> straight to the output without
+  modification. Because you leave empty lines between the HTML tags and your text,
+  org-ruby will still evaluate the text in the middle as standard Org syntax,
+  converting <b>Watch out!</b> into bold tags and wrapping the lines in paragraph tags.</p>
+<p>However, this is tedious to write compared with the Markdown syntax. It would be
+  much better if we can mimic Kramdown’s attribute syntax in Org files.</p>
+<p>Because you are already utilizing Nokogiri in your Jekyll pipeline, we can
+  create a lightweight parser that finds the exact <code>{: .classname }</code> text, strips it
+  out, and natively injects the CSS classes into the correct HTML tags.</p>
+
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="p">modified   _plugins/org_converter.rb
+@@ -84,6 +84,39 @@</span> module Jekyll
+         pre.replace(new_node)
+       end
+
++      # Process Kramdown-style attribute lists {: .class1 .class2 }
+<span class="gi">+      doc.xpath('.//text()[contains(., "{:")]').each do |node|
++        # Skip if the syntax is inside a literal code block
++        next if node.ancestors('pre, code').any?
++
++        if node.content =~ /\{:\s*((?:\.[a-zA-Z0-9_\-–—]+\s*)+)\}/
++          raw_classes = $1
++          normalized_classes = raw_classes.gsub(/[–—]/, '--')
++          class_names = normalized_classes.scan(/\.([a-zA-Z0-9_-]+)/).flatten
++
++          # Strip the syntax from the text node
++          node.content = node.content.sub(/\{:\s*(?:\.[a-zA-Z0-9_\-–—]+\s*)+\}/, '')
++
++          parent = node.parent
++          target = parent
++
++          # Clean up trailing &lt;br&gt; if the syntax was on a new line
++          if node.content.strip.empty? &amp;&amp; node.previous_sibling &amp;&amp; node.previous_sibling.name == 'br'
++            node.previous_sibling.remove
++          end
++
++          # If removing the syntax leaves the block entirely empty, it targets the previous element
++          if parent.name == 'p' &amp;&amp; parent.text.strip.empty? &amp;&amp; parent.children.all? { |c| c.name == 'text' || c.name == 'br' }
++            target = parent.previous_element || parent
++            parent.remove if target != parent
++          end
++
++          # Apply the classes safely without overwriting existing ones
++          existing_classes = target['class'] ? target['class'].split(' ') : []
++          target['class'] = (existing_classes + class_names).uniq.join(' ')
++        end
++      end
++
+</span>       doc.to_html
+     end
+   end</code></pre></div>
+            </div>
+          
 
         
       </section>
