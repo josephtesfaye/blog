@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-01T16:00:57+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-01T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-02T06:23:44+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-01T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
   existing Markdown method. Here’s how I configure it. This article is written in
   an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact.
@@ -11,10 +11,12 @@
   a post or only the headings of a subtree:</p>
 <ul>
   <li>For all headings: Add <code>ordered: true</code> to the front matter of the post.</li>
-  <li>For all headings under a subtree: Add the attribute <code>{: .ordered}</code> right under a
+  <li>
+<p>For all headings under a subtree: Add the attribute <code>{: .ordered}</code> right under a
     heading. All of its sub-headings will be numbered. For example:
     
-            <div class="language-org highlighter-rouge">
+            </p>
+<div class="language-org highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>*** Headings A
 {: .ordered}
 **** Heading 1
@@ -108,17 +110,31 @@
 </tbody>
 </table>
 <h2 id="lists">Lists</h2>
-<p>A multi-level list of mixed types:</p>
+<p>An ordered list with multiple levels:</p>
 <ol>
-  <li>First item</li>
-  <li>Second item
-    <ol>
-      <li>Sub-item A (Indented 3 spaces)
-        <p>Some text</p>
+  <li>
+<p>First item
+    
+            </p>
+<div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>Hello world!</code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Second item
+    </p>
+<ol>
+      <li>
+<p>Sub-item A (Indented 3 spaces)
+        </p>
+<p>Some text</p>
         <ol>
           <li>Sub-item A (Indented 3 spaces)</li>
-          <li>Sub-item A (Indented 3 spaces)
-            <ol>
+          <li>
+<p>Sub-item A (Indented 3 spaces)
+            </p>
+<ol>
               <li>Sub-item A (Indented 3 spaces)</li>
               <li>Sub-item A (Indented 3 spaces)</li>
             </ol>
@@ -126,8 +142,10 @@
           <li>Sub-item A (Indented 3 spaces)</li>
         </ol>
       </li>
-      <li>Sub-item B
-        <ul>
+      <li>
+<p>Sub-item B
+        </p>
+<ul>
           <li>Deeply nested bullet (Indented another 3 spaces)</li>
           <li>Deeply nested bullet (Indented another 3 spaces)</li>
         </ul>
@@ -239,9 +257,11 @@ descriptor + subject + taxonomic rank
 <h2 id="basic-converter">Basic Converter</h2>
 <p>Here’s how I did the configurations.</p>
 <ol>
-  <li>Add <code>org-ruby</code> to your <code>Gemfile</code>:
+  <li>
+<p>Add <code>org-ruby</code> to your <code>Gemfile</code>:
     
-            <div class="language-ruby highlighter-rouge">
+            </p>
+<div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
   <span class="o">...</span>
   <span class="n">gem</span> <span class="s2">"org-ruby"</span>
@@ -249,9 +269,11 @@ descriptor + subject + taxonomic rank
             </div>
           
   </li>
-  <li>Write a new plugin: <code>_plugins/org_converter.rb</code>
+  <li>
+<p>Write a new plugin: <code>_plugins/org_converter.rb</code>
     
-            <div class="language-ruby highlighter-rouge">
+            </p>
+<div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
 <span class="nb">require</span> <span class="s1">'rouge'</span>
 
@@ -349,9 +371,11 @@ descriptor + subject + taxonomic rank
             </div>
           
   </li>
-  <li>Install the gems with bundler and run:
+  <li>
+<p>Install the gems with bundler and run:
     
-            <div class="language-sh highlighter-rouge">
+            </p>
+<div class="language-sh highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
 </span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div>
             </div>
@@ -567,6 +591,207 @@ This is a warning notice inside an Org file.
 +
 +  doc.output = fragment.to_html if modified
 +end</span></code></pre></div>
+            </div>
+          
+<h2 id="normalizing-loose-lists">Normalizing Loose Lists</h2>
+<p>The outputs of the same list structure produced from Org and Markdown are
+  slightly different as indicated in the below examples by the “Diff” comments. It
+  seems that in Markdown when an item has sub-contents like a literal block, a
+  sub-list, or a paragraph, its first content would be enclosed in <code>&lt;p&gt;</code>, while in
+  Org this doesn’t happen. How to make Org list also follow this pattern in the
+  output?</p>
+<ul>
+  <li>
+<p>Org list:
+    
+            </p>
+<div class="language-org highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>1. First item
+
+   #+begin_src text
+   Hello world!
+   #+end_src
+
+2. Second item
+   1. Sub-item A (Indented 3 spaces)
+
+      Some text
+
+      1. Sub-item A (Indented 3 spaces)
+      2. Sub-item A (Indented 3 spaces)
+         1. Sub-item A (Indented 3 spaces)
+         2. Sub-item A (Indented 3 spaces)
+      3. Sub-item A (Indented 3 spaces)
+   2. Sub-item B
+      * Deeply nested bullet (Indented another 3 spaces)
+3. Third item</code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Org list output:
+    
+            </p>
+<div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>First item <span class="c">&lt;!-- Diff 1: No &lt;p&gt; around the content --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-text highlighter-rouge"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;code&gt;</span>Hello world!<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;/pre&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Second item
+    <span class="nt">&lt;ol&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces) <span class="c">&lt;!-- Diff 2: No &lt;p&gt; around the content --&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Some text<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;ol&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)
+            <span class="nt">&lt;ol&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ol&gt;</span>
+          <span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Sub-item B <span class="c">&lt;!-- Diff 3: No &lt;p&gt; around the content --&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Deeply nested bullet (Indented another 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ol&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Third item<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Markdown list:
+    
+            </p>
+<div class="language-markdown highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="p">1.</span> First item
+
+   <span class="p">```</span><span class="nl"> text
+</span>   Hello world!
+   <span class="p">```</span>
+<span class="p">
+2.</span> Second item
+<span class="p">   1.</span> Sub-item A (Indented 3 spaces)<span class="sb">
+
+      Some text
+
+      1. Sub-item A (Indented 3 spaces)
+      1. Sub-item A (Indented 3 spaces)
+         1. Sub-item A (Indented 3 spaces)
+         1. Sub-item A (Indented 3 spaces)
+      1. Sub-item A (Indented 3 spaces)
+</span><span class="p">   2.</span> Sub-item B
+<span class="p">      *</span> Deeply nested bullet (Indented another 3 spaces)
+<span class="p">3.</span> Third item</code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Markdown list output:
+    
+            </p>
+<div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;</span>First item<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-text highlighter-rouge"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;code&gt;</span>Hello world!<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;/pre&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Second item
+    <span class="nt">&lt;ol&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Some text<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;ol&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)
+            <span class="nt">&lt;ol&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ol&gt;</span>
+          <span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Sub-item B<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Deeply nested bullet (Indented another 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ol&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Third item<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+</ul>
+<p>The differences originate from how Kramdown (Markdown) and org-ruby process
+  “loose” lists.</p>
+<p>In Markdown, when a list item contains block-level elements (like a nested list,
+  a code block, or a paragraph) or is separated by blank lines, Kramdown considers
+  it a “loose” list item and actively wraps its leading, raw text into a <code>&lt;p&gt;</code> tag.
+  <code>org-ruby</code>, however, natively dumps the raw text directly into the <code>&lt;li&gt;</code> element as
+  an inline node before appending the block-level children.</p>
+<p>To force your Org files to mimic Kramdown’s exact wrapping behavior, we can add
+  a logic step right at the end of your HTML processing pipeline. Nokogiri will
+  scan every <code>&lt;li&gt;</code>, check if it contains any block-level child elements, and if it
+  does, it will gather all the leading text up to that block and neatly wrap it in
+  a <code>&lt;p&gt;</code> tag.</p>
+
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="gd">--- _plugins/org_converter.rb
+</span><span class="gi">+++ _plugins/org_converter.rb
+</span><span class="p">@@ -134,6 +134,28 @@</span>
+           target['class'] = (existing_classes + class_names).uniq.join(' ')
+         end
+       end
+
++      # Process complex list items to wrap leading text in &lt;p&gt;
+<span class="gi">+      block_tags = %w[p div ul ol blockquote pre table dl figure h1 h2 h3 h4 h5 h6 hr]
++      doc.css('li').each do |li|
++        first_block = li.children.find { |c| c.element? &amp;&amp; block_tags.include?(c.name.downcase) }
++
++        if first_block
++          leading_nodes = []
++          li.children.each do |child|
++            break if child == first_block
++            leading_nodes &lt;&lt; child
++          end
++
++          # Check if there is actual inline content/text to wrap
++          has_content = leading_nodes.any? do |n|
++            (n.text? &amp;&amp; !n.text.strip.empty?) || (n.element? &amp;&amp; n.name.downcase != 'br')
++          end
++
++          if has_content
++            p_node = Nokogiri::XML::Node.new('p', doc)
++            first_block.add_previous_sibling(p_node)
++            leading_nodes.each { |n| p_node.add_child(n) }
++          end
++        end
++      end
++
+</span>       doc.to_html
+     end
+   end</code></pre></div>
             </div>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.]]></summary></entry><entry><title type="html">🔒 Protected Content</title><link href="https://josephtesfaye.com/blog/web/private-posts/" rel="alternate" type="text/html" title="🔒 Protected Content" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-01T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/private-posts</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/private-posts/"><![CDATA[<p>I want to be able to make a post private, that is, it can only be seen by me, or
   someone with a password, and not by any other person, any search engine, any
   other means.</p>
@@ -626,15 +851,19 @@ This is a warning notice inside an Org file.
   the site.</p>
 <p>Here is the breakdown of your options:</p>
 <ol>
-  <li>The Native GitHub Way (Requires Paid Account)
-    <p>If you have a GitHub Pro, Team, or Enterprise account, you can simply go to
+  <li>
+<p>The Native GitHub Way (Requires Paid Account)
+    </p>
+<p>If you have a GitHub Pro, Team, or Enterprise account, you can simply go to
       your repository settings and change the visibility to Private. GitHub Pages
       natively supports publishing from private repositories on these paid tiers.
       You can even set access controls so the site itself is only visible to
       specific people in your organization.</p>
   </li>
-  <li>The Alternative Hosting Way (Free &amp; Easiest)
-    <p>If you are on a GitHub Free account, GitHub Pages requires the repository to
+  <li>
+<p>The Alternative Hosting Way (Free &amp; Easiest)
+    </p>
+<p>If you are on a GitHub Free account, GitHub Pages requires the repository to
       be public to serve the site.</p>
     <p>The easiest way to keep your source code private for free is to move your
       hosting to Cloudflare Pages, Netlify, or Vercel.</p>
@@ -647,8 +876,10 @@ This is a warning notice inside an Org file.
         completely hidden in your private GitHub repo.</li>
     </ol>
   </li>
-  <li>The Two-Repository Strategy (Free, GitHub-Only)
-    <p>If you are on a free account but absolutely want to keep using GitHub Pages,
+  <li>
+<p>The Two-Repository Strategy (Free, GitHub-Only)
+    </p>
+<p>If you are on a free account but absolutely want to keep using GitHub Pages,
       you can separate your raw source files from your generated HTML using two
       repositories and GitHub Actions.</p>
     <ol>
@@ -702,14 +933,18 @@ This is a warning notice inside an Org file.
   ".svn"]</code>.</p>
 <p>Here is exactly what happens to the <code>_site</code> directory when you trigger a build:</p>
 <ol>
-  <li>Configuration Merge
-    <p>When you run <code>jekyll build</code> or <code>jekyll serve</code>, Jekyll first loads its system-wide
+  <li>
+<p>Configuration Merge
+    </p>
+<p>When you run <code>jekyll build</code> or <code>jekyll serve</code>, Jekyll first loads its system-wide
       default configuration. It then layers your <code>_config.yml</code> on top of it. Unless
       you explicitly override <code>keep_files</code> with an empty array or tell Jekyll to
       overwrite the defaults entirely, <code>.git</code> remains in the internal “safe list.”</p>
   </li>
-  <li>The Cleanup Phase (<code>Jekyll::Cleaner</code>)
-    <p>Before reading any of your new source files, Jekyll instantiates a Cleaner
+  <li>
+<p>The Cleanup Phase (<code>Jekyll::Cleaner</code>)
+    </p>
+<p>Before reading any of your new source files, Jekyll instantiates a Cleaner
       class. This class scans the entire destination folder (<code>_site/</code>). It iterates
       through every file and directory currently sitting in <code>_site/</code> and checks them
       against the merged <code>keep_files</code> array.</p>
@@ -719,13 +954,17 @@ This is a warning notice inside an Org file.
         version control history untouched.</li>
     </ul>
   </li>
-  <li>The Read and Render Phase
-    <p>Jekyll scans your root directory (ignoring files that start with <code>_</code>, <code>.</code>, or are
+  <li>
+<p>The Read and Render Phase
+    </p>
+<p>Jekyll scans your root directory (ignoring files that start with <code>_</code>, <code>.</code>, or are
       explicitly excluded), processes Liquid tags, converts Markdown and Org files
       into HTML, and compiles your SCSS.</p>
   </li>
-  <li>The Write Phase
-    <p>Jekyll writes the newly generated HTML files and copies static assets (like
+  <li>
+<p>The Write Phase
+    </p>
+<p>Jekyll writes the newly generated HTML files and copies static assets (like
       images and JS files) directly into the clean <code>_site/</code> folder, effectively
       surrounding the preserved <code>.git</code> directory with the fresh build.</p>
   </li>
@@ -740,15 +979,19 @@ This is a warning notice inside an Org file.
   build</code> or <code>jekyll serve</code>.</p>
 <p>Here are the best ways to handle this:</p>
 <ol>
-  <li>Stop using jekyll clean (Recommended)
-    <p>You rarely actually need to run <code>jekyll clean</code>. Because <code>jekyll build</code> and <code>jekyll
+  <li>
+<p>Stop using jekyll clean (Recommended)
+    </p>
+<p>You rarely actually need to run <code>jekyll clean</code>. Because <code>jekyll build</code> and <code>jekyll
       serve</code> automatically invoke their own safe cleanup phase before generating new
       files (the phase that does respect <code>keep_files</code>), stale files are already
       removed automatically. You can safely rely entirely on the build/serve
       commands.</p>
   </li>
-  <li>Clear only the caches manually
-    <p>If you are running <code>jekyll clean</code> because you are experiencing caching issues
+  <li>
+<p>Clear only the caches manually
+    </p>
+<p>If you are running <code>jekyll clean</code> because you are experiencing caching issues
       (like SCSS not updating or plugin changes not registering), you can safely
       delete the cache folders without touching the <code>_site/</code> directory at all.</p>
     <p>Instead of bundle exec jekyll clean, run:</p>
@@ -756,8 +999,10 @@ This is a warning notice inside an Org file.
 rm -rf .jekyll-cache .jekyll-metadata
     </pre>
   </li>
-  <li>Create a custom clean command
-    <p>If you want a command that mimics <code>jekyll clean</code> but preserves your <code>.git</code> folder
+  <li>
+<p>Create a custom clean command
+    </p>
+<p>If you want a command that mimics <code>jekyll clean</code> but preserves your <code>.git</code> folder
       inside <code>_site/</code>, you can add an alias to your shell profile (like <code>~/.bashrc</code> or
       <code>~/.zshrc</code>) or create a simple bash script:</p>
     
@@ -796,13 +1041,17 @@ rm -rf .jekyll-cache .jekyll-metadata
   lifting of building the Jekyll site, Repo B just needs to serve the finished
   HTML.</p>
 <ol>
-  <li>Ensure Repo B is Public
-    <p>If you are on a free GitHub account, Repo B must be set to Public. Go to
+  <li>
+<p>Ensure Repo B is Public
+    </p>
+<p>If you are on a free GitHub account, Repo B must be set to Public. Go to
       Settings &gt; General in Repo B, scroll down to the “Danger Zone,” and ensure
       the repository visibility is public.</p>
   </li>
-  <li>Configure GitHub Pages
-    <ol>
+  <li>
+<p>Configure GitHub Pages
+    </p>
+<ol>
       <li>In Repo B, go to the Settings &gt; Pages.</li>
       <li>Under the Build and deployment section, set the Source dropdown to
         Deploy from a branch.</li>
@@ -812,8 +1061,10 @@ rm -rf .jekyll-cache .jekyll-metadata
       <li>Click Save.</li>
     </ol>
   </li>
-  <li>Bypass GitHub’s Default Jekyll Build (Crucial)
-    <p>By default, GitHub Pages assumes any repository is a raw Jekyll site and will
+  <li>
+<p>Bypass GitHub’s Default Jekyll Build (Crucial)
+    </p>
+<p>By default, GitHub Pages assumes any repository is a raw Jekyll site and will
       try to build it again. Since your site is already compiled by Repo A, running
       it through Jekyll a second time can break your CSS, strip out folders that
       start with an underscore (like <code>_page</code> or <code>_site</code>), or cause build failures.</p>
@@ -835,8 +1086,10 @@ rm -rf .jekyll-cache .jekyll-metadata
             </div>
           
   </li>
-  <li>Wait for the Deployment
-    <p>Once you save the Pages settings, GitHub will trigger a very fast deployment
+  <li>
+<p>Wait for the Deployment
+    </p>
+<p>Once you save the Pages settings, GitHub will trigger a very fast deployment
       (since it’s just copying static files). Within a minute or two, your site
       will be live at https://your-username.github.io/your-public-repo-B/ (or your
       custom domain, if you add one in the Pages settings).</p>
@@ -848,9 +1101,11 @@ rm -rf .jekyll-cache .jekyll-metadata
   HTML directly to Repo B.</p>
 <p>To set this up:</p>
 <ol>
-  <li>Generate a Personal Access Token (PAT) in your GitHub Developer Settings
+  <li>
+<p>Generate a Personal Access Token (PAT) in your GitHub Developer Settings
     with the repo scope checked.
-    <p>I highly recommend creating a Fine-grained personal access token.</p>
+    </p>
+<p>I highly recommend creating a Fine-grained personal access token.</p>
     <p>While the “Tokens (classic)” will absolutely work, they grant sweeping
       access to every repository in your account. If a classic token with the
       repo scope is ever compromised, the attacker has full control over all
@@ -879,10 +1134,12 @@ rm -rf .jekyll-cache .jekyll-metadata
   </li>
   <li>Go to the Settings of Repo A, navigate to Secrets and variables &gt; Actions,
     and add a new repository secret. Name it <code>DEPLOY_PAT</code> and paste your token.</li>
-  <li>In Repo A, update your <code>.github/workflows/jekyll.yml</code> file to look like
+  <li>
+<p>In Repo A, update your <code>.github/workflows/jekyll.yml</code> file to look like
     this:
     
-            <div class="language-yaml highlighter-rouge">
+            </p>
+<div class="language-yaml highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Deploy Jekyll site to Repo B</span>
 
 <span class="na">on</span><span class="pi">:</span>
@@ -1228,8 +1485,10 @@ rm -rf .jekyll-cache .jekyll-metadata
 <p>Here is the architectural reason why re-initialization is mathematically
   unavoidable for true client-side encryption:</p>
 <ul>
-  <li>The Security Paradox
-    <p>For plugins like Gumshoe, Disqus, and Magnific Popup to initialize naturally
+  <li>
+<p>The Security Paradox
+    </p>
+<p>For plugins like Gumshoe, Disqus, and Magnific Popup to initialize naturally
       when the page first loads, the raw, unencrypted HTML (your headings, image
       links, and text) <b>must</b> physically exist in the browser’s Document Object Model
       (DOM) at the exact moment the page finishes loading.</p>
@@ -1238,8 +1497,10 @@ rm -rf .jekyll-cache .jekyll-metadata
       Source,” bypass your password prompt, and read the secret content in plain
       text. Search engine bots would also scrape it immediately.</p>
   </li>
-  <li>The Secure Timeline
-    <p>True privacy requires the server to scramble the data <i>before</i> it ever travels
+  <li>
+<p>The Secure Timeline
+    </p>
+<p>True privacy requires the server to scramble the data <i>before</i> it ever travels
       over the network. Here is the timeline of what currently happens, which is the
       industry standard for secure client-side decryption:</p>
     <ol>
@@ -1259,8 +1520,10 @@ rm -rf .jekyll-cache .jekyll-metadata
         the page again now that the content has appeared.</li>
     </ol>
   </li>
-  <li>The Verdict
-    <p>What you are doing right now—manually triggering <code>.magnificPopup()</code> and
+  <li>
+<p>The Verdict
+    </p>
+<p>What you are doing right now—manually triggering <code>.magnificPopup()</code> and
       <code>DISQUS.reset()</code> inside the success block—is actually the fastest, most
       efficient, and standard best practice in modern web development for handling
       dynamically injected DOM content (like in Single Page Applications or AJAX
@@ -1277,8 +1540,10 @@ rm -rf .jekyll-cache .jekyll-metadata
   store the password as a GitHub Secret for your automated deployments, and pass
   it inline when testing locally.</p>
 <ol>
-  <li>Update the GitHub Action
-    <p>First, go to your private repository settings on GitHub (Settings &gt; Secrets
+  <li>
+<p>Update the GitHub Action
+    </p>
+<p>First, go to your private repository settings on GitHub (Settings &gt; Secrets
       and variables &gt; Actions). Add a new Repository Secret named POST_PASSWORD and
       enter your master password.</p>
     <p>Then, update your workflow file to pass this secret into the build
@@ -1294,8 +1559,10 @@ rm -rf .jekyll-cache .jekyll-metadata
             </div>
           
   </li>
-  <li>Local Usage
-    <p>When you are writing locally and need to test an encrypted post, you simply
+  <li>
+<p>Local Usage
+    </p>
+<p>When you are writing locally and need to test an encrypted post, you simply
       pass the variable directly into your terminal command before serving:</p>
     
             <div class="language-sh highlighter-rouge">
@@ -1363,19 +1630,23 @@ encrypted: true
 </figure>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[This post is password protected.]]></summary></entry><entry><title type="html">Customizing Gallery in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/custom-gallery/" rel="alternate" type="text/html" title="Customizing Gallery in Minimal Mistakes" /><published>2026-02-20T00:00:00+00:00</published><updated>2026-02-20T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/custom-gallery</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/custom-gallery/"><![CDATA[<p>Here are the customizations I’ve made to the <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a> feature of Minimal
   Mistakes:</p>
 <ol>
-  <li>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery
+  <li>
+<p>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery
     such as:
     
-            <div class="language-text highlighter-rouge">
+            </p>
+<div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div>
             </div>
           
     <p>The image size should be adjusted automatically.</p>
   </li>
-  <li>Support adding images to a gallery by only using the <code>image_path</code> parameter or
+  <li>
+<p>Support adding images to a gallery by only using the <code>image_path</code> parameter or
     the URL in the front matter such as:
     
-            <div class="language-text highlighter-rouge">
+            </p>
+<div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>gallery:
   - image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
   - /assets/archive/image/foo/unsplash-gallery-image-1.jpg
@@ -1387,9 +1658,11 @@ encrypted: true
       way. But you can still use both.</p>
   </li>
   <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li>
-  <li>Support Liquid links in the image title, e.g.,
+  <li>
+<p>Support Liquid links in the image title, e.g.,
     
-            <div class="language-text highlighter-rouge">
+            </p>
+<div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>---
 gallery:
   - image_path: https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg
@@ -1508,9 +1781,11 @@ gallery:
   <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g.
     <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into
     your local <code>_includes</code> directory.</li>
-  <li>Apply these changes:
+  <li>
+<p>Apply these changes:
     
-            <div class="language-diff highlighter-rouge">
+            </p>
+<div class="language-diff highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
 </span><span class="gd">--- minimal-mistakes/_includes/gallery	2023-12-15 19:03:51
 </span><span class="gi">+++ josephs-blog/_includes/gallery	2026-03-01 23:18:56
@@ -1581,9 +1856,11 @@ gallery:
             </div>
           
   </li>
-  <li>Add these styles in your <code>assets/css/main.scss</code>:
+  <li>
+<p>Add these styles in your <code>assets/css/main.scss</code>:
     
-            <div class="language-css highlighter-rouge">
+            </p>
+<div class="language-css highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
 <span class="nc">.page__content</span> <span class="nc">.custom-grid</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
@@ -1605,10 +1882,12 @@ gallery:
             </div>
           
   </li>
-  <li>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates
+  <li>
+<p>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates
     Liquid syntax inside front matter strings:
     
-            <div class="language-ruby highlighter-rouge">
+            </p>
+<div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
   <span class="k">module</span> <span class="nn">LiquifyFilter</span>
     <span class="k">def</span> <span class="nf">liquify</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>

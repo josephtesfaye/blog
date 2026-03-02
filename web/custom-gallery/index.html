@@ -267,19 +267,23 @@
         <p>Here are the customizations I’ve made to the <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a> feature of Minimal
   Mistakes:</p>
 <ol>
-  <li>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery
+  <li>
+<p>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery
     such as:
     
-            <div class="language-text highlighter-rouge">
+            </p>
+<div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div>
             </div>
           
     <p>The image size should be adjusted automatically.</p>
   </li>
-  <li>Support adding images to a gallery by only using the <code>image_path</code> parameter or
+  <li>
+<p>Support adding images to a gallery by only using the <code>image_path</code> parameter or
     the URL in the front matter such as:
     
-            <div class="language-text highlighter-rouge">
+            </p>
+<div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>gallery:
   - image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
   - /assets/archive/image/foo/unsplash-gallery-image-1.jpg
@@ -291,9 +295,11 @@
       way. But you can still use both.</p>
   </li>
   <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li>
-  <li>Support Liquid links in the image title, e.g.,
+  <li>
+<p>Support Liquid links in the image title, e.g.,
     
-            <div class="language-text highlighter-rouge">
+            </p>
+<div class="language-text highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>---
 gallery:
   - image_path: https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg
@@ -412,9 +418,11 @@ gallery:
   <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g.
     <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into
     your local <code>_includes</code> directory.</li>
-  <li>Apply these changes:
+  <li>
+<p>Apply these changes:
     
-            <div class="language-diff highlighter-rouge">
+            </p>
+<div class="language-diff highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
 </span><span class="gd">--- minimal-mistakes/_includes/gallery	2023-12-15 19:03:51
 </span><span class="gi">+++ josephs-blog/_includes/gallery	2026-03-01 23:18:56
@@ -485,9 +493,11 @@ gallery:
             </div>
           
   </li>
-  <li>Add these styles in your <code>assets/css/main.scss</code>:
+  <li>
+<p>Add these styles in your <code>assets/css/main.scss</code>:
     
-            <div class="language-css highlighter-rouge">
+            </p>
+<div class="language-css highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
 <span class="nc">.page__content</span> <span class="nc">.custom-grid</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
@@ -509,10 +519,12 @@ gallery:
             </div>
           
   </li>
-  <li>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates
+  <li>
+<p>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates
     Liquid syntax inside front matter strings:
     
-            <div class="language-ruby highlighter-rouge">
+            </p>
+<div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
   <span class="k">module</span> <span class="nn">LiquifyFilter</span>
     <span class="k">def</span> <span class="nf">liquify</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
@@ -698,7 +710,7 @@ gallery:
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          9 minute read
+          12 minute read
         
       </span>
     

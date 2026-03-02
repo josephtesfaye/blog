@@ -251,7 +251,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          9 minute read
+          13 minute read
         
       </span>
     
@@ -317,6 +317,7 @@
 <li><a href="#20260301193852">Notices</a></li>
 <li><a href="#20260301173459">Custom ID</a></li>
 <li><a href="#20260301193839">Numbered Headings</a></li>
+<li><a href="#normalizing-loose-lists">Normalizing Loose Lists</a></li>
 </ul>
 </li>
 </ul>
@@ -336,10 +337,12 @@
   a post or only the headings of a subtree:</p>
 <ul>
   <li>For all headings: Add <code>ordered: true</code> to the front matter of the post.</li>
-  <li>For all headings under a subtree: Add the attribute <code>{: .ordered}</code> right under a
+  <li>
+<p>For all headings under a subtree: Add the attribute <code>{: .ordered}</code> right under a
     heading. All of its sub-headings will be numbered. For example:
     
-            <div class="language-org highlighter-rouge">
+            </p>
+<div class="language-org highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>*** Headings A
 {: .ordered}
 **** Heading 1
@@ -442,17 +445,31 @@
 </tbody>
 </table>
 <h2 id="lists">Lists</h2>
-<p>A multi-level list of mixed types:</p>
+<p>An ordered list with multiple levels:</p>
 <ol>
-  <li>First item</li>
-  <li>Second item
-    <ol>
-      <li>Sub-item A (Indented 3 spaces)
-        <p>Some text</p>
+  <li>
+<p>First item
+    
+            </p>
+<div class="language-text highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>Hello world!</code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Second item
+    </p>
+<ol>
+      <li>
+<p>Sub-item A (Indented 3 spaces)
+        </p>
+<p>Some text</p>
         <ol>
           <li>Sub-item A (Indented 3 spaces)</li>
-          <li>Sub-item A (Indented 3 spaces)
-            <ol>
+          <li>
+<p>Sub-item A (Indented 3 spaces)
+            </p>
+<ol>
               <li>Sub-item A (Indented 3 spaces)</li>
               <li>Sub-item A (Indented 3 spaces)</li>
             </ol>
@@ -460,8 +477,10 @@
           <li>Sub-item A (Indented 3 spaces)</li>
         </ol>
       </li>
-      <li>Sub-item B
-        <ul>
+      <li>
+<p>Sub-item B
+        </p>
+<ul>
           <li>Deeply nested bullet (Indented another 3 spaces)</li>
           <li>Deeply nested bullet (Indented another 3 spaces)</li>
         </ul>
@@ -573,9 +592,11 @@ descriptor + subject + taxonomic rank
 <h2 id="basic-converter">Basic Converter</h2>
 <p>Here’s how I did the configurations.</p>
 <ol>
-  <li>Add <code>org-ruby</code> to your <code>Gemfile</code>:
+  <li>
+<p>Add <code>org-ruby</code> to your <code>Gemfile</code>:
     
-            <div class="language-ruby highlighter-rouge">
+            </p>
+<div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
   <span class="o">...</span>
   <span class="n">gem</span> <span class="s2">"org-ruby"</span>
@@ -583,9 +604,11 @@ descriptor + subject + taxonomic rank
             </div>
           
   </li>
-  <li>Write a new plugin: <code>_plugins/org_converter.rb</code>
+  <li>
+<p>Write a new plugin: <code>_plugins/org_converter.rb</code>
     
-            <div class="language-ruby highlighter-rouge">
+            </p>
+<div class="language-ruby highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
 <span class="nb">require</span> <span class="s1">'rouge'</span>
 
@@ -683,9 +706,11 @@ descriptor + subject + taxonomic rank
             </div>
           
   </li>
-  <li>Install the gems with bundler and run:
+  <li>
+<p>Install the gems with bundler and run:
     
-            <div class="language-sh highlighter-rouge">
+            </p>
+<div class="language-sh highlighter-rouge">
               <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
 </span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div>
             </div>
@@ -901,6 +926,207 @@ This is a warning notice inside an Org file.
 +
 +  doc.output = fragment.to_html if modified
 +end</span></code></pre></div>
+            </div>
+          
+<h2 id="normalizing-loose-lists">Normalizing Loose Lists</h2>
+<p>The outputs of the same list structure produced from Org and Markdown are
+  slightly different as indicated in the below examples by the “Diff” comments. It
+  seems that in Markdown when an item has sub-contents like a literal block, a
+  sub-list, or a paragraph, its first content would be enclosed in <code>&lt;p&gt;</code>, while in
+  Org this doesn’t happen. How to make Org list also follow this pattern in the
+  output?</p>
+<ul>
+  <li>
+<p>Org list:
+    
+            </p>
+<div class="language-org highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code>1. First item
+
+   #+begin_src text
+   Hello world!
+   #+end_src
+
+2. Second item
+   1. Sub-item A (Indented 3 spaces)
+
+      Some text
+
+      1. Sub-item A (Indented 3 spaces)
+      2. Sub-item A (Indented 3 spaces)
+         1. Sub-item A (Indented 3 spaces)
+         2. Sub-item A (Indented 3 spaces)
+      3. Sub-item A (Indented 3 spaces)
+   2. Sub-item B
+      * Deeply nested bullet (Indented another 3 spaces)
+3. Third item</code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Org list output:
+    
+            </p>
+<div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>First item <span class="c">&lt;!-- Diff 1: No &lt;p&gt; around the content --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-text highlighter-rouge"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;code&gt;</span>Hello world!<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;/pre&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Second item
+    <span class="nt">&lt;ol&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces) <span class="c">&lt;!-- Diff 2: No &lt;p&gt; around the content --&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Some text<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;ol&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)
+            <span class="nt">&lt;ol&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ol&gt;</span>
+          <span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>Sub-item B <span class="c">&lt;!-- Diff 3: No &lt;p&gt; around the content --&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Deeply nested bullet (Indented another 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ol&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Third item<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Markdown list:
+    
+            </p>
+<div class="language-markdown highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="p">1.</span> First item
+
+   <span class="p">```</span><span class="nl"> text
+</span>   Hello world!
+   <span class="p">```</span>
+<span class="p">
+2.</span> Second item
+<span class="p">   1.</span> Sub-item A (Indented 3 spaces)<span class="sb">
+
+      Some text
+
+      1. Sub-item A (Indented 3 spaces)
+      1. Sub-item A (Indented 3 spaces)
+         1. Sub-item A (Indented 3 spaces)
+         1. Sub-item A (Indented 3 spaces)
+      1. Sub-item A (Indented 3 spaces)
+</span><span class="p">   2.</span> Sub-item B
+<span class="p">      *</span> Deeply nested bullet (Indented another 3 spaces)
+<span class="p">3.</span> Third item</code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Markdown list output:
+    
+            </p>
+<div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>
+    <span class="nt">&lt;p&gt;</span>First item<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-text highlighter-rouge"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;code&gt;</span>Hello world!<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;/pre&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Second item
+    <span class="nt">&lt;ol&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Some text<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;ol&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)
+            <span class="nt">&lt;ol&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+              <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;/ol&gt;</span>
+          <span class="nt">&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Sub-item A (Indented 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ol&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Sub-item B<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;ul&gt;</span>
+          <span class="nt">&lt;li&gt;</span>Deeply nested bullet (Indented another 3 spaces)<span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ol&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Third item<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+</ul>
+<p>The differences originate from how Kramdown (Markdown) and org-ruby process
+  “loose” lists.</p>
+<p>In Markdown, when a list item contains block-level elements (like a nested list,
+  a code block, or a paragraph) or is separated by blank lines, Kramdown considers
+  it a “loose” list item and actively wraps its leading, raw text into a <code>&lt;p&gt;</code> tag.
+  <code>org-ruby</code>, however, natively dumps the raw text directly into the <code>&lt;li&gt;</code> element as
+  an inline node before appending the block-level children.</p>
+<p>To force your Org files to mimic Kramdown’s exact wrapping behavior, we can add
+  a logic step right at the end of your HTML processing pipeline. Nokogiri will
+  scan every <code>&lt;li&gt;</code>, check if it contains any block-level child elements, and if it
+  does, it will gather all the leading text up to that block and neatly wrap it in
+  a <code>&lt;p&gt;</code> tag.</p>
+
+            <div class="language-diff highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="gd">--- _plugins/org_converter.rb
+</span><span class="gi">+++ _plugins/org_converter.rb
+</span><span class="p">@@ -134,6 +134,28 @@</span>
+           target['class'] = (existing_classes + class_names).uniq.join(' ')
+         end
+       end
+
++      # Process complex list items to wrap leading text in &lt;p&gt;
+<span class="gi">+      block_tags = %w[p div ul ol blockquote pre table dl figure h1 h2 h3 h4 h5 h6 hr]
++      doc.css('li').each do |li|
++        first_block = li.children.find { |c| c.element? &amp;&amp; block_tags.include?(c.name.downcase) }
++
++        if first_block
++          leading_nodes = []
++          li.children.each do |child|
++            break if child == first_block
++            leading_nodes &lt;&lt; child
++          end
++
++          # Check if there is actual inline content/text to wrap
++          has_content = leading_nodes.any? do |n|
++            (n.text? &amp;&amp; !n.text.strip.empty?) || (n.element? &amp;&amp; n.name.downcase != 'br')
++          end
++
++          if has_content
++            p_node = Nokogiri::XML::Node.new('p', doc)
++            first_block.add_previous_sibling(p_node)
++            leading_nodes.each { |n| p_node.add_child(n) }
++          end
++        end
++      end
++
+</span>       doc.to_html
+     end
+   end</code></pre></div>
             </div>
           
 
