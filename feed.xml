@@ -1,4 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-03T04:58:03+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-01T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-03T06:21:16+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling Sticky TOC for Mobile Display in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/mobile-sticky-toc/" rel="alternate" type="text/html" title="Enabling Sticky TOC for Mobile Display in Minimal Mistakes" /><published>2026-03-03T00:00:00+00:00</published><updated>2026-03-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/mobile-sticky-toc</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/mobile-sticky-toc/"><![CDATA[<p>Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
+  display, even if you have set <code>toc_sticky: true</code> (see <a href="https://mmistakes.github.io/minimal-mistakes/docs/layouts/#table-of-contents">Table of contents</a>). Now I
+  want to enable it for mobile with minimal changes so that there is a sticky TOC
+  icon on the screen and when clicked it shows/hides the TOC. This should not
+  affect the desktop display and should apply regardless of the drafting format in
+  use (Org or Markdown).</p>
+<p>The fastest, most efficient approach to implement this is to rip the <code>.toc</code> out of
+  the standard mobile document flow, apply fixed positioning to turn it into a
+  popup, and inject a floating toggle button using JavaScript.</p>
+<p>Because Minimal Mistakes builds the <code>toc_sticky</code> sidebar via Liquid layouts, this
+  DOM-level manipulation works perfectly regardless of whether the post was
+  drafted in Org-mode or Markdown.</p>
+<p>Here are the specific updates you need to make to your files.</p>
+<ol>
+  <li>
+<p>Update your Stylesheet
+    </p>
+<p>Append this CSS to the bottom of <code>assets/css/main.scss</code>. This code uses Minimal
+      Mistakes’ standard <code>$large</code> breakpoint (64em or 1024px) to transform the TOC
+      into a floating modal, while inheriting the native light/dark theme colors
+      already defined by the <code>.toc</code> class.</p>
+    
+            <div class="language-scss highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="c1">// Mobile Sticky TOC Toggle</span>
+<span class="nc">.toc-mobile-btn</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">64em</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 1. The floating button</span>
+  <span class="nc">.has-toc</span> <span class="nc">.toc-mobile-btn</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">9999</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">0</span><span class="mi">.2</span><span class="p">);</span> <span class="c1">// Light/Dark mode agnostic</span>
+    <span class="na">backdrop-filter</span><span class="p">:</span> <span class="nf">blur</span><span class="p">(</span><span class="m">5px</span><span class="p">);</span>
+    <span class="na">-webkit-backdrop-filter</span><span class="p">:</span> <span class="nf">blur</span><span class="p">(</span><span class="m">5px</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">0</span><span class="mi">.3</span><span class="p">);</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2rem</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4px</span> <span class="m">10px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.15</span><span class="p">);</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nd">:active</span> <span class="p">{</span>
+      <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">0</span><span class="mi">.95</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 2. The TOC Popup Panel</span>
+  <span class="nc">.sidebar__right.sticky</span> <span class="nc">.toc</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">90px</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">100vw</span> <span class="o">-</span> <span class="m">50px</span><span class="p">);</span>
+    <span class="nl">max-height</span><span class="p">:</span> <span class="m">60vh</span><span class="p">;</span>
+    <span class="nl">overflow-y</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">9998</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">5px</span> <span class="m">25px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.2</span><span class="p">);</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="c1">// Animation states</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">visibility</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">20px</span><span class="p">);</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nf">cubic-bezier</span><span class="p">(</span><span class="m">0</span><span class="mi">.25</span><span class="o">,</span> <span class="m">0</span><span class="mi">.8</span><span class="o">,</span> <span class="m">0</span><span class="mi">.25</span><span class="o">,</span> <span class="m">1</span><span class="p">);</span>
+
+    <span class="k">&amp;</span><span class="nc">.is-active</span> <span class="p">{</span>
+      <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+      <span class="nl">visibility</span><span class="p">:</span> <span class="nb">visible</span><span class="p">;</span>
+      <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Inject the Button via JavaScript
+    </p>
+<p>To ensure the button doesn’t clutter pages that don’t have a TOC, we
+      dynamically inject it. Append this snippet to the very end of your
+      <code>_includes/head/custom.html</code> file:</p>
+    
+            <div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">initMobileTOC</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">toc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sidebar__right.sticky .toc</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// Only initialize if a sticky TOC exists and the button hasn't been added yet</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">toc</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.toc-mobile-btn</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">has-toc</span><span class="dl">'</span><span class="p">);</span>
+
+      <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">toc-mobile-btn</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;i class="fas fa-list-ul"&gt;&lt;/i&gt;</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">aria-label</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Toggle Table of Contents</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">btn</span><span class="p">);</span>
+
+      <span class="c1">// Toggle TOC visibility on button click</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
+        <span class="nx">toc</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Close TOC when clicking anywhere outside of it</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">toc</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">toc</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">!==</span> <span class="nx">btn</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">toc</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Automatically close the TOC popup after tapping a link inside it</span>
+      <span class="c1">// var tocLinks = toc.querySelectorAll('a');</span>
+      <span class="c1">// tocLinks.forEach(function(link) {</span>
+      <span class="c1">//   link.addEventListener('click', function() {</span>
+      <span class="c1">//     if (window.innerWidth </span><span class="o">&lt;=</span> <span class="mi">1024</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Matches the 64em media query</span>
+      <span class="c1">//       toc.classList.remove('is-active');</span>
+      <span class="c1">//     }</span>
+      <span class="c1">//   });</span>
+      <span class="c1">// });</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="nx">initMobileTOC</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Handle Encrypted Posts (Optional Safety Net)
+    </p>
+<p>Just in case you ever decide to disable <code>toc_sticky</code> on an encrypted post
+      (which moves the TOC completely inside the encrypted <code>section.page__content</code>
+      container), it is best practice to wake this script up after decryption.</p>
+    <p>Open <code>_includes/secure_ui.html</code> and drop this block right next to your Gumshoe
+      initialization:</p>
+    
+            <div class="language-js highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="c1">// Re-initialize Mobile TOC Toggle</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">initMobileTOC</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">initMobileTOC</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mobile TOC failed to load</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+            </div>
+          
+  </li>
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I want to enable it for mobile with minimal changes so that there is a sticky TOC icon on the screen and when clicked it shows/hides the TOC. This should not affect the desktop display and should apply regardless of the drafting format in use (Org or Markdown).]]></summary></entry><entry><title type="html">Enabling drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-01T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the
   existing Markdown method. Here’s how I configure it. This article is written in
   an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact.
@@ -3090,105 +3247,4 @@ the settings list).</p>
 
     <p class="notice--danger">Build input file cannot be found: ‘/path/to/LiveTranscribeJP/Info.plist’. Did you forget to declare this file as an output of a script phase or custom build rule which produces it?</p>
   </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Apple" /><category term="Xcode" /><category term="Swift" /><summary type="html"><![CDATA[You may need to rename a project to better reflect the app’s evolved feature set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename to your codebase.]]></summary></entry><entry><title type="html">Best TTS software for Japanese</title><link href="https://josephtesfaye.com/blog/software/tts-best-natural/" rel="alternate" type="text/html" title="Best TTS software for Japanese" /><published>2026-01-18T00:00:00+00:00</published><updated>2026-01-18T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/software/tts-best-natural</id><content type="html" xml:base="https://josephtesfaye.com/blog/software/tts-best-natural/"><![CDATA[<p>As of 2026, the software that provides the most natural Japanese pronunciation
-depends on whether you value <strong>emotional expression</strong> or <strong>precision in pitch
-and grammar</strong>.</p>
-
-<p><strong>Top Recommendations for Natural Japanese TTS</strong></p>
-
-<ul>
-  <li>
-    <p><a href="https://elevenlabs.io/app/speech-synthesis/text-to-speech">ElevenLabs</a>:
-Currently regarded as a leader for <strong>**emotional range and cinematic
-performance</strong>**. Its generative models excel at capturing human-like nuances
-such as whispering, shouting, and natural prosody that traditional systems
-struggle to replicate.</p>
-  </li>
-  <li>
-    <p><strong>OpenAI Realtime API</strong>: Recommended for <strong>conversational AI</strong>. Unlike
-traditional “transcribe-then-speak” pipelines, it offers a “breathable” flow
-where the AI can laugh or whisper natively, reducing the robotic lag typical
-of older models.</p>
-  </li>
-  <li>
-    <p><strong>A.I.VOICE / AITalk</strong>: A Japanese-specific engine that is highly accurate for
-<strong>pitch accent and intonation</strong>. It allows for fine-tuning technical terms and
-proper nouns, making it a favorite for long-form narration.</p>
-  </li>
-  <li>
-    <p><strong>Microsoft Azure AI Speech</strong>: The default choice for professional or
-<strong>corporate use</strong> where consistency is key. It utilizes neural networks to
-overcome limitations in stress and intonation, providing highly polished and
-safe outputs.</p>
-  </li>
-  <li>
-    <p><strong>VOICEVOX</strong>: A high-quality <strong>open-source</strong> option widely used in Japan. It
-is known for its character-driven voices and unique accents, making it popular
-for content creation and video production.</p>
-  </li>
-  <li>
-    <p>Google Cloud (WaveNet)</p>
-  </li>
-</ul>
-
-<p><strong>Comparison of Strengths</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Software</th>
-      <th>Best For</th>
-      <th>Unique Strength</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ElevenLabs</td>
-      <td>Media &amp; Storytelling</td>
-      <td>Best emotional range and expressive performance.</td>
-    </tr>
-    <tr>
-      <td>Azure AI Speech</td>
-      <td>Business/Enterprise</td>
-      <td>Highly consistent and supports granular SSML control.</td>
-    </tr>
-    <tr>
-      <td>OpenAI</td>
-      <td>Interactive Apps</td>
-      <td>Lowest latency with a natural conversational flow.</td>
-    </tr>
-    <tr>
-      <td>A.I.VOICE</td>
-      <td>Narration</td>
-      <td>Exceptional accuracy for Japanese-specific pitch accents.</td>
-    </tr>
-    <tr>
-      <td>VOICEVOX</td>
-      <td>Content Creation</td>
-      <td>Free, character-based voices with manual pitch adjustment.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>For a standard professional result without complex setup, <strong>Microsoft Azure</strong> or
-<strong>Google Cloud (WaveNet)</strong> are reliable starting points. If you want a voice
-that sounds like a real actor, <strong>ElevenLabs</strong> is the superior choice for
-naturalness in 2026.</p>
-
-<p>Compare five different Japanese-made synthetic voices:</p>
-
-<!-- Courtesy of embedresponsively.com -->
-
-<div class="responsive-video-container">
-    <iframe src="https://www.youtube-nocookie.com/embed/VljBw7mV-r4" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-  </div>
-
-<p>This video provides a direct audio comparison of top Japanese synthesis software
-like VOICEVOX and VOICEPEAK, allowing you to hear the naturalness of their
-intonation side-by-side.</p>
-
-<p><strong>Links</strong></p>
-
-<ul>
-  <li><a href="/blog/software/tts-japanese/">Built-in TTS for Japanese on macOS</a></li>
-</ul>]]></content><author><name>Joseph Huang</name></author><category term="Software" /><category term="TTS" /><summary type="html"><![CDATA[As of 2026, the software that provides the most natural Japanese pronunciation depends on whether you value emotional expression or precision in pitch and grammar.]]></summary></entry></feed>
+</ol>]]></content><author><name>Joseph Huang</name></author><category term="Apple" /><category term="Xcode" /><category term="Swift" /><summary type="html"><![CDATA[You may need to rename a project to better reflect the app’s evolved feature set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename to your codebase.]]></summary></entry></feed>

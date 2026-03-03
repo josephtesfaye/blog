@@ -111,6 +111,48 @@
   });
 </script>
 
+<!-- Enable sticky TOC for mobile -->
+<script>
+  function initMobileTOC() {
+    var toc = document.querySelector('.sidebar__right.sticky .toc');
+    // Only initialize if a sticky TOC exists and the button hasn't been added yet
+    if (toc && !document.querySelector('.toc-mobile-btn')) {
+      document.body.classList.add('has-toc');
+
+      var btn = document.createElement('button');
+      btn.className = 'toc-mobile-btn';
+      btn.innerHTML = '<i class="fas fa-list-ul"></i>';
+      btn.setAttribute('aria-label', 'Toggle Table of Contents');
+      document.body.appendChild(btn);
+
+      // Toggle TOC visibility on button click
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toc.classList.toggle('is-active');
+      });
+
+      // Close TOC when clicking anywhere outside of it
+      document.addEventListener('click', function (e) {
+        if (toc.classList.contains('is-active') && !toc.contains(e.target) && e.target !== btn) {
+          toc.classList.remove('is-active');
+        }
+      });
+
+      // Automatically close the TOC popup after tapping a link inside it
+      // var tocLinks = toc.querySelectorAll('a');
+      // tocLinks.forEach(function (link) {
+      //   link.addEventListener('click', function () {
+      //     if (window.innerWidth <= 1024) { // Matches the 64em media query
+      //       toc.classList.remove('is-active');
+      //     }
+      //   });
+      // });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileTOC);
+</script>
+
   </head>
 
   <body class="layout--single narrow">
@@ -626,6 +668,54 @@ python3 server.py
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/blog/web/mobile-sticky-toc/" rel="permalink">Enabling Sticky TOC for Mobile Display in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-03T00:00:00+00:00">March 3, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
+  display, even if you have set toc_sticky: true (see Table of contents). Now ...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/blog/web/private-posts/" rel="permalink">Enabling Private Posts in Minimal Mistakes
 </a>
       
@@ -757,55 +847,6 @@ python3 server.py
     <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the gallery feature of Minimal
   Mistakes:
 </p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/web/link-abbr/" rel="permalink">Enabling link abbreviations in Minimal Mistakes
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">I want to be able to use link abbreviations in Minimal Mistakes, for example,
-use foo:&lt;filename&gt; in place of the full link for images and images in a
-g...</p>
   </article>
 </div>
 

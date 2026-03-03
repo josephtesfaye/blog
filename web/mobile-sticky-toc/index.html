@@ -1,0 +1,852 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Enabling Sticky TOC for Mobile Display in Minimal Mistakes | Orcharinth</title>
+<meta name="description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile   display, even if you have set toc_sticky: true (see Table of contents). Now I   want to enable it for mobile with minimal changes so that there is a sticky TOC   icon on the screen and when clicked it shows/hides the TOC. This should not   affect the desktop display and should apply regardless of the drafting format in   use (Org or Markdown).">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Enabling Sticky TOC for Mobile Display in Minimal Mistakes">
+<meta property="og:url" content="https://josephtesfaye.com/blog/web/mobile-sticky-toc/">
+
+
+  <meta property="og:description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile   display, even if you have set toc_sticky: true (see Table of contents). Now I   want to enable it for mobile with minimal changes so that there is a sticky TOC   icon on the screen and when clicked it shows/hides the TOC. This should not   affect the desktop display and should apply regardless of the drafting format in   use (Org or Markdown).">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-03-03T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-03-03T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/blog/web/mobile-sticky-toc/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+<!-- Enable sticky TOC for mobile -->
+<script>
+  function initMobileTOC() {
+    var toc = document.querySelector('.sidebar__right.sticky .toc');
+    // Only initialize if a sticky TOC exists and the button hasn't been added yet
+    if (toc && !document.querySelector('.toc-mobile-btn')) {
+      document.body.classList.add('has-toc');
+
+      var btn = document.createElement('button');
+      btn.className = 'toc-mobile-btn';
+      btn.innerHTML = '<i class="fas fa-list-ul"></i>';
+      btn.setAttribute('aria-label', 'Toggle Table of Contents');
+      document.body.appendChild(btn);
+
+      // Toggle TOC visibility on button click
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toc.classList.toggle('is-active');
+      });
+
+      // Close TOC when clicking anywhere outside of it
+      document.addEventListener('click', function (e) {
+        if (toc.classList.contains('is-active') && !toc.contains(e.target) && e.target !== btn) {
+          toc.classList.remove('is-active');
+        }
+      });
+
+      // Automatically close the TOC popup after tapping a link inside it
+      // var tocLinks = toc.querySelectorAll('a');
+      // tocLinks.forEach(function (link) {
+      //   link.addEventListener('click', function () {
+      //     if (window.innerWidth <= 1024) { // Matches the 64em media query
+      //       toc.classList.remove('is-active');
+      //     }
+      //   });
+      // });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileTOC);
+</script>
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+            <a href="/blog/year-archive/" 
+              >Posts</a>
+          </li><li class="masthead__menu-item">
+            <a href="/blog/projects/" 
+              >Projects</a>
+          </li><li class="masthead__menu-item">
+            <a href="/blog/collections/" 
+              >Collections</a>
+          </li><li class="masthead__menu-item">
+            <a href="/blog/about/" 
+              >About</a>
+          </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/blog/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Enabling Sticky TOC for Mobile Display in Minimal Mistakes</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Enabling Sticky TOC for Mobile Display in Minimal Mistakes">
+    <meta itemprop="description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile  display, even if you have set toc_sticky: true (see Table of contents). Now I  want to enable it for mobile with minimal changes so that there is a sticky TOC  icon on the screen and when clicked it shows/hides the TOC. This should not  affect the desktop display and should apply regardless of the drafting format in  use (Org or Markdown).">
+    <meta itemprop="datePublished" content="2026-03-03T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-03-03T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/blog/web/mobile-sticky-toc/" itemprop="url">Enabling Sticky TOC for Mobile Display in Minimal Mistakes
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-03T00:00:00+00:00">March 3, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
+  display, even if you have set <code>toc_sticky: true</code> (see <a href="https://mmistakes.github.io/minimal-mistakes/docs/layouts/#table-of-contents">Table of contents</a>). Now I
+  want to enable it for mobile with minimal changes so that there is a sticky TOC
+  icon on the screen and when clicked it shows/hides the TOC. This should not
+  affect the desktop display and should apply regardless of the drafting format in
+  use (Org or Markdown).</p>
+<p>The fastest, most efficient approach to implement this is to rip the <code>.toc</code> out of
+  the standard mobile document flow, apply fixed positioning to turn it into a
+  popup, and inject a floating toggle button using JavaScript.</p>
+<p>Because Minimal Mistakes builds the <code>toc_sticky</code> sidebar via Liquid layouts, this
+  DOM-level manipulation works perfectly regardless of whether the post was
+  drafted in Org-mode or Markdown.</p>
+<p>Here are the specific updates you need to make to your files.</p>
+<ol>
+  <li>
+<p>Update your Stylesheet
+    </p>
+<p>Append this CSS to the bottom of <code>assets/css/main.scss</code>. This code uses Minimal
+      Mistakes’ standard <code>$large</code> breakpoint (64em or 1024px) to transform the TOC
+      into a floating modal, while inheriting the native light/dark theme colors
+      already defined by the <code>.toc</code> class.</p>
+    
+            <div class="language-scss highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="c1">// Mobile Sticky TOC Toggle</span>
+<span class="nc">.toc-mobile-btn</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">max-width</span><span class="o">:</span> <span class="m">64em</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 1. The floating button</span>
+  <span class="nc">.has-toc</span> <span class="nc">.toc-mobile-btn</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">flex</span><span class="p">;</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">9999</span><span class="p">;</span>
+    <span class="nl">background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">0</span><span class="mi">.2</span><span class="p">);</span> <span class="c1">// Light/Dark mode agnostic</span>
+    <span class="na">backdrop-filter</span><span class="p">:</span> <span class="nf">blur</span><span class="p">(</span><span class="m">5px</span><span class="p">);</span>
+    <span class="na">-webkit-backdrop-filter</span><span class="p">:</span> <span class="nf">blur</span><span class="p">(</span><span class="m">5px</span><span class="p">);</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">128</span><span class="o">,</span> <span class="m">0</span><span class="mi">.3</span><span class="p">);</span>
+    <span class="nl">border-radius</span><span class="p">:</span> <span class="m">50%</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2rem</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">4px</span> <span class="m">10px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.15</span><span class="p">);</span>
+    <span class="nl">cursor</span><span class="p">:</span> <span class="nb">pointer</span><span class="p">;</span>
+    <span class="nl">align-items</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">justify-content</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">transform</span> <span class="m">0</span><span class="mi">.2s</span> <span class="n">ease</span><span class="p">;</span>
+
+    <span class="k">&amp;</span><span class="nd">:active</span> <span class="p">{</span>
+      <span class="nl">transform</span><span class="p">:</span> <span class="nf">scale</span><span class="p">(</span><span class="m">0</span><span class="mi">.95</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 2. The TOC Popup Panel</span>
+  <span class="nc">.sidebar__right.sticky</span> <span class="nc">.toc</span> <span class="p">{</span>
+    <span class="nl">position</span><span class="p">:</span> <span class="nb">fixed</span><span class="p">;</span>
+    <span class="nl">bottom</span><span class="p">:</span> <span class="m">90px</span><span class="p">;</span>
+    <span class="nl">right</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">320px</span><span class="p">;</span>
+    <span class="nl">max-width</span><span class="p">:</span> <span class="nf">calc</span><span class="p">(</span><span class="m">100vw</span> <span class="o">-</span> <span class="m">50px</span><span class="p">);</span>
+    <span class="nl">max-height</span><span class="p">:</span> <span class="m">60vh</span><span class="p">;</span>
+    <span class="nl">overflow-y</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
+    <span class="nl">z-index</span><span class="p">:</span> <span class="m">9998</span><span class="p">;</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="m">0</span> <span class="m">5px</span> <span class="m">25px</span> <span class="nf">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="mi">.2</span><span class="p">);</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="c1">// Animation states</span>
+    <span class="nl">opacity</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+    <span class="nl">visibility</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+    <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">20px</span><span class="p">);</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">all</span> <span class="m">0</span><span class="mi">.3s</span> <span class="nf">cubic-bezier</span><span class="p">(</span><span class="m">0</span><span class="mi">.25</span><span class="o">,</span> <span class="m">0</span><span class="mi">.8</span><span class="o">,</span> <span class="m">0</span><span class="mi">.25</span><span class="o">,</span> <span class="m">1</span><span class="p">);</span>
+
+    <span class="k">&amp;</span><span class="nc">.is-active</span> <span class="p">{</span>
+      <span class="nl">opacity</span><span class="p">:</span> <span class="m">1</span><span class="p">;</span>
+      <span class="nl">visibility</span><span class="p">:</span> <span class="nb">visible</span><span class="p">;</span>
+      <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Inject the Button via JavaScript
+    </p>
+<p>To ensure the button doesn’t clutter pages that don’t have a TOC, we
+      dynamically inject it. Append this snippet to the very end of your
+      <code>_includes/head/custom.html</code> file:</p>
+    
+            <div class="language-html highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">initMobileTOC</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">toc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sidebar__right.sticky .toc</span><span class="dl">'</span><span class="p">);</span>
+    <span class="c1">// Only initialize if a sticky TOC exists and the button hasn't been added yet</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">toc</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.toc-mobile-btn</span><span class="dl">'</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">has-toc</span><span class="dl">'</span><span class="p">);</span>
+
+      <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">toc-mobile-btn</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;i class="fas fa-list-ul"&gt;&lt;/i&gt;</span><span class="dl">'</span><span class="p">;</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">aria-label</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Toggle Table of Contents</span><span class="dl">'</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">btn</span><span class="p">);</span>
+
+      <span class="c1">// Toggle TOC visibility on button click</span>
+      <span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">();</span>
+        <span class="nx">toc</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">);</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Close TOC when clicking anywhere outside of it</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">toc</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">toc</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">!==</span> <span class="nx">btn</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">toc</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">is-active</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Automatically close the TOC popup after tapping a link inside it</span>
+      <span class="c1">// var tocLinks = toc.querySelectorAll('a');</span>
+      <span class="c1">// tocLinks.forEach(function(link) {</span>
+      <span class="c1">//   link.addEventListener('click', function() {</span>
+      <span class="c1">//     if (window.innerWidth </span><span class="o">&lt;=</span> <span class="mi">1024</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Matches the 64em media query</span>
+      <span class="c1">//       toc.classList.remove('is-active');</span>
+      <span class="c1">//     }</span>
+      <span class="c1">//   });</span>
+      <span class="c1">// });</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="nx">initMobileTOC</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+            </div>
+          
+  </li>
+  <li>
+<p>Handle Encrypted Posts (Optional Safety Net)
+    </p>
+<p>Just in case you ever decide to disable <code>toc_sticky</code> on an encrypted post
+      (which moves the TOC completely inside the encrypted <code>section.page__content</code>
+      container), it is best practice to wake this script up after decryption.</p>
+    <p>Open <code>_includes/secure_ui.html</code> and drop this block right next to your Gumshoe
+      initialization:</p>
+    
+            <div class="language-js highlighter-rouge">
+              <div class="highlight"><pre class="highlight"><code><span class="c1">// Re-initialize Mobile TOC Toggle</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">initMobileTOC</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">initMobileTOC</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mobile TOC failed to load</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+            </div>
+          
+  </li>
+</ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/blog/tags/#minimal-mistakes" class="page__taxonomy-item p-category" rel="tag">Minimal Mistakes</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/blog/categories/#web" class="page__taxonomy-item p-category" rel="tag">Web</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-03">March 3, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Enabling+Sticky+TOC+for+Mobile+Display+in+Minimal+Mistakes%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fmobile-sticky-toc%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fmobile-sticky-toc%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/web/mobile-sticky-toc/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/web/private-posts/" class="pagination--pager" title="🔒 Protected Content
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/private-posts/" rel="permalink">🔒 Protected Content
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post is password protected.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          16 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
+  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/custom-gallery/" rel="permalink">Customizing Gallery in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-20T00:00:00+00:00">February 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the gallery feature of Minimal
+  Mistakes:
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/local-images/" rel="permalink">Loading Local Images in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-19T00:00:00+00:00">February 19, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to load local images when the site is served locally. However,
+the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.p...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/blog/web/mobile-sticky-toc/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/web/mobile-sticky-toc"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>

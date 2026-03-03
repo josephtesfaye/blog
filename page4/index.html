@@ -109,6 +109,48 @@
   });
 </script>
 
+<!-- Enable sticky TOC for mobile -->
+<script>
+  function initMobileTOC() {
+    var toc = document.querySelector('.sidebar__right.sticky .toc');
+    // Only initialize if a sticky TOC exists and the button hasn't been added yet
+    if (toc && !document.querySelector('.toc-mobile-btn')) {
+      document.body.classList.add('has-toc');
+
+      var btn = document.createElement('button');
+      btn.className = 'toc-mobile-btn';
+      btn.innerHTML = '<i class="fas fa-list-ul"></i>';
+      btn.setAttribute('aria-label', 'Toggle Table of Contents');
+      document.body.appendChild(btn);
+
+      // Toggle TOC visibility on button click
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toc.classList.toggle('is-active');
+      });
+
+      // Close TOC when clicking anywhere outside of it
+      document.addEventListener('click', function (e) {
+        if (toc.classList.contains('is-active') && !toc.contains(e.target) && e.target !== btn) {
+          toc.classList.remove('is-active');
+        }
+      });
+
+      // Automatically close the TOC popup after tapping a link inside it
+      // var tocLinks = toc.querySelectorAll('a');
+      // tocLinks.forEach(function (link) {
+      //   link.addEventListener('click', function () {
+      //     if (window.innerWidth <= 1024) { // Matches the 64em media query
+      //       toc.classList.remove('is-active');
+      //     }
+      //   });
+      // });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileTOC);
+</script>
+
   </head>
 
   <body class="layout--home">
@@ -191,6 +233,53 @@
 
 
 <div class="entries-list">
+  
+    
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/diary/everything/" rel="permalink">Everything Everywhere All at Once
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-05-21T00:00:00+00:00">May 21, 2022</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Movie review (no spoilers)
+</p>
+  </article>
+</div>
+
   
     
 
@@ -613,54 +702,6 @@ lik...</p>
 
     <p class="archive__item-excerpt" itemprop="description">An algorithm is a set of instructions for solving a class of problems by
 a mechanical process.
-
-</p>
-  </article>
-</div>
-
-  
-    
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/java/java-elements-of-statements/" rel="permalink">Java: Elements of Statements
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2015-12-29T00:00:00+00:00">December 29, 2015</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          12 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Literals, identifiers, symbols, values, types
 
 </p>
   </article>
