@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Enabling Sticky TOC for Mobile Display in Minimal Mistakes | Orcharinth</title>
-<meta name="description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile   display, even if you have set toc_sticky: true (see Table of contents). Now I   want to enable it for mobile with minimal changes so that there is a sticky TOC   icon on the screen and when clicked it shows/hides the TOC. This should not   affect the desktop display and should apply regardless of the drafting format in   use (Org or Markdown).">
+<meta name="description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I want to enable it for mobile with minimal changes so that there is a sticky TOC icon on the screen and when clicked it shows/hides the TOC. This should not affect the desktop display and should apply regardless of the drafting format in use (Org or Markdown).">
 
 
   <meta name="author" content="Joseph Huang">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://josephtesfaye.com/blog/web/mobile-sticky-toc/">
 
 
-  <meta property="og:description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile   display, even if you have set toc_sticky: true (see Table of contents). Now I   want to enable it for mobile with minimal changes so that there is a sticky TOC   icon on the screen and when clicked it shows/hides the TOC. This should not   affect the desktop display and should apply regardless of the drafting format in   use (Org or Markdown).">
+  <meta property="og:description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I want to enable it for mobile with minimal changes so that there is a sticky TOC icon on the screen and when clicked it shows/hides the TOC. This should not affect the desktop display and should apply regardless of the drafting format in use (Org or Markdown).">
 
 
 
@@ -262,7 +262,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Enabling Sticky TOC for Mobile Display in Minimal Mistakes">
-    <meta itemprop="description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile  display, even if you have set toc_sticky: true (see Table of contents). Now I  want to enable it for mobile with minimal changes so that there is a sticky TOC  icon on the screen and when clicked it shows/hides the TOC. This should not  affect the desktop display and should apply regardless of the drafting format in  use (Org or Markdown).">
+    <meta itemprop="description" content="Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I want to enable it for mobile with minimal changes so that there is a sticky TOC icon on the screen and when clicked it shows/hides the TOC. This should not affect the desktop display and should apply regardless of the drafting format in use (Org or Markdown).">
     <meta itemprop="datePublished" content="2026-03-03T00:00:00+00:00">
     <meta itemprop="dateModified" content="2026-03-03T00:00:00+00:00">
 
@@ -306,30 +306,13 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
-  display, even if you have set <code>toc_sticky: true</code> (see <a href="https://mmistakes.github.io/minimal-mistakes/docs/layouts/#table-of-contents">Table of contents</a>). Now I
-  want to enable it for mobile with minimal changes so that there is a sticky TOC
-  icon on the screen and when clicked it shows/hides the TOC. This should not
-  affect the desktop display and should apply regardless of the drafting format in
-  use (Org or Markdown).</p>
-<p>The fastest, most efficient approach to implement this is to rip the <code>.toc</code> out of
-  the standard mobile document flow, apply fixed positioning to turn it into a
-  popup, and inject a floating toggle button using JavaScript.</p>
-<p>Because Minimal Mistakes builds the <code>toc_sticky</code> sidebar via Liquid layouts, this
-  DOM-level manipulation works perfectly regardless of whether the post was
-  drafted in Org-mode or Markdown.</p>
+        <p>Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set <code>toc_sticky: true</code> (see <a href="https://mmistakes.github.io/minimal-mistakes/docs/layouts/#table-of-contents">Table of contents</a>). Now I want to enable it for mobile with minimal changes so that there is a sticky TOC icon on the screen and when clicked it shows/hides the TOC. This should not affect the desktop display and should apply regardless of the drafting format in use (Org or Markdown).</p>
+<p>The fastest, most efficient approach to implement this is to rip the <code>.toc</code> out of the standard mobile document flow, apply fixed positioning to turn it into a popup, and inject a floating toggle button using JavaScript.</p>
+<p>Because Minimal Mistakes builds the <code>toc_sticky</code> sidebar via Liquid layouts, this DOM-level manipulation works perfectly regardless of whether the post was drafted in Org-mode or Markdown.</p>
 <p>Here are the specific updates you need to make to your files.</p>
-<ol>
-  <li>
-<p>Update your Stylesheet
-    </p>
-<p>Append this CSS to the bottom of <code>assets/css/main.scss</code>. This code uses Minimal
-      Mistakes’ standard <code>$large</code> breakpoint (64em or 1024px) to transform the TOC
-      into a floating modal, while inheriting the native light/dark theme colors
-      already defined by the <code>.toc</code> class.</p>
-    
-            <div class="language-scss highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="c1">// Mobile Sticky TOC Toggle</span>
+<ol> <li>
+<p>Update your Stylesheet </p>
+<p>Append this CSS to the bottom of <code>assets/css/main.scss</code>. This code uses Minimal Mistakes’ standard <code>$large</code> breakpoint (64em or 1024px) to transform the TOC into a floating modal, while inheriting the native light/dark theme colors already defined by the <code>.toc</code> class.</p>  <div class="language-scss highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1">// Mobile Sticky TOC Toggle</span>
 <span class="nc">.toc-mobile-btn</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
 <span class="p">}</span>
@@ -387,19 +370,9 @@
       <span class="nl">transform</span><span class="p">:</span> <span class="nf">translateY</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-            </div>
-          
-  </li>
-  <li>
-<p>Inject the Button via JavaScript
-    </p>
-<p>To ensure the button doesn’t clutter pages that don’t have a TOC, we
-      dynamically inject it. Append this snippet to the very end of your
-      <code>_includes/head/custom.html</code> file:</p>
-    
-            <div class="language-html highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+<span class="p">}</span></code></pre></div> </div>  </li> <li>
+<p>Inject the Button via JavaScript </p>
+<p>To ensure the button doesn’t clutter pages that don’t have a TOC, we dynamically inject it. Append this snippet to the very end of your <code>_includes/head/custom.html</code> file:</p>  <div class="language-html highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
   <span class="kd">function</span> <span class="nx">initMobileTOC</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">toc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.sidebar__right.sticky .toc</span><span class="dl">'</span><span class="p">);</span>
     <span class="c1">// Only initialize if a sticky TOC exists and the button hasn't been added yet</span>
@@ -438,32 +411,16 @@
   <span class="p">}</span>
 
   <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">DOMContentLoaded</span><span class="dl">'</span><span class="p">,</span> <span class="nx">initMobileTOC</span><span class="p">);</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
-            </div>
-          
-  </li>
-  <li>
-<p>Handle Encrypted Posts (Optional Safety Net)
-    </p>
-<p>Just in case you ever decide to disable <code>toc_sticky</code> on an encrypted post
-      (which moves the TOC completely inside the encrypted <code>section.page__content</code>
-      container), it is best practice to wake this script up after decryption.</p>
-    <p>Open <code>_includes/secure_ui.html</code> and drop this block right next to your Gumshoe
-      initialization:</p>
-    
-            <div class="language-js highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="c1">// Re-initialize Mobile TOC Toggle</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div> </div>  </li> <li>
+<p>Handle Encrypted Posts (Optional Safety Net) </p>
+<p>Just in case you ever decide to disable <code>toc_sticky</code> on an encrypted post (which moves the TOC completely inside the encrypted <code>section.page__content</code> container), it is best practice to wake this script up after decryption.</p> <p>Open <code>_includes/secure_ui.html</code> and drop this block right next to your Gumshoe initialization:</p>  <div class="language-js highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1">// Re-initialize Mobile TOC Toggle</span>
 <span class="k">try</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">initMobileTOC</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">initMobileTOC</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mobile TOC failed to load</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
-            </div>
-          
-  </li>
-</ol>
+<span class="p">}</span></code></pre></div> </div>  </li> </ol>
 
         
       </section>
@@ -675,15 +632,14 @@
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          16 minute read
+          18 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
-  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written...</p>
   </article>
 </div>
 
@@ -730,8 +686,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the gallery feature of Minimal
-  Mistakes:
+    <p class="archive__item-excerpt" itemprop="description">Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:
 </p>
   </article>
 </div>

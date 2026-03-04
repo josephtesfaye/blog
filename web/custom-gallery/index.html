@@ -11,7 +11,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Customizing Gallery in Minimal Mistakes | Orcharinth</title>
-<meta name="description" content="Here are the customizations I’ve made to the gallery feature of Minimal   Mistakes:">
+<meta name="description" content="Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:">
 
 
   <meta name="author" content="Joseph Huang">
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://josephtesfaye.com/blog/web/custom-gallery/">
 
 
-  <meta property="og:description" content="Here are the customizations I’ve made to the gallery feature of Minimal   Mistakes:">
+  <meta property="og:description" content="Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:">
 
 
 
@@ -262,7 +262,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Customizing Gallery in Minimal Mistakes">
-    <meta itemprop="description" content="Here are the customizations I’ve made to the gallery feature of Minimal  Mistakes:">
+    <meta itemprop="description" content="Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:">
     <meta itemprop="datePublished" content="2026-02-20T00:00:00+00:00">
     <meta itemprop="dateModified" content="2026-02-20T00:00:00+00:00">
 
@@ -306,57 +306,25 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Here are the customizations I’ve made to the <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a> feature of Minimal
-  Mistakes:</p>
-<ol>
-  <li>
-<p>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery
-    such as:
-    
-            </p>
-<div class="language-text highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div>
-            </div>
-          
-    <p>The image size should be adjusted automatically.</p>
-  </li>
-  <li>
-<p>Support adding images to a gallery by only using the <code>image_path</code> parameter or
-    the URL in the front matter such as:
-    
-            </p>
-<div class="language-text highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code>gallery:
+        <p>Here are the customizations I’ve made to the <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a> feature of Minimal Mistakes:</p>
+<ol> <li>
+<p>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery such as: </p>
+<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div> </div>  <p>The image size should be adjusted automatically.</p> </li> <li>
+<p>Support adding images to a gallery by only using the <code>image_path</code> parameter or the URL in the front matter such as: </p>
+<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>gallery:
   - image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
   - /assets/archive/image/foo/unsplash-gallery-image-1.jpg
-  - /assets/archive/image/foo/unsplash-gallery-image-1.jpg</code></pre></div>
-            </div>
-          
-    <p>The gallery originally requires both <code>url</code> and <code>image_path</code> in order to have a
-      pop-up view of the images. But I think it’s more convenient to write in this
-      way. But you can still use both.</p>
-  </li>
-  <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li>
-  <li>
-<p>Support Liquid links in the image title, e.g.,
-    
-            </p>
-<div class="language-text highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code>---
+  - /assets/archive/image/foo/unsplash-gallery-image-1.jpg</code></pre></div> </div>  <p>The gallery originally requires both <code>url</code> and <code>image_path</code> in order to have a pop-up view of the images. But I think it’s more convenient to write in this way. But you can still use both.</p> </li> <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li> <li>
+<p>Support Liquid links in the image title, e.g., </p>
+<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
 gallery:
   - image_path: https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg
     title: "Prompt: [[{{ site.baseurl }}{% post_url 2026-02-19-local-images %}][Local images]]"
----</code></pre></div>
-            </div>
-          
-  </li>
-</ol>
-<p>All of these customizations are backward-compatible, that is, you can still
-  write a gallery in the original way to get the original feel.</p>
+---</code></pre></div> </div>  </li> </ol>
+<p>All of these customizations are backward-compatible, that is, you can still write a gallery in the original way to get the original feel.</p>
 <p>Here’s a demo gallery with the above customizations:</p>
 
-            <div class="language-text highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code>---
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
 link_abbrs:
   - link_abbr: foo https://i.postimg.cc/Vv8jFw8D/
 gallery:
@@ -373,8 +341,7 @@ gallery:
   - image_path: foo:unsplash-gallery-image-1.jpg
 ---
 
-{% include gallery columns=6 caption="My custom gallery" %}</code></pre></div>
-            </div>
+{% include gallery columns=6 caption="My custom gallery" %}</code></pre></div> </div>
           
 
 
@@ -382,90 +349,14 @@ gallery:
 
 
 
-<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);">
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="Use alt for title">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="Use alt for title">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;Link to post: &lt;a href="/blog/web/local-images/"&gt;Local images&lt;/a&gt;&lt;/p&gt;'>
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-    <figure>
-      <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg">
-
-        <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="">
-      </a>
-    </figure>
-  
-  
-    <figcaption>My custom gallery
-</figcaption>
-  
-</figure>
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="Use alt for title"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="Use alt for title"> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;Link to post: &lt;a href="/blog/web/local-images/"&gt;Local images&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>My custom gallery </figcaption> </figure>
 
 
 
 <p>Here are the steps to make the changes:</p>
-<ol>
-  <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g.
-    <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into
-    your local <code>_includes</code> directory.</li>
-  <li>
-<p>Apply these changes:
-    
-            </p>
-<div class="language-diff highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
+<ol> <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g. <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into your local <code>_includes</code> directory.</li> <li>
+<p>Apply these changes: </p>
+<div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
 </span><span class="gd">--- minimal-mistakes/_includes/gallery	2023-12-15 19:03:51
 </span><span class="gi">+++ josephs-blog/_includes/gallery	2026-03-01 23:18:56
 </span><span class="p">@@ -6,6 +6,8 @@</span>
@@ -531,16 +422,9 @@ gallery:
    {% endif %}
  &lt;/figure&gt;
 <span class="gi">+
-+{% endif %}</span></code></pre></div>
-            </div>
-          
-  </li>
-  <li>
-<p>Add these styles in your <code>assets/css/main.scss</code>:
-    
-            </p>
-<div class="language-css highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
++{% endif %}</span></code></pre></div> </div>  </li> <li>
+<p>Add these styles in your <code>assets/css/main.scss</code>: </p>
+<div class="language-css highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
 <span class="nc">.page__content</span> <span class="nc">.custom-grid</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="n">grid</span><span class="p">;</span>
   <span class="py">gap</span><span class="p">:</span> <span class="m">0.5em</span><span class="p">;</span>
@@ -557,28 +441,16 @@ gallery:
 
 <span class="nc">.custom-grid</span> <span class="nt">img</span> <span class="p">{</span>
   <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-            </div>
-          
-  </li>
-  <li>
-<p>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates
-    Liquid syntax inside front matter strings:
-    
-            </p>
-<div class="language-ruby highlighter-rouge">
-              <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
+<span class="p">}</span></code></pre></div> </div>  </li> <li>
+<p>Create a new plugin file <code>_plugins/liquify.rb</code> to add a filter that evaluates Liquid syntax inside front matter strings: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Jekyll</span>
   <span class="k">module</span> <span class="nn">LiquifyFilter</span>
     <span class="k">def</span> <span class="nf">liquify</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
       <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="nf">to_s</span><span class="p">).</span><span class="nf">render</span><span class="p">(</span><span class="vi">@context</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span></code></pre></div>
-            </div>
-          
-  </li>
-</ol>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span></code></pre></div> </div>  </li> </ol>
 
         
       </section>
@@ -759,8 +631,7 @@ gallery:
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
-  display, even if you have set toc_sticky: true (see Table of contents). Now ...</p>
+    <p class="archive__item-excerpt" itemprop="description">Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I ...</p>
   </article>
 </div>
 
@@ -807,8 +678,7 @@ gallery:
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or
-  someone with a password, and not by any other person, any search engine, a...</p>
+    <p class="archive__item-excerpt" itemprop="description">I want to be able to make a post private, that is, it can only be seen by me, or someone with a password, and not by any other person, any search engine, any...</p>
   </article>
 </div>
 
@@ -848,15 +718,14 @@ gallery:
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          14 minute read
+          16 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the
-  existing Markdown method. Here’s how I configure it. This article is writt...</p>
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written...</p>
   </article>
 </div>
 
