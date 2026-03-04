@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-03T06:31:24+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Enabling Sticky TOC for Mobile Display in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/mobile-sticky-toc/" rel="alternate" type="text/html" title="Enabling Sticky TOC for Mobile Display in Minimal Mistakes" /><published>2026-03-03T00:00:00+00:00</published><updated>2026-03-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/mobile-sticky-toc</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/mobile-sticky-toc/"><![CDATA[<p>Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-04T07:39:38+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Interview</title><link href="https://josephtesfaye.com/blog/web/interview/" rel="alternate" type="text/html" title="Interview" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/interview</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/interview/"><![CDATA[<h1 id="introduce-yourself">Introduce yourself</h1>
+<p>Thank you for having me. My name is Huang Jicheng, and you can call me Joseph. I
+  graduated with a 4-year bachelor’s degree from Macao Polytechnic University in
+  Macao SAR, and since then I’ve been working as a software engineer for more than
+  eight years, mainly focusing on backend development using Java and cloud
+  platforms like AWS. Most of my experience comes from building large-scale
+  systems for E-Commerce, ERP, and mobility services, etc. I’m fluent in English,
+  a native Chinese speaker, and my Japanese is at an intermediate level, with
+  which I’m stronger in reading and writing, weaker in conversation, which I’m
+  continuously improving. I’m especially excited about joining [Company Name] to
+  contribute my experience in Java backend development and distributed systems.</p>
+<p><ruby>本日<rt>ほんじつ</rt></ruby>はお<ruby>時間<rt>じかん</rt></ruby>をいただき、ありがとうございます。黄級誠と<ruby>申<rt>もう</rt></ruby>します。コウとお<ruby>呼<rt>よ</rt></ruby>びください。私はマカオにあるマカオ<ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby>を4<ruby>年<rt>ねん</rt>制<rt>せい</rt></ruby>の<ruby>学士<rt>がくし</rt></ruby><ruby>課程<rt>かてい</rt></ruby>で<ruby>卒業<rt>そつぎょう</rt></ruby>しました。それ<ruby>以<rt>い</rt>降<rt>こう</rt></ruby>、ソフトウェアエンジニアとして８<ruby>年<rt>ねん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>実<rt>じつ</rt>務<rt>む</rt></ruby><ruby>経<rt>けい</rt>験<rt>けん</rt></ruby>があり、<ruby>主<rt>おも</rt></ruby>に
+  ジャバ（Java）とエーダブリューエス（AWS）などのクラウドプラットフォーム（cloud
+  platform）を<ruby>使用<rt>しよう</rt></ruby>したバックエンド<ruby>開<rt>かい</rt>発<rt>はつ</rt></ruby>に<ruby>注<rt>ちゅう</rt>力<rt>りょく</rt></ruby>してきました。<ruby>経験<rt>けいけん</rt></ruby>の<ruby>多<rt>おお</rt></ruby>くは、Eコマース（ecommerce）やイー
+  アールピー（ERP）、モビリティサービス（mobility service）などの<ruby>大<rt>だい</rt></ruby><ruby>規<rt>き</rt></ruby>
+  <ruby>模<rt>ぼ</rt></ruby>システムの<ruby>構築<rt>こうちく</rt></ruby>によるものです。<ruby>語<rt>ご</rt>学<rt>がく</rt></ruby>については、<ruby>中国<rt>ちゅうごく</rt>語<rt>ご</rt></ruby>が<ruby>母<rt>ぼ</rt>語<rt>ご</rt></ruby>で、英語はビジネスレベルで<ruby>流<rt>りゅう</rt>暢<rt>ちょう</rt></ruby>に<ruby>話<rt>はな</rt></ruby>せます。日本語は<ruby>中<rt>ちゅう</rt>級<rt>きゅう</rt></ruby>レベルで、<ruby>読<rt>よ</rt></ruby>み<ruby>書<rt>か</rt></ruby>
+  きは<ruby>得意<rt>とくい</rt></ruby>ですが<ruby>会話<rt>かいわ</rt></ruby>はまだ<ruby>苦手<rt>にて</rt></ruby>な<ruby>部分<rt>ぶぶん</rt></ruby>がありま
+  す。これまでのジャババックエンド（Java backend）<ruby>開<rt>かい</rt>発<rt>はつ</rt></ruby>や<ruby>分<rt>ぶん</rt>散<rt>さん</rt></ruby>システムの<ruby>経<rt>けい</rt>験<rt>けん</rt></ruby>を<ruby>活<rt>い</rt></ruby>かして、<ruby>貴<rt>き</rt>社<rt>しゃ</rt></ruby>に<ruby>貢<rt>こう</rt>献<rt>けん</rt></ruby>できることを<ruby>非<rt>ひ</rt>常<rt>じょう</rt></ruby>に<ruby>楽<rt>たの</rt></ruby>しみにしています。どうぞよろ
+  しくお<ruby>願<rt>ねが</rt></ruby>いいたします。</p>
+<h1 id="why-do-you-come-to-japan">Why do you come to Japan?</h1>
+<p>I came to Japan because I’m genuinely interested in Japanese society and
+  culture. Living here allows me to experience the culture firsthand and
+  communicate more effectively with local teams. I see Japan as a place where I
+  can grow professionally and personally, while contributing meaningful value to
+  the products I work on.</p>
+<p>日本の社会や文化に<ruby>心<rt>こころ</rt></ruby>から<ruby>興<rt>きょう</rt>味<rt>み</rt></ruby>があり、<ruby>来<rt>らい</rt>日<rt>にち</rt></ruby>い
+  たしました。<ruby>実<rt>じっ</rt>際<rt>さい</rt></ruby>にこちらで<ruby>生<rt>せい</rt>活<rt>かつ</rt></ruby>することで、文化を<ruby>肌<rt>はだ</rt></ruby>で<ruby>感<rt>かん</rt></ruby>じながら、<ruby>現<rt>げん</rt>地<rt>ち</rt></ruby>のチームともより<ruby>円<rt>えん</rt>滑<rt>かつ</rt></ruby>
+  にコミュニケーションをとることが<ruby>可能<rt>かのう</rt></ruby>になると<ruby>考<rt>かん</rt></ruby>えています。私に
+  とって、日本はエンジニアとして、また<ruby>一人<rt>ひとり</rt></ruby>の<ruby>人間<rt>にんげん</rt></ruby>としても<ruby>成<rt>せい</rt>長<rt>ちょう</rt></ruby>できる<ruby>場<rt>ば</rt></ruby>であり、<ruby>携<rt>たずさ</rt></ruby>わる<ruby>製<rt>せい</rt>品<rt>ひん</rt></ruby>を<ruby>通<rt>とお</rt></ruby>じて<ruby>有<rt>ゆう</rt>意<rt>い</rt>義<rt>ぎ</rt></ruby>な<ruby>価<rt>か</rt>値<rt>ち</rt></ruby>を<ruby>提<rt>てい</rt>供<rt>きょう</rt></ruby>していき
+  たいと<ruby>考<rt>かん</rt></ruby>えております。</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Introduce yourself]]></summary></entry><entry><title type="html">Enabling Sticky TOC for Mobile Display in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/mobile-sticky-toc/" rel="alternate" type="text/html" title="Enabling Sticky TOC for Mobile Display in Minimal Mistakes" /><published>2026-03-03T00:00:00+00:00</published><updated>2026-03-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/mobile-sticky-toc</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/mobile-sticky-toc/"><![CDATA[<p>Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile
   display, even if you have set <code>toc_sticky: true</code> (see <a href="https://mmistakes.github.io/minimal-mistakes/docs/layouts/#table-of-contents">Table of contents</a>). Now I
   want to enable it for mobile with minimal changes so that there is a sticky TOC
   icon on the screen and when clicked it shows/hides the TOC. This should not
@@ -3150,101 +3179,4 @@ like a Ruby version manager or Bundler itself.</li>
   <li>Use <code class="language-plaintext highlighter-rouge">bundle</code> for almost everything related to your actual application code,
 such as adding new libraries to your project or running project-specific
 tasks.</li>
-</ul>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Ruby" /><summary type="html"><![CDATA[In the Ruby ecosystem, gem and bundle serve distinct but complementary roles in managing code libraries (known as gems). While gem is the primary interface for the RubyGems package manager, bundle is the command used for Bundler, a tool built on top of RubyGems to manage project-specific dependencies.]]></summary></entry><entry><title type="html">Renaming a Swift project using Xcode and Emacs</title><link href="https://josephtesfaye.com/blog/apple/renaming-xcode/" rel="alternate" type="text/html" title="Renaming a Swift project using Xcode and Emacs" /><published>2026-02-03T00:00:00+00:00</published><updated>2026-02-03T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/apple/renaming-xcode</id><content type="html" xml:base="https://josephtesfaye.com/blog/apple/renaming-xcode/"><![CDATA[<p>You may need to rename a project to better reflect the app’s evolved feature
-set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename
-to your codebase.</p>
-
-<p><strong>Step 1: Update the Name throughout the Codebase</strong></p>
-
-<p>In Emacs, you can use <code class="language-plaintext highlighter-rouge">projectile-ripgrep</code> or <code class="language-plaintext highlighter-rouge">projectile-replace</code> to find and
-replace the name tokens. Do this only to those in the source code files, and
-skip files associated with project management.</p>
-
-<p><strong>Step 2: Perform the Project Rename in Xcode</strong></p>
-
-<p>To fully rename the app (including the icon name on the dock and the file
-structure), follow these steps in Xcode:</p>
-
-<ol>
-  <li>
-    <p>Rename Project:</p>
-
-    <ol>
-      <li>In the Project Navigator (left sidebar), click on the blue project icon
-LiveTranscribeJP.</li>
-      <li>Press Enter to rename it. Type OmniScribe and press Enter.</li>
-      <li>Xcode will ask to rename targets and schemes. Click Rename.</li>
-    </ol>
-  </li>
-  <li>
-    <p>Rename the source folder:</p>
-
-    <ol>
-      <li>In the Project Navigator (left sidebar), click on the source folder icon
-LiveTranscribeJP.</li>
-      <li>Press Enter to rename it. Type OmniScribe and press Enter.</li>
-    </ol>
-  </li>
-  <li>
-    <p>Rename Scheme:</p>
-
-    <ol>
-      <li>Click the scheme selector (top bar, next to the Play button).</li>
-      <li>
-        <p>Select Manage Schemes….</p>
-
-        <p><img src="https://i.postimg.cc/XqbXkTqr/20260203204557.png" alt="" /></p>
-      </li>
-      <li>Select LiveTranscribeJP, press Enter or click on it, and rename it to
-OmniScribe.</li>
-    </ol>
-  </li>
-  <li>
-    <p>Update Bundle Identifier (Optional):</p>
-
-    <ol>
-      <li>Click the Project icon -&gt; Select the Target -&gt; Signing &amp; Capabilities.</li>
-      <li>Change <code class="language-plaintext highlighter-rouge">Bundle Identifier</code> to <code class="language-plaintext highlighter-rouge">com.yourname.OmniScribe</code>.</li>
-    </ol>
-  </li>
-  <li>
-    <p>Update Info.plist:</p>
-
-    <p>If you see <code class="language-plaintext highlighter-rouge">Bundle name</code> or <code class="language-plaintext highlighter-rouge">Bundle display name</code> in your <code class="language-plaintext highlighter-rouge">Info.plist</code>,
-ensure they use <code class="language-plaintext highlighter-rouge">$(PRODUCT_NAME)</code> or are manually updated to OmniScribe.</p>
-  </li>
-  <li>
-    <p>Update Info.plist path in Build Settings:</p>
-
-    <ol>
-      <li>
-        <p>Open Project Settings: Click on the blue project icon (now named
-OmniScribe) in the left Project Navigator.</p>
-      </li>
-      <li>
-        <p>Select the Target: In the center panel, select the OmniScribe target
-(under "Targets").</p>
-      </li>
-      <li>
-        <p>Go to Build Settings: Click the Build Settings tab at the top.</p>
-      </li>
-      <li>
-        <p>Search for Info.plist: Type Info.plist in the search bar (top right of
-the settings list).</p>
-      </li>
-      <li>
-        <p>Update "Info.plist File":</p>
-
-        <ol>
-          <li>Locate the row named <code class="language-plaintext highlighter-rouge">Info.plist File</code> (Key: <code class="language-plaintext highlighter-rouge">INFOPLIST_FILE</code>).</li>
-          <li>Double-click the value on the right.</li>
-          <li>Change the path to point to the correct location of your file.</li>
-        </ol>
-      </li>
-    </ol>
-
-    <p>If this path isn't set correctly you may see this error:</p>
-
-    <p class="notice--danger">Build input file cannot be found: ‘/path/to/LiveTranscribeJP/Info.plist’. Did you forget to declare this file as an output of a script phase or custom build rule which produces it?</p>
-  </li>
-</ol>]]></content><author><name>Joseph Huang</name></author><category term="Apple" /><category term="Xcode" /><category term="Swift" /><summary type="html"><![CDATA[You may need to rename a project to better reflect the app’s evolved feature set, e.g., from LiveTranscribeJP to OmniScribe. Here is how to apply this rename to your codebase.]]></summary></entry></feed>
+</ul>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Ruby" /><summary type="html"><![CDATA[In the Ruby ecosystem, gem and bundle serve distinct but complementary roles in managing code libraries (known as gems). While gem is the primary interface for the RubyGems package manager, bundle is the command used for Bundler, a tool built on top of RubyGems to manage project-specific dependencies.]]></summary></entry></feed>
