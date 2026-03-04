@@ -293,7 +293,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          18 minute read
+          20 minute read
         
       </span>
     
@@ -353,6 +353,7 @@
 <li><a href="#org-elements-examples-images">Images</a></li>
 <li><a href="#org-elements-examples-code-highlighting">Code highlighting</a></li>
 <li><a href="#org-elements-examples-notices">Notices</a></li>
+<li><a href="#org-elements-examples-furigana">Furigana</a></li>
 </ul>
 </li>
 <li>
@@ -370,6 +371,7 @@
 </li>
 <li><a href="#configurations-notices">Notices</a></li>
 <li><a href="#configurations-newlines-in-body-text">Newlines in Body Text</a></li>
+<li><a href="#configurations-furigana">Furigana</a></li>
 </ul>
 </li>
 </ul>
@@ -546,6 +548,14 @@ descriptor + subject + taxonomic rank
 <p class="notice--warning"> <b>Watch out!</b> This is a warning notice inside an Org file.</p>
 <p class="notice--success"> <b>Watch out!</b> This is a warning notice inside an Org file.</p>
 <p class="notice--danger"> <b>Watch out!</b> This is a warning notice inside an Org file.</p>
+<h2 id="org-elements-examples-furigana">Furigana</h2>
+<p>You can write furigana for Japanese Kanji words like the following:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>本|日（ほん|じつ）はお時|間（じ|かん）をいただき、ありがとうございます。私はマカ
+オにあるマカオ理|工|大|学（り|こう|だい|がく）を4年|制（ねん|せい）の学|士（が
+く|し）課|程（か|てい）で卒業（そつ|ぎょう）しました。</code></pre></div> </div>
+          
+<p><ruby>本<rt>ほん</rt>日<rt>じつ</rt></ruby>はお<ruby>時<rt>じ</rt>間<rt>かん</rt></ruby>をいただき、ありがとうございます。私はマカオにあるマカオ<ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby>を4<ruby>年<rt>ねん</rt>制<rt>せい</rt></ruby>の<ruby>学<rt>がく</rt>士<rt>し</rt></ruby><ruby>課<rt>か</rt>程<rt>てい</rt></ruby>で<ruby>卒業<rt>そつぎょう</rt></ruby>しました。</p>
 <h1 id="configurations">Configurations</h1>
 <h2 id="configurations-basic-converter">Basic Converter</h2>
 <p>Here’s how I did the configurations.</p>
@@ -1130,6 +1140,87 @@ Output:
 <ul> <li>Bypassing XPath Blindspots: By filtering <code>[not(ancestor::pre or
     ancestor::code)]</code> via XPath and moving the newline check <code>next unless
     content.match?(/[\r\n]/)</code> into Ruby, we bypass libxml2’s strict string literal parsing. Ruby will now correctly evaluate and catch every single node that contains a newline.</li> <li>Positive Lookahead <code>(?=...)</code>: In a sentence spanning 3 lines, the lookahead <code>(?=[#{cjk}])</code> asserts that a CJK character exists after the newline without “consuming” it, allowing the engine to successfully match and delete consecutive newlines.</li> <li>Cross-Platform Newlines: Using <code>[\r\n]+</code> ensures it works flawlessly regardless of whether your files were saved with Windows (<code>\r\n</code>) or Unix (<code>\n</code>) line endings.</li> </ul>
+<h2 id="configurations-furigana">Furigana</h2>
+<p>Here’s an edge case for the furigana handling code. The 3rd and 5th “理工大学” aren’t parsed or matched correctly. One thing in common is that they are all broken by a newline with the <code>|</code> character leading the next line. This may cause some confusion between the Org table syntax and the furigana syntax.</p>
+
+            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>本日（ほんじつ）
+本|日（ほん|じつ）
+理工大学（りこうだいがく）
+理|工|
+大|学（り|こう|だい|がく）
+理|工|大
+|学（り|こう|だい|がく）
+理|工|大|学（り|
+こう|だい|がく）
+理|工|大|学（り
+|こう|だい|がく）</code></pre></div> </div>
+          
+<p><ruby>本日<rt>ほんじつ</rt></ruby> <ruby>本<rt>ほん</rt>日<rt>じつ</rt></ruby> <ruby>理工大学<rt>りこうだいがく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby></p>
+<p>Changes:</p>
+
+            <div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">magit-diff-range</span> <span class="s">"1cb2b19..1682d75"</span> <span class="o">'</span><span class="p">(</span><span class="s">"--no-ext-diff"</span> <span class="s">"--stat"</span><span class="p">)</span> <span class="o">'</span><span class="p">(</span><span class="s">"_plugins/org_converter.rb"</span><span class="p">))</span></code></pre></div> </div>
+          
+
+            <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">modified   _plugins/org_converter.rb
+@@ -1,6 +1,10 @@</span>
+ require 'nokogiri'
+ require 'rouge'
+ 
+<span class="gi">+module Jekyll
++  FURIGANA_REGEX = /((?:\p{Han}|々|\|)(?:(?:\p{Han}|々|\||\s)*(?:\p{Han}|々|\|))?)\s*[[[ぁ-んァ-ヶー|\s]+][（(]][）)]/
++end
++
+</span> Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
+   # Enable Liquid syntax
+   if doc.extname.downcase == '.org'
+<span class="p">@@ -21,6 +25,15 @@</span> Jekyll::Hooks.register [:pages, :documents], :pre_render do |doc|
+       $1 ? "\n#+BEGIN_HTML\n#{$1}\n#+END_HTML\n" : match
+     end
+ 
+<span class="gi">+    # Pre-process furigana to strip newlines and prevent org-ruby table corruption
++    doc.content = doc.content.gsub(/#{block_regex}|#{raw_regex}|#{Jekyll::FURIGANA_REGEX}/) do |match|
++      if match.match?(/\A[ \t]*(?:#\+|\{%)/)
++        match
++      else
++        match.gsub(/[\r\n]+/, '')
++      end
++    end
++
+</span>     inline_code = /[=~][^=~\n]+[=~]/
+     markdown_link = /(?&lt;!\!)\[([^\]]+)\]\(([^)]+)\)/
+ 
+<span class="p">@@ -213,6 +226,49 @@</span> module Jekyll
+         end
+       end
+ 
+<span class="gi">+      # Furigana handling
++      # 1. Use XPath to filter out pre/code ancestors at the C-level (libxml2) for maximum speed.
++      # 2. Fast pre-filter using 'contains' so Ruby only processes nodes that actually have parentheses.
++      target_nodes = doc.xpath('.//text()[not(ancestor::pre or ancestor::code) and (contains(., "（") or contains(., "("))]')
++      target_nodes.each do |node|
++        content = node.content
++        if content.match?(Jekyll::FURIGANA_REGEX)
++          new_html = content.gsub(Jekyll::FURIGANA_REGEX) do |match|
++            raw_base = $1
++            raw_ruby = $2
++            clean_base = raw_base.gsub(/\s+/, '')
++            clean_ruby = raw_ruby.gsub(/\s+/, '')
++            bases = clean_base.split('|')
++            rubies = clean_ruby.split('|')
++
++            if bases.length == rubies.length
++              ruby_content = bases.zip(rubies).map { |b, r| "#{b}&lt;rt&gt;#{r}&lt;/rt&gt;" }.join('')
++              "&lt;ruby&gt;#{ruby_content}&lt;/ruby&gt;"
++            else
++              base = clean_base.delete('|')
++              rb = clean_ruby.delete('|')
++              "&lt;ruby&gt;#{base}&lt;rt&gt;#{rb}&lt;/rt&gt;&lt;/ruby&gt;"
++            end
++          end
++          node.replace(Nokogiri::HTML::DocumentFragment.parse(new_html)) if new_html != content
++        end
++      end</span></code></pre></div> </div>
+          
 
         
       </section>
