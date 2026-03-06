@@ -39,7 +39,7 @@
 
 
 
-  <meta property="article:modified_time" content="2026-02-19T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-03-06T00:00:00+00:00">
 
 
 
@@ -262,9 +262,9 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Enabling link abbreviations in Minimal Mistakes">
-    <meta itemprop="description" content="I want to be able to use link abbreviations in Minimal Mistakes, for example,use foo:&lt;filename&gt; in place of the full link for images and images in agallery like the following:">
+    <meta itemprop="description" content="I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:">
     <meta itemprop="datePublished" content="2026-02-19T00:00:00+00:00">
-    <meta itemprop="dateModified" content="2026-02-19T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-03-06T00:00:00+00:00">
 
     <div class="page__inner-wrap">
       
@@ -306,39 +306,44 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>I want to be able to use link abbreviations in Minimal Mistakes, for example,
-use <code class="language-plaintext highlighter-rouge">foo:&lt;filename&gt;</code> in place of the full link for images and images in a
-gallery like the following:</p>
+        <p>I want to be able to use link abbreviations in Minimal Mistakes, for example, use <code>foo:&lt;filename&gt;</code> in place of the full link for images and images in a gallery like the following:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-link_abbrs:
-  - link_abbr: foo http://127.0.0.1:8123/archive/image/foo/
-gallery:
-  - url: foo:20260218184820.png
-    image_path: foo:20260218184820.png
-  - url: foo:20260218184820.png
-    image_path: foo:20260218184820.png
-  - url: foo:20260218184820.png
-    image_path: foo:20260218184820.png
----
+            <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Link</span><span class="nv"> </span><span class="s">Abbreviations"</span>
+<span class="na">link_abbrs</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">link_abbr</span><span class="pi">:</span> <span class="s">foo https://i.postimg.cc/Vv8jFw8D/</span>
+<span class="na">gallery</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
+    <span class="na">image_path</span><span class="pi">:</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
+    <span class="na">title</span><span class="pi">:</span> <span class="s">Check this [[foo:unsplash-gallery-image-1.jpg][image]]</span>
+  <span class="pi">-</span> <span class="na">image_path</span><span class="pi">:</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
+  <span class="pi">-</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
+<span class="nn">---</span>
 
-![](foo:20260218184820.png)
+<span class="p">![</span><span class="nv">An image</span><span class="p">](</span><span class="sx">foo:unsplash-gallery-image-1.jpg</span><span class="p">)</span>
 
-{% include gallery caption="Link abbreviations" %}
-</code></pre></div></div>
+{% capture fig_img %}
+<span class="p">![</span><span class="nv">An image</span><span class="p">](</span><span class="sx">foo:unsplash-gallery-image-1.jpg</span><span class="p">)</span>
+{% endcapture %}
 
-<p>The links can then be translated to their full forms in the built result such
-as:</p>
+<span class="nt">&lt;figure&gt;</span>
+  {{ fig_img | markdownify | remove: "<span class="nt">&lt;p&gt;</span>" | remove: "<span class="nt">&lt;/p&gt;</span>" }}
+  <span class="nt">&lt;figcaption&gt;</span>An image with caption<span class="nt">&lt;/figcaption&gt;</span>
+<span class="nt">&lt;/figure&gt;</span>
 
-<pre><code class="language-example">http://127.0.0.1:8123/archive/image/foo/20260218184820.png
-</code></pre>
+{% include figure image_path="foo:unsplash-gallery-image-1.jpg" popup=true
+alt="" caption="A figure" %}
 
-<p><strong>Create a new Ruby plugin file</strong></p>
+{% include gallery columns=3 caption="A gallery" %}</code></pre></div> </div>
+          
+<p>The links can then be translated to their full forms in the built result:</p>
 
-<p>We can create a plugin under <code class="language-plaintext highlighter-rouge">_plugins/link_abbr.rb</code> which handles the link
-abbreviations:</p>
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg</code></pre></div> </div>
+          
+<p><b>Create a new Ruby plugin file</b></p>
+<p>We can create a plugin under <code>_plugins/link_abbr.rb</code> which handles the link abbreviations:</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'addressable/uri'</span>
+            <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'addressable/uri'</span>
 
 <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:pre_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
   <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'link_abbrs'</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
@@ -384,62 +389,32 @@ abbreviations:</p>
       <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>The <code class="language-plaintext highlighter-rouge">github-pages</code> gem enforces strict safe mode and completely disables the
-<code class="language-plaintext highlighter-rouge">_plugins</code> directory to mimic GitHub’s legacy deployment environment, overriding
-any <code class="language-plaintext highlighter-rouge">safe: false</code> settings in your configuration.</p>
-
-<p>To allow custom plugins to run locally, you need to replace it with the standard
-Jekyll gem. Since you already have all your plugins explicitly listed in your
-Gemfile, this is a safe swap.</p>
-
+<span class="k">end</span></code></pre></div> </div>
+          
+<p>The <code>github-pages</code> gem enforces strict safe mode and completely disables the <code>_plugins</code> directory to mimic GitHub’s legacy deployment environment, overriding any <code>safe: false</code> settings in your configuration.</p>
+<p>To allow custom plugins to run locally, you need to replace it with the standard Jekyll gem. Since you already have all your plugins explicitly listed in your Gemfile, this is a safe swap.</p>
 <p>Gemfile:</p>
 
-<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-gem "github-pages", group: :jekyll_plugins
+            <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-gem "github-pages", group: :jekyll_plugins
 </span><span class="gi">+gem "jekyll"
 +gem "kramdown-parser-gfm"
-+gem "faraday-retry"
-</span></code></pre></div></div>
-
++gem "faraday-retry"</span></code></pre></div> </div>
+          
 <p>_config.yml:</p>
 
-<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gd">-remote_theme: mmistakes/minimal-mistakes@4.20.2
-</span><span class="gi">+theme: minimal-mistakes-jekyll
-</span></code></pre></div></div>
-
+            <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-remote_theme: mmistakes/minimal-mistakes@4.20.2
+</span><span class="gi">+theme: minimal-mistakes-jekyll</span></code></pre></div> </div>
+          
 <p>Terminal:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
-</span>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
-
-<p><strong>Use GitHub Actions to build your GitHub Pages site</strong></p>
-
-<p>This affects the default GitHub Pages build. The classic GitHub Pages build
-environment strictly enforces safe mode and ignores all files in the <code class="language-plaintext highlighter-rouge">_plugins</code>
-directory. If you push the site using the default settings, it will still host
-successfully, but your custom plugin will not run and the link abbreviations
-will remain unparsed.</p>
-
-<p>To use custom plugins while hosting on GitHub Pages, you must switch your
-deployment method to GitHub Actions. This modern approach uses your exact
-Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub
-Pages.</p>
-
-<ol>
-  <li>Go to your repository on GitHub.</li>
-  <li>Click on Settings, then select Pages from the left sidebar.</li>
-  <li>Under Build and deployment, change the Source from “Deploy from a branch” to
-“GitHub Actions”.</li>
-  <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li>
-  <li>Commit the provided <code class="language-plaintext highlighter-rouge">.github/workflows/jekyll.yml</code> file to your repository.</li>
-</ol>
-
-<p>With this workflow active, GitHub will read your updated Gemfile, run the
-<code class="language-plaintext highlighter-rouge">link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML
-to your live site.</p>
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>
+          
+<p><b>Use GitHub Actions to build your GitHub Pages site</b></p>
+<p>This affects the default GitHub Pages build. The classic GitHub Pages build environment strictly enforces safe mode and ignores all files in the <code>_plugins</code> directory. If you push the site using the default settings, it will still host successfully, but your custom plugin will not run and the link abbreviations will remain unparsed.</p>
+<p>To use custom plugins while hosting on GitHub Pages, you must switch your deployment method to GitHub Actions. This modern approach uses your exact Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub Pages.</p>
+<ol> <li>Go to your repository on GitHub.</li> <li>Click on Settings, then select Pages from the left sidebar.</li> <li>Under Build and deployment, change the Source from “Deploy from a branch” to “GitHub Actions”.</li> <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li> <li>Commit the provided <code>.github/workflows/jekyll.yml</code> file to your repository.</li> </ol>
+<p>With this workflow active, GitHub will read your updated Gemfile, run the <code>link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML to your live site.</p>
 
         
       </section>
@@ -481,7 +456,7 @@ to your live site.</p>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-02-19">February 19, 2026</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-06">March 6, 2026</time></p>
 
       </footer>
 
@@ -707,7 +682,7 @@ to your live site.</p>
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          18 minute read
+          19 minute read
         
       </span>
     

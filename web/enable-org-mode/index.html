@@ -293,7 +293,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          20 minute read
+          21 minute read
         
       </span>
     
@@ -350,6 +350,9 @@
 </li>
 <li><a href="#org-elements-examples-tables">Tables</a></li>
 <li><a href="#org-elements-examples-lists">Lists</a></li>
+<li>
+<a href="#org-elements-examples-links">Links</a><ul><li><a href="#org-elements-examples-links-link-abbreviations">Link Abbreviations</a></li></ul>
+</li>
 <li><a href="#org-elements-examples-images">Images</a></li>
 <li><a href="#org-elements-examples-code-highlighting">Code highlighting</a></li>
 <li><a href="#org-elements-examples-notices">Notices</a></li>
@@ -368,6 +371,9 @@
 </li>
 <li>
 <a href="#configurations-lists">Lists</a><ul><li><a href="#configurations-lists-normalizing-loose-lists">Normalizing Loose Lists</a></li></ul>
+</li>
+<li>
+<a href="#configurations-links">Links</a><ul><li><a href="#configurations-links-link-abbreviations">Link Abbreviations</a></li></ul>
 </li>
 <li><a href="#configurations-notices">Notices</a></li>
 <li><a href="#configurations-newlines-in-body-text">Newlines in Body Text</a></li>
@@ -498,6 +504,48 @@
 <ol> <li>Sub-item A (Indented 3 spaces)</li> <li>Sub-item A (Indented 3 spaces)</li> </ol> </li> <li>Sub-item A (Indented 3 spaces)</li> </ol> </li> <li>
 <p>Sub-item B </p>
 <ul> <li>Deeply nested bullet (Indented another 3 spaces)</li> <li>Deeply nested bullet (Indented another 3 spaces)</li> </ul> </li> </ol> </li> <li>Third item</li> </ol>
+<h2 id="org-elements-examples-links">Links</h2>
+<h3 id="org-elements-examples-links-link-abbreviations">Link Abbreviations</h3>
+<p>In Markdown you can use <a href="/blog/web/link-abbr/">link abbreviations</a> to expand links throughout the document. Now you can do the same in an Org document, heeding Org Mode’s own built-in link abbreviation method, i.e., <code>#+LINK</code>.</p>
+<p>For example:</p>
+
+            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
+title: "Org Links"
+link_abbrs:
+  - link_abbr: foo https://i.postimg.cc/Vv8jFw8D/
+gallery:
+  - url: foo:unsplash-gallery-image-1.jpg
+    image_path: foo:unsplash-gallery-image-1.jpg
+    title: Check this [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg][image]]
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - foo:unsplash-gallery-image-1.jpg
+  - image_path: [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
+  - [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
+  - [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
+---
+
+#+LINK: foo ~/Downloads/temp/archive/image/foo/
+
+#+CAPTION: This is an image
+[[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
+
+{% include figure image_path="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" popup=true
+alt="" caption="A figure" %}
+
+{% include gallery columns=3 caption="This is a gallery" %}</code></pre></div> </div>
+          
+<p>Here <code>#+LINK</code> is used in Org Mode, also for Jekyll build. It acts as a fallback to <code>link_abbrs</code> in the front matter, i.e., if an abbreviation isn’t found in <code>link_abbrs</code> but found in <code>#+LINK</code>, also use it to expand links in the built site. <code>#+LINK</code> can appear anywhere in the document except the front matter.</p>
+<p><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"></p>
+
+
+
+
+
+
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;Check this [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg][image]]&lt;/p&gt;"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through an org link&lt;/p&gt;"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>A gallery </figcaption> </figure>
+
+
+
 <h2 id="org-elements-examples-images">Images</h2>
 <p>A simple image:</p>
 <p><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"></p>
@@ -512,7 +560,7 @@
 
 
 
-<figure class="custom-grid " style="grid-template-columns: repeat(3, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg"> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
 
 
 
@@ -1014,6 +1062,13 @@ descriptor + subject + taxonomic rank
      end
    end</code></pre></div> </div>
           
+<h2 id="configurations-links">Links</h2>
+<h3 id="configurations-links-link-abbreviations">Link Abbreviations</h3>
+<ol> <li>
+<p>Resolve the (potential) conflict between <code>link_abbrs</code> and <code>#+LINK</code>? </p>
+<p>There will be absolutely no conflict. Because your custom <code>_plugins/link_abbr.rb</code> uses a <code>:pre_render</code> hook, it modifies the raw text document before <code>org-ruby</code> even touches the file. By the time <code>org-ruby</code> wakes up to compile the HTML, your plugin has already replaced <code>[[https://i.postimg.cc/Vv8jFw8D/image.jpg]]</code> with <code>[[/assets/.../image.jpg]]</code>. <code>org-ruby</code> will simply see a standard file link and successfully render it, completely ignoring the now-unused <code>#+LINK: foo</code> directive at the top of the file.</p> </li> <li>
+<p>Add Org Syntax Support to Your Plugin </p>
+<p>Adding support for <code>[[https://i.postimg.cc/Vv8jFw8D/filename]]</code> is highly achievable, but introduces a major edge-case in the Front Matter: <b>Unquoted brackets break YAML</b>. If you type <code>- [[https://i.postimg.cc/Vv8jFw8D/image.jpg]]</code> in YAML without quotes, the YAML parser natively interprets <code>[</code> as an array constructor. It will process your string into a nested Ruby array <code>[["foo:image.jpg"]]</code>, which causes standard string comparisons to crash.</p> <p>The updated code below intercepts Org-style <code>[[...]]</code> links in the body content, title fields, and implements a safety net to deeply extract the string from the front matter even if the YAML parser incorrectly converted the unquoted brackets into an array.</p> <p>Apply this diff to <code>_plugins/link_abbr.rb</code>:</p> </li> </ol>
 <h2 id="configurations-notices">Notices</h2>
 <p>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:</p>
 
