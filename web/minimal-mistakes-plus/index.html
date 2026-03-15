@@ -293,7 +293,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          38 minute read
+          40 minute read
         
       </span>
     
@@ -328,7 +328,9 @@
 <li>
 <a href="#scaffold-the-gem"><span class="toc-number">1. </span>Scaffold the Gem</a><ul>
 <li><a href="#what-happens-upon-first-run"><span class="toc-number">1.1. </span>What Happens Upon First Run</a></li>
-<li><a href="#file-structure-ruby-naming-convention"><span class="toc-number">1.2. </span>File Structure &amp; Ruby Naming Convention</a></li>
+<li>
+<a href="#20260316003517"><span class="toc-number">1.2. </span>File Structure &amp; Ruby Naming Convention</a><ul><li><a href="#the-jekyll-plugin-catch"><span class="toc-number">1.2.1. </span>The Jekyll Plugin Catch</a></li></ul>
+</li>
 </ul>
 </li>
 <li><a href="#restructure-the-ruby-code"><span class="toc-number">2. </span>Restructure the Ruby Code</a></li>
@@ -346,7 +348,7 @@
 <a href="#build-and-test"><span class="toc-number">6. </span>Build and Test</a><ul>
 <li>
 <a href="#method-1-the-path-approach-best-for-active-development"><span class="toc-number">6.1. </span>Method 1: The path approach (Best for active development)</a><ul>
-<li><a href="#codes-in-lib-not-loaded"><span class="toc-number">6.1.1. </span>Codes in lib/ Not Loaded</a></li>
+<li><a href="#20260316011755"><span class="toc-number">6.1.1. </span>Codes in lib/ Not Loaded</a></li>
 <li><a href="#validation-error-gem-contains-itself"><span class="toc-number">6.1.2. </span>Validation Error: Gem contains itself</a></li>
 <li><a href="#load-error-uri-111-already-activated"><span class="toc-number">6.1.3. </span>Load Error: uri 1.1.1 already activated</a></li>
 </ul>
@@ -435,10 +437,49 @@ assets/</code></pre></div> </div>  <p>When you declare <code>theme: minimal-mist
 
 <h3 id="scaffold-the-gem">
 <span class="heading-number">1. </span>Scaffold the Gem</h3>
-<p>To package this up, I’m essentially building a “Jekyll Power-User Utility Belt.” Based on the previous mental discussions I’ve decided that the best approach for this gem is to create a plugin gem firmly tied with Minimal Mistakes (non-theme-agnostic), hence its name “minimal-mistakes-plus”.</p>
-<p>You can create a Jekyll plugin where standard Ruby Gem conventions apply by using Bundler to generate the skeleton:</p>
+<p>To package this up, I’m essentially building a “Jekyll Power-User Utility Belt.” Based on the previous mental discussions I’ve decided that the best approach for this gem is to create a plugin gem firmly tied with Minimal Mistakes (non-theme-agnostic), hence the name “minimal-mistakes-plus”.</p>
+<ol> <li>
+<p>Use Bundler to generate the gem skeleton where standard Ruby Gem conventions apply: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Make sure you use <code>minimal_mistakes_plus</code> instead of <code>minimal-mistakes-plus</code>. With the former Bundler generates a flat file structure, and with the latter it generates a deeply nested file hierarchy. See this <a href="#20260316003517">section</a> for more details.</p> </li> <li>
+<p>Rename the gem to a hyphenated name, i.e., <code>minimal-mistakes-plus</code>: </p>
+<ol> <li>
+<p>Rename these folders and files: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>minimal_mistakes_plus minimal-mistakes-plus
+<span class="nb">cd </span>minimal-mistakes-plus/lib/
+<span class="nb">mv </span>minimal_mistakes_plus.rb minimal-mistakes-plus.rb</code></pre></div> </div>  </li> <li>
+<p>Update <code>spec.name</code> in the file <code>minimal_mistakes_plus.gemspec</code>: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s2">"minimal-mistakes-plus"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">summary</span> <span class="o">=</span> <span class="s2">"Write a short summary, because RubyGems requires one."</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">description</span> <span class="o">=</span> <span class="s2">"Write a longer description or delete this line."</span>
 
-            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal-mistakes-plus</code></pre></div> </div>
+<span class="n">spec</span><span class="p">.</span><span class="nf">homepage</span> <span class="o">=</span> <span class="s2">"https://github.com/josephtesfaye/minimal-mistakes-plus/"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">required_ruby_version</span> <span class="o">=</span> <span class="s2">"&gt;= 3.1.0"</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"allowed_push_host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"source_code_uri"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/josephtesfaye/minimal-mistakes-plus/"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"changelog_uri"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/josephtesfaye/minimal-mistakes-plus/CHANGELOG.md"</span></code></pre></div> </div>  <p>The value of <code>spec.name</code> determines the final name of the gem as released to the public and required in other projects. There must be a <code>.rb</code> file of the same name under <code>lib/</code>, e.g., <code>lib/minimal-mistakes-plus.rb</code>.</p> </li> </ol> </li> <li>
+<p>Create the file <code>lib/minimal_mistakes_plus/hello.rb</code> with the content: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"Hello World from Minimal Mistakes Plus!"</span></code></pre></div> </div>  <p>Then add the require statement in <code>lib/minimal-mistakes-plus.rb</code>:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/hello"</span></code></pre></div> </div>  </li> <li>
+<p>Add the files to Git: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus/
+git add .</code></pre></div> </div>  <p>Because the gemspec uses <code>git ls-files</code> to determine which files belong to the gem, any file that has not been tracked by Git is completely invisible to Bundler. See this <a href="#20260316011755">section</a> for more details.</p> </li> <li>
+<p>Add the gem to the <code>Gemfile</code> of your blog: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span>
+<span class="k">end</span></code></pre></div> </div>  </li> <li>
+<p>Run the commands: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  <p>The gem is loaded properly if you see the message:</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Hello World from Minimal Mistakes Plus!</code></pre></div> </div>  </li> </ol>
+<p>Your final file structure will look like this beautiful, professional setup:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>minimal-mistakes-plus/
+├── minimal_mistakes_plus.gemspec
+├── lib/
+│   ├── minimal-mistakes-plus.rb        # The Bridge File Jekyll looks for
+│   ├── minimal_mistakes_plus           # Folder for your actual logic
+│   │   ├── version.rb
+│   │   └── hello.rb</code></pre></div> </div>
           
 <h4 id="what-happens-upon-first-run">
 <span class="heading-number">1.1. </span>What Happens Upon First Run</h4>
@@ -510,9 +551,13 @@ BUNDLE_GEM__LINTER: "rubocop"</code></pre></div> </div>
 bundle config [set] gem.test minitest
 </pre>
 <p>But it will not retroactively generate the test files for your already-created project. Bundler only generates the boilerplate files at the exact moment you run <code>bundle gem</code>.</p>
-<h4 id="file-structure-ruby-naming-convention">
+<h4 id="20260316003517">
 <span class="heading-number">1.2. </span>File Structure &amp; Ruby Naming Convention</h4>
-<p>You may notice that the hyphens in the project name are treated as directory hierarchy indicators for some files in the generated file structure:</p>
+<p>If you run <code>bundle gem</code> against the name <code>minimal-mistakes-plus</code>:</p>
+
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal-mistakes-plus</code></pre></div> </div>
+          
+<p>You will notice that the hyphens in the name are treated as directory hierarchy indicators for some files in the generated file structure:</p>
 
             <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>...
 minimal-mistakes-plus/lib/minimal/mistakes/plus.rb
@@ -538,7 +583,8 @@ minimal-mistakes-plus/spec/minimal/mistakes/plus_spec.rb
 <p>Because you used hyphens, Bundler scaffolded a deeply nested directory structure assuming you wanted three levels of module hierarchy.</p>
 <p><b>Should you commit these files?</b></p>
 <p>These files form the foundational boilerplate of your gem. They set up the versioning, the base module, and the test environment. You will commit them once you are satisfied with the structure.</p>
-<p><b>The Jekyll Plugin Catch</b></p>
+<h5 id="the-jekyll-plugin-catch">
+<span class="heading-number">1.2.1. </span>The Jekyll Plugin Catch</h5>
 <p>There is an important detail to consider because you are building a Jekyll plugin. When you add a plugin to Jekyll’s <code>_config.yml</code> like this:</p>
 
             <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
@@ -549,7 +595,7 @@ minimal-mistakes-plus/spec/minimal/mistakes/plus_spec.rb
 <ul> <li>
 <p>Option 1: The “Flat” Approach </p>
 <p>Delete the current folder and regenerate the gem using underscores. This keeps the file structure flat, which is generally easier to manage for simple Jekyll plugins.</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> minimal-mistakes-plus
-bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Your gem will be named <code>minimal_mistakes_plus</code>, and you will list it exactly like that in your <code>_config.yml</code>).</p> </li> <li>
+bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Your gem will be named <code>minimal_mistakes_plus</code>, and you will list it exactly like that in your <code>_config.yml</code>.</p> </li> <li>
 <p>Option 2: The “Hyphenated” Approach </p>
 <p>While there are some popular Ruby gems with underscores (like <code>awesome_print</code> or <code>active_record</code>), in the Jekyll ecosystem, hyphens are the standard convention (e.g., <code>jekyll-paginate</code>, <code>jekyll-sitemap</code>, <code>minimal-mistakes-jekyll</code>).</p> <p>If you want the gem to be published and referenced as <code>minimal-mistakes-plus</code>, you can keep your current nested folder. However, you must manually create a new file named <code>lib/minimal-mistakes-plus.rb</code> that simply requires the nested file so Jekyll can find it (the “Bridge File” pattern):</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Require the auto-generated version and namespace file</span>
 <span class="nb">require</span> <span class="s2">"minimal/mistakes/plus"</span>
@@ -816,16 +862,17 @@ git commit <span class="nt">-m</span> <span class="s2">"Fix workflow locations a
 git push</code></pre></div> </div>  </li> </ol> <p>Once pushed, if you check the Actions tab, you will now see <b>two</b> jobs running simultaneously: the default Ruby test suite (which will now pass) and your new <code>Build and Deploy Docs</code> workflow.</p> </li> </ol>
 <h3 id="build-and-test">
 <span class="heading-number">6. </span>Build and Test</h3>
-<p>There are two ways to use your gem locally, depending on whether you are still actively editing the plugin code or just want to install the finished package.</p>
+<p>There are two ways to use your plugin locally, depending on whether you are still actively editing the plugin code or just want to install the finished package.</p>
 <h4 id="method-1-the-path-approach-best-for-active-development">
 <span class="heading-number">6.1. </span>Method 1: The path approach (Best for active development)</h4>
 <p>If you are still tweaking the Ruby code inside <code>minimal-mistakes-plus</code> and want to test it in your blog immediately, you do not need to build the gem at all. You can tell Bundler to load the code directly from your local folder.</p>
-<ol> <li>Open the Gemfile of the target blog project (not the plugin).</li> <li>
+<ol> <li>Open the <code>Gemfile</code> of the target blog project (not the plugin).</li> <li>
 <p>Add the gem using the path option, pointing to the local directory where your plugin lives: </p>
 <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Point this to the actual relative or absolute path on your machine</span>
-<span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span></code></pre></div> </div>  </li> <li>Run <code>bundle install</code> in your blog directory.</li> </ol>
-<p>With this method, any changes you make to the Ruby files in the plugin directory are instantly picked up the next time you run bundle exec jekyll serve on your blog.</p>
-<h5 id="codes-in-lib-not-loaded">
+<span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span></code></pre></div> </div>  <p>If you add it inside the <code>group :jekyll_plugins do</code> block, Jekyll automatically detects it and loads it during the build process. Otherwise, Jekyll treats it like a standard Ruby library (like <code>nokogiri</code> or <code>org-ruby</code>). It doesn’t know it is supposed to hook into the build process unless you explicitly add it to the <code>plugins:</code> array in <code>_config.yml</code>:</p>  <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">minimal-mistakes-plus</span></code></pre></div> </div>  </li> <li>Run <code>bundle install</code> in your blog directory.</li> </ol>
+<p>With this method, any changes you make to the Ruby files in the plugin directory are instantly picked up the next time you run <code>bundle exec jekyll serve</code> on your blog.</p>
+<h5 id="20260316011755">
 <span class="heading-number">6.1.1. </span>Codes in <code>lib/</code> Not Loaded</h5>
 <p>You have added the gem using the path option, but the codes in <code>lib/</code> aren’t loaded.</p>
 <p>This issue is extremely common when developing new gems locally. It usually comes down to a combination of how Bundler tracks files and how Jekyll loads plugins.</p>

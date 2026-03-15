@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-15T11:41:21+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Interview</title><link href="https://josephtesfaye.com/blog/web/interview/" rel="alternate" type="text/html" title="Interview" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/interview</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/interview/"><![CDATA[<h1 id="introduce-yourself">Introduce yourself</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-15T16:41:14+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Interview</title><link href="https://josephtesfaye.com/blog/web/interview/" rel="alternate" type="text/html" title="Interview" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/interview</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/interview/"><![CDATA[<h1 id="introduce-yourself">Introduce yourself</h1>
 <p>Thank you for having me. My name is Huang Jicheng, and you can call me Joseph. I graduated with a 4-year bachelor’s degree from Macao Polytechnic University in Macao SAR, and since then I’ve been working as a software engineer for more than eight years, mainly focusing on backend development using Java and cloud platforms like AWS. Most of my experience comes from building large-scale systems for E-Commerce, ERP, and mobility services, etc. I’m fluent in English, a native Chinese speaker, and my Japanese is at an intermediate level, with which I’m stronger in reading and writing, weaker in conversation, which I’m continuously improving. I’m especially excited about joining [Company Name] to contribute my experience in Java backend development and distributed systems.</p>
 <p><ruby>本日<rt>ほんじつ</rt></ruby>はお<ruby>時間<rt>じかん</rt></ruby>をいただき、ありがとうございます。黄級誠と<ruby>申<rt>もう</rt></ruby>します。コウとお<ruby>呼<rt>よ</rt></ruby>びください。私はマカオにあるマカオ<ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby>を4<ruby>年<rt>ねん</rt>制<rt>せい</rt></ruby>の<ruby>学士<rt>がくし</rt></ruby><ruby>課程<rt>かてい</rt></ruby>で<ruby>卒業<rt>そつぎょう</rt></ruby>しました。それ<ruby>以<rt>い</rt>降<rt>こう</rt></ruby>、ソフトウェアエンジニアとして８<ruby>年<rt>ねん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>実<rt>じつ</rt>務<rt>む</rt></ruby><ruby>経<rt>けい</rt>験<rt>けん</rt></ruby>があり、<ruby>主<rt>おも</rt></ruby>にジャバ（Java）とエーダブリューエス（AWS）などのクラウドプラットフォーム（cloud platform）を<ruby>使用<rt>しよう</rt></ruby>したバックエンド<ruby>開<rt>かい</rt>発<rt>はつ</rt></ruby>に<ruby>注<rt>ちゅう</rt>力<rt>りょく</rt></ruby>してきました。<ruby>経験<rt>けいけん</rt></ruby>の<ruby>多<rt>おお</rt></ruby>くは、Eコマース（ecommerce）やイーアールピー（ERP）、モビリティサービス（mobility service）などの<ruby>大<rt>だい</rt></ruby><ruby>規<rt>き</rt></ruby> <ruby>模<rt>ぼ</rt></ruby>システムの<ruby>構築<rt>こうちく</rt></ruby>によるものです。<ruby>語<rt>ご</rt>学<rt>がく</rt></ruby>については、<ruby>中国<rt>ちゅうごく</rt>語<rt>ご</rt></ruby>が<ruby>母<rt>ぼ</rt>語<rt>ご</rt></ruby>で、英語はビジネスレベルで<ruby>流<rt>りゅう</rt>暢<rt>ちょう</rt></ruby>に<ruby>話<rt>はな</rt></ruby>せます。日本語は<ruby>中<rt>ちゅう</rt>級<rt>きゅう</rt></ruby>レベルで、<ruby>読<rt>よ</rt></ruby>み<ruby>書<rt>か</rt></ruby> きは<ruby>得意<rt>とくい</rt></ruby>ですが<ruby>会話<rt>かいわ</rt></ruby>はまだ<ruby>苦手<rt>にて</rt></ruby>な<ruby>部分<rt>ぶぶん</rt></ruby>があります。これまでのジャババックエンド（Java backend）<ruby>開<rt>かい</rt>発<rt>はつ</rt></ruby>や<ruby>分<rt>ぶん</rt>散<rt>さん</rt></ruby>システムの<ruby>経<rt>けい</rt>験<rt>けん</rt></ruby>を<ruby>活<rt>い</rt></ruby>かして、<ruby>貴<rt>き</rt>社<rt>しゃ</rt></ruby>に<ruby>貢<rt>こう</rt>献<rt>けん</rt></ruby>できることを<ruby>非<rt>ひ</rt>常<rt>じょう</rt></ruby>に<ruby>楽<rt>たの</rt></ruby>しみにしています。どうぞよろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。</p>
 <h1 id="why-do-you-come-to-japan">Why do you come to Japan?</h1>
@@ -181,10 +181,49 @@ assets/</code></pre></div> </div>  <p>When you declare <code>theme: minimal-mist
 <h2 id="the-procedures" class="ordered">The Procedures</h2>
 
 <h3 id="scaffold-the-gem">Scaffold the Gem</h3>
-<p>To package this up, I’m essentially building a “Jekyll Power-User Utility Belt.” Based on the previous mental discussions I’ve decided that the best approach for this gem is to create a plugin gem firmly tied with Minimal Mistakes (non-theme-agnostic), hence its name “minimal-mistakes-plus”.</p>
-<p>You can create a Jekyll plugin where standard Ruby Gem conventions apply by using Bundler to generate the skeleton:</p>
+<p>To package this up, I’m essentially building a “Jekyll Power-User Utility Belt.” Based on the previous mental discussions I’ve decided that the best approach for this gem is to create a plugin gem firmly tied with Minimal Mistakes (non-theme-agnostic), hence the name “minimal-mistakes-plus”.</p>
+<ol> <li>
+<p>Use Bundler to generate the gem skeleton where standard Ruby Gem conventions apply: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Make sure you use <code>minimal_mistakes_plus</code> instead of <code>minimal-mistakes-plus</code>. With the former Bundler generates a flat file structure, and with the latter it generates a deeply nested file hierarchy. See this <a href="#20260316003517">section</a> for more details.</p> </li> <li>
+<p>Rename the gem to a hyphenated name, i.e., <code>minimal-mistakes-plus</code>: </p>
+<ol> <li>
+<p>Rename these folders and files: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>minimal_mistakes_plus minimal-mistakes-plus
+<span class="nb">cd </span>minimal-mistakes-plus/lib/
+<span class="nb">mv </span>minimal_mistakes_plus.rb minimal-mistakes-plus.rb</code></pre></div> </div>  </li> <li>
+<p>Update <code>spec.name</code> in the file <code>minimal_mistakes_plus.gemspec</code>: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s2">"minimal-mistakes-plus"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">summary</span> <span class="o">=</span> <span class="s2">"Write a short summary, because RubyGems requires one."</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">description</span> <span class="o">=</span> <span class="s2">"Write a longer description or delete this line."</span>
 
-            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal-mistakes-plus</code></pre></div> </div>
+<span class="n">spec</span><span class="p">.</span><span class="nf">homepage</span> <span class="o">=</span> <span class="s2">"https://github.com/josephtesfaye/minimal-mistakes-plus/"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">required_ruby_version</span> <span class="o">=</span> <span class="s2">"&gt;= 3.1.0"</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"allowed_push_host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"source_code_uri"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/josephtesfaye/minimal-mistakes-plus/"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"changelog_uri"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://github.com/josephtesfaye/minimal-mistakes-plus/CHANGELOG.md"</span></code></pre></div> </div>  <p>The value of <code>spec.name</code> determines the final name of the gem as released to the public and required in other projects. There must be a <code>.rb</code> file of the same name under <code>lib/</code>, e.g., <code>lib/minimal-mistakes-plus.rb</code>.</p> </li> </ol> </li> <li>
+<p>Create the file <code>lib/minimal_mistakes_plus/hello.rb</code> with the content: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"Hello World from Minimal Mistakes Plus!"</span></code></pre></div> </div>  <p>Then add the require statement in <code>lib/minimal-mistakes-plus.rb</code>:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/hello"</span></code></pre></div> </div>  </li> <li>
+<p>Add the files to Git: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus/
+git add .</code></pre></div> </div>  <p>Because the gemspec uses <code>git ls-files</code> to determine which files belong to the gem, any file that has not been tracked by Git is completely invisible to Bundler. See this <a href="#20260316011755">section</a> for more details.</p> </li> <li>
+<p>Add the gem to the <code>Gemfile</code> of your blog: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span>
+<span class="k">end</span></code></pre></div> </div>  </li> <li>
+<p>Run the commands: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  <p>The gem is loaded properly if you see the message:</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Hello World from Minimal Mistakes Plus!</code></pre></div> </div>  </li> </ol>
+<p>Your final file structure will look like this beautiful, professional setup:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>minimal-mistakes-plus/
+├── minimal_mistakes_plus.gemspec
+├── lib/
+│   ├── minimal-mistakes-plus.rb        # The Bridge File Jekyll looks for
+│   ├── minimal_mistakes_plus           # Folder for your actual logic
+│   │   ├── version.rb
+│   │   └── hello.rb</code></pre></div> </div>
           
 <h4 id="what-happens-upon-first-run">What Happens Upon First Run</h4>
 <p>If this is the first time you have ever run the <code>bundle gem</code> command, it will enter an interactive session where you are asked to choose certain features for the project. For example, here’s the output of an initial run:</p>
@@ -255,8 +294,12 @@ BUNDLE_GEM__LINTER: "rubocop"</code></pre></div> </div>
 bundle config [set] gem.test minitest
 </pre>
 <p>But it will not retroactively generate the test files for your already-created project. Bundler only generates the boilerplate files at the exact moment you run <code>bundle gem</code>.</p>
-<h4 id="file-structure-ruby-naming-convention">File Structure &amp; Ruby Naming Convention</h4>
-<p>You may notice that the hyphens in the project name are treated as directory hierarchy indicators for some files in the generated file structure:</p>
+<h4 id="20260316003517">File Structure &amp; Ruby Naming Convention</h4>
+<p>If you run <code>bundle gem</code> against the name <code>minimal-mistakes-plus</code>:</p>
+
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal-mistakes-plus</code></pre></div> </div>
+          
+<p>You will notice that the hyphens in the name are treated as directory hierarchy indicators for some files in the generated file structure:</p>
 
             <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>...
 minimal-mistakes-plus/lib/minimal/mistakes/plus.rb
@@ -282,7 +325,7 @@ minimal-mistakes-plus/spec/minimal/mistakes/plus_spec.rb
 <p>Because you used hyphens, Bundler scaffolded a deeply nested directory structure assuming you wanted three levels of module hierarchy.</p>
 <p><b>Should you commit these files?</b></p>
 <p>These files form the foundational boilerplate of your gem. They set up the versioning, the base module, and the test environment. You will commit them once you are satisfied with the structure.</p>
-<p><b>The Jekyll Plugin Catch</b></p>
+<h5 id="the-jekyll-plugin-catch">The Jekyll Plugin Catch</h5>
 <p>There is an important detail to consider because you are building a Jekyll plugin. When you add a plugin to Jekyll’s <code>_config.yml</code> like this:</p>
 
             <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
@@ -293,7 +336,7 @@ minimal-mistakes-plus/spec/minimal/mistakes/plus_spec.rb
 <ul> <li>
 <p>Option 1: The “Flat” Approach </p>
 <p>Delete the current folder and regenerate the gem using underscores. This keeps the file structure flat, which is generally easier to manage for simple Jekyll plugins.</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> minimal-mistakes-plus
-bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Your gem will be named <code>minimal_mistakes_plus</code>, and you will list it exactly like that in your <code>_config.yml</code>).</p> </li> <li>
+bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Your gem will be named <code>minimal_mistakes_plus</code>, and you will list it exactly like that in your <code>_config.yml</code>.</p> </li> <li>
 <p>Option 2: The “Hyphenated” Approach </p>
 <p>While there are some popular Ruby gems with underscores (like <code>awesome_print</code> or <code>active_record</code>), in the Jekyll ecosystem, hyphens are the standard convention (e.g., <code>jekyll-paginate</code>, <code>jekyll-sitemap</code>, <code>minimal-mistakes-jekyll</code>).</p> <p>If you want the gem to be published and referenced as <code>minimal-mistakes-plus</code>, you can keep your current nested folder. However, you must manually create a new file named <code>lib/minimal-mistakes-plus.rb</code> that simply requires the nested file so Jekyll can find it (the “Bridge File” pattern):</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Require the auto-generated version and namespace file</span>
 <span class="nb">require</span> <span class="s2">"minimal/mistakes/plus"</span>
@@ -552,15 +595,16 @@ git add <span class="nb">.</span>
 git commit <span class="nt">-m</span> <span class="s2">"Fix workflow locations and root lockfile platforms"</span>
 git push</code></pre></div> </div>  </li> </ol> <p>Once pushed, if you check the Actions tab, you will now see <b>two</b> jobs running simultaneously: the default Ruby test suite (which will now pass) and your new <code>Build and Deploy Docs</code> workflow.</p> </li> </ol>
 <h3 id="build-and-test">Build and Test</h3>
-<p>There are two ways to use your gem locally, depending on whether you are still actively editing the plugin code or just want to install the finished package.</p>
+<p>There are two ways to use your plugin locally, depending on whether you are still actively editing the plugin code or just want to install the finished package.</p>
 <h4 id="method-1-the-path-approach-best-for-active-development">Method 1: The path approach (Best for active development)</h4>
 <p>If you are still tweaking the Ruby code inside <code>minimal-mistakes-plus</code> and want to test it in your blog immediately, you do not need to build the gem at all. You can tell Bundler to load the code directly from your local folder.</p>
-<ol> <li>Open the Gemfile of the target blog project (not the plugin).</li> <li>
+<ol> <li>Open the <code>Gemfile</code> of the target blog project (not the plugin).</li> <li>
 <p>Add the gem using the path option, pointing to the local directory where your plugin lives: </p>
 <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Point this to the actual relative or absolute path on your machine</span>
-<span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span></code></pre></div> </div>  </li> <li>Run <code>bundle install</code> in your blog directory.</li> </ol>
-<p>With this method, any changes you make to the Ruby files in the plugin directory are instantly picked up the next time you run bundle exec jekyll serve on your blog.</p>
-<h5 id="codes-in-lib-not-loaded">Codes in <code>lib/</code> Not Loaded</h5>
+<span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span></code></pre></div> </div>  <p>If you add it inside the <code>group :jekyll_plugins do</code> block, Jekyll automatically detects it and loads it during the build process. Otherwise, Jekyll treats it like a standard Ruby library (like <code>nokogiri</code> or <code>org-ruby</code>). It doesn’t know it is supposed to hook into the build process unless you explicitly add it to the <code>plugins:</code> array in <code>_config.yml</code>:</p>  <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">minimal-mistakes-plus</span></code></pre></div> </div>  </li> <li>Run <code>bundle install</code> in your blog directory.</li> </ol>
+<p>With this method, any changes you make to the Ruby files in the plugin directory are instantly picked up the next time you run <code>bundle exec jekyll serve</code> on your blog.</p>
+<h5 id="20260316011755">Codes in <code>lib/</code> Not Loaded</h5>
 <p>You have added the gem using the path option, but the codes in <code>lib/</code> aren’t loaded.</p>
 <p>This issue is extremely common when developing new gems locally. It usually comes down to a combination of how Bundler tracks files and how Jekyll loads plugins.</p>
 <p>Here are the three things you need to check to fix this:</p>
