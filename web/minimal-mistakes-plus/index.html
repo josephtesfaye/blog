@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Minimal Mistakes Plus | Orcharinth</title>
+<meta name="description" content="As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="Minimal Mistakes Plus">
+<meta property="og:url" content="https://josephtesfaye.com/blog/web/minimal-mistakes-plus/">
+
+
+  <meta property="og:description" content="As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-03-01T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-03-01T00:00:00+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/blog/web/minimal-mistakes-plus/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+<!-- Enable sticky TOC for mobile -->
+<script>
+  function initMobileTOC() {
+    var toc = document.querySelector('.sidebar__right.sticky .toc');
+    // Only initialize if a sticky TOC exists and the button hasn't been added yet
+    if (toc && !document.querySelector('.toc-mobile-btn')) {
+      document.body.classList.add('has-toc');
+
+      var btn = document.createElement('button');
+      btn.className = 'toc-mobile-btn';
+      btn.innerHTML = '<i class="fas fa-list-ul"></i>';
+      btn.setAttribute('aria-label', 'Toggle Table of Contents');
+      document.body.appendChild(btn);
+
+      // Toggle TOC visibility on button click
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toc.classList.toggle('is-active');
+      });
+
+      // Close TOC when clicking anywhere outside of it
+      document.addEventListener('click', function (e) {
+        if (toc.classList.contains('is-active') && !toc.contains(e.target) && e.target !== btn) {
+          toc.classList.remove('is-active');
+        }
+      });
+
+      // Automatically close the TOC popup after tapping a link inside it
+      // var tocLinks = toc.querySelectorAll('a');
+      // tocLinks.forEach(function (link) {
+      //   link.addEventListener('click', function () {
+      //     if (window.innerWidth <= 1024) { // Matches the 64em media query
+      //       toc.classList.remove('is-active');
+      //     }
+      //   });
+      // });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileTOC);
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+            <a href="/blog/year-archive/">Posts</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/projects/">Projects</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/collections/">Collections</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/about/">About</a>
+          </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1">
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/blog/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
+          <meta itemprop="position" content="2">
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Minimal Mistakes Plus</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Minimal Mistakes Plus">
+    <meta itemprop="description" content="As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.">
+    <meta itemprop="datePublished" content="2026-03-01T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-03-01T00:00:00+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/blog/web/minimal-mistakes-plus/" itemprop="url">Minimal Mistakes Plus
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-01T00:00:00+00:00">March 1, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          38 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li>
+<a href="#library-plugin-and-theme">Library, Plugin and Theme</a><ul>
+<li><a href="#the-core-difference">The Core Difference</a></li>
+<li><a href="#the-loading-and-deploying-of-gems">The Loading and Deploying of Gems</a></li>
+<li>
+<a href="#which-should-i-build-a-plugin-gem-or-a-theme-gem">Which Should I Build, a Plugin Gem or a Theme Gem?</a><ul>
+<li><a href="#why-it-must-be-a-plugin-gem">Why It Must Be a Plugin Gem</a></li>
+<li><a href="#can-these-features-apply-to-other-themes">Can These Features Apply to Other Themes?</a></li>
+<li><a href="#do-similar-plugins-already-exist">Do Similar Plugins Already Exist?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#the-procedures">The Procedures</a><ul>
+<li>
+<a href="#scaffold-the-gem"><span class="toc-number">1. </span>Scaffold the Gem</a><ul>
+<li><a href="#what-happens-upon-first-run"><span class="toc-number">1.1. </span>What Happens Upon First Run</a></li>
+<li><a href="#file-structure-ruby-naming-convention"><span class="toc-number">1.2. </span>File Structure &amp; Ruby Naming Convention</a></li>
+</ul>
+</li>
+<li><a href="#restructure-the-ruby-code"><span class="toc-number">2. </span>Restructure the Ruby Code</a></li>
+<li><a href="#handle-the-ui-assets-the-tricky-part"><span class="toc-number">3. </span>Handle the UI Assets (The Tricky Part)</a></li>
+<li><a href="#define-dependencies-in-the-gemspec"><span class="toc-number">4. </span>Define Dependencies in the Gemspec</a></li>
+<li>
+<a href="#documentation"><span class="toc-number">5. </span>Documentation</a><ul>
+<li><a href="#readme"><span class="toc-number">5.1. </span>README</a></li>
+<li>
+<a href="#user-manual-and-demos"><span class="toc-number">5.2. </span>User Manual and Demos</a><ul><li><a href="#two-gemfiles-trap"><span class="toc-number">5.2.1. </span>Two Gemfiles Trap</a></li></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#build-and-test"><span class="toc-number">6. </span>Build and Test</a><ul>
+<li>
+<a href="#method-1-the-path-approach-best-for-active-development"><span class="toc-number">6.1. </span>Method 1: The path approach (Best for active development)</a><ul>
+<li><a href="#codes-in-lib-not-loaded"><span class="toc-number">6.1.1. </span>Codes in lib/ Not Loaded</a></li>
+<li><a href="#validation-error-gem-contains-itself"><span class="toc-number">6.1.2. </span>Validation Error: Gem contains itself</a></li>
+<li><a href="#load-error-uri-111-already-activated"><span class="toc-number">6.1.3. </span>Load Error: uri 1.1.1 already activated</a></li>
+</ul>
+</li>
+<li><a href="#method-2-build-and-install-locally-best-for-final-testing"><span class="toc-number">6.2. </span>Method 2: Build and Install locally (Best for final testing)</a></li>
+<li><a href="#the-command-bundle-exec-rake"><span class="toc-number">6.3. </span>The Command bundle exec rake
+</a></li>
+<li><a href="#how-to-disable-rubocop-for-the-whole-project"><span class="toc-number">6.4. </span>How to disable rubocop for the whole project?</a></li>
+<li>
+<a href="#use-your-unpublished-gem-on-github-actions"><span class="toc-number">6.5. </span>Use Your Unpublished Gem on GitHub Actions</a><ul>
+<li><a href="#how-github-actions-handles-this"><span class="toc-number">6.5.1. </span>How GitHub Actions Handles This</a></li>
+<li><a href="#use-local-git-overrides-for-efficient-development"><span class="toc-number">6.5.2. </span>Use Local Git Overrides for Efficient Development</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#publish"><span class="toc-number">7. </span>Publish</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.</p>
+<h2 id="library-plugin-and-theme">Library, Plugin and Theme</h2>
+<p>Some basic concepts to know before packaging up the codes.</p>
+<h3 id="the-core-difference">The Core Difference</h3>
+<p>Technically, every Jekyll plugin is packaged and distributed as a Ruby gem, which is why you used the <code>bundle gem</code> command to generate the scaffolding. However, its intended use case and architecture make it a plugin rather than a general-purpose library.</p>
+<ul> <li>A general Ruby library, like <code>org-ruby</code> or <code>nokogiri</code>, is framework-agnostic. You feed it inputs, and it gives you outputs. It doesn’t know anything about Jekyll, static sites, or front matter.</li> <li>A Jekyll plugin is framework-dependent. It specifically injects itself into a host environment. Because your code uses <code>Jekyll::Hooks.register</code> and inherits from <code>Jekyll::Converter</code>, it fundamentally requires the Jekyll ecosystem to run. If someone tried to require your gem in a standard Ruby script or a Ruby on Rails application, it wouldn’t do anything because it is specifically listening for Jekyll’s build events.</li> </ul>
+<p>In short, you are using the Ruby library packaging system, RubyGems, to distribute a Jekyll plugin.</p>
+<p><b>Theme Gem</b></p>
+<p>While Minimal Mistakes is packaged and distributed as a Ruby gem (which is why you can easily install it via your <code>Gemfile</code>), it uses a specific pattern in the Jekyll ecosystem called a “Theme Gem.” It is fundamentally a Jekyll Theme, not a standard Ruby application or a custom Jekyll Plugin.</p>
+<p>If you observe the <a href="https://github.com/mmistakes/minimal-mistakes">Minimal Mistakes repository</a> you will find there are not the <code>lib</code> and <code>spec</code> directories, nor any <code>.rb</code> files. It’s because it is fundamentally a Jekyll Theme, not a standard Ruby application or a custom Jekyll Plugin.</p>
+<ol> <li>
+<p>No Custom Ruby Logic </p>
+<p>A standard Ruby gem uses the <code>lib/</code> directory to store its executable Ruby code (<code>.rb</code> files) and the <code>spec/</code> directory to store the testing framework for that code. Minimal Mistakes does not contain any custom Ruby backend scripts. It is built entirely out of Liquid templating, HTML, Sass, and JavaScript. Because there is no raw Ruby code to execute or test, those directories are simply omitted.</p> </li> <li>
+<p>The Jekyll Theme Convention </p>
+<p>When you package a Jekyll theme as a gem, RubyGems and Jekyll look for a completely different set of files. Instead of loading code from <code>lib/</code>, Jekyll looks for the standard frontend directories at the root of the repository:</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>_layouts/
+_includes/
+_sass/
+assets/</code></pre></div> </div>  <p>When you declare <code>theme: minimal-mistakes-jekyll</code> in your <code>_config.yml</code>, Jekyll finds the gem on your computer and virtually merges those frontend folders into your local project during the build process.</p> </li> <li>
+<p>Reliance on External Plugins </p>
+<p>If a theme developer wants to add backend functionality (like pagination or sitemaps), they have two choices: write custom <code>.rb</code> plugins (which would require a <code>lib/</code> folder) or rely on existing ones. Minimal Mistakes takes the second route. It achieves its advanced functionality by requiring established, external plugins as dependencies in its <code>.gemspec</code> file (such as <code>jekyll-paginate</code> and <code>jekyll-include-cache</code>).</p> </li> </ol>
+<h3 id="the-loading-and-deploying-of-gems">The Loading and Deploying of Gems</h3>
+<p>In you <code>Gemfile</code> there is the block grouping plugins:</p>
+
+            <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-paginate"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-sitemap"</span>
+  <span class="o">...</span>
+<span class="k">end</span></code></pre></div> </div>
+          
+<p>This is a specific feature designed to automatically load Jekyll plugins during the build process.</p>
+<p>When Jekyll boots up, it asks Bundler to find all the gems listed specifically inside the <code>:jekyll_plugins</code> group and requires them automatically. This saves you from having to manually type out every single plugin name into the <code>plugins:</code> array inside your <code>_config.yml</code> file.</p>
+<p>You should put ~gem “org-ruby”~ outside the block. Here is why: <code>org-ruby</code> is not actually a Jekyll plugin. It is a standalone Ruby text parser. Because it doesn’t contain Jekyll-specific hooks or generators, Jekyll doesn’t need to (and can’t) automatically load it as a plugin. Instead, your custom script (<code>org_converter.rb</code>) is the actual plugin that manually requires and uses <code>org-ruby</code> under the hood. Placing it outside the group simply tells Bundler “install this gem on the system so my custom scripts can use it,” which is the exact and correct behavior for a standard dependency.</p>
+<p>You absolutely must list a plugin in <code>_config.yml</code> (under the <code>plugins:</code> array) in two specific scenarios:</p>
+<ol> <li>
+<p>When you are deploying to standard GitHub Pages </p>
+<p>If you are pushing your site to GitHub Pages without using a custom GitHub Actions workflow, GitHub completely ignores your Gemfile and the <code>:jekyll_plugins</code> group. Instead, GitHub Pages strictly reads your <code>_config.yml</code> file to check if the plugins you want are on their “safe whitelist” (like <code>jekyll-paginate</code> or <code>jekyll-sitemap</code>). If they aren’t listed in <code>_config.yml</code>, GitHub Pages will not load them.</p> </li> <li>
+<p>When a gem is installed globally but not in the <code>:jekyll_plugins</code> group </p>
+<p>When you run <code>jekyll build</code>, Jekyll automatically asks Bundler to require any gem inside the group <code>:jekyll_plugins</code> do block.</p> <p>However, if you have a Jekyll plugin listed normally in your Gemfile (outside of that group), Jekyll won’t know it’s supposed to hook into the build process. Adding it to the <code>plugins:</code> array in <code>_config.yml</code> forces Jekyll to execute require “that-plugin” during the boot sequence.</p> </li> </ol>
+<p>Why <code>org-ruby</code> works without being listed?</p>
+<p>The reason <code>org-ruby</code> works regardless of where you put it—and without being in <code>_config.yml</code> —is because <code>org-ruby</code> is not a Jekyll plugin. It is just a standard Ruby library (a parser). Jekyll does not know what <code>org-ruby</code> is and never attempts to load it.</p>
+<p>Instead, the plugin is actually your custom <code>org_converter.rb</code> script (which sits in your <code>_plugins/</code> directory, a folder Jekyll does auto-load). Inside that script, you explicitly wrote ~require ‘org-ruby’~. When Jekyll runs your script, your script manually fetches the <code>org-ruby</code> library from your system.</p>
+<p>The Rule of Thumb for Jekyll:</p>
+<ul> <li>If it modifies Jekyll’s build process (adds tags, commands, generators, or converters like <code>jekyll-sitemap</code> or your new <code>minimal-mistakes-plus</code> gem): It must be required by Jekyll either via the <code>:jekyll_plugins</code> Gemfile group OR the <code>_config.yml</code> array.</li> <li>If it is just a helper library (like <code>nokogiri</code>, <code>rouge</code>, or <code>org-ruby</code>): It just needs to be in your standard Gemfile so it is installed on your machine, and your custom Ruby code will manually require it when needed.</li> </ul>
+<h3 id="which-should-i-build-a-plugin-gem-or-a-theme-gem">Which Should I Build, a Plugin Gem or a Theme Gem?</h3>
+<p>You should absolutely release this as a <b>Plugin Gem</b>.</p>
+<p>Here is exactly why, how it fits into the broader Jekyll ecosystem, and what already exists in the wild.</p>
+<h4 id="why-it-must-be-a-plugin-gem">Why It Must Be a Plugin Gem</h4>
+<p>In Jekyll’s architecture, there is a strict separation of concerns between presentation and build logic:</p>
+<ul> <li>Theme Gems (Presentation): These are strictly for the frontend. They provide layouts, includes, CSS, and static assets. They do not execute Ruby code to change how Jekyll parses files.</li> <li>Plugin Gems (Build Pipeline): These hook directly into Jekyll’s build lifecycle (like the <code>:pre_render</code> and <code>:post_render</code> hooks you’ve been using). They manipulate the raw text, intercept the DOM via Nokogiri, and compile different formats.</li> </ul>
+<p>Because almost all of your features (Org Mode drafting, automatic numbering, Kramdown attribute injection, and AES post encryption) require intercepting and rewriting data during the Ruby build phase, a Theme Gem simply cannot do the job.</p>
+<h4 id="can-these-features-apply-to-other-themes">Can These Features Apply to Other Themes?</h4>
+<p>Yes, and this is the biggest advantage of packaging it as a Plugin Gem. By decoupling your build logic from Minimal Mistakes, your plugin becomes completely theme-agnostic.</p>
+<p>Whether someone is using Minimal Mistakes, Chirpy, or a completely custom layout, your Ruby logic will still compile their Org files, automatically number their headings, and securely encrypt their post content before the theme ever touches the HTML.</p>
+<p>The only feature that walks the line is the Dark Mode Toggle and the Encrypted Post Password UI. Because these rely on specific DOM elements and CSS, they are usually bundled into themes. However, you can easily ship the raw JavaScript and baseline CSS within your plugin and let users map it to their theme’s specific classes.</p>
+<h4 id="do-similar-plugins-already-exist">Do Similar Plugins Already Exist?</h4>
+<p>Some of these features exist in isolation, but your specific implementations are heavily customized to solve edge cases that the standard tools miss:</p>
+<ul> <li>
+<b>Org Mode Drafting</b>: There is an official <a href="https://rubygems.org/gems/jekyll-org">jekyll-org</a> plugin. However, it is a very basic wrapper around <a href="https://rubygems.org/gems/org-ruby">org-ruby</a>. It does not support Jekyll/Liquid front matter properly without hacks, and it completely lacks your advanced features like Kramdown attribute parsing (<code>{: .class }</code>), native link abbreviations, and highly optimized furigana parsing.</li> <li>
+<b>Post Encryption</b>: There are a few plugins out there like <a href="https://github.com/xct/jekyll-encrypt">jekyll-encrypt</a> or <a href="https://github.com/lilykonings/jekyll-password-protect">jekyll-password-protect</a>. Some rely on basic Base64 obfuscation (which isn’t secure), while others rely on external serverless functions. Your approach of handling AES encryption natively in the Ruby build step and decrypting client-side is a very solid, self-contained method.</li> <li>
+<b>Heading Numbering</b>: Most people rely on Kramdown’s auto-TOC generation or frontend JavaScript to number headings. Doing it at the DOM level via Nokogiri in the Ruby pipeline is a much cleaner approach that prevents client-side layout shifts.</li> <li>
+<b>Dark Mode</b>: This is almost universally handled by individual themes nowadays (themes like <a href="https://github.com/cotes2020/jekyll-theme-chirpy">jekyll-theme-chirpy</a> have it natively). Standalone dark mode plugins are rare because styling is so deeply tied to the theme’s specific Sass variables.</li> </ul>
+<h2 id="the-procedures" class="ordered">The Procedures</h2>
+
+<h3 id="scaffold-the-gem">
+<span class="heading-number">1. </span>Scaffold the Gem</h3>
+<p>To package this up, I’m essentially building a “Jekyll Power-User Utility Belt.” Based on the previous mental discussions I’ve decided that the best approach for this gem is to create a plugin gem firmly tied with Minimal Mistakes (non-theme-agnostic), hence its name “minimal-mistakes-plus”.</p>
+<p>You can create a Jekyll plugin where standard Ruby Gem conventions apply by using Bundler to generate the skeleton:</p>
+
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle gem minimal-mistakes-plus</code></pre></div> </div>
+          
+<h4 id="what-happens-upon-first-run">
+<span class="heading-number">1.1. </span>What Happens Upon First Run</h4>
+<p>If this is the first time you have ever run the <code>bundle gem</code> command, it will enter an interactive session where you are asked to choose certain features for the project. For example, here’s the output of an initial run:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>~/projects/temp $ bundle gem minimal-mistakes-plus
+Creating gem 'minimal-mistakes-plus'...
+Do you want to generate tests with your gem?
+Future `bundle gem` calls will use your choice. This setting can be changed anytime with `bundle config gem.test`.
+Enter a test framework. rspec/minitest/test-unit/(none): rspec
+Do you want to set up continuous integration for your gem? Supported services:
+* CircleCI:       https://circleci.com/
+* GitHub Actions: https://github.com/features/actions
+* GitLab CI:      https://docs.gitlab.com/ee/ci/
+* Travis CI:      https://travis-ci.org/
+
+Future `bundle gem` calls will use your choice. This setting can be changed anytime with `bundle config gem.ci`.
+Enter a CI service. github/travis/gitlab/circle/(none): github
+Do you want to license your code permissively under the MIT license?
+This means that any other developer or company will be legally allowed to use your code for free as long as they admit you created it. You can read more about the MIT license at https://choosealicense.com/licenses/mit. y/(n): y
+MIT License enabled in config
+Do you want to include a code of conduct in gems you generate?
+Codes of conduct can increase contributions to your project by contributors who prefer collaborative, safe spaces. You can read more about the code of conduct at contributor-covenant.org. Having a code of conduct means agreeing to the responsibility of enforcing it, so be sure that you are prepared to do that. Be sure that your email address is specified as a contact in the generated code of conduct so that people know who to contact in case of a violation. For suggestions about how to enforce codes of conduct, see https://bit.ly/coc-enforcement. y/(n): y
+Code of conduct enabled in config
+Do you want to include a changelog?
+A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a project. To make it easier for users and contributors to see precisely what notable changes have been made between each release (or version) of the project. Whether consumers or developers, the end users of software are human beings who care about what's in the software. When the software changes, people want to know why and how. see https://keepachangelog.com y/(n): y
+Changelog enabled in config
+Do you want to add a code linter and formatter to your gem? Supported Linters:
+* RuboCop:       https://rubocop.org
+* Standard:      https://github.com/testdouble/standard
+
+Future `bundle gem` calls will use your choice. This setting can be changed anytime with `bundle config gem.linter`.
+Enter a linter. rubocop/standard/(none): rubocop
+RuboCop enabled in config
+Initializing git repo in /Users/josephtesfaye/projects/temp/minimal-mistakes-plus
+      create  minimal-mistakes-plus/Gemfile
+      create  minimal-mistakes-plus/lib/minimal/mistakes/plus.rb
+      create  minimal-mistakes-plus/lib/minimal/mistakes/plus/version.rb
+      create  minimal-mistakes-plus/sig/minimal/mistakes/plus.rbs
+      create  minimal-mistakes-plus/minimal-mistakes-plus.gemspec
+      create  minimal-mistakes-plus/Rakefile
+      create  minimal-mistakes-plus/README.md
+      create  minimal-mistakes-plus/bin/console
+      create  minimal-mistakes-plus/bin/setup
+      create  minimal-mistakes-plus/.gitignore
+      create  minimal-mistakes-plus/.rspec
+      create  minimal-mistakes-plus/spec/spec_helper.rb
+      create  minimal-mistakes-plus/spec/minimal/mistakes/plus_spec.rb
+      create  minimal-mistakes-plus/.github/workflows/main.yml
+      create  minimal-mistakes-plus/LICENSE.txt
+      create  minimal-mistakes-plus/CODE_OF_CONDUCT.md
+      create  minimal-mistakes-plus/CHANGELOG.md
+      create  minimal-mistakes-plus/.rubocop.yml
+Gem 'minimal-mistakes-plus' was successfully created. For more information on making a RubyGem visit https://bundler.io/guides/creating_gem.html</code></pre></div> </div>
+          
+<p>Bundler saves your responses as global preferences in the configuration file <code>~/.bundle/config</code>:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
+BUNDLE_GEM__TEST: "rspec"
+BUNDLE_GEM__CI: "github"
+BUNDLE_GEM__MIT: "true"
+BUNDLE_GEM__COC: "true"
+BUNDLE_GEM__CHANGELOG: "true"
+BUNDLE_GEM__LINTER: "rubocop"</code></pre></div> </div>
+          
+<p>This suppresses the interactive session for future <code>bundle gem</code> commands and passes those preferences as the default.</p>
+<p>To update a global preference, say, for the test framework to use <code>minitest</code>, run:</p>
+<pre class="example">
+bundle config [set] gem.test minitest
+</pre>
+<p>But it will not retroactively generate the test files for your already-created project. Bundler only generates the boilerplate files at the exact moment you run <code>bundle gem</code>.</p>
+<h4 id="file-structure-ruby-naming-convention">
+<span class="heading-number">1.2. </span>File Structure &amp; Ruby Naming Convention</h4>
+<p>You may notice that the hyphens in the project name are treated as directory hierarchy indicators for some files in the generated file structure:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>...
+minimal-mistakes-plus/lib/minimal/mistakes/plus.rb
+minimal-mistakes-plus/lib/minimal/mistakes/plus/version.rb
+minimal-mistakes-plus/sig/minimal/mistakes/plus.rbs
+...
+minimal-mistakes-plus/spec/minimal/mistakes/plus_spec.rb
+...</code></pre></div> </div>
+          
+<p><b>Why this happens: The Ruby Naming Convention</b></p>
+<p>In the Ruby and RubyGems ecosystem, there is a strict naming convention that translates gem names into module hierarchies and directory structures. It all comes down to the difference between hyphens (-) and underscores (_):</p>
+<ul> <li>
+<p>Hyphens indicate <b>namespace nesting</b>. Bundler interprets hyphens as a signal to create nested directories and modules. </p>
+<ul> <li>Your input: <code>minimal-mistakes-plus</code>
+</li> <li>Bundler generates: <code>lib/minimal/mistakes/plus.rb</code>
+</li> <li>Ruby Module created: <code>Minimal::Mistakes::Plus</code>
+</li> </ul> </li> <li>
+<p>Underscores indicate <b>word boundaries</b> in a single namespace. </p>
+<ul> <li>Your input: <code>minimal_mistakes_plus</code>
+</li> <li>Bundler generates: <code>lib/minimal_mistakes_plus.rb</code>
+</li> <li>Ruby Module created: <code>MinimalMistakesPlus</code>
+</li> </ul> </li> </ul>
+<p>Because you used hyphens, Bundler scaffolded a deeply nested directory structure assuming you wanted three levels of module hierarchy.</p>
+<p><b>Should you commit these files?</b></p>
+<p>These files form the foundational boilerplate of your gem. They set up the versioning, the base module, and the test environment. You will commit them once you are satisfied with the structure.</p>
+<p><b>The Jekyll Plugin Catch</b></p>
+<p>There is an important detail to consider because you are building a Jekyll plugin. When you add a plugin to Jekyll’s <code>_config.yml</code> like this:</p>
+
+            <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">minimal-mistakes-plus</span></code></pre></div> </div>
+          
+<p>Jekyll will literally attempt to execute ~require “minimal-mistakes-plus”~. By default, Ruby looks inside the <code>lib/</code> folder for a file named exactly <code>minimal-mistakes-plus.rb</code>. Because Bundler only created the nested folder structure, Jekyll won’t find the file and will crash.</p>
+<p>To fix this, you have two options:</p>
+<ul> <li>
+<p>Option 1: The “Flat” Approach </p>
+<p>Delete the current folder and regenerate the gem using underscores. This keeps the file structure flat, which is generally easier to manage for simple Jekyll plugins.</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> minimal-mistakes-plus
+bundle gem minimal_mistakes_plus</code></pre></div> </div>  <p>Your gem will be named <code>minimal_mistakes_plus</code>, and you will list it exactly like that in your <code>_config.yml</code>).</p> </li> <li>
+<p>Option 2: The “Hyphenated” Approach </p>
+<p>While there are some popular Ruby gems with underscores (like <code>awesome_print</code> or <code>active_record</code>), in the Jekyll ecosystem, hyphens are the standard convention (e.g., <code>jekyll-paginate</code>, <code>jekyll-sitemap</code>, <code>minimal-mistakes-jekyll</code>).</p> <p>If you want the gem to be published and referenced as <code>minimal-mistakes-plus</code>, you can keep your current nested folder. However, you must manually create a new file named <code>lib/minimal-mistakes-plus.rb</code> that simply requires the nested file so Jekyll can find it (the “Bridge File” pattern):</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Require the auto-generated version and namespace file</span>
+<span class="nb">require</span> <span class="s2">"minimal/mistakes/plus"</span>
+
+<span class="c1"># Require all of your custom Jekyll plugin scripts</span>
+<span class="nb">require</span> <span class="s2">"minimal_mistakes_plus/org_converter"</span></code></pre></div> </div>  <p>To keep things clean, you don’t actually have to bury your custom Jekyll scripts three folders deep in <code>lib/minimal/mistakes/plus/</code>. You can create a single folder inside <code>lib/</code> named <code>minimal_mistakes_plus/</code> (using underscores for the folder name is a standard Ruby practice for housing secondary files belonging to a hyphenated gem).</p> <p>Your final file structure will look like this beautiful, professional setup:</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>minimal-mistakes-plus/
+├── minimal-mistakes-plus.gemspec       # The official hyphenated name
+├── lib/
+│   ├── minimal-mistakes-plus.rb        # The Bridge File Jekyll looks for
+│   ├── minimal/
+│   │   └── mistakes/
+│   │       └── plus.rb                 # Auto-generated base module
+│   └── minimal_mistakes_plus/          # Folder for your actual logic
+│       ├── org_converter.rb
+│       ├── link_abbr.rb
+│       └── encrypt_post.rb</code></pre></div> </div>  <p>This strategy gives you the best of both worlds: a standard hyphenated public gem name, strict compliance with Ruby’s module naming conventions, and perfect compatibility with Jekyll’s plugin loader.</p> </li> </ul>
+<h3 id="restructure-the-ruby-code">
+<span class="heading-number">2. </span>Restructure the Ruby Code</h3>
+<p>Jekyll plugins distributed as Gems need to be loaded into the Jekyll environment.</p>
+<ol> <li>Move the contents of your <code>org_converter.rb</code> and <code>encrypt_post.rb</code> into the <code>lib/minimal_mistakes_plus/</code> directory.</li> <li>
+<p>In the root <code>lib/minimal-mistakes-plus.rb</code> file, add standard <code>require</code> statements to load your specific plugin files: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s2">"minimal_mistakes_plus/org_converter"</span>
+<span class="nb">require</span> <span class="s2">"minimal_mistakes_plus/encrypt_post"</span></code></pre></div> </div>  </li> </ol>
+<h3 id="handle-the-ui-assets-the-tricky-part">
+<span class="heading-number">3. </span>Handle the UI Assets (The Tricky Part)</h3>
+<p>Currently, <code>encrypt_post.rb</code> looks for <code>_includes/secure_ui.html</code> inside the user’s Jekyll source directory. When users install your Gem, they won’t naturally have this file. You have two elegant options to handle this:</p>
+<ul> <li>
+<b>Option A (The Zero-Config Approach):</b> Refactor the Ruby script to read <code>secure_ui.html</code> directly from the Gem’s internal directory structure using <code>__dir__</code>. The user doesn’t have to copy or manage any HTML files.</li> <li>
+<b>Option B (The Overridable Approach):</b> Keep the logic that checks the user’s <code>_includes</code> directory first. If the file doesn’t exist, fall back to the Gem’s internal default UI. This gives users the option to customize the prompt while keeping it plug-and-play.</li> </ul>
+<h3 id="define-dependencies-in-the-gemspec">
+<span class="heading-number">4. </span>Define Dependencies in the Gemspec</h3>
+<p>You need to ensure that anyone installing your Gem automatically gets the necessary underlying libraries. Open your <code>minimal-mistakes-plus.gemspec</code> and add the required dependencies:</p>
+
+            <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">required_ruby_version</span> <span class="o">=</span> <span class="s2">"&gt;= 3.1.0"</span>
+
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.9"</span> <span class="c1"># or your target version</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s2">"minimal-mistakes-jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 4.26"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s2">"nokogiri"</span><span class="p">,</span> <span class="s2">"~&gt; 1.16"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s2">"org-ruby"</span><span class="p">,</span> <span class="s2">"~&gt; 0.9"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_dependency</span> <span class="s2">"rouge"</span><span class="p">,</span> <span class="s2">"~&gt; 3.30"</span></code></pre></div> </div>
+          
+<p>To set the Ruby version dependency, you use the <code>required_ruby_version</code> attribute.</p>
+<p>Instead of locking the gem strictly to, say, <code>3.1.3</code> (which would prevent anyone with newer versions like <code>3.2.0</code> or <code>3.3.0</code> from installing it), the standard best practice in the Ruby community is to set a minimum required version using the <code>&gt;=</code> operator. If your code doesn’t rely on a feature specifically introduced in patch <code>.3</code>, it is very common to round down to the minor version to maximize compatibility for other users, hence the chosen version <code>3.1.0</code>.</p>
+<p>The ~~&gt;~ operator in RubyGems is known as the <b>pessimistic version constraint</b>. The =”~&gt; 3.9”= constraint means the gem requires a Jekyll version that is greater than or equal to 3.9.0, but strictly less than 4.0.0. This safely allows your gem to automatically accept newer minor and patch releases (like 3.9.3 or 3.9.5) which contain backward-compatible bug fixes and security updates, while explicitly blocking major updates (like 4.0.0) that could introduce breaking API changes.</p>
+<p>You can omit the version string entirely, which tells RubyGems to accept any available version of the gem. While this works in the short term, it is highly discouraged for a published plugin. For example, if Jekyll releases version 4.0 or 5.0 with completely different internal methods, users installing your gem will automatically pull the newest incompatible Jekyll version, instantly breaking your plugin. Defining a version constraint ensures long-term stability.</p>
+<p>Adding the theme gem <code>minimal-mistakes-jekyll</code> as a dependency is a deliberate architectural decision: it permanently locks this plugin so that it can only be used by people who also have the Minimal Mistakes theme installed. My goal is to build an exclusive “add-on” specifically for that theme, and this is the correct approach.</p>
+<p>Can you omit the <code>jekyll</code> dependency declaration when you have declared dependency on <code>minimal-mistakes-jekyll</code>, which should have also declared dependency on it?</p>
+<p>—No, you should never omit your direct dependency on <code>jekyll</code>, even if <code>minimal-mistakes-jekyll</code> already requires it. Here is why you must declare both:</p>
+<ol> <li>
+<p>The Rule of Direct Dependencies </p>
+<p>In package management, there is a golden rule: If your code directly calls a library, you must explicitly declare that library as a dependency. Because your Ruby scripts explicitly use constants like <code>Jekyll::Hooks</code> and inherit from <code>Jekyll::Converter</code>, your code has a hard, direct dependency on the <code>jekyll</code> gem. Relying on a secondary gem (the theme) to quietly provide your primary framework is known as relying on a “transitive dependency.” This is highly discouraged because it obscures what your code actually needs to run.</p> </li> <li>
+<p>Version Constraint Control </p>
+<p>If you rely on the theme to install Jekyll, you are surrendering control over which versions of Jekyll your plugin supports.</p> <p>If <code>minimal-mistakes-jekyll</code> updates to require Jekyll 4.3, but your Nokogiri/Org-Ruby logic breaks on Jekyll 4.3, your plugin will break for users.</p> <p>By explicitly declaring spec.add_dependency “jekyll”, “~&gt; 3.9”, you tell Bundler exactly what version your specific code is guaranteed to work with, preventing conflicting version installations.</p> </li> </ol>
+<p>Why use <code>&gt;=</code> instead of ~~&gt;~ for Ruby versions?</p>
+<p>While the pessimistic operator (~~&gt;~) is highly recommended for gem dependencies (like Jekyll or Nokogiri), it is generally discouraged for the Ruby language itself. If you were to use ~~&gt; 3.1~, your gem would completely reject Ruby 3.2 and 3.3. Because newer Ruby versions are highly backwards-compatible, using <code>&gt;= 3.1.0</code> ensures your gem continues to work seamlessly as users upgrade their base environments over the years.</p>
+<h3 id="documentation">
+<span class="heading-number">5. </span>Documentation</h3>
+<h4 id="readme">
+<span class="heading-number">5.1. </span>README</h4>
+<p>Because this plugin tightly couples with Minimal Mistakes, your <code>README</code> will be the most critical part of the repository. You will need to explicitly document:</p>
+<ol> <li>How to add the Gem to their <code>Gemfile</code> and <code>_config.yml</code>.</li> <li>How to use <code>encrypted: true</code> and <code>encrypted: buttitle</code>, including setting the <code>BLOG_PASSWORD</code> environment variable.</li> <li>How to use the Org-mode features: <code>{: .notice--warning}</code>, <code>ordered: true</code>, <code>{:
+    .ordered}</code>, and <code>CUSTOM_ID</code>.</li> </ol>
+<h4 id="user-manual-and-demos">
+<span class="heading-number">5.2. </span>User Manual and Demos</h4>
+<p>The detailed user manual and demos are written in a Minimal Mistakes themed site hosted on Github Pages, and the contents reside in <code>minimal-mistakes-plus/docs/</code>. The site is also using the gem <code>minimal-mistakes-plus</code>. Here’s how to do it from scratch step by step.</p>
+<p>To set up a documentation site in the <code>docs/</code> folder that uses both the Minimal Mistakes theme and your unpublished <code>minimal-mistakes-plus</code> gem, you need to configure a local Jekyll environment and deploy it using GitHub Actions. Standard GitHub Pages builds block custom plugins for security, so a custom Action is required.</p>
+<p>Here is the step-by-step process from scratch:</p>
+<ol> <li>
+<p>Scaffold the directory </p>
+<ol> <li>
+<p>Navigate to the root of your <code>minimal-mistakes-plus</code> repository and create the <code>docs/</code> folder. </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus
+<span class="nb">mkdir </span>docs
+<span class="nb">cd </span>docs</code></pre></div> </div>  </li> <li>
+<p>Create the <code>Gemfile</code> </p>
+<p>Inside the <code>docs/</code> directory, create a <code>Gemfile</code>. This file must explicitly link your local gem using the ~path: “../”~ parameter so Jekyll knows where to find your plugin code during local development and the GitHub Actions build.</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.9"</span>
+<span class="n">gem</span> <span class="s2">"minimal-mistakes-jekyll"</span>
+
+<span class="c1"># Load your local plugin directly from the parent directory</span>
+<span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"../"</span></code></pre></div> </div>  <p>In GitHub Actions, the home directory (<code>~</code>) or relative paths pointing outside the repository are not accessible during CI runs. Thus a path like <code>~/projects/minimal-mistakes-plus/</code> can be used here.</p> </li> <li>
+<p>Create the <code>_config.yml</code> </p>
+<p>Create your Jekyll configuration file in <code>docs/_config.yml</code> to set the theme and activate your plugin.</p>  <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">title</span><span class="pi">:</span> <span class="s">Minimal Mistakes Plus Documentation</span>
+<span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://&lt;your-github-username&gt;.github.io"</span>
+<span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/minimal-mistakes-plus"</span> <span class="c1"># Crucial for project pages on GitHub</span>
+
+<span class="na">theme</span><span class="pi">:</span> <span class="s">minimal-mistakes-jekyll</span>
+
+<span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">minimal-mistakes-plus</span></code></pre></div> </div>  </li> </ol> </li> <li>
+<p>Create the landing page </p>
+<ol> <li>
+<p>In <code>_config.yml</code> add: </p>
+<div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">include</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">_pages</span></code></pre></div> </div>  </li> <li>
+<p>In <code>_pages/</code> create a new file named <code>home.md</code>: </p>
+<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
+layout: splash
+permalink: /
+hidden: true
+header:
+  overlay_color: "#5e616c"
+  actions:
+    - label: "&lt;i class='fas fa-download'&gt;&lt;/i&gt; Install now"
+      url: "/docs/quick-start-guide/"
+excerpt: &gt;
+  A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios.&lt;br /&gt;
+  &lt;small&gt;&lt;a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/4.26.0"&gt;Latest release v4.26.0&lt;/a&gt;&lt;/small&gt;
+---
+
+This is the landing page...</code></pre></div> </div>  </li> </ol> </li> <li>
+<p>Create the “User Guide” documentation </p>
+<ol> <li>
+<p>In <code>_config.yml</code> define a collection called <code>docs</code> and set the default values for pages in the collection: </p>
+<div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">collections</span><span class="pi">:</span>
+  <span class="na">docs</span><span class="pi">:</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">permalink</span><span class="pi">:</span> <span class="s">/:collection/:path/</span>
+
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">docs</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s2">"</span><span class="s">docs"</span></code></pre></div> </div>  </li> <li>
+<p>Create the main menu and sidebar menus in <code>_data/navigation.yml</code>: </p>
+<div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">main</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">User</span><span class="nv"> </span><span class="s">Guide"</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">/docs/quick-start-guide/</span>
+
+<span class="na">docs</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s">Getting Started</span>
+    <span class="na">children</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Quick-Start</span><span class="nv"> </span><span class="s">Guide"</span>
+        <span class="na">url</span><span class="pi">:</span> <span class="s">/docs/quick-start-guide/</span></code></pre></div> </div>  </li> <li>
+<p>Create the page <code>_docs/01-quick-start-guide.md</code>: </p>
+<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
+title: "Quick-Start Guide"
+permalink: /docs/quick-start-guide/
+excerpt: "How to quickly install and setup Minimal Mistakes Plus for use with GitHub Pages."
+last_modified_at: 2026-03-15
+redirect_from:
+  - /theme-setup/
+toc: true
+---
+
+Minimal Mistakes Plus ...</code></pre></div> </div>  </li> </ol> </li> <li>
+<p>Test Locally </p>
+<p>While still inside the <code>docs/</code> directory, install the dependencies and start the local server.</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve <span class="nt">-P</span> 4001</code></pre></div> </div>  <p>Visit http://127.0.0.1:4000/minimal-mistakes-plus/ to ensure the site renders with the Minimal Mistakes layout and that your plugin loads without errors.</p> </li> <li>
+<p>Configure GitHub Actions for Deployment </p>
+<p>Because standard GitHub Pages will silently disable <code>minimal-mistakes-plus</code> as an “unrecognized plugin,” you must use GitHub Actions to build the site.</p> <ol> <li>
+<p>At the root of your repository (not in <code>docs/</code>), create the file <code>.github/workflows/pages.yml</code> and paste this workflow: </p>
+<div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and Deploy Docs</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">main</span>
+      <span class="pi">-</span> <span class="s">master</span>
+
+<span class="na">permissions</span><span class="pi">:</span>
+  <span class="na">contents</span><span class="pi">:</span> <span class="s">read</span>
+  <span class="na">pages</span><span class="pi">:</span> <span class="s">write</span>
+  <span class="na">id-token</span><span class="pi">:</span> <span class="s">write</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v4</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.1'</span>
+          <span class="na">bundler-cache</span><span class="pi">:</span> <span class="no">true</span>
+          <span class="na">working-directory</span><span class="pi">:</span> <span class="s">docs</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Pages</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/configure-pages@v4</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build with Jekyll</span>
+        <span class="na">working-directory</span><span class="pi">:</span> <span class="s">docs</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">bundle exec jekyll build --destination ../_site</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">JEKYLL_ENV</span><span class="pi">:</span> <span class="s">production</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Upload artifact</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-pages-artifact@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">_site</span>
+
+  <span class="na">deploy</span><span class="pi">:</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">github-pages</span>
+      <span class="na">url</span><span class="pi">:</span> <span class="s">$</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">needs</span><span class="pi">:</span> <span class="s">build</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy to GitHub Pages</span>
+        <span class="na">id</span><span class="pi">:</span> <span class="s">deployment</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/deploy-pages@v4</span></code></pre></div> </div>  </li> <li>
+<p>To install dependencies correctly on GitHub Actions you need to add the platform <code>x86_64-linux</code> to your lockfiles (<code>Gemfile.lock</code>). Run the following command under both root and <code>docs/</code>: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle lock <span class="nt">--add-platform</span> x86_64-linux</code></pre></div> </div>  <p>Then commit the changes:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>git add Gemfile.lock docs/Gemfile.lock
+git commit <span class="nt">-m</span> <span class="s2">"Add x86_64-linux platform to Gemfile.lock for CI compatibility"</span>
+git push</code></pre></div> </div>  <p>Error when failing to do this step:</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Your bundle only supports platforms ["arm64-darwin-23"] but your local platform
+is x86_64-linux.</code></pre></div> </div>  </li> </ol> </li> <li>
+<p>Enable GitHub Actions Deployment </p>
+<ol> <li>Go to your repository on GitHub.</li> <li>Click <b>Settings</b> &gt; <b>Pages</b>.</li> <li>Under <b>Build and deployment</b>, change the <b>Source</b> dropdown from “Deploy from a branch” to <b>GitHub Actions</b>.</li> <li>Commit all your files and push to GitHub. The action will trigger, build your site from the <code>docs/</code> directory using your parent gem, and publish it.</li> </ol> </li> </ol>
+<h5 id="two-gemfiles-trap">
+<span class="heading-number">5.2.1. </span>Two Gemfiles Trap</h5>
+<p>Github Actions continuously reports the following error even though you have made the changes:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Your bundle only supports platforms ["arm64-darwin-23"] but your local platform
+is x86_64-linux. Add the current platform to the lockfile with
+`bundle lock --add-platform x86_64-linux` and try again.
+Error: The process '/opt/hostedtoolcache/Ruby/3.1.3/x64/bin/bundle' failed with exit code 16</code></pre></div> </div>
+          
+<p>It seems to be loading the old <code>Gemfile.lock</code> file because there’s no <code>x86_64-linux</code> in the “Set up Ruby &gt; Print lockfile” in the job log.</p>
+<p>This almost always happens due to the *”Two Gemfiles Trap”* that occurs when you set up a nested documentation site, or a simple missed push.</p>
+<p>Since GitHub Actions checks out your exact repository state on every run, it never “holds onto” old files in the working directory. If the “Print lockfile” step shows the old version, the remote repository genuinely does not have the updated file in the location the Action is looking.</p>
+<p>Here are the three steps to fix this, in order of most likely to least likely:</p>
+<ol> <li>
+<p>The <code>docs/</code> Directory Trap (Most Likely) </p>
+<p>Because we created a completely separate Jekyll environment inside the <code>docs/</code> folder, your repository now has two <code>Gemfile.lock</code> files:</p> <ul> <li>
+<code>~/projects/minimal-mistakes-plus/Gemfile.lock</code> (The plugin’s lockfile)</li> <li>
+<code>~/projects/minimal-mistakes-plus/docs/Gemfile.lock</code> (The documentation site’s lockfile)</li> </ul> <p>Because the GitHub Action is configured with <code>working-directory: docs</code>, it is completely ignoring the root lockfile.</p> <p>The Fix: Ensure you run the platform command inside the <code>docs/</code> directory, commit that specific file, and push:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus/docs
+bundle lock <span class="nt">--add-platform</span> x86_64-linux
+git add Gemfile.lock
+git commit <span class="nt">-m</span> <span class="s2">"Add linux platform to docs lockfile"</span>
+git push</code></pre></div> </div>  </li> <li>
+<p>Verify via the GitHub Web UI </p>
+<p>Sometimes local Git staging can be tricky. To guarantee the file actually made it to GitHub’s servers:</p> <ol> <li>Open your repository in your web browser.</li> <li>Navigate to the docs/ folder.</li> <li>Click on <code>Gemfile.lock</code> and inspect the code.</li> <li>If you do not see <code>x86_64-linux</code> under <code>PLATFORMS</code>, the file was either not committed or pushed to a different branch than the one triggering the Action.</li> </ol> </li> <li>
+<p>Clear the GitHub Actions Cache </p>
+<p>If you absolutely verified that the <code>docs/Gemfile.lock</code> on the main branch has the correct platforms via the web UI, the <code>ruby/setup-ruby</code> dependency cache might be aggressively restoring an old bundler state based on a broken cache key.</p> <p>The Fix:</p> <ol> <li>Go to your repository on GitHub.</li> <li>Click the Actions tab.</li> <li>On the left sidebar, under the “Management” section, click Caches.</li> <li>Click the trash can icon next to any caches listed there to force a completely fresh install on the next run.</li> <li>Re-run all jobs for your latest workflow.</li> </ol> </li> </ol>
+<p>The issue isn’t that GitHub is caching an old file. The issue is that the job failing is a completely different workflow, and your documentation deployment workflow isn’t actually running at all.</p>
+<p>If you look closely at your repository structure, there are two distinct problems causing this:</p>
+<ol> <li>
+<p>The Failing Job is the Auto-Generated Ruby Test Suite </p>
+<p>When you first ran <code>bundle gem</code>, it automatically generated a workflow file at <code>.github/workflows/main.yml</code>. This job triggers on every push, runs at the <b>root</b> of your repository, and attempts to execute your test suite (<code>bundle exec
+      rake</code>).</p> <p>Because your <b>root</b> <code>Gemfile.lock</code> currently only supports <code>arm64-darwin-23</code>, this test job immediately crashes on GitHub’s Linux runners. It is completely ignoring the <code>docs/Gemfile.lock</code> where you successfully added the platform.</p> </li> <li>
+<p>The <code>pages.yml</code> Workflow is Misplaced and Misspelled </p>
+<p>Your deployment workflow is currently located at <code>docs/.github/worklows/pages.yml</code>.</p> <p>GitHub Actions strictly requires all workflow files to be located in the top-level <code>.github/workflows/</code> directory of the repository. It will not scan subdirectories like <code>docs/</code>. Additionally, the folder name <code>worklows</code> is missing the “f”.</p> </li> <li>
+<p>The Fix: To solve this efficiently, open your terminal at the root of your project (<code>~/projects/minimal-mistakes-plus</code>) and run these exact commands: </p>
+<ol> <li>
+<p>Fix the root lockfile so the test suite passes </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle lock <span class="nt">--add-platform</span> x86_64-linux</code></pre></div> </div>  </li> <li>
+<p>Move the pages workflow to the correct top-level directory </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">mv </span>docs/.github/worklows/pages.yml .github/workflows/pages.yml</code></pre></div> </div>  </li> <li>
+<p>Clean up the empty folder and push </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> docs/.github
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Fix workflow locations and root lockfile platforms"</span>
+git push</code></pre></div> </div>  </li> </ol> <p>Once pushed, if you check the Actions tab, you will now see <b>two</b> jobs running simultaneously: the default Ruby test suite (which will now pass) and your new <code>Build and Deploy Docs</code> workflow.</p> </li> </ol>
+<h3 id="build-and-test">
+<span class="heading-number">6. </span>Build and Test</h3>
+<p>There are two ways to use your gem locally, depending on whether you are still actively editing the plugin code or just want to install the finished package.</p>
+<h4 id="method-1-the-path-approach-best-for-active-development">
+<span class="heading-number">6.1. </span>Method 1: The path approach (Best for active development)</h4>
+<p>If you are still tweaking the Ruby code inside <code>minimal-mistakes-plus</code> and want to test it in your blog immediately, you do not need to build the gem at all. You can tell Bundler to load the code directly from your local folder.</p>
+<ol> <li>Open the Gemfile of the target blog project (not the plugin).</li> <li>
+<p>Add the gem using the path option, pointing to the local directory where your plugin lives: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Point this to the actual relative or absolute path on your machine</span>
+<span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"~/projects/minimal-mistakes-plus"</span></code></pre></div> </div>  </li> <li>Run <code>bundle install</code> in your blog directory.</li> </ol>
+<p>With this method, any changes you make to the Ruby files in the plugin directory are instantly picked up the next time you run bundle exec jekyll serve on your blog.</p>
+<h5 id="codes-in-lib-not-loaded">
+<span class="heading-number">6.1.1. </span>Codes in <code>lib/</code> Not Loaded</h5>
+<p>You have added the gem using the path option, but the codes in <code>lib/</code> aren’t loaded.</p>
+<p>This issue is extremely common when developing new gems locally. It usually comes down to a combination of how Bundler tracks files and how Jekyll loads plugins.</p>
+<p>Here are the three things you need to check to fix this:</p>
+<ol> <li>
+<p>The Git Tracking Trap (Most Likely) </p>
+<p>If you look closely at your <code>minimal-mistakes-plus.gemspec</code> file, you will see this block of code:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">files</span> <span class="o">=</span> <span class="no">Dir</span><span class="p">.</span><span class="nf">chdir</span><span class="p">(</span><span class="n">__dir__</span><span class="p">)</span> <span class="k">do</span>
+  <span class="sb">`git ls-files -z`</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"</span><span class="se">\x0</span><span class="s2">"</span><span class="p">).</span><span class="nf">reject</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span></code></pre></div> </div>  <p>Because the gemspec uses <code>git ls-files</code> to determine which files belong to the gem, <b>any file that has not been tracked by Git is completely invisible to Bundler</b>, even when using the <code>path:</code> approach.</p> <p>Since you just created <code>lib/minimal-mistakes-plus.rb</code> and <code>lib/minimal_mistakes_plus/org_converter.rb</code>, they are likely untracked.</p> <p><b>The Fix</b>: Open your terminal, go into your plugin directory, and simply add the files to Git:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus
+git add .</code></pre></div> </div>  <p>(You don’t even need to commit them yet; they just need to be staged/tracked so <code>git ls-files</code> can see them).</p> </li> <li>
+<p>Is it in Jekyll’s <code>_config.yml</code>? </p>
+<p>Adding the gem to your <code>Gemfile</code> tells Ruby to <i>install</i> the code, but it does not tell Jekyll to <i>execute</i> it during the site build.</p> <p>For your <code>org_converter.rb</code> logic to actually run, you must explicitly declare the gem as a Jekyll plugin.</p> <p><b>The Fix:</b> Open <code>_config.yml</code> in your <code>josephs-blog</code> directory and ensure the gem is listed under the <code>plugins</code> array:</p>  <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-paginate</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+  <span class="pi">-</span> <span class="s">minimal-mistakes-plus</span>   <span class="c1"># Add this line!</span></code></pre></div> </div>  </li> <li>
+<p>Verify the Bridge File </p>
+<p>Finally, ensure that your bridge file (<code>lib/minimal-mistakes-plus.rb</code>) is successfully requiring your custom converter. When Jekyll reads <code>_config.yml</code>, it looks for this exact file and evaluates it.</p> <p><b>The Fix:</b> Ensure <code>lib/minimal-mistakes-plus.rb</code> looks exactly like this:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="c1"># Require the default auto-generated module</span>
+<span class="nb">require_relative</span> <span class="s2">"minimal/mistakes/plus"</span>
+
+<span class="c1"># Require your custom logic</span>
+<span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/org_converter"</span></code></pre></div> </div>  <p>Once you have staged the files in Git, added the name to <code>_config.yml</code>, and verified the bridge file, run <code>bundle exec jekyll serve</code> in your blog directory. Jekyll will now successfully load and apply your Org Mode converter.</p> </li> </ol>
+<h5 id="validation-error-gem-contains-itself">
+<span class="heading-number">6.1.2. </span>Validation Error: Gem contains itself</h5>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>~/projects/josephs-blog $ bundle exec jekyll serve
+bundler: failed to load command: jekyll (/Users/josephtesfaye/.gem/ruby/3.1.3/bin/jekyll)
+/Users/josephtesfaye/.rubies/ruby-3.1.3/lib/ruby/3.1.0/bundler/rubygems_integration.rb:72:in `rescue in validate': The gemspec at /Users/josephtesfaye/projects/minimal-mistakes-plus/minimal-mistakes-plus.gemspec is not valid. Please fix this gemspec. (Gem::InvalidSpecificationException)
+The validation error was 'minimal-mistakes-plus-0.1.0 contains itself (minimal-mistakes-plus-0.1.0.gem), check your files list'
+	from /Users/josephtesfaye/.rubies/ruby-3.1.3/lib/ruby/3.1.0/bundler/rubygems_integration.rb:67:in `validate'</code></pre></div> </div>
+          
+<p>The error message “minimal-mistakes-plus-0.1.0 contains itself” is caused by a very specific sequence of events that just occurred.</p>
+<p>Earlier, when you ran <code>gem build</code>, it created the file <code>minimal-mistakes-plus-0.1.0.gem</code> in your project folder. Then, when you ran <code>git
+  add .</code>, Git started tracking that <code>.gem</code> file alongside your Ruby scripts.</p>
+<p>Because your <code>.gemspec</code> uses <code>git ls-files</code> to decide what goes into the package, it is currently trying to pack the built <code>.gem</code> file inside of the new gem! RubyGems detects this infinite loop and immediately throws a validation error.</p>
+<p>Here is how to fix it and prevent it from happening again:</p>
+<ol> <li>
+<p>Remove the <code>.gem</code> file from Git tracking </p>
+<p>Open your terminal, navigate to your plugin directory, and tell Git to stop tracking any <code>.gem</code> files:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus
+git <span class="nb">rm</span> <span class="nt">--cached</span> <span class="k">*</span>.gem</code></pre></div> </div>  <p><i>(This removes it from Git’s index, but keeps the file on your hard drive).</i></p> </li> <li>
+<p>Add <code>.gem</code> files to <code>.gitignore</code> </p>
+<p>To make sure this never happens again when you run <code>git add .</code>, open the <code>.gitignore</code> file in your <code>minimal-mistakes-plus</code> directory and add <code>*.gem</code> to the bottom of it:</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code># .gitignore
+# ... existing ignores ...
+*.gem</code></pre></div> </div>  </li> <li>
+<p>Try Jekyll again </p>
+<p>Now that the <code>.gem</code> file is no longer in <code>git ls-files</code>, your gemspec is valid again. Go back to your blog directory and start your server:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/josephs-blog
+bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  <p>It should now successfully boot up and load your local plugin!</p> </li> </ol>
+<h5 id="load-error-uri-111-already-activated">
+<span class="heading-number">6.1.3. </span>Load Error: uri 1.1.1 already activated</h5>
+<p>For some reason when I run <code>bundle exec jekyll serve</code> the error occurs:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>~/projects/josephs-blog $ bundle exec jekyll serve
+bundler: failed to load command: jekyll (/Users/josephtesfaye/.gem/ruby/3.1.3/bin/jekyll)
+/Users/josephtesfaye/.rubies/ruby-3.1.3/lib/ruby/3.1.0/bundler/runtime.rb:308:in `check_for_activated_spec!': You have already activated uri 1.1.1, but your Gemfile requires uri 0.13.0. Prepending `bundle exec` to your command may solve this. (Gem::LoadError)
+	from /Users/josephtesfaye/.rubies/ruby-3.1.3/lib/ruby/3.1.0/bundler/runtime.rb:25:in `block in setup'
+	from /Users/josephtesfaye/.rubies/ruby-3.1.3/lib/ruby/3.1.0/bundler/spec_set.rb:155:in `each'</code></pre></div> </div>
+          
+<p>This is a notorious Bundler conflict involving Ruby’s “default gems.”</p>
+<p>When Ruby boots up, it automatically activates its built-in, newer version of the <code>uri</code> gem (<code>1.1.1</code>). However, your blog’s <code>Gemfile.lock</code> is strictly demanding an older version (<code>0.13.0</code>). Bundler crashes because it cannot load two different versions of the same gem simultaneously, even when using <code>bundle exec</code>.</p>
+<p>Here are the most efficient ways to resolve this, starting with the fastest approach:</p>
+<ol> <li>
+<p>Update the locked gem (Fastest) </p>
+<p>You can tell Bundler to update the <code>Gemfile.lock</code> so it accepts the newer, already-activated version of the <code>uri</code> gem. Run this in your blog directory:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle update uri
+bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  </li> <li>
+<p>Rebuild the lockfile (Most Comprehensive) </p>
+<p>Sometimes, updating <code>uri</code> just reveals a daisy-chain of other default gem conflicts (like <code>logger</code> or <code>date</code>). If the first command fails with a similar error for a different gem, the best approach is to let Bundler recalculate the entire dependency tree from scratch based on your current Ruby environment.</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm </span>Gemfile.lock
+bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  </li> </ol>
+<h4 id="method-2-build-and-install-locally-best-for-final-testing">
+<span class="heading-number">6.2. </span>Method 2: Build and Install locally (Best for final testing)</h4>
+<p>If you want to simulate exactly how it will behave once published, you can compile the source code into a <code>.gem</code> file and install it directly into your local machine’s Ruby environment.</p>
+<ol> <li>Open your terminal and navigate to your plugin directory.</li> <li>
+<p>Build the gem using the gemspec file: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>gem build minimal-mistakes-plus.gemspec</code></pre></div> </div>  <p>This will generate a compiled file in that folder, e.g., <code>minimal-mistakes-plus-0.1.0.gem</code>.</p> </li> <li>
+<p>Install that specific file locally: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>gem <span class="nb">install</span> ./minimal-mistakes-plus-0.1.0.gem</code></pre></div> </div>  </li> <li>
+<p>Now, go to your target blog project. You can add it to the Gemfile exactly as if you had downloaded it from the internet: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span></code></pre></div> </div>  </li> <li>Run <code>bundle install</code> to link it.</li> </ol>
+<p>Note: If you use Method 2 and later change the plugin’s code, you must increment the version number in <code>lib/minimal/mistakes/plus/version.rb</code>, run <code>gem build</code> again, and run <code>gem install</code> again for the changes to take effect.</p>
+<h4 id="the-command-bundle-exec-rake">
+<span class="heading-number">6.3. </span>The Command <code>bundle exec rake</code>
+</h4>
+<p>The command <code>bundle exec rake</code> is essentially the master execution switch for running your project’s automated tests and code quality checks.</p>
+<p>To understand exactly what it does, we can break it down into two parts:</p>
+<ol> <li>
+<p><code>bundle exec</code> </p>
+<p>This prefix tells your terminal, “Do not use the global Ruby gems installed on my computer. Instead, strictly execute the following command using the exact gem versions locked inside this project’s <code>Gemfile.lock</code>.” This prevents version conflicts and ensures your code runs exactly the same way on your local machine as it does on the GitHub Actions servers.</p> </li> <li>
+<p><code>rake</code> </p>
+<p>Rake is Ruby’s built-in task runner (similar to <code>make</code> in C or <code>npm run</code> in Node.js). When you type rake without any arguments, it automatically looks for a file named <code>Rakefile</code> in your project’s root directory and runs whatever is set as the default task.</p> </li> </ol>
+<p><b>What it does in your specific project</b></p>
+<p>If we look at the <code>Rakefile</code> generated for your <code>minimal-mistakes-plus</code> gem, you will see this line at the very bottom:</p>
+
+            <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">task</span> <span class="ss">default: </span><span class="sx">%i[spec rubocop]</span></code></pre></div> </div>
+          
+<p>This means that when GitHub Actions (or you locally) runs <code>bundle exec rake</code>, it is sequentially executing two distinct tasks:</p>
+<ol> <li>
+<code>spec</code> (RSpec): It boots up the RSpec testing framework, looks inside your <code>spec/</code> directory, and runs all the automated Ruby tests you have written to ensure your plugin logic (like <code>org_converter.rb</code>) works correctly.</li> <li>
+<code>rubocop</code>: If all the tests pass, it then boots up RuboCop (a Ruby static code analyzer). RuboCop scans every <code>.rb</code> file in your project and checks it against the style rules defined in your <code>.rubocop.yml</code> file to ensure your code is cleanly formatted.</li> </ol>
+<p>If either the RSpec tests fail or RuboCop finds formatting violations, the rake command returns an error code, which causes the GitHub Actions <code>main.yml</code> workflow to display a red “Failed” badge.</p>
+<h4 id="how-to-disable-rubocop-for-the-whole-project">
+<span class="heading-number">6.4. </span>How to disable rubocop for the whole project?</h4>
+<p>To completely disable RuboCop for the whole project and stop it from failing your GitHub Actions build, you need to remove it from your default test execution and remove its dependencies.</p>
+<p>Here is the fastest and most comprehensive approach to rip it out of the project entirely:</p>
+<ol> <li>
+<p>Remove it from the <code>Rakefile</code> </p>
+<p>The reason <code>bundle exec rake</code> runs RuboCop is because your <code>Rakefile</code> explicitly defines it as a default task alongside your RSpec tests.</p> <p>Open your <code>Rakefile</code> and delete the RuboCop configuration:</p>  <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">@@ -5,8 +5,4 @@</span> require "rspec/core/rake_task"
+
+ RSpec::Core::RakeTask.new(:spec)
+
+-require "rubocop/rake_task"
+<span class="gd">-
+-RuboCop::RakeTask.new
+-
+-task default: %i[spec rubocop]
+</span><span class="gi">+task default: :spec</span></code></pre></div> </div>  </li> <li>
+<p>Remove the Gem Dependency </p>
+<p>Open your <code>Gemfile</code> and delete this line at the bottom:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"rubocop"</span><span class="p">,</span> <span class="s2">"~&gt; 1.21"</span></code></pre></div> </div>  <p>After saving the file, run this command in your terminal to update your lockfile and clean up the dependencies:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span></code></pre></div> </div>  </li> <li>
+<p>Delete the Configuration File </p>
+<p>Finally, delete the <code>.rubocop.yml</code> file from the root of your project since it is no longer needed.</p> </li> <li>
+<p>Commit and Push </p>
+<p>Commit these changes and push them to GitHub.</p> </li> </ol>
+<p>Now, when GitHub Actions runs <code>bundle exec rake</code>, it will only execute your RSpec tests and will completely ignore style checking.</p>
+<h4 id="use-your-unpublished-gem-on-github-actions">
+<span class="heading-number">6.5. </span>Use Your Unpublished Gem on GitHub Actions</h4>
+<p>To use your unpublished gem across different repositories on GitHub Actions, you must stop using the local <code>path:</code> declaration. The GitHub runner building your blog will not have access to your local hard drive or parent directories.</p>
+<p>Instead, you can instruct Bundler to download the plugin directly from its Git repository during the build process.</p>
+<p>Here is the exact workflow:</p>
+<ol> <li>
+<p>Update your Blog’s Gemfile </p>
+<p>Open the <code>Gemfile</code> in your <code>josephs-blog</code> repository. Replace the local path reference with the <code>github:</code> keyword, pointing to your plugin’s repository.</p>  <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-gem "minimal-mistakes-plus", path: "~/projects/minimal-mistakes-plus"
+</span><span class="gi">+gem "minimal-mistakes-plus", github: "josephtesfaye/minimal-mistakes-plus", branch: "main"</span></code></pre></div> </div>  <p>Note: You can also lock it to a specific release tag if you prefer stability over bleeding-edge updates by using ~tag: “v0.1.0”~ instead of ~branch: “main”~.</p> </li> <li>
+<p>Update the Lockfile Locally </p>
+<p>Because you changed the source from a local file path to a remote Git repository, you must recalculate the lockfile before pushing.</p> <p>Run this in your <code>josephs-blog</code> terminal:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span></code></pre></div> </div>  <p>You will see output indicating that Bundler is fetching the gem from GitHub.</p> </li> <li>
+<p>Commit and Push </p>
+<p>Commit the updated <code>Gemfile</code> and <code>Gemfile.lock</code> to your blog’s repository and push to GitHub.</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>git add Gemfile Gemfile.lock
+git commit <span class="nt">-m</span> <span class="s2">"Use minimal-mistakes-plus directly from GitHub"</span>
+git push</code></pre></div> </div>  </li> </ol>
+<h5 id="how-github-actions-handles-this">
+<span class="heading-number">6.5.1. </span>How GitHub Actions Handles This</h5>
+<p>As long as your <code>minimal-mistakes-plus</code> repository is public, your existing GitHub Actions workflow for <code>josephs-blog</code> does not need to change. When the <code>ruby/setup-ruby</code> step runs <code>bundle install</code>, it will read the GitHub source from the <code>Gemfile</code>, seamlessly clone the plugin repository into its cache, and execute your custom Ruby logic.</p>
+<p>If your plugin repository is currently set to Private, the Action will fail with an authentication error. You would either need to make the plugin repository public, or generate a GitHub Personal Access Token and pass it to the Action via the <code>BUNDLE_GITHUB__COM</code> environment variable.</p>
+<h5 id="use-local-git-overrides-for-efficient-development">
+<span class="heading-number">6.5.2. </span>Use Local Git Overrides for Efficient Development</h5>
+<p>When your <code>Gemfile</code> strictly says ~github: “josephtesfaye/minimal-mistakes-plus”~, Bundler will reach out to GitHub and download the gem to your global cache every time you run <code>bundle install</code>, even when you are working on your local machine.</p>
+<p>But you do <b>not</b> need to manually switch back and forth between <code>path:</code> and <code>github:</code>. Bundler has a built-in feature specifically designed to solve this exact problem for active gem development.</p>
+<p>It is called <b>Local Git Overrides</b>. You can tell your local Bundler environment to intercept any requests for the GitHub URL and route them to your local folder instead, without ever changing the <code>Gemfile</code>.</p>
+<p>Here is how to set this up:</p>
+<ol> <li>
+<p>Keep the GitHub link in your Gemfile </p>
+<p>Leave your <code>Gemfile</code> exactly like this so GitHub Actions always works:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">github: </span><span class="s2">"josephtesfaye/minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">branch: </span><span class="s2">"main"</span></code></pre></div> </div>  </li> <li>
+<p>Configure the Local Override </p>
+<p>Open your terminal inside your <code>josephs-blog</code> directory and run this command (adjust the path to point to your actual local plugin directory):</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle config <span class="nb">set</span> <span class="nt">--local</span> local.minimal-mistakes-plus ~/projects/minimal-mistakes-plus</code></pre></div> </div>  <p>This configuration is stored in <code>~/josephs-blog/.bundle/config</code>. You should never commit the <code>.bundle/config</code> file to your Git repository. Here is exactly why, especially in your current setup:</p> <ol> <li>It contains machine-specific paths: Right now, that file holds the local override you just configured (~~/projects/minimal-mistakes-plus~). That specific folder structure only exists on your personal computer.</li> <li>It will immediately break GitHub Actions: If you commit and push that file, the GitHub Actions runner will read it and attempt to install the gem from the local path <code>~/projects/minimal-mistakes-plus</code> instead of downloading it from GitHub. Because that directory does not exist on the isolated Linux build server, your deployment workflow will crash.</li> <li>It overrides standard behavior: The entire purpose of the <code>.bundle/config</code> file is to store temporary, developer-specific configurations that should not affect anyone else (or any automated system) cloning the repository.</li> </ol> </li> <li>
+<p>How it Works </p>
+<p>Now, when you run <code>bundle install</code> or <code>bundle exec jekyll serve</code> locally, Bundler sees the <code>github:</code> declaration, but your local config immediately overrides it. It will use the live files straight from <code>~/projects/minimal-mistakes-plus</code>.</p> <p>Any changes you make to your local plugin’s Ruby code will instantly be picked up the next time you restart the Jekyll server, just as if you had used <code>path:</code>.</p> <p class="notice--warning"> Note: For the override to work, your local plugin repository must be on the same branch specified in the Gemfile, which is <code>main</code> in this case.</p> </li> </ol>
+<p><b>How to turn it off later</b></p>
+<p>Once the gem is completely finished and you want your local machine to go back to pulling the official code from GitHub, simply run:</p>
+
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle config <span class="nb">unset </span>local.minimal-mistakes-plus</code></pre></div> </div>
+          
+<h3 id="publish">
+<span class="heading-number">7. </span>Publish</h3>
+<p>The setting <code>spec.metadata["allowed_push_host"]</code> in the <code>.gemspec</code> file is a security feature built into Bundler and RubyGems. Its purpose is to prevent you from accidentally publishing a private, internal gem to the public internet.</p>
+<p>When you run the command <code>rake release</code> or <code>gem push</code>, RubyGems checks this URL. It will strictly refuse to upload your code to any server other than the one listed here.</p>
+<p>Here is how you should set it based on your goals for <code>minimal-mistakes-plus</code>:</p>
+<ul> <li>
+<p>Option 1: You want to publish it publicly </p>
+<p>If your goal is to share this plugin with the world so anyone can add it to their <code>Gemfile</code>, you should set it to the official public RubyGems server.</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"allowed_push_host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://rubygems.org"</span></code></pre></div> </div>  </li> <li>
+<p>Option 2: You want to keep it private (GitHub Packages) </p>
+<p>If you only want to use this gem for your own projects and do not want it available to the public, you can host it privately on GitHub.</p> <p>You would change the URL to point to GitHub’s package registry (replace <code>YOUR_GITHUB_USERNAME</code> with your actual username):</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">metadata</span><span class="p">[</span><span class="s2">"allowed_push_host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://rubygems.pkg.github.com/YOUR_GITHUB_USERNAME"</span></code></pre></div> </div>  </li> <li>
+<p>Option 3: You don’t want to publish it anywhere at all </p>
+<p>If you only plan to use this gem locally on your own computer (e.g., by pointing to its local folder path in your blog’s <code>Gemfile</code>), you can safely delete that line.</p> </li> </ul>
+<ol> <li>Push it to RubyGems: <code>gem push minimal-mistakes-plus-0.1.0.gem</code>
+</li> </ol>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/blog/tags/#minimal-mistakes" class="page__taxonomy-item p-category" rel="tag">Minimal Mistakes</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/blog/categories/#web" class="page__taxonomy-item p-category" rel="tag">Web</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-01">March 1, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Minimal+Mistakes+Plus%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fminimal-mistakes-plus%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fminimal-mistakes-plus%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://josephtesfaye.com/blog/web/minimal-mistakes-plus/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/web/private-posts/" class="pagination--pager" title="🔒 Protected Content
+">Previous</a>
+    
+    
+      <a href="/blog/web/mobile-sticky-toc/" class="pagination--pager" title="Enabling Sticky TOC for Mobile Display in Minimal Mistakes
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/interview/" rel="permalink">Interview
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-04T00:00:00+00:00">March 4, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Introduce yourself
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/mobile-sticky-toc/" rel="permalink">Enabling Sticky TOC for Mobile Display in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-03T00:00:00+00:00">March 3, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I ...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/private-posts/" rel="permalink">🔒 Protected Content
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post is password protected.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-02-23T00:00:00+00:00">February 23, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          21 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written...</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/blog/web/minimal-mistakes-plus/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/web/minimal-mistakes-plus"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>
