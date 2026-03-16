@@ -175,31 +175,25 @@
         </a>
         <ul class="visible-links">
 <li class="masthead__menu-item">
-            <a href="/blog/year-archive/">Posts</a>
-          </li>
+              <a href="/blog/year-archive/">Posts</a>
+            </li>
 <li class="masthead__menu-item">
-            <a href="/blog/projects/">Projects</a>
-          </li>
+              <a href="/blog/projects/">Projects</a>
+            </li>
 <li class="masthead__menu-item">
-            <a href="/blog/collections/">Collections</a>
-          </li>
+              <a href="/blog/collections/">Collections</a>
+            </li>
 <li class="masthead__menu-item">
-            <a href="/blog/about/">About</a>
-          </li>
+              <a href="/blog/about/">About</a>
+            </li>
 </ul>
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
           <i class="fas fa-search"></i>
         </button>
+        <button class="theme-toggle-btn" onclick="switchTheme()"><i class="fas fa-moon"></i></button>
         
-
-        
-        <button class="theme-toggle-btn" onclick="switchTheme()">
-          <i class="fas fa-moon"></i>
-        </button>
-        
-
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
@@ -293,7 +287,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          40 minute read
+          48 minute read
         
       </span>
     
@@ -360,13 +354,17 @@
 <li>
 <a href="#use-your-unpublished-gem-on-github-actions"><span class="toc-number">6.5. </span>Use Your Unpublished Gem on GitHub Actions</a><ul>
 <li><a href="#how-github-actions-handles-this"><span class="toc-number">6.5.1. </span>How GitHub Actions Handles This</a></li>
-<li><a href="#use-local-git-overrides-for-efficient-development"><span class="toc-number">6.5.2. </span>Use Local Git Overrides for Efficient Development</a></li>
+<li><a href="#what-to-do-when-the-plugin-is-updated"><span class="toc-number">6.5.2. </span>What to Do When the Plugin is Updated</a></li>
+<li><a href="#20260316225131"><span class="toc-number">6.5.3. </span>Use Local Git Overrides for Efficient Development</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#publish"><span class="toc-number">7. </span>Publish</a></li>
 </ul>
+</li>
+<li>
+<a href="#feature-migration">Feature Migration</a><ul><li><a href="#dark-mode">Dark Mode</a></li></ul>
 </li>
 </ul>
             </nav>
@@ -1012,8 +1010,68 @@ git push</code></pre></div> </div>  </li> </ol>
 <span class="heading-number">6.5.1. </span>How GitHub Actions Handles This</h5>
 <p>As long as your <code>minimal-mistakes-plus</code> repository is public, your existing GitHub Actions workflow for <code>josephs-blog</code> does not need to change. When the <code>ruby/setup-ruby</code> step runs <code>bundle install</code>, it will read the GitHub source from the <code>Gemfile</code>, seamlessly clone the plugin repository into its cache, and execute your custom Ruby logic.</p>
 <p>If your plugin repository is currently set to Private, the Action will fail with an authentication error. You would either need to make the plugin repository public, or generate a GitHub Personal Access Token and pass it to the Action via the <code>BUNDLE_GITHUB__COM</code> environment variable.</p>
-<h5 id="use-local-git-overrides-for-efficient-development">
-<span class="heading-number">6.5.2. </span>Use Local Git Overrides for Efficient Development</h5>
+<h5 id="what-to-do-when-the-plugin-is-updated">
+<span class="heading-number">6.5.2. </span>What to Do When the Plugin is Updated</h5>
+<p>It seems <code>bundle install</code> in GitHub Actions’ <code>build_and_deploy</code> workflow of <code>josephs-blog</code> doesn’t pull the latest code from <code>minimal-mistakes-plus</code> automatically with the setup:</p>
+
+            <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">github: </span><span class="s2">"josephtesfaye/minimal-mistakes-plus"</span><span class="p">,</span> <span class="ss">branch: </span><span class="s2">"main"</span></code></pre></div> </div>
+          
+<p>It still uses the old commit as indicated by the line:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Using minimal-mistakes-plus 0.1.0 from https://github.com/josephtesfaye/minimal-mistakes-plus.git (at main@70a94f2)</code></pre></div> </div>
+          
+<p>which is the same as shown in <code>Gemfile.lock</code> of <code>josephs-blog</code>. Does this mean I have to run <code>bundle install</code> and commit the updated <code>Gemfile.lock</code> in order to use the latest code? Can you make it pull in the latest code automatically?</p>
+<p>—Yes, you hit the nail on the head. This is your <code>Gemfile.lock</code> doing exactly what it was designed to do: guarantee completely deterministic, repeatable builds.</p>
+<p>When you first added the <code>github:</code> path and ran <code>bundle install</code> locally, Bundler reached out to GitHub, found the latest commit on <code>main</code> (which happened to be <code>70a94f2</code>), and hardcoded that exact SHA hash into your <code>Gemfile.lock</code>.</p>
+<p>Because GitHub Actions strictly respects the lockfile, it will download that exact commit every single time, completely ignoring any new code you push to the plugin’s repository.</p>
+<ul> <li>
+<p>Option 1: The “Standard” Way (Manual Update) </p>
+<p>In the Ruby ecosystem, the standard best practice is indeed to manually update the lockfile and commit it. This ensures that if you introduce a breaking change to your plugin, it doesn’t spontaneously crash your blog’s automated daily build.</p> <p>To do this locally, you don’t just run <code>bundle install</code>. You must explicitly tell Bundler to update that specific gem’s locked commit:</p>  <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle update minimal-mistakes-plus
+git add Gemfile.lock
+git commit <span class="nt">-m</span> <span class="s2">"Bump plugin to latest commit"</span>
+git push</code></pre></div> </div>  </li> <li>
+<p>Option 2: The “Bleeding Edge” Way (Automated CI Update) </p>
+<p>If you want your blog to <i>always</i> build with the absolute latest commit from the <code>main</code> branch of your plugin without you having to touch the lockfile, you can force GitHub Actions to update it on the fly.</p> <p>You simply need to add a <code>bundle update</code> step to your <code>jekyll.yml</code> workflow right after the Ruby setup step.</p> <p>Here is what you need to change in <code>josephs-blog/.github/workflows/jekyll.yml</code>:</p>  <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">--- .github/workflows/jekyll.yml
+</span><span class="gi">+++ .github/workflows/jekyll.yml
+</span><span class="p">@@ -25,6 +25,10 @@</span>
+           ruby-version: '3.1'
+           bundler-cache: true
+           cache-version: 0
+<span class="gi">+
++      - name: Force pull latest plugin code
++        run: bundle update minimal-mistakes-plus
++
+</span>       - name: Setup Pages
+         id: pages
+         uses: actions/configure-pages@v4</code></pre></div> </div>  <p><b>How this works:</b> The <code>ruby/setup-ruby</code> step will quickly install all your standard gems using the cached <code>Gemfile.lock</code>. Immediately after, your new step runs. Bundler will reach out to GitHub, see that <code>minimal-mistakes-plus</code> has a new commit on <code>main</code>, download the fresh code, and temporarily overwrite the lockfile in the GitHub runner’s memory just in time for the Jekyll build step.</p> </li> </ul>
+<hr>
+<p>But why can the latest code be pulled in and the Gemfile.lock be updated automatically when running <code>bundle install</code> locally? What’s the difference of the command between running locally and running on GitHub Actions? How is it done?</p>
+<p>—Your premise is actually experiencing a slight illusion! Running <code>bundle install</code> locally does <b>not</b> automatically pull the latest GitHub commit if a lockfile already exists.</p>
+<p>Here is exactly what is happening under the hood, and the strict difference between your local machine and GitHub Actions.</p>
+<ol> <li>
+<p>The Local Illusion </p>
+<p>If you push a new commit to your plugin repository right now, and then run <code>bundle install</code> locally without touching your <code>Gemfile</code>, Bundler will <b>not</b> pull the new code. It will stubbornly stay locked to the old commit.</p> <p>The reason it seemed to update automatically for you locally recently is due to two specific events:</p> <ul> <li>
+<b>The Source Switch:</b> When you edited your <code>Gemfile</code> to change <code>path:</code> to <code>github:</code>, Bundler detected that the file was modified. Whenever the <code>Gemfile</code> changes, Bundler is forced to recalculate the dependencies. It reached out to GitHub, grabbed the latest commit on the <code>main</code> branch at that exact second, and wrote it to <code>Gemfile.lock</code>.</li> <li>
+<b>The Local Override:</b> Earlier, you configured your local environment to route all requests for the gem to your local folder (see <a href="#20260316225131">Local Git Overrides</a>). Because of this, your local Bundler is completely ignoring the GitHub commit hash inside your <code>Gemfile.lock</code> and reading the live files straight from your hard drive. This makes it feel like it is instantly updating, but it isn’t even talking to GitHub!</li> </ul> </li> <li>
+<p>The GitHub Actions Reality (Deployment Mode) </p>
+<p>In your GitHub Actions workflow (<code>.github/workflows/jekyll.yml</code>), you are using the official <code>ruby/setup-ruby</code> action with the setting <code>bundler-cache: true</code>.</p> <p>When that setting is enabled, it completely changes how Bundler operates. It forces Bundler into <b>Deployment Mode</b> (which is the equivalent of running <code>bundle install --deployment</code>).</p> <p>In Deployment Mode, Bundler operates under strict, immutable rules:</p> <ol> <li>It is physically forbidden from modifying <code>Gemfile.lock</code>.</li> <li>It is forbidden from resolving new dependencies or checking for newer branch commits.</li> <li>It strictly reads the exact 40-character SHA commit hash saved in <code>Gemfile.lock</code> and downloads that exact snapshot from GitHub.</li> </ol> <p>This feature exists because production servers need absolute stability. If you or a contributor accidentally pushed a broken commit to the plugin’s <sub>main</sub> branch, Deployment Mode ensures your blog’s automated build doesn’t spontaneously download the broken code and crash.</p> </li> </ol>
+<p><b>The Rule of Thumb</b></p>
+<ul> <li>
+<b>Locally:</b> <code>bundle install</code> only updates the lockfile if you change the text inside the <code>Gemfile</code>. Otherwise, it respects the lockfile (unless bypassed by your local path override).</li> <li>
+<b>GitHub Actions:</b> <code>bundle install</code> runs in Deployment Mode, which strictly enforces the lockfile and refuses to update anything.</li> <li>
+<b>The Command:</b> If you want to force Bundler to fetch the latest commit on a branch without changing the <code>Gemfile</code>, the required command in the Ruby ecosystem is <code>bundle update minimal-mistakes-plus</code>.</li> </ul>
+<hr>
+<p>When I run <code>bundle update minimal-mistakes-plus</code> all the other gems are also updated. Is this right?</p>
+<p>—No, that is not the intended behavior for a targeted update, but it is a very common side effect of how Bundler resolves dependency trees.</p>
+<p>When you run <code>bundle update minimal-mistakes-plus</code>, Bundler does not just pull the latest commit from GitHub. It also evaluates all the dependencies declared in your plugin’s gemspec (such as <code>jekyll</code>, <code>nokogiri</code>, or <code>rouge</code>). If newer versions of those underlying gems are available and allowed by your version constraints, Bundler will upgrade them, which creates a ripple effect that updates other gems across your entire project.</p>
+<p>The fastest, most efficient, and best approach to pull the latest GitHub commit without touching a single other gem is to use the source flag:</p>
+
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle update <span class="nt">--source</span> minimal-mistakes-plus</code></pre></div> </div>
+          
+<p>This strict command tells Bundler to only fetch the new commits from that specific Git source and deliberately ignore any potential version bumps for its dependencies.</p>
+<p>You should also swap this into your GitHub Actions <code>jekyll.yml</code> workflow. Using <code>bundle update --source minimal-mistakes-plus</code> guarantees that your automated builds get your latest plugin code while keeping the rest of your blog’s build environment perfectly locked and stable.</p>
+<h5 id="20260316225131">
+<span class="heading-number">6.5.3. </span>Use Local Git Overrides for Efficient Development</h5>
 <p>When your <code>Gemfile</code> strictly says ~github: “josephtesfaye/minimal-mistakes-plus”~, Bundler will reach out to GitHub and download the gem to your global cache every time you run <code>bundle install</code>, even when you are working on your local machine.</p>
 <p>But you do <b>not</b> need to manually switch back and forth between <code>path:</code> and <code>github:</code>. Bundler has a built-in feature specifically designed to solve this exact problem for active gem development.</p>
 <p>It is called <b>Local Git Overrides</b>. You can tell your local Bundler environment to intercept any requests for the GitHub URL and route them to your local folder instead, without ever changing the <code>Gemfile</code>.</p>
@@ -1044,6 +1102,84 @@ git push</code></pre></div> </div>  </li> </ol>
 <p>If you only plan to use this gem locally on your own computer (e.g., by pointing to its local folder path in your blog’s <code>Gemfile</code>), you can safely delete that line.</p> </li> </ul>
 <ol> <li>Push it to RubyGems: <code>gem push minimal-mistakes-plus-0.1.0.gem</code>
 </li> </ol>
+<h2 id="feature-migration">Feature Migration</h2>
+<h3 id="dark-mode">Dark Mode</h3>
+<p>I want to maintain all of the the original dark-mode-related setups used in <a href="https://github.com/josephtesfaye/josephs-blog">josephs-blog</a>. For example, <code>dark_mode_toggle: true</code> should control whether dark mode toggle is enabled for the site, and the dark mode styles should be same as defined in <code>_sass/custom/dark_mode_toggle.scss</code>. This <a href="/blog/web/dark-theme/">article</a> recorded how this feature was implemented previously for this blog. Here are the steps to migrate to <code>minimal-mistakes-plus</code> with minimal changes, with the final result being very performant.</p>
+<p>To make this highly performant, we will avoid parsing every single HTML page with Nokogiri (which slows down build times). Instead, we will use Jekyll’s native hooks to seamlessly add your plugin’s <code>_sass</code> folder to the global load path, and use a lightning-fast Regex string replacement to inject the button and script only when <code>dark_mode_toggle: true</code> is enabled.</p>
+<ol> <li>
+<p>Transfer the Assets to the Plugin </p>
+<p>Navigate to your <code>minimal-mistakes-plus</code> directory and recreate the asset structure:</p> <ol> <li>
+<p>Create the directories: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus/
+<span class="nb">mkdir</span> <span class="nt">-p</span> _sass/minimal_mistakes_plus
+<span class="nb">mkdir</span> <span class="nt">-p</span> assets/js</code></pre></div> </div>  </li> <li>
+<p>Copy the files: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss ~/projects/minimal-mistakes-plus/_sass/minimal_mistakes_plus/
+<span class="nb">cp</span> ~/projects/josephs-blog/assets/js/dark_mode_toggle.js ~/projects/minimal-mistakes-plus/assets/js/</code></pre></div> </div>  </li> </ol> </li> <li>
+<p>Create the Ruby Integrator </p>
+<p>Create a new file in your plugin at <code>lib/minimal_mistakes_plus/dark_mode.rb</code> and add this code:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">MinimalMistakesPlus</span>
+  <span class="c1"># 1. Add the plugin's _sass directory to Jekyll's global Sass load path</span>
+  <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:after_init</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+    <span class="n">sass_dir</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">"../../_sass"</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
+    <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">{}</span>
+    <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[]</span>
+    <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">sass_dir</span> <span class="k">unless</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">sass_dir</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="c1"># 2. Register the JS file to be automatically copied to _site/assets/js/</span>
+  <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_read</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dark_mode_toggle'</span><span class="p">]</span>
+    <span class="n">gem_dir</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">"../../"</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
+    <span class="n">site</span><span class="p">.</span><span class="nf">static_files</span> <span class="o">&lt;&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">StaticFile</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">gem_dir</span><span class="p">,</span> <span class="s1">'assets/js'</span><span class="p">,</span> <span class="s1">'dark_mode_toggle.js'</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="c1"># 3. High-performance Regex injection for the HTML UI</span>
+  <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:post_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dark_mode_toggle'</span><span class="p">]</span>
+    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'greedy-nav'</span><span class="p">)</span> <span class="c1"># Only process pages with a top nav</span>
+
+    <span class="n">baseurl</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'baseurl'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">''</span>
+    <span class="n">script_tag</span> <span class="o">=</span> <span class="sx">%Q{&lt;script src="</span><span class="si">#{</span><span class="n">baseurl</span><span class="si">}</span><span class="sx">/assets/js/dark_mode_toggle.js"&gt;&lt;/script&gt;}</span>
+    <span class="n">button_tag</span> <span class="o">=</span> <span class="s1">'&lt;button class="theme-toggle-btn" onclick="switchTheme()"&gt;&lt;i class="fas fa-moon"&gt;&lt;/i&gt;&lt;/button&gt;'</span>
+
+    <span class="c1"># Inject Script right before &lt;/head&gt;</span>
+    <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'&lt;script src="'</span> <span class="o">+</span> <span class="n">baseurl</span> <span class="o">+</span> <span class="s1">'/assets/js/dark_mode_toggle.js"'</span><span class="p">)</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="s1">'&lt;/head&gt;'</span><span class="p">,</span> <span class="s2">"  </span><span class="si">#{</span><span class="n">script_tag</span><span class="si">}</span><span class="se">\n</span><span class="s2">&lt;/head&gt;"</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Inject Button right after the Search Toggle or before the Greedy Nav Hamburger</span>
+    <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'&lt;button class="theme-toggle-btn"'</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'class="search__toggle"'</span><span class="p">)</span>
+        <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/(&lt;button[^&gt;]*class="search__toggle"[^&gt;]*&gt;.*?&lt;\/button&gt;)/m</span><span class="p">,</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">1</span><span class="se">\n</span><span class="s2">        </span><span class="si">#{</span><span class="n">button_tag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+      <span class="k">else</span>
+        <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/(&lt;button[^&gt;]*class="greedy-nav__toggle")/</span><span class="p">,</span> <span class="s2">"</span><span class="si">#{</span><span class="n">button_tag</span><span class="si">}</span><span class="se">\n</span><span class="s2">        </span><span class="se">\\</span><span class="s2">1"</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div> </div>  </li> <li>
+<p>Require the Integrator </p>
+<p>Update your bridge file (<code>lib/minimal-mistakes-plus.rb</code>) to load the new logic:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/dark_mode"</span></code></pre></div> </div>  </li> <li>
+<p>Clean up the Blog (<code>josephs-blog</code>) </p>
+<p>Now that the plugin intelligently manages the file routing and HTML injection natively, you can clean out the overridden files in your blog repository.</p> <ol> <li>
+<p><b>Delete</b> these files: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> ~/projects/josephs-blog/_includes/masthead.html
+<span class="nb">rm</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss
+<span class="nb">rm</span> ~/projects/josephs-blog/assets/js/dark_mode_toggle.js</code></pre></div> </div>  <p>Jekyll will now safely fall back to the upstream Minimal Mistakes masthead, and your plugin will magically inject the button.</p> </li> <li>
+<p><b>Clean</b> <code>_includes/head/custom.html</code>: Open it and simply delete the dark mode block: </p>
+<div class="language-html highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/blog/assets/js/dark_mode_toggle.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div> </div>  </li> <li>
+<p><b>Update or Create</b> <code>assets/css/main.scss</code>: Change the SCSS <code>@import</code> path to point to your new plugin namespace: </p>
+<div class="language-scss highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
+<span class="nn">#</span> <span class="nt">Only</span> <span class="nt">the</span> <span class="nt">main</span> <span class="nt">Sass</span> <span class="nt">file</span> <span class="nt">needs</span> <span class="nt">front</span> <span class="nt">matter</span> <span class="o">(</span><span class="nt">the</span> <span class="nt">dashes</span> <span class="nt">are</span> <span class="nt">enough</span><span class="o">)</span>
+<span class="nt">---</span>
+
+<span class="o">@</span><span class="nt">charset</span> <span class="s2">"utf-8"</span><span class="p">;</span>
+
+<span class="k">@import</span> <span class="s2">"minimal-mistakes/skins/default"</span><span class="p">;</span> <span class="c1">// skin</span>
+<span class="k">@import</span> <span class="s2">"minimal-mistakes"</span><span class="p">;</span> <span class="c1">// main partials</span>
+
+
+<span class="k">@import</span> <span class="s2">"minimal_mistakes_plus/dark_mode_toggle"</span><span class="p">;</span></code></pre></div> </div>  </li> </ol> </li> </ol>
+<p>With this setup, your plugin handles 100% of the dark mode logic, you get to keep your exact original source code, and your blog’s source code shrinks down drastically.</p>
 
         
       </section>
