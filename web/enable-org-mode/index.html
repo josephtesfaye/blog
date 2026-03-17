@@ -96,6 +96,10 @@
 </style>
 
 
+
+<script src="/blog/assets/js/dark_mode_toggle.js"></script>
+
+
 <script>
   ['mousedown', 'click', 'touchstart'].forEach(function (event) {
     document.addEventListener(event, function (e) {
@@ -147,8 +151,7 @@
   document.addEventListener('DOMContentLoaded', initMobileTOC);
 </script>
 
-    <script src="/blog/assets/js/dark_mode_toggle.js"></script>
-</head>
+  </head>
 
   <body class="layout--single narrow">
     <nav class="skip-links">
@@ -172,25 +175,31 @@
         </a>
         <ul class="visible-links">
 <li class="masthead__menu-item">
-              <a href="/blog/year-archive/">Posts</a>
-            </li>
+            <a href="/blog/year-archive/">Posts</a>
+          </li>
 <li class="masthead__menu-item">
-              <a href="/blog/projects/">Projects</a>
-            </li>
+            <a href="/blog/projects/">Projects</a>
+          </li>
 <li class="masthead__menu-item">
-              <a href="/blog/collections/">Collections</a>
-            </li>
+            <a href="/blog/collections/">Collections</a>
+          </li>
 <li class="masthead__menu-item">
-              <a href="/blog/about/">About</a>
-            </li>
+            <a href="/blog/about/">About</a>
+          </li>
 </ul>
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
           <i class="fas fa-search"></i>
         </button>
-        <button class="theme-toggle-btn" onclick="switchTheme()"><i class="fas fa-moon"></i></button>
         
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
@@ -1487,14 +1496,15 @@ Output:
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          52 minute read
+          53 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalon...</p>
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
   </article>
 </div>
 

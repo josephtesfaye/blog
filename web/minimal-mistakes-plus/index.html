@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Minimal Mistakes Plus | Orcharinth</title>
-<meta name="description" content="As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.">
+<meta name="description" content="">
 
 
   <meta name="author" content="Joseph Huang">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://josephtesfaye.com/blog/web/minimal-mistakes-plus/">
 
 
-  <meta property="og:description" content="As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.">
+  <meta property="og:description" content="">
 
 
 
@@ -38,7 +38,7 @@
 
 
 
-  <meta property="article:modified_time" content="2026-03-01T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-03-17T00:00:00+00:00">
 
 
 
@@ -96,6 +96,10 @@
 </style>
 
 
+
+<script src="/blog/assets/js/dark_mode_toggle.js"></script>
+
+
 <script>
   ['mousedown', 'click', 'touchstart'].forEach(function (event) {
     document.addEventListener(event, function (e) {
@@ -147,8 +151,7 @@
   document.addEventListener('DOMContentLoaded', initMobileTOC);
 </script>
 
-    <script src="/blog/assets/js/dark_mode_toggle.js"></script>
-</head>
+  </head>
 
   <body class="layout--single narrow">
     <nav class="skip-links">
@@ -172,25 +175,31 @@
         </a>
         <ul class="visible-links">
 <li class="masthead__menu-item">
-              <a href="/blog/year-archive/">Posts</a>
-            </li>
+            <a href="/blog/year-archive/">Posts</a>
+          </li>
 <li class="masthead__menu-item">
-              <a href="/blog/projects/">Projects</a>
-            </li>
+            <a href="/blog/projects/">Projects</a>
+          </li>
 <li class="masthead__menu-item">
-              <a href="/blog/collections/">Collections</a>
-            </li>
+            <a href="/blog/collections/">Collections</a>
+          </li>
 <li class="masthead__menu-item">
-              <a href="/blog/about/">About</a>
-            </li>
+            <a href="/blog/about/">About</a>
+          </li>
 </ul>
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
           <i class="fas fa-search"></i>
         </button>
-        <button class="theme-toggle-btn" onclick="switchTheme()"><i class="fas fa-moon"></i></button>
         
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">Toggle menu</span>
           <div class="navicon"></div>
@@ -252,9 +261,9 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Minimal Mistakes Plus">
-    <meta itemprop="description" content="As I’ve been using Jekyll and Minimal Mistakes for this blog and added my own customizations quite a lot, I figure maybe I should release them as a standalone Gem so that others can use it painlessly. It provides or integrates more features besides everything in Jekyll and Minimal Mistakes—like dark mode toggling, drafting in Org Mode, numbering headings automatically, managing Kramdown attributes in Org files, and encrypting posts with a password, etc.">
+    <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="2026-03-01T00:00:00+00:00">
-    <meta itemprop="dateModified" content="2026-03-01T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-03-17T00:00:00+00:00">
 
     <div class="page__inner-wrap">
       
@@ -363,7 +372,7 @@
 <li>
 <a href="#feature-migration">Feature Migration</a><ul>
 <li><a href="#dark-mode">Dark Mode</a></li>
-<li><a href="#custom-styles">Custom Styles</a></li>
+<li><a href="#20260317122512">Custom Styles</a></li>
 </ul>
 </li>
 </ul>
@@ -1112,10 +1121,14 @@ git push</code></pre></div> </div>  </li> <li>
 <p>Create the directories: </p>
 <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/minimal-mistakes-plus/
 <span class="nb">mkdir</span> <span class="nt">-p</span> _sass/minimal_mistakes_plus
-<span class="nb">mkdir</span> <span class="nt">-p</span> assets/js</code></pre></div> </div>  </li> <li>
+<span class="nb">mkdir</span> <span class="nt">-p</span> assets/js
+<span class="nb">mkdir</span> <span class="nt">-p</span> _includes/head</code></pre></div> </div>  </li> <li>
 <p>Copy the files: </p>
-<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss ~/projects/minimal-mistakes-plus/_sass/minimal_mistakes_plus/
-<span class="nb">cp</span> ~/projects/josephs-blog/assets/js/dark_mode_toggle.js ~/projects/minimal-mistakes-plus/assets/js/</code></pre></div> </div>  </li> </ol> </li> <li>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/projects/josephs-blog/
+<span class="nb">cp </span>_sass/custom/dark_mode_toggle.scss ~/projects/minimal-mistakes-plus/_sass/minimal_mistakes_plus/
+<span class="nb">cp </span>assets/js/dark_mode_toggle.js ~/projects/minimal-mistakes-plus/assets/js/
+<span class="nb">cp </span>_includes/masthead.html ~/projects/minimal-mistakes-plus/_includes/
+<span class="nb">cp </span>_includes/head/custom.html ~/projects/minimal-mistakes-plus/_includes/head/</code></pre></div> </div>  </li> </ol> </li> <li>
 <p>Create the Ruby Integrator </p>
 <p>Create a new file in your plugin at <code>lib/minimal_mistakes_plus/dark_mode.rb</code> and add this code:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">MinimalMistakesPlus</span>
   <span class="c1"># 1. Add the plugin's _sass directory to Jekyll's global Sass load path</span>
@@ -1123,7 +1136,13 @@ git push</code></pre></div> </div>  </li> <li>
     <span class="n">sass_dir</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">"../../_sass"</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
     <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">{}</span>
     <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[]</span>
-    <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">sass_dir</span> <span class="k">unless</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">sass_dir</span><span class="p">)</span>
+    <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">sass_dir</span> <span class="k">unless</span>
+      <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'sass'</span><span class="p">][</span><span class="s1">'load_paths'</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">sass_dir</span><span class="p">)</span>
+
+    <span class="c1"># Inject the plugin's _includes directory to natively override the theme</span>
+    <span class="n">includes_dir</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">"../../_includes"</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
+    <span class="n">site</span><span class="p">.</span><span class="nf">includes_load_paths</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">includes_dir</span><span class="p">)</span> <span class="k">unless</span>
+      <span class="n">site</span><span class="p">.</span><span class="nf">includes_load_paths</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">includes_dir</span><span class="p">)</span>
   <span class="k">end</span>
 
   <span class="c1"># 2. Register the JS file to be automatically copied to _site/assets/js/</span>
@@ -1132,41 +1151,16 @@ git push</code></pre></div> </div>  </li> <li>
     <span class="n">gem_dir</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">"../../"</span><span class="p">,</span> <span class="n">__dir__</span><span class="p">)</span>
     <span class="n">site</span><span class="p">.</span><span class="nf">static_files</span> <span class="o">&lt;&lt;</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">StaticFile</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">gem_dir</span><span class="p">,</span> <span class="s1">'assets/js'</span><span class="p">,</span> <span class="s1">'dark_mode_toggle.js'</span><span class="p">)</span>
   <span class="k">end</span>
-
-  <span class="c1"># 3. High-performance Regex injection for the HTML UI</span>
-  <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:post_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
-    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dark_mode_toggle'</span><span class="p">]</span>
-    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'greedy-nav'</span><span class="p">)</span> <span class="c1"># Only process pages with a top nav</span>
-
-    <span class="n">baseurl</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'baseurl'</span><span class="p">]</span> <span class="o">||</span> <span class="s1">''</span>
-    <span class="n">script_tag</span> <span class="o">=</span> <span class="sx">%Q{&lt;script src="</span><span class="si">#{</span><span class="n">baseurl</span><span class="si">}</span><span class="sx">/assets/js/dark_mode_toggle.js"&gt;&lt;/script&gt;}</span>
-    <span class="n">button_tag</span> <span class="o">=</span> <span class="s1">'&lt;button class="theme-toggle-btn" onclick="switchTheme()"&gt;&lt;i class="fas fa-moon"&gt;&lt;/i&gt;&lt;/button&gt;'</span>
-
-    <span class="c1"># Inject Script right before &lt;/head&gt;</span>
-    <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'&lt;script src="'</span> <span class="o">+</span> <span class="n">baseurl</span> <span class="o">+</span> <span class="s1">'/assets/js/dark_mode_toggle.js"'</span><span class="p">)</span>
-      <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="s1">'&lt;/head&gt;'</span><span class="p">,</span> <span class="s2">"  </span><span class="si">#{</span><span class="n">script_tag</span><span class="si">}</span><span class="se">\n</span><span class="s2">&lt;/head&gt;"</span><span class="p">)</span>
-    <span class="k">end</span>
-
-    <span class="c1"># Inject Button right after the Search Toggle or before the Greedy Nav Hamburger</span>
-    <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'&lt;button class="theme-toggle-btn"'</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'class="search__toggle"'</span><span class="p">)</span>
-        <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/(&lt;button[^&gt;]*class="search__toggle"[^&gt;]*&gt;.*?&lt;\/button&gt;)/m</span><span class="p">,</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">1</span><span class="se">\n</span><span class="s2">        </span><span class="si">#{</span><span class="n">button_tag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-      <span class="k">else</span>
-        <span class="n">doc</span><span class="p">.</span><span class="nf">output</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">output</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/(&lt;button[^&gt;]*class="greedy-nav__toggle")/</span><span class="p">,</span> <span class="s2">"</span><span class="si">#{</span><span class="n">button_tag</span><span class="si">}</span><span class="se">\n</span><span class="s2">        </span><span class="se">\\</span><span class="s2">1"</span><span class="p">)</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
 <span class="k">end</span></code></pre></div> </div>  </li> <li>
 <p>Require the Integrator </p>
 <p>Update your bridge file (<code>lib/minimal-mistakes-plus.rb</code>) to load the new logic:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/dark_mode"</span></code></pre></div> </div>  </li> <li>
 <p>Clean up the Blog (<code>josephs-blog</code>) </p>
 <p>Now that the plugin intelligently manages the file routing and HTML injection natively, you can clean out the overridden files in your blog repository.</p> <ol> <li>
 <p><b>Delete</b> these files: </p>
-<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> ~/projects/josephs-blog/_includes/masthead.html
-<span class="nb">rm</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss
 <span class="nb">rm</span> ~/projects/josephs-blog/assets/js/dark_mode_toggle.js</code></pre></div> </div>  <p>Jekyll will now safely fall back to the upstream Minimal Mistakes masthead, and your plugin will magically inject the button.</p> </li> <li>
-<p><b>Clean</b> <code>_includes/head/custom.html</code>: Open it and simply delete the dark mode block: </p>
-<div class="language-html highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/blog/assets/js/dark_mode_toggle.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div> </div>  </li> <li>
+<p>For the <code>_includes/masthead.html</code> and <code>_includes/head/custom.html</code> files: </p>
+<p>You can still keep them in the project but then they will completely override the same files in both the theme and the plugin. In this case you need to add the dark-mode-related snippets to them to properly enable dark mode toggling. See <a href="~/projects/minimal-mistakes-plus/docs/_docs/02-dark-mode.org">~/projects/minimal-mistakes-plus/docs/_docs/02-dark-mode.org</a>.</p> <p>If they don’t have customizations exclusive to the blog you can delete them. Then the ones in the plugin will be used.</p> </li> <li>
 <p><b>Update or Create</b> <code>assets/css/main.scss</code>: Change the SCSS <code>@import</code> path to point to your new plugin namespace: </p>
 <div class="language-scss highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
 <span class="nn">#</span> <span class="nt">Only</span> <span class="nt">the</span> <span class="nt">main</span> <span class="nt">Sass</span> <span class="nt">file</span> <span class="nt">needs</span> <span class="nt">front</span> <span class="nt">matter</span> <span class="o">(</span><span class="nt">the</span> <span class="nt">dashes</span> <span class="nt">are</span> <span class="nt">enough</span><span class="o">)</span>
@@ -1178,9 +1172,9 @@ git push</code></pre></div> </div>  </li> <li>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes"</span><span class="p">;</span> <span class="c1">// main partials</span>
 
 
-<span class="k">@import</span> <span class="s2">"minimal_mistakes_plus/dark_mode_toggle"</span><span class="p">;</span></code></pre></div> </div>  </li> </ol> </li> </ol>
+<span class="k">@import</span> <span class="s2">"minimal_mistakes_plus/dark_mode_toggle"</span><span class="p">;</span></code></pre></div> </div>  <p class="notice--info"> You can delete this file if you’ve also migrated it to the plugin. See <a href="#20260317122512">Custom Styles</a>.</p> </li> </ol> </li> </ol>
 <p>With this setup, your plugin handles 100% of the dark mode logic, you get to keep your exact original source code, and your blog’s source code shrinks down drastically.</p>
-<h3 id="custom-styles">Custom Styles</h3>
+<h3 id="20260317122512">Custom Styles</h3>
 <p>We can hand over the style sheet <code>assets/css/main.scss</code> to the plugin so that we don’t need to copy it around for new projects.</p>
 <p>We can use an incredibly performant Jekyll trick: <b>In-Memory SCSS Middleware.</b> Instead of forcing users to copy a physical file, we can write a tiny Ruby script that intercepts the default <code>main.scss</code> file provided by the upstream Minimal Mistakes theme while Jekyll holds it in memory. We can then dynamically inject your variable overrides and SCSS imports right before the Sass compiler runs.</p>
 <p>This completely eliminates the need for any physical configuration files in new projects. Here is the exact setup.</p>
@@ -1288,7 +1282,7 @@ git push</code></pre></div> </div>  </li> <li>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-01">March 1, 2026</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-17">March 17, 2026</time></p>
 
       </footer>
 
