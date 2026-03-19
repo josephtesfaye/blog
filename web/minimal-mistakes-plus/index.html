@@ -1161,7 +1161,7 @@ git push</code></pre></div> </div>  </li> <li>
 <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss
 <span class="nb">rm</span> ~/projects/josephs-blog/assets/js/dark_mode_toggle.js</code></pre></div> </div>  <p>Jekyll will now safely fall back to the upstream Minimal Mistakes masthead, and your plugin will magically inject the button.</p> </li> <li>
 <p>For the <code>_includes/masthead.html</code> and <code>_includes/head/custom.html</code> files: </p>
-<p>You can still keep them in the project but then they will completely override the same files in both the theme and the plugin. In this case you need to add the dark-mode-related snippets to them to properly enable dark mode toggling. See <a href="mmpd:02-dark-mode.org">mmpd:02-dark-mode.org</a>.</p> <p>If they don’t have customizations exclusive to the blog you can delete them. Then the ones in the plugin will be used.</p> </li> <li>
+<p>You can still keep them in the project but then they will completely override the same files in both the theme and the plugin. In this case you need to add the dark-mode-related snippets to them to properly enable dark mode toggling. See <a href="~/projects/minimal-mistakes-plus/docs/_docs/02-dark-mode.org">~/projects/minimal-mistakes-plus/docs/_docs/02-dark-mode.org</a>.</p> <p>If they don’t have customizations exclusive to the blog you can delete them. Then the ones in the plugin will be used.</p> </li> <li>
 <p><b>Update or Create</b> <code>assets/css/main.scss</code>: Change the SCSS <code>@import</code> path to point to your new plugin namespace: </p>
 <div class="language-scss highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
 <span class="nn">#</span> <span class="nt">Only</span> <span class="nt">the</span> <span class="nt">main</span> <span class="nt">Sass</span> <span class="nt">file</span> <span class="nt">needs</span> <span class="nt">front</span> <span class="nt">matter</span> <span class="o">(</span><span class="nt">the</span> <span class="nt">dashes</span> <span class="nt">are</span> <span class="nt">enough</span><span class="o">)</span>
@@ -1204,7 +1204,7 @@ git push</code></pre></div> </div>  </li> <li>
       <span class="k">unless</span> <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'minimal_mistakes_plus/variables'</span><span class="p">)</span>
         <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span>
           <span class="sr">/(@import "minimal-mistakes\/skins)/</span><span class="p">,</span>
-          <span class="s2">"@import </span><span class="se">\"</span><span class="s2">minimal_mistakes_plus/variables</span><span class="se">\"</span><span class="s2">;</span><span class="se">\n\\</span><span class="s2">1"</span>
+          <span class="s2">"@import </span><span class="se">\"</span><span class="s2">minimal_mistakes_plus/variables</span><span class="se">\"</span><span class="s2">;</span><span class="se">\n\1</span><span class="s2">"</span>
         <span class="p">)</span>
       <span class="k">end</span>
 
@@ -1212,7 +1212,7 @@ git push</code></pre></div> </div>  </li> <li>
       <span class="k">if</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dark_mode_toggle'</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'minimal_mistakes_plus/dark_mode_toggle'</span><span class="p">)</span>
         <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span>
           <span class="sr">/(@import "minimal-mistakes";?)/</span><span class="p">,</span>
-          <span class="s2">"</span><span class="se">\\</span><span class="s2">1</span><span class="se">\n</span><span class="s2">@import </span><span class="se">\"</span><span class="s2">minimal_mistakes_plus/dark_mode_toggle</span><span class="se">\"</span><span class="s2">;"</span>
+          <span class="s2">"</span><span class="se">\1\n</span><span class="s2">@import </span><span class="se">\"</span><span class="s2">minimal_mistakes_plus/dark_mode_toggle</span><span class="se">\"</span><span class="s2">;"</span>
         <span class="p">)</span>
       <span class="k">end</span>
 
@@ -1220,7 +1220,7 @@ git push</code></pre></div> </div>  </li> <li>
       <span class="k">unless</span> <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s1">'minimal_mistakes_plus/main'</span><span class="p">)</span>
         <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">main_scss</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span>
           <span class="sr">/(@import "minimal-mistakes";?)/</span><span class="p">,</span>
-          <span class="s2">"</span><span class="se">\\</span><span class="s2">1</span><span class="se">\n</span><span class="s2">@import </span><span class="se">\"</span><span class="s2">minimal_mistakes_plus/main</span><span class="se">\"</span><span class="s2">;"</span>
+          <span class="s2">"</span><span class="se">\1\n</span><span class="s2">@import </span><span class="se">\"</span><span class="s2">minimal_mistakes_plus/main</span><span class="se">\"</span><span class="s2">;"</span>
         <span class="p">)</span>
       <span class="k">end</span>
     <span class="k">end</span>
@@ -1260,7 +1260,7 @@ git push</code></pre></div> </div>  </li> <li>
   - [[foo:unsplash-gallery-image-1.jpg]]
   - [[foo:unsplash-gallery-image-1.jpg]]</code></pre></div> </div>  <p>But again, don’t expand links like <code>[[foo:unsplash-gallery-image-1.jpg]]</code> in a markdown file even if they are in a gallery in the front matter because they are Org Links. Only expand Org links in Org files.</p> <p>In all cases, link abbreviations in literal blocks (including inline blocks) should never be expanded.</p> <p>The final code should be very performant.</p> </li> <li>The <a href="https://github.com/josephtesfaye/minimal-mistakes-plus/blob/4976e4b413a472ef3f30319ab23b5f19c14428a7/lib/minimal_mistakes_plus/link_abbr.rb">code</a>.</li> </ol>
 <p>Related articles:</p>
-<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/enable-org-mode/#configurations-links-link-abbreviations">Enabling Drafting in Org Mode in Minimal Mistakes</a></li> <li><a href="docs:link-abbr">User Guide: Link Abbreviations</a></li> </ul>
+<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/enable-org-mode/#configurations-links-link-abbreviations">Enabling Drafting in Org Mode in Minimal Mistakes</a></li> <li><a href="https://josephtesfaye.com/minimal-mistakes-plus/docs/link-abbr">User Guide: Link Abbreviations</a></li> </ul>
 
         
       </section>
@@ -1519,7 +1519,7 @@ git push</code></pre></div> </div>  </li> <li>
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          21 minute read
+          20 minute read
         
       </span>
     

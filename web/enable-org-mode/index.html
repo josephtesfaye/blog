@@ -293,7 +293,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          21 minute read
+          20 minute read
         
       </span>
     
@@ -350,7 +350,6 @@
 </li>
 <li><a href="#org-elements-examples-tables">Tables</a></li>
 <li><a href="#org-elements-examples-lists">Lists</a></li>
-<li><a href="#org-elements-examples-links">Links</a></li>
 <li><a href="#org-elements-examples-images">Images</a></li>
 <li><a href="#org-elements-examples-code-highlighting">Code highlighting</a></li>
 <li><a href="#org-elements-examples-notices">Notices</a></li>
@@ -502,7 +501,6 @@
 <ol> <li>Sub-item A (Indented 3 spaces)</li> <li>Sub-item A (Indented 3 spaces)</li> </ol> </li> <li>Sub-item A (Indented 3 spaces)</li> </ol> </li> <li>
 <p>Sub-item B </p>
 <ul> <li>Deeply nested bullet (Indented another 3 spaces)</li> <li>Deeply nested bullet (Indented another 3 spaces)</li> </ul> </li> </ol> </li> <li>Third item</li> </ol>
-<h2 id="org-elements-examples-links">Links</h2>
 <h2 id="org-elements-examples-images">Images</h2>
 <p>A simple image:</p>
 <p><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"></p>
@@ -517,7 +515,7 @@
 
 
 
-<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="foo:unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="foo:unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="foo2:unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="foo2:unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/%7B%7B%20site.url%20%7D%7D%7B%7B%20site.baseurl%20%7D%7D/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="/blog/%7B%7B%20site.url%20%7D%7D%7B%7B%20site.baseurl%20%7D%7D/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
 
 
 
@@ -571,100 +569,94 @@ descriptor + subject + taxonomic rank
   <span class="n">gem</span> <span class="s2">"org-ruby"</span>
 <span class="k">end</span></code></pre></div> </div>  </li> <li>
 <p>Write a new plugin: <code>_plugins/org_converter.rb</code> </p>
-<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
-<span class="nb">require</span> <span class="s1">'rouge'</span>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>   <span class="nb">require</span> <span class="s1">'nokogiri'</span>
+   <span class="nb">require</span> <span class="s1">'rouge'</span>
 
-<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:pre_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
-  <span class="c1"># Enable Liquid syntax</span>
-  <span class="k">if</span> <span class="n">doc</span><span class="p">.</span><span class="nf">extname</span><span class="p">.</span><span class="nf">downcase</span> <span class="o">==</span> <span class="s1">'.org'</span>
-    <span class="c1"># Enable {% raw %}...{% endraw %}</span>
-    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^[ \t]*(\{%[ \t]*raw[ \t]*%\})[ \t]*\n?/</span><span class="p">,</span> <span class="s1">'\1'</span><span class="p">)</span>
-    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/^[ \t]*(\{%[ \t]*endraw[ \t]*%\})[ \t]*\n?/</span><span class="p">,</span> <span class="s1">'\1'</span><span class="p">)</span>
+   <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:pre_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
+     <span class="c1"># Enable Liquid syntax</span>
+     <span class="k">if</span> <span class="n">doc</span><span class="p">.</span><span class="nf">extname</span><span class="p">.</span><span class="nf">downcase</span> <span class="o">==</span> <span class="s1">'.org'</span>
+       <span class="c1"># Enable {% raw %}...{% endraw %}</span>
+<span class="vc">@@LIT_2</span><span class="err">@@</span>
+       <span class="c1"># Enable figures, galleries, and links to posts (skip inside code or raw blocks)</span>
+       <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/</span><span class="si">#{</span><span class="n">block_regex</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">raw_regex</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">include_regex</span><span class="si">}</span><span class="sr">/</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">match</span><span class="o">|</span>
+         <span class="vg">$1</span> <span class="p">?</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">#+BEGIN_HTML</span><span class="se">\n</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="se">\n</span><span class="s2">#+END_HTML</span><span class="se">\n</span><span class="s2">"</span> <span class="p">:</span> <span class="n">match</span>
+       <span class="k">end</span>
 
-    <span class="n">block_regex</span> <span class="o">=</span> <span class="sr">/(?mi:^[ \t]*#\+(?:begin_src|BEGIN_HTML).*?^[ \t]*#\+(?:end_src|END_HTML))/</span>
-    <span class="n">raw_regex</span> <span class="o">=</span> <span class="sr">/(?mi:\{%[ \t]*raw[ \t]*%\}.*?\{%[ \t]*endraw[ \t]*%\})/</span>
-    <span class="n">include_regex</span> <span class="o">=</span> <span class="sr">/^[ \t]*(\{%[ \t]*include[ \t]+(?:figure|gallery)(?:(?!%\}).|\{%.*?%\})*%\})[ \t]*$/m</span>
+       <span class="n">inline_code</span> <span class="o">=</span> <span class="sr">/[=~][^=~\n]+[=~]/</span>
+       <span class="n">markdown_link</span> <span class="o">=</span> <span class="sr">/(?&lt;!\!)\[([^\]]+)\]\(([^)]+)\)/</span>
 
-    <span class="c1"># Enable figures, galleries, and links to posts (skip inside code or raw blocks)</span>
-    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/</span><span class="si">#{</span><span class="n">block_regex</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">raw_regex</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">include_regex</span><span class="si">}</span><span class="sr">/</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">match</span><span class="o">|</span>
-      <span class="vg">$1</span> <span class="p">?</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">#+BEGIN_HTML</span><span class="se">\n</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="se">\n</span><span class="s2">#+END_HTML</span><span class="se">\n</span><span class="s2">"</span> <span class="p">:</span> <span class="n">match</span>
-    <span class="k">end</span>
+       <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/</span><span class="si">#{</span><span class="n">block_regex</span><span class="si">}</span><span class="sr">|^[ \t]*:[^\n]*$|</span><span class="si">#{</span><span class="n">inline_code</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">markdown_link</span><span class="si">}</span><span class="sr">/</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">match</span><span class="o">|</span>
+         <span class="n">match</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'['</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">match</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'[['</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"[[</span><span class="si">#{</span><span class="vg">$2</span><span class="si">}</span><span class="s2">][</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="s2">]]"</span> <span class="p">:</span> <span class="n">match</span>
+       <span class="k">end</span>
+     <span class="k">end</span>
+   <span class="k">end</span>
 
-    <span class="n">inline_code</span> <span class="o">=</span> <span class="sr">/[=~][^=~\n]+[=~]/</span>
-    <span class="n">markdown_link</span> <span class="o">=</span> <span class="sr">/(?&lt;!\!)\[([^\]]+)\]\(([^)]+)\)/</span>
+   <span class="k">module</span> <span class="nn">Jekyll</span>
+     <span class="k">class</span> <span class="nc">OrgConverter</span> <span class="o">&lt;</span> <span class="no">Converter</span>
+       <span class="n">safe</span> <span class="kp">true</span>
+       <span class="n">priority</span> <span class="ss">:low</span>
 
-    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/</span><span class="si">#{</span><span class="n">block_regex</span><span class="si">}</span><span class="sr">|^[ \t]*:[^\n]*$|</span><span class="si">#{</span><span class="n">inline_code</span><span class="si">}</span><span class="sr">|</span><span class="si">#{</span><span class="n">markdown_link</span><span class="si">}</span><span class="sr">/</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">match</span><span class="o">|</span>
-      <span class="n">match</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'['</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">match</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'[['</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"[[</span><span class="si">#{</span><span class="vg">$2</span><span class="si">}</span><span class="s2">][</span><span class="si">#{</span><span class="vg">$1</span><span class="si">}</span><span class="s2">]]"</span> <span class="p">:</span> <span class="n">match</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
+       <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+         <span class="n">ext</span> <span class="o">=~</span> <span class="sr">/^\.org$/i</span>
+       <span class="k">end</span>
 
-<span class="k">module</span> <span class="nn">Jekyll</span>
-  <span class="k">class</span> <span class="nc">OrgConverter</span> <span class="o">&lt;</span> <span class="no">Converter</span>
-    <span class="n">safe</span> <span class="kp">true</span>
-    <span class="n">priority</span> <span class="ss">:low</span>
+       <span class="k">def</span> <span class="nf">output_ext</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+         <span class="s2">".html"</span>
+       <span class="k">end</span>
 
-    <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
-      <span class="n">ext</span> <span class="o">=~</span> <span class="sr">/^\.org$/i</span>
-    <span class="k">end</span>
+       <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+         <span class="nb">require</span> <span class="s1">'org-ruby'</span>
+         <span class="n">html</span> <span class="o">=</span> <span class="no">Orgmode</span><span class="o">::</span><span class="no">Parser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">content</span><span class="p">).</span><span class="nf">to_html</span>
+         <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">fragment</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">output_ext</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
-      <span class="s2">".html"</span>
-    <span class="k">end</span>
+         <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'h1, h2, h3, h4, h5, h6'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">node</span><span class="o">|</span>
+           <span class="n">node</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^a-z0-9\s-]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
+         <span class="k">end</span>
 
-    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-      <span class="nb">require</span> <span class="s1">'org-ruby'</span>
-      <span class="n">html</span> <span class="o">=</span> <span class="no">Orgmode</span><span class="o">::</span><span class="no">Parser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">content</span><span class="p">).</span><span class="nf">to_html</span>
-      <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">fragment</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+         <span class="c1"># Add &lt;thead&gt; to tables</span>
+         <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+           <span class="n">trs</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="nf">xpath</span><span class="p">(</span><span class="s1">'./tr'</span><span class="p">)</span>
+           <span class="k">next</span> <span class="k">if</span> <span class="n">trs</span><span class="p">.</span><span class="nf">empty?</span>
 
-      <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'h1, h2, h3, h4, h5, h6'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">node</span><span class="o">|</span>
-        <span class="n">node</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">strip</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^a-z0-9\s-]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">)</span>
-      <span class="k">end</span>
+           <span class="k">if</span> <span class="n">trs</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">at_xpath</span><span class="p">(</span><span class="s1">'./th'</span><span class="p">)</span>
+             <span class="n">thead</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'thead'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+             <span class="n">thead</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">trs</span><span class="p">.</span><span class="nf">first</span><span class="p">)</span>
+             <span class="n">tbody</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'tbody'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+             <span class="n">trs</span><span class="p">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">tr</span><span class="o">|</span> <span class="n">tbody</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="p">}</span>
+             <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">thead</span><span class="p">)</span>
+             <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
+           <span class="k">else</span>
+             <span class="n">tbody</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'tbody'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+             <span class="n">trs</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">tr</span><span class="o">|</span> <span class="n">tbody</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="p">}</span>
+             <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
+           <span class="k">end</span>
+         <span class="k">end</span>
 
-      <span class="c1"># Add &lt;thead&gt; to tables</span>
-      <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'table'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
-        <span class="n">trs</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="nf">xpath</span><span class="p">(</span><span class="s1">'./tr'</span><span class="p">)</span>
-        <span class="k">next</span> <span class="k">if</span> <span class="n">trs</span><span class="p">.</span><span class="nf">empty?</span>
+         <span class="c1"># Process code blocks to enable code highlighting</span>
+         <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'pre.src[lang]'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">pre</span><span class="o">|</span>
+           <span class="n">lang</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]</span>
+           <span class="n">lexer</span> <span class="o">=</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Lexer</span><span class="p">.</span><span class="nf">find_fancy</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span> <span class="o">||</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Lexers</span><span class="o">::</span><span class="no">PlainText</span>
+           <span class="n">formatter</span> <span class="o">=</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Formatters</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">new</span>
 
-        <span class="k">if</span> <span class="n">trs</span><span class="p">.</span><span class="nf">first</span><span class="p">.</span><span class="nf">at_xpath</span><span class="p">(</span><span class="s1">'./th'</span><span class="p">)</span>
-          <span class="n">thead</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'thead'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
-          <span class="n">thead</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">trs</span><span class="p">.</span><span class="nf">first</span><span class="p">)</span>
-          <span class="n">tbody</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'tbody'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
-          <span class="n">trs</span><span class="p">[</span><span class="mi">1</span><span class="o">..-</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">tr</span><span class="o">|</span> <span class="n">tbody</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="p">}</span>
-          <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">thead</span><span class="p">)</span>
-          <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
-        <span class="k">else</span>
-          <span class="n">tbody</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">XML</span><span class="o">::</span><span class="no">Node</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'tbody'</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
-          <span class="n">trs</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">tr</span><span class="o">|</span> <span class="n">tbody</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tr</span><span class="p">)</span> <span class="p">}</span>
-          <span class="n">table</span><span class="p">.</span><span class="nf">add_child</span><span class="p">(</span><span class="n">tbody</span><span class="p">)</span>
-        <span class="k">end</span>
-      <span class="k">end</span>
+           <span class="c1"># .sub(/\A[\r\n]+/, '') targets the absolute beginning of the string</span>
+           <span class="c1"># (\A) and removes any leading line breaks or carriage returns.</span>
+           <span class="c1"># .sub(/\s+\z/, '') targets the absolute end of the string (\z) and</span>
+           <span class="c1"># removes any trailing whitespace, including empty lines and spaces.</span>
+           <span class="n">code_text</span> <span class="o">=</span> <span class="n">pre</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\A[\r\n]+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\s+\z/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 
-      <span class="c1"># Process code blocks to enable code highlighting</span>
-      <span class="n">doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'pre.src[lang]'</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">pre</span><span class="o">|</span>
-        <span class="n">lang</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]</span>
-        <span class="n">lexer</span> <span class="o">=</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Lexer</span><span class="p">.</span><span class="nf">find_fancy</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span> <span class="o">||</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Lexers</span><span class="o">::</span><span class="no">PlainText</span>
-        <span class="n">formatter</span> <span class="o">=</span> <span class="no">Rouge</span><span class="o">::</span><span class="no">Formatters</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">new</span>
+           <span class="n">highlighted</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">lexer</span><span class="p">.</span><span class="nf">lex</span><span class="p">(</span><span class="n">code_text</span><span class="p">))</span>
+           <span class="n">new_node</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">fragment</span><span class="p">(</span><span class="sx">%Q{
+               &lt;div class="language-</span><span class="si">#{</span><span class="n">lang</span><span class="si">}</span><span class="sx"> highlighter-rouge"&gt;
+                 &lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;</span><span class="si">#{</span><span class="n">highlighted</span><span class="si">}</span><span class="sx">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+               &lt;/div&gt;
+             }</span><span class="p">)</span>
+           <span class="n">pre</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
+         <span class="k">end</span>
 
-        <span class="c1"># .sub(/\A[\r\n]+/, '') targets the absolute beginning of the string</span>
-        <span class="c1"># (\A) and removes any leading line breaks or carriage returns.</span>
-        <span class="c1"># .sub(/\s+\z/, '') targets the absolute end of the string (\z) and</span>
-        <span class="c1"># removes any trailing whitespace, including empty lines and spaces.</span>
-        <span class="n">code_text</span> <span class="o">=</span> <span class="n">pre</span><span class="p">.</span><span class="nf">text</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\A[\r\n]+/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/\s+\z/</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
-
-        <span class="n">highlighted</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">lexer</span><span class="p">.</span><span class="nf">lex</span><span class="p">(</span><span class="n">code_text</span><span class="p">))</span>
-        <span class="n">new_node</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">.</span><span class="nf">fragment</span><span class="p">(</span><span class="sx">%Q{
-            &lt;div class="language-</span><span class="si">#{</span><span class="n">lang</span><span class="si">}</span><span class="sx"> highlighter-rouge"&gt;
-              &lt;div class="highlight"&gt;&lt;pre class="highlight"&gt;&lt;code&gt;</span><span class="si">#{</span><span class="n">highlighted</span><span class="si">}</span><span class="sx">&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-            &lt;/div&gt;
-          }</span><span class="p">)</span>
-        <span class="n">pre</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
-      <span class="k">end</span>
-
-      <span class="n">doc</span><span class="p">.</span><span class="nf">to_html</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></div> </div>  </li> <li>
+         <span class="n">doc</span><span class="p">.</span><span class="nf">to_html</span>
+       <span class="k">end</span>
+     <span class="k">end</span>
+   <span class="k">end</span></code></pre></div> </div>  </li> <li>
 <p>Install the gems with bundler and run: </p>
 <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
 </span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  </li> </ol>
@@ -737,8 +729,8 @@ descriptor + subject + taxonomic rank
 +    end
 +
 </span>     # Enable {{ "{%" }} raw %}...{{ "{%" }} endraw %}
-     doc.content = doc.content.gsub(/^[ \t]*(\{%[ \t]*raw[ \t]*%\})[ \t]*\n?/, '\1')
-     doc.content = doc.content.gsub(/^[ \t]*(\{%[ \t]*endraw[ \t]*%\})[ \t]*\n?/, '\1')</code></pre></div> </div>  </li> <li>
+     doc.content = doc.content.gsub(/^[ \t]*(\{%[ \t]*raw[ \t]*%\})[ \t]*\n?/, '')
+     doc.content = doc.content.gsub(/^[ \t]*(\{%[ \t]*endraw[ \t]*%\})[ \t]*\n?/, '')</code></pre></div> </div>  </li> <li>
 <p>Implement Topdown and Duplicate Logic </p>
 <p>Update the convert function to intercept the marker and apply the new logic dynamically:</p>  <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">modified   _plugins/org_converter.rb
 @@ -40,6 +44,11 @@</span> module Jekyll
@@ -1027,7 +1019,7 @@ descriptor + subject + taxonomic rank
 <p>Add Org Syntax Support to Your Plugin </p>
 <p>Adding support for <code>[[foo:filename]]</code> is highly achievable, but introduces a major edge-case in the Front Matter: <b>Unquoted brackets break YAML</b>. If you type <code>- [[foo:image.jpg]]</code> in YAML without quotes, the YAML parser natively interprets <code>[</code> as an array constructor. It will process your string into a nested Ruby array <code>[["foo:image.jpg"]]</code>, which causes standard string comparisons to crash.</p> <p>The code intercepts Org-style <code>[[...]]</code> links in the body content, title fields, and implements a safety net to deeply extract the string from the front matter even if the YAML parser incorrectly converted the unquoted brackets into an array.</p> </li> </ol>
 <p>Related articles:</p>
-<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/minimal-mistakes-plus/#link-abbreviations">Migrating Link Abbreviations to Minimal Mistakes Plus</a></li> <li><a href="docs:link-abbr">User Guide: Link Abbreviations</a></li> </ul>
+<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/minimal-mistakes-plus/#link-abbreviations">Migrating Link Abbreviations to Minimal Mistakes Plus</a></li> <li><a href="https://josephtesfaye.com/minimal-mistakes-plus/docs/link-abbr">User Guide: Link Abbreviations</a></li> </ul>
 <h2 id="configurations-notices">Notices</h2>
 <p>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:</p>
 
@@ -1132,14 +1124,14 @@ Output:
        end
 
 +      # Newline cleanup (Remove extra spaces between CJK characters)
-<span class="gi">+      cjk = "\\p{Han}\\p{Hiragana}\\p{Katakana}ー、。！？「」『』（）【】，．：；"
+<span class="gi">+      cjk = "\p{Han}\p{Hiragana}\p{Katakana}ー、。！？「」『』（）【】，．：；"
 +      doc.xpath('.//text()[not(ancestor::pre or ancestor::code)]').each do |node|
 +        content = node.content
 +        next unless content.match?(/[\r\n]/)
 +
 +        # 1. Completely remove newlines and spaces between CJK characters (uses
 +        # lookahead to safely handle overlapping lines)
-+        content = content.gsub(/([#{cjk}])\s*[\r\n]+\s*(?=[#{cjk}])/o, '\1')
++        content = content.gsub(/([#{cjk}])\s*[\r\n]+\s*(?=[#{cjk}])/o, '')
 +        # 2. Safely convert remaining newlines to a single space
 +        content = content.gsub(/\s*[\r\n]+\s*/, ' ')
 +
@@ -1193,7 +1185,7 @@ Output:
  
 <span class="gi">+    # Pre-process furigana to strip newlines and prevent org-ruby table corruption
 +    doc.content = doc.content.gsub(/#{block_regex}|#{raw_regex}|#{Jekyll::FURIGANA_REGEX}/) do |match|
-+      if match.match?(/\A[ \t]*(?:#\+|\{%)/)
++      if match.match?(/\A[ \t]*(?:#|\{%)/)
 +        match
 +      else
 +        match.gsub(/[\r\n]+/, '')
