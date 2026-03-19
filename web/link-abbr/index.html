@@ -1,16 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--
   Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
   Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-
-<html lang="en" class="no-js">
+--><html lang="en" class="no-js">
   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Enabling link abbreviations in Minimal Mistakes | Orcharinth</title>
+<!-- begin _includes/seo.html --><title>Enabling Link Abbreviations in Minimal Mistakes | Orcharinth</title>
 <meta name="description" content="I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:">
 
 
@@ -23,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Orcharinth">
-<meta property="og:title" content="Enabling link abbreviations in Minimal Mistakes">
+<meta property="og:title" content="Enabling Link Abbreviations in Minimal Mistakes">
 <meta property="og:url" content="https://josephtesfaye.com/blog/web/link-abbr/">
 
 
@@ -76,8 +75,7 @@
 
 
 
-    <script data-ad-client="ca-pub-2501730911245634" async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script data-ad-client="ca-pub-2501730911245634" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 <!-- Make the post width wider when `author_profile: false` -->
 
@@ -155,7 +153,7 @@
 
   </head>
 
-  <body class="layout--single wide">
+  <body class="layout--single narrow">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -175,19 +173,20 @@
           Orcharinth
           <span class="site-subtitle">Code. Culture. Cultivation.</span>
         </a>
-        <ul class="visible-links"><li class="masthead__menu-item">
-            <a href="/blog/year-archive/" 
-              >Posts</a>
-          </li><li class="masthead__menu-item">
-            <a href="/blog/projects/" 
-              >Projects</a>
-          </li><li class="masthead__menu-item">
-            <a href="/blog/collections/" 
-              >Collections</a>
-          </li><li class="masthead__menu-item">
-            <a href="/blog/about/" 
-              >About</a>
-          </li></ul>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+            <a href="/blog/year-archive/">Posts</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/projects/">Projects</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/collections/">Collections</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/about/">About</a>
+          </li>
+</ul>
         
         <button class="search__toggle" type="button">
           <span class="visually-hidden">Toggle search</span>
@@ -232,7 +231,7 @@
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/blog/" itemprop="item"><span itemprop="name">Home</span></a>
 
-          <meta itemprop="position" content="1" />
+          <meta itemprop="position" content="1">
         </li>
         <span class="sep">/</span>
       
@@ -240,14 +239,14 @@
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/blog/categories/#web" itemprop="item"><span itemprop="name">Web</span></a>
-          <meta itemprop="position" content="2" />
+          <meta itemprop="position" content="2">
         </li>
         <span class="sep">/</span>
       
     
       
       
-        <li class="current">Enabling link abbreviations in Minimal Mistakes</li>
+        <li class="current">Enabling Link Abbreviations in Minimal Mistakes</li>
       
     
   </ol>
@@ -261,7 +260,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Enabling link abbreviations in Minimal Mistakes">
+    <meta itemprop="headline" content="Enabling Link Abbreviations in Minimal Mistakes">
     <meta itemprop="description" content="I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:">
     <meta itemprop="datePublished" content="2026-02-19T00:00:00+00:00">
     <meta itemprop="dateModified" content="2026-03-06T00:00:00+00:00">
@@ -270,7 +269,7 @@
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://josephtesfaye.com/blog/web/link-abbr/" itemprop="url">Enabling link abbreviations in Minimal Mistakes
+            <a href="https://josephtesfaye.com/blog/web/link-abbr/" itemprop="url">Enabling Link Abbreviations in Minimal Mistakes
 </a>
           </h1>
           
@@ -306,6 +305,17 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li><a href="#create-a-new-ruby-plugin-file"><span class="toc-number">0.1. </span>Create a new Ruby plugin file</a></li>
+<li><a href="#use-github-actions-to-build-your-github-pages-site"><span class="toc-number">0.2. </span>Use GitHub Actions to build your GitHub Pages site</a></li>
+</ul>
+            </nav>
+          </aside>
+        
         <p>I want to be able to use link abbreviations in Minimal Mistakes, for example, use <code>foo:&lt;filename&gt;</code> in place of the full link for images and images in a gallery like the following:</p>
 
             <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
@@ -340,7 +350,8 @@ alt="" caption="A figure" %}
 
             <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg</code></pre></div> </div>
           
-<p><b>Create a new Ruby plugin file</b></p>
+<h2 id="create-a-new-ruby-plugin-file">
+<span class="heading-number">0.1. </span>Create a new Ruby plugin file</h2>
 <p>We can create a plugin under <code>_plugins/link_abbr.rb</code> which handles the link abbreviations:</p>
 
             <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'addressable/uri'</span>
@@ -393,24 +404,20 @@ alt="" caption="A figure" %}
           
 <p>The <code>github-pages</code> gem enforces strict safe mode and completely disables the <code>_plugins</code> directory to mimic GitHub’s legacy deployment environment, overriding any <code>safe: false</code> settings in your configuration.</p>
 <p>To allow custom plugins to run locally, you need to replace it with the standard Jekyll gem. Since you already have all your plugins explicitly listed in your Gemfile, this is a safe swap.</p>
-<p>Gemfile:</p>
-
-            <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-gem "github-pages", group: :jekyll_plugins
+<ol> <li>
+<p><code>Gemfile</code>: </p>
+<div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-gem "github-pages", group: :jekyll_plugins
 </span><span class="gi">+gem "jekyll"
 +gem "kramdown-parser-gfm"
-+gem "faraday-retry"</span></code></pre></div> </div>
-          
-<p>_config.yml:</p>
-
-            <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-remote_theme: mmistakes/minimal-mistakes@4.20.2
-</span><span class="gi">+theme: minimal-mistakes-jekyll</span></code></pre></div> </div>
-          
-<p>Terminal:</p>
-
-            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
-</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>
-          
-<p><b>Use GitHub Actions to build your GitHub Pages site</b></p>
++gem "faraday-retry"</span></code></pre></div> </div>  </li> <li>
+<p><code>_config.yml</code>: </p>
+<div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-remote_theme: mmistakes/minimal-mistakes@4.20.2
+</span><span class="gi">+theme: minimal-mistakes-jekyll</span></code></pre></div> </div>  </li> <li>
+<p>Terminal: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  </li> </ol>
+<h2 id="use-github-actions-to-build-your-github-pages-site">
+<span class="heading-number">0.2. </span>Use GitHub Actions to build your GitHub Pages site</h2>
 <p>This affects the default GitHub Pages build. The classic GitHub Pages build environment strictly enforces safe mode and ignores all files in the <code>_plugins</code> directory. If you push the site using the default settings, it will still host successfully, but your custom plugin will not run and the link abbreviations will remain unparsed.</p>
 <p>To use custom plugins while hosting on GitHub Pages, you must switch your deployment method to GitHub Actions. This modern approach uses your exact Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub Pages.</p>
 <ol> <li>Go to your repository on GitHub.</li> <li>Click on Settings, then select Pages from the left sidebar.</li> <li>Under Build and deployment, change the Source from “Deploy from a branch” to “GitHub Actions”.</li> <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li> <li>Commit the provided <code>.github/workflows/jekyll.yml</code> file to your repository.</li> </ol>
@@ -463,11 +470,11 @@ alt="" caption="A figure" %}
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Enabling+link+abbreviations+in+Minimal+Mistakes%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Flink-abbr%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Enabling+Link+Abbreviations+in+Minimal+Mistakes%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Flink-abbr%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Flink-abbr%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/web/link-abbr/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://josephtesfaye.com/blog/web/link-abbr/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -635,7 +642,7 @@ alt="" caption="A figure" %}
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          53 minute read
+          54 minute read
         
       </span>
     
@@ -707,13 +714,15 @@ alt="" caption="A figure" %}
 
     
       <div class="search-content">
-        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
     <label class="sr-only" for="search">
       Enter your search term...
     </label>
-    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
   </form>
-  <div id="results" class="results"></div></div>
+  <div id="results" class="results"></div>
+</div>
 
       </div>
     
@@ -749,7 +758,7 @@ alt="" caption="A figure" %}
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2026
+<div class="page__footer-copyright">© 2026
   <a href="/josephs-blog/about/">
     Joseph Huang
   </a>. Built with Love ♥ ♪ ♫ ♬
@@ -799,7 +808,8 @@ alt="" caption="A figure" %}
       (d.head || d.body).appendChild(s);
     })();
   </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
 
 
   

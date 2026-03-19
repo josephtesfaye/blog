@@ -293,7 +293,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          50 minute read
+          51 minute read
         
       </span>
     
@@ -373,6 +373,7 @@
 <a href="#feature-migration">Feature Migration</a><ul>
 <li><a href="#dark-mode">Dark Mode</a></li>
 <li><a href="#20260317122512">Custom Styles</a></li>
+<li><a href="#link-abbreviations">Link Abbreviations</a></li>
 </ul>
 </li>
 </ul>
@@ -1160,7 +1161,7 @@ git push</code></pre></div> </div>  </li> <li>
 <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> ~/projects/josephs-blog/_sass/custom/dark_mode_toggle.scss
 <span class="nb">rm</span> ~/projects/josephs-blog/assets/js/dark_mode_toggle.js</code></pre></div> </div>  <p>Jekyll will now safely fall back to the upstream Minimal Mistakes masthead, and your plugin will magically inject the button.</p> </li> <li>
 <p>For the <code>_includes/masthead.html</code> and <code>_includes/head/custom.html</code> files: </p>
-<p>You can still keep them in the project but then they will completely override the same files in both the theme and the plugin. In this case you need to add the dark-mode-related snippets to them to properly enable dark mode toggling. See <a href="~/projects/minimal-mistakes-plus/docs/_docs/02-dark-mode.org">~/projects/minimal-mistakes-plus/docs/_docs/02-dark-mode.org</a>.</p> <p>If they don’t have customizations exclusive to the blog you can delete them. Then the ones in the plugin will be used.</p> </li> <li>
+<p>You can still keep them in the project but then they will completely override the same files in both the theme and the plugin. In this case you need to add the dark-mode-related snippets to them to properly enable dark mode toggling. See <a href="mmpd:02-dark-mode.org">mmpd:02-dark-mode.org</a>.</p> <p>If they don’t have customizations exclusive to the blog you can delete them. Then the ones in the plugin will be used.</p> </li> <li>
 <p><b>Update or Create</b> <code>assets/css/main.scss</code>: Change the SCSS <code>@import</code> path to point to your new plugin namespace: </p>
 <div class="language-scss highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nt">---</span>
 <span class="nn">#</span> <span class="nt">Only</span> <span class="nt">the</span> <span class="nt">main</span> <span class="nt">Sass</span> <span class="nt">file</span> <span class="nt">needs</span> <span class="nt">front</span> <span class="nt">matter</span> <span class="o">(</span><span class="nt">the</span> <span class="nt">dashes</span> <span class="nt">are</span> <span class="nt">enough</span><span class="o">)</span>
@@ -1241,6 +1242,25 @@ git push</code></pre></div> </div>  </li> <li>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes/skins/default"</span><span class="p">;</span> <span class="c1">// skin</span>
 <span class="k">@import</span> <span class="s2">"minimal-mistakes"</span><span class="p">;</span> <span class="c1">// main partials</span></code></pre></div> </div>
           
+<h3 id="link-abbreviations">Link Abbreviations</h3>
+<ol> <li>
+<p>Move <code>link_abbr.rb</code> to the plugin: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> ~/projects/josephs-blog/_plugins/link_abbr.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/</code></pre></div> </div>  </li> <li>
+<p>Require the code: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/link_abbr"</span></code></pre></div> </div>  </li> <li>
+<p>Optimize code: </p>
+<p>Rewrite the whole <code>link_abbr.rb</code> so that it handling code of Org files and Markdown files are decoupled, rather than being tangled together.</p> <p>To be more specific, if a file is an <code>.org</code> file, only expand the link abbreviations in the standard Org links; if it’s a markdown (<code>.md</code>, <code>.markdown</code>, etc.) only expand the link abbreviations in the standard markdown links. In both cases, always expand the link abbreviations used in a gallery in the front matter.</p>  <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>gallery:
+  - url: foo:unsplash-gallery-image-1.jpg
+    image_path: foo:unsplash-gallery-image-1.jpg
+    title: Check this [[foo:unsplash-gallery-image-1.jpg][image]]
+  - image_path: foo:unsplash-gallery-image-1.jpg
+  - foo:unsplash-gallery-image-1.jpg
+  - image_path: [[foo:unsplash-gallery-image-1.jpg]]
+    title: An image referenced through an org link
+  - [[foo:unsplash-gallery-image-1.jpg]]
+  - [[foo:unsplash-gallery-image-1.jpg]]</code></pre></div> </div>  <p>But again, don’t expand links like <code>[[foo:unsplash-gallery-image-1.jpg]]</code> in a markdown file even if they are in a gallery in the front matter because they are Org Links. Only expand Org links in Org files.</p> <p>In all cases, link abbreviations in literal blocks (including inline blocks) should never be expanded.</p> <p>The final code should be very performant.</p> </li> <li>The <a href="https://github.com/josephtesfaye/minimal-mistakes-plus/blob/4976e4b413a472ef3f30319ab23b5f19c14428a7/lib/minimal_mistakes_plus/link_abbr.rb">code</a>.</li> </ol>
+<p>Related articles:</p>
+<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/enable-org-mode/#configurations-links-link-abbreviations">Enabling Drafting in Org Mode in Minimal Mistakes</a></li> <li><a href="docs:link-abbr">User Guide: Link Abbreviations</a></li> </ul>
 
         
       </section>
@@ -1474,7 +1494,7 @@ git push</code></pre></div> </div>  </li> <li>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/web/enable-org-mode/" rel="permalink">Enabling drafting in Org Mode in Minimal Mistakes
+        <a href="/blog/web/enable-org-mode/" rel="permalink">Enabling Drafting in Org Mode in Minimal Mistakes
 </a>
       
     </h2>
@@ -1506,7 +1526,8 @@ git push</code></pre></div> </div>  </li> <li>
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written...</p>
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
   </article>
 </div>
 

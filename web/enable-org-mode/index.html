@@ -9,8 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Enabling drafting in Org Mode in Minimal Mistakes | Orcharinth</title>
-<meta name="description" content="From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.">
+<!-- begin _includes/seo.html --><title>Enabling Drafting in Org Mode in Minimal Mistakes | Orcharinth</title>
+<meta name="description" content="">
 
 
   <meta name="author" content="Joseph Huang">
@@ -22,11 +22,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Orcharinth">
-<meta property="og:title" content="Enabling drafting in Org Mode in Minimal Mistakes">
+<meta property="og:title" content="Enabling Drafting in Org Mode in Minimal Mistakes">
 <meta property="og:url" content="https://josephtesfaye.com/blog/web/enable-org-mode/">
 
 
-  <meta property="og:description" content="From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.">
+  <meta property="og:description" content="">
 
 
 
@@ -38,7 +38,7 @@
 
 
 
-  <meta property="article:modified_time" content="2026-03-01T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-03-19T00:00:00+00:00">
 
 
 
@@ -246,7 +246,7 @@
     
       
       
-        <li class="current">Enabling drafting in Org Mode in Minimal Mistakes</li>
+        <li class="current">Enabling Drafting in Org Mode in Minimal Mistakes</li>
       
     
   </ol>
@@ -260,16 +260,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Enabling drafting in Org Mode in Minimal Mistakes">
-    <meta itemprop="description" content="From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.">
+    <meta itemprop="headline" content="Enabling Drafting in Org Mode in Minimal Mistakes">
+    <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="2026-02-23T00:00:00+00:00">
-    <meta itemprop="dateModified" content="2026-03-01T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-03-19T00:00:00+00:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://josephtesfaye.com/blog/web/enable-org-mode/" itemprop="url">Enabling drafting in Org Mode in Minimal Mistakes
+            <a href="https://josephtesfaye.com/blog/web/enable-org-mode/" itemprop="url">Enabling Drafting in Org Mode in Minimal Mistakes
 </a>
           </h1>
           
@@ -350,9 +350,7 @@
 </li>
 <li><a href="#org-elements-examples-tables">Tables</a></li>
 <li><a href="#org-elements-examples-lists">Lists</a></li>
-<li>
-<a href="#org-elements-examples-links">Links</a><ul><li><a href="#org-elements-examples-links-link-abbreviations">Link Abbreviations</a></li></ul>
-</li>
+<li><a href="#org-elements-examples-links">Links</a></li>
 <li><a href="#org-elements-examples-images">Images</a></li>
 <li><a href="#org-elements-examples-code-highlighting">Code highlighting</a></li>
 <li><a href="#org-elements-examples-notices">Notices</a></li>
@@ -505,47 +503,6 @@
 <p>Sub-item B </p>
 <ul> <li>Deeply nested bullet (Indented another 3 spaces)</li> <li>Deeply nested bullet (Indented another 3 spaces)</li> </ul> </li> </ol> </li> <li>Third item</li> </ol>
 <h2 id="org-elements-examples-links">Links</h2>
-<h3 id="org-elements-examples-links-link-abbreviations">Link Abbreviations</h3>
-<p>In Markdown you can use <a href="/blog/web/link-abbr/">link abbreviations</a> to expand links throughout the document. Now you can do the same in an Org document, heeding Org Mode’s own built-in link abbreviation method, i.e., <code>#+LINK</code>.</p>
-<p>For example:</p>
-
-            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
-title: "Org Links"
-link_abbrs:
-  - link_abbr: foo https://i.postimg.cc/Vv8jFw8D/
-gallery:
-  - url: foo:unsplash-gallery-image-1.jpg
-    image_path: foo:unsplash-gallery-image-1.jpg
-    title: Check this [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg][image]]
-  - image_path: foo:unsplash-gallery-image-1.jpg
-  - foo:unsplash-gallery-image-1.jpg
-  - image_path: [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
-  - [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
-  - [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
----
-
-#+LINK: foo ~/Downloads/temp/archive/image/foo/
-
-#+CAPTION: This is an image
-[[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg]]
-
-{% include figure image_path="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" popup=true
-alt="" caption="A figure" %}
-
-{% include gallery columns=3 caption="This is a gallery" %}</code></pre></div> </div>
-          
-<p>Here <code>#+LINK</code> is used in Org Mode, also for Jekyll build. It acts as a fallback to <code>link_abbrs</code> in the front matter, i.e., if an abbreviation isn’t found in <code>link_abbrs</code> but found in <code>#+LINK</code>, also use it to expand links in the built site. <code>#+LINK</code> can appear anywhere in the document except the front matter.</p>
-<p><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"></p>
-
-
-
-
-
-
-<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;Check this [[https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg][image]]&lt;/p&gt;"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through an org link&lt;/p&gt;"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>A gallery </figcaption> </figure>
-
-
-
 <h2 id="org-elements-examples-images">Images</h2>
 <p>A simple image:</p>
 <p><img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg"></p>
@@ -560,7 +517,7 @@ alt="" caption="A figure" %}
 
 
 
-<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="foo:unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="foo:unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="foo2:unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="foo2:unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
 
 
 
@@ -1066,9 +1023,11 @@ descriptor + subject + taxonomic rank
 <h3 id="configurations-links-link-abbreviations">Link Abbreviations</h3>
 <ol> <li>
 <p>Resolve the (potential) conflict between <code>link_abbrs</code> and <code>#+LINK</code>? </p>
-<p>There will be absolutely no conflict. Because your custom <code>_plugins/link_abbr.rb</code> uses a <code>:pre_render</code> hook, it modifies the raw text document before <code>org-ruby</code> even touches the file. By the time <code>org-ruby</code> wakes up to compile the HTML, your plugin has already replaced <code>[[https://i.postimg.cc/Vv8jFw8D/image.jpg]]</code> with <code>[[/assets/.../image.jpg]]</code>. <code>org-ruby</code> will simply see a standard file link and successfully render it, completely ignoring the now-unused <code>#+LINK: foo</code> directive at the top of the file.</p> </li> <li>
+<p>There will be absolutely no conflict. Because your custom <code>_plugins/link_abbr.rb</code> uses a <code>:pre_render</code> hook, it modifies the raw text document before <code>org-ruby</code> even touches the file. By the time <code>org-ruby</code> wakes up to compile the HTML, your plugin has already replaced <code>[[foo:image.jpg]]</code> with <code>[[/assets/.../image.jpg]]</code>. <code>org-ruby</code> will simply see a standard file link and successfully render it, completely ignoring the now-unused <code>#+LINK: foo</code> directive at the top of the file.</p> </li> <li>
 <p>Add Org Syntax Support to Your Plugin </p>
-<p>Adding support for <code>[[https://i.postimg.cc/Vv8jFw8D/filename]]</code> is highly achievable, but introduces a major edge-case in the Front Matter: <b>Unquoted brackets break YAML</b>. If you type <code>- [[https://i.postimg.cc/Vv8jFw8D/image.jpg]]</code> in YAML without quotes, the YAML parser natively interprets <code>[</code> as an array constructor. It will process your string into a nested Ruby array <code>[["foo:image.jpg"]]</code>, which causes standard string comparisons to crash.</p> <p>The updated code below intercepts Org-style <code>[[...]]</code> links in the body content, title fields, and implements a safety net to deeply extract the string from the front matter even if the YAML parser incorrectly converted the unquoted brackets into an array.</p> <p>Apply this diff to <code>_plugins/link_abbr.rb</code>:</p> </li> </ol>
+<p>Adding support for <code>[[foo:filename]]</code> is highly achievable, but introduces a major edge-case in the Front Matter: <b>Unquoted brackets break YAML</b>. If you type <code>- [[foo:image.jpg]]</code> in YAML without quotes, the YAML parser natively interprets <code>[</code> as an array constructor. It will process your string into a nested Ruby array <code>[["foo:image.jpg"]]</code>, which causes standard string comparisons to crash.</p> <p>The code intercepts Org-style <code>[[...]]</code> links in the body content, title fields, and implements a safety net to deeply extract the string from the front matter even if the YAML parser incorrectly converted the unquoted brackets into an array.</p> </li> </ol>
+<p>Related articles:</p>
+<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/minimal-mistakes-plus/#link-abbreviations">Migrating Link Abbreviations to Minimal Mistakes Plus</a></li> <li><a href="docs:link-abbr">User Guide: Link Abbreviations</a></li> </ul>
 <h2 id="configurations-notices">Notices</h2>
 <p>In Markdown files you can write <a href="https://mmistakes.github.io/minimal-mistakes/markup/markup-html-tags-and-formatting/#notices">notices</a> such as:</p>
 
@@ -1317,14 +1276,14 @@ Output:
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-01">March 1, 2026</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-19">March 19, 2026</time></p>
 
       </footer>
 
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Enabling+drafting+in+Org+Mode+in+Minimal+Mistakes%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fenable-org-mode%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Enabling+Drafting+in+Org+Mode+in+Minimal+Mistakes%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fenable-org-mode%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fweb%2Fenable-org-mode%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -1496,7 +1455,7 @@ Output:
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          53 minute read
+          54 minute read
         
       </span>
     
