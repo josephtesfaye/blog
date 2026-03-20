@@ -374,7 +374,7 @@
 <li><a href="#dark-mode">Dark Mode</a></li>
 <li><a href="#20260317122512">Custom Styles</a></li>
 <li><a href="#link-abbreviations">Link Abbreviations</a></li>
-<li><a href="#custom-galley-symlinks">Custom Galley, Symlinks</a></li>
+<li><a href="#custom-galley-symlinks-encryption">Custom Galley, Symlinks, Encryption</a></li>
 </ul>
 </li>
 </ul>
@@ -1262,15 +1262,17 @@ git push</code></pre></div> </div>  </li> <li>
   - [[foo:unsplash-gallery-image-1.jpg]]</code></pre></div> </div>  <p>But again, don’t expand links like <code>[[foo:unsplash-gallery-image-1.jpg]]</code> in a markdown file even if they are in a gallery in the front matter because they are Org Links. Only expand Org links in Org files.</p> <p>In all cases, link abbreviations in literal blocks (including inline blocks) should never be expanded.</p> <p>The final code should be very performant.</p> </li> <li>The <a href="https://github.com/josephtesfaye/minimal-mistakes-plus/blob/4976e4b413a472ef3f30319ab23b5f19c14428a7/lib/minimal_mistakes_plus/link_abbr.rb">code</a>.</li> </ol>
 <p>Related articles:</p>
 <ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/enable-org-mode/#configurations-links-link-abbreviations">Enabling Drafting in Org Mode in Minimal Mistakes</a></li> <li><a href="https://josephtesfaye.com/minimal-mistakes-plus/docs/link-abbr">User Guide: Link Abbreviations</a></li> </ul>
-<h3 id="custom-galley-symlinks">Custom Galley, Symlinks</h3>
+<h3 id="custom-galley-symlinks-encryption">Custom Galley, Symlinks, Encryption</h3>
 <ol> <li>
 <p>Move the assets to the plugin: </p>
 <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> ~/projects/josephs-blog/_includes/gallery ~/projects/minimal-mistakes-plus/_includes/
 <span class="nb">mv</span> ~/projects/josephs-blog/_plugins/liquify.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/
-<span class="nb">mv</span> ~/projects/josephs-blog/_plugins/symlink_external_assets.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/</code></pre></div> </div>  </li> <li>
+<span class="nb">mv</span> ~/projects/josephs-blog/_plugins/symlink_external_assets.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/
+<span class="nb">mv</span> ~/projects/josephs-blog/_plugins/encrypt_post.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/</code></pre></div> </div>  </li> <li>
 <p>Require the codes: </p>
 <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/liquify"</span>
-<span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/symlink_external_assets"</span></code></pre></div> </div>  </li> </ol>
+<span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/symlink_external_assets"</span>
+<span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/encrypt_post"</span></code></pre></div> </div>  </li> </ol>
 
         
       </section>
