@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-19T09:37:00+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Interview</title><link href="https://josephtesfaye.com/blog/web/interview/" rel="alternate" type="text/html" title="Interview" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/interview</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/interview/"><![CDATA[<h1 id="introduce-yourself">Introduce yourself</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-20T10:58:50+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Interview</title><link href="https://josephtesfaye.com/blog/web/interview/" rel="alternate" type="text/html" title="Interview" /><published>2026-03-04T00:00:00+00:00</published><updated>2026-03-04T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/interview</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/interview/"><![CDATA[<h1 id="introduce-yourself">Introduce yourself</h1>
 <p>Thank you for having me. My name is Huang Jicheng, and you can call me Joseph. I graduated with a 4-year bachelor’s degree from Macao Polytechnic University in Macao SAR, and since then I’ve been working as a software engineer for more than eight years, mainly focusing on backend development using Java and cloud platforms like AWS. Most of my experience comes from building large-scale systems for E-Commerce, ERP, and mobility services, etc. I’m fluent in English, a native Chinese speaker, and my Japanese is at an intermediate level, with which I’m stronger in reading and writing, weaker in conversation, which I’m continuously improving. I’m especially excited about joining [Company Name] to contribute my experience in Java backend development and distributed systems.</p>
 <p><ruby>本日<rt>ほんじつ</rt></ruby>はお<ruby>時間<rt>じかん</rt></ruby>をいただき、ありがとうございます。黄級誠と<ruby>申<rt>もう</rt></ruby>します。コウとお<ruby>呼<rt>よ</rt></ruby>びください。私はマカオにあるマカオ<ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby>を4<ruby>年<rt>ねん</rt>制<rt>せい</rt></ruby>の<ruby>学士<rt>がくし</rt></ruby><ruby>課程<rt>かてい</rt></ruby>で<ruby>卒業<rt>そつぎょう</rt></ruby>しました。それ<ruby>以<rt>い</rt>降<rt>こう</rt></ruby>、ソフトウェアエンジニアとして８<ruby>年<rt>ねん</rt></ruby><ruby>以上<rt>いじょう</rt></ruby>の<ruby>実<rt>じつ</rt>務<rt>む</rt></ruby><ruby>経<rt>けい</rt>験<rt>けん</rt></ruby>があり、<ruby>主<rt>おも</rt></ruby>にジャバ（Java）とエーダブリューエス（AWS）などのクラウドプラットフォーム（cloud platform）を<ruby>使用<rt>しよう</rt></ruby>したバックエンド<ruby>開<rt>かい</rt>発<rt>はつ</rt></ruby>に<ruby>注<rt>ちゅう</rt>力<rt>りょく</rt></ruby>してきました。<ruby>経験<rt>けいけん</rt></ruby>の<ruby>多<rt>おお</rt></ruby>くは、Eコマース（ecommerce）やイーアールピー（ERP）、モビリティサービス（mobility service）などの<ruby>大<rt>だい</rt></ruby><ruby>規<rt>き</rt></ruby> <ruby>模<rt>ぼ</rt></ruby>システムの<ruby>構築<rt>こうちく</rt></ruby>によるものです。<ruby>語<rt>ご</rt>学<rt>がく</rt></ruby>については、<ruby>中国<rt>ちゅうごく</rt>語<rt>ご</rt></ruby>が<ruby>母<rt>ぼ</rt>語<rt>ご</rt></ruby>で、英語はビジネスレベルで<ruby>流<rt>りゅう</rt>暢<rt>ちょう</rt></ruby>に<ruby>話<rt>はな</rt></ruby>せます。日本語は<ruby>中<rt>ちゅう</rt>級<rt>きゅう</rt></ruby>レベルで、<ruby>読<rt>よ</rt></ruby>み<ruby>書<rt>か</rt></ruby> きは<ruby>得意<rt>とくい</rt></ruby>ですが<ruby>会話<rt>かいわ</rt></ruby>はまだ<ruby>苦手<rt>にて</rt></ruby>な<ruby>部分<rt>ぶぶん</rt></ruby>があります。これまでのジャババックエンド（Java backend）<ruby>開<rt>かい</rt>発<rt>はつ</rt></ruby>や<ruby>分<rt>ぶん</rt>散<rt>さん</rt></ruby>システムの<ruby>経<rt>けい</rt>験<rt>けん</rt></ruby>を<ruby>活<rt>い</rt></ruby>かして、<ruby>貴<rt>き</rt>社<rt>しゃ</rt></ruby>に<ruby>貢<rt>こう</rt>献<rt>けん</rt></ruby>できることを<ruby>非<rt>ひ</rt>常<rt>じょう</rt></ruby>に<ruby>楽<rt>たの</rt></ruby>しみにしています。どうぞよろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。</p>
 <h1 id="why-do-you-come-to-japan">Why do you come to Japan?</h1>
@@ -973,7 +973,16 @@ git push</code></pre></div> </div>  </li> <li>
   - [[foo:unsplash-gallery-image-1.jpg]]
   - [[foo:unsplash-gallery-image-1.jpg]]</code></pre></div> </div>  <p>But again, don’t expand links like <code>[[foo:unsplash-gallery-image-1.jpg]]</code> in a markdown file even if they are in a gallery in the front matter because they are Org Links. Only expand Org links in Org files.</p> <p>In all cases, link abbreviations in literal blocks (including inline blocks) should never be expanded.</p> <p>The final code should be very performant.</p> </li> <li>The <a href="https://github.com/josephtesfaye/minimal-mistakes-plus/blob/4976e4b413a472ef3f30319ab23b5f19c14428a7/lib/minimal_mistakes_plus/link_abbr.rb">code</a>.</li> </ol>
 <p>Related articles:</p>
-<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/enable-org-mode/#configurations-links-link-abbreviations">Enabling Drafting in Org Mode in Minimal Mistakes</a></li> <li><a href="https://josephtesfaye.com/minimal-mistakes-plus/docs/link-abbr">User Guide: Link Abbreviations</a></li> </ul>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Enabling Drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling Drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.</p>
+<ul> <li><a href="/blog/web/link-abbr/">Enabling Link Abbreviations in Minimal Mistakes</a></li> <li><a href="/blog/web/enable-org-mode/#configurations-links-link-abbreviations">Enabling Drafting in Org Mode in Minimal Mistakes</a></li> <li><a href="https://josephtesfaye.com/minimal-mistakes-plus/docs/link-abbr">User Guide: Link Abbreviations</a></li> </ul>
+<h3 id="custom-galley-symlinks">Custom Galley, Symlinks</h3>
+<ol> <li>
+<p>Move the assets to the plugin: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> ~/projects/josephs-blog/_includes/gallery ~/projects/minimal-mistakes-plus/_includes/
+<span class="nb">mv</span> ~/projects/josephs-blog/_plugins/liquify.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/
+<span class="nb">mv</span> ~/projects/josephs-blog/_plugins/symlink_external_assets.rb ~/projects/minimal-mistakes-plus/lib/minimal_mistakes_plus/</code></pre></div> </div>  </li> <li>
+<p>Require the codes: </p>
+<div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/liquify"</span>
+<span class="nb">require_relative</span> <span class="s2">"minimal_mistakes_plus/symlink_external_assets"</span></code></pre></div> </div>  </li> </ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Enabling Drafting in Org Mode in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/enable-org-mode/" rel="alternate" type="text/html" title="Enabling Drafting in Org Mode in Minimal Mistakes" /><published>2026-02-23T00:00:00+00:00</published><updated>2026-03-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/enable-org-mode</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/enable-org-mode/"><![CDATA[<p>From now on I will be able to write posts in Org Mode for this blog, besides the existing Markdown method. Here’s how I configure it. This article is written in an Org file and also serves as a demonstration of this new feature.</p>
 <p>First, you can do everything in the original Markdown way, which is kept intact. Now you can write everything in Org Mode with the extra benefit of using front matter, Liquid syntax, figures, galleries, etc. exactly the same as in Markdown.</p>
 <p>Here are the basic elements demonstrated:</p>
 <h1 id="org-elements-examples">Org Elements Examples</h1>
@@ -1100,7 +1109,7 @@ git push</code></pre></div> </div>  </li> <li>
 
 
 
-<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/%7B%7B%20site.url%20%7D%7D%7B%7B%20site.baseurl%20%7D%7D/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="/blog/%7B%7B%20site.url%20%7D%7D%7B%7B%20site.baseurl%20%7D%7D/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
+<figure class="custom-grid " style="grid-template-columns: repeat(6, 1fr);"> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/local-images/#method-2-using-symlinks"&gt;symlink&lt;/a&gt;&lt;/p&gt;'> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" title='&lt;p&gt;An image referenced through a &lt;a href="/blog/web/link-abbr/"&gt;link abbreviation&lt;/a&gt;&lt;/p&gt;'> <img src="https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figure> <a href="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" title="&lt;p&gt;An image referenced through both a link abbreviation and a symlink&lt;/p&gt;"> <img src="/blog/assets/archive/image/foo/unsplash-gallery-image-1.jpg" alt=""> </a> </figure> <figcaption>This is a gallery caption </figcaption> </figure>
 
 
 
@@ -2487,87 +2496,50 @@ alt="" caption="A figure" %}
 <p>This affects the default GitHub Pages build. The classic GitHub Pages build environment strictly enforces safe mode and ignores all files in the <code>_plugins</code> directory. If you push the site using the default settings, it will still host successfully, but your custom plugin will not run and the link abbreviations will remain unparsed.</p>
 <p>To use custom plugins while hosting on GitHub Pages, you must switch your deployment method to GitHub Actions. This modern approach uses your exact Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub Pages.</p>
 <ol> <li>Go to your repository on GitHub.</li> <li>Click on Settings, then select Pages from the left sidebar.</li> <li>Under Build and deployment, change the Source from “Deploy from a branch” to “GitHub Actions”.</li> <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li> <li>Commit the provided <code>.github/workflows/jekyll.yml</code> file to your repository.</li> </ol>
-<p>With this workflow active, GitHub will read your updated Gemfile, run the <code>link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry><entry><title type="html">Loading Local Images in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/local-images/" rel="alternate" type="text/html" title="Loading Local Images in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/local-images</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/local-images/"><![CDATA[<p>I want to be able to load local images when the site is served locally. However,
-the URL format <code class="language-plaintext highlighter-rouge">file:///Users/&lt;username&gt;/archive/image/20260218184820.png</code>
-doesn’t work.</p>
-
-<h2 id="why-img-srcfileusers-wont-load">Why <code class="language-plaintext highlighter-rouge">&lt;img src="file:///Users/..."&gt;</code> won’t load?</h2>
-
-<p>Your page is being served over HTTP (e.g. <a href="http://localhost:4000">http://localhost:4000</a>). Modern
-browsers block pages from <code class="language-plaintext highlighter-rouge">http(s)://…</code> from loading local files via <code class="language-plaintext highlighter-rouge">file://…</code>
-for security (“cross-origin” / local file access). So even though the HTML is
-“correctly parsed”, the browser refuses to fetch it.</p>
-
-<p>That means: a <code class="language-plaintext highlighter-rouge">file://</code> URL will not work on a website (local dev server or
-deployed site). It only works when the page itself is also opened via <code class="language-plaintext highlighter-rouge">file://</code>
-(and even then, policies vary).</p>
-
+<p>With this workflow active, GitHub will read your updated Gemfile, run the <code>link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry><entry><title type="html">Loading Local Images in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/local-images/" rel="alternate" type="text/html" title="Loading Local Images in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/local-images</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/local-images/"><![CDATA[<p>I want to be able to load local images when the site is served locally. However, the URL format <code>file:///Users/&lt;username&gt;/archive/image/20260218184820.png</code> doesn’t work.</p>
+<h2 id="why-img-srcfileusers-wont-load">Why <code>&lt;img src="file:///Users/..."&gt;</code> won’t load?</h2>
+<p>Your page is being served over HTTP (e.g. http://localhost:4000). Modern browsers block pages from <code>http(s)://…</code> from loading local files via <code>file://…</code> for security (“cross-origin” / local file access). So even though the HTML is “correctly parsed”, the browser refuses to fetch it.</p>
+<p>That means: a <code>file://</code> URL will not work on a website (local dev server or deployed site). It only works when the page itself is also opened via <code>file://</code> (and even then, policies vary).</p>
 <h2 id="method-1-copying-files-to-project-assets">Method 1: Copying files to project assets</h2>
+<p>The simplest method is to copy the images to <code>&lt;project-root&gt;/assets/images/</code> and then refer to them using the standard syntax:</p>
 
-<p>The simplest method is to copy the images to <code class="language-plaintext highlighter-rouge">&lt;project-root&gt;/assets/images/</code> and
-then refer to them using the standard syntax:</p>
+            <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">gallery</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/images/20260218184820.png</span>
+    <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/images/20260218184820.png</span>
+<span class="nn">---</span>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-gallery:
-  - url: /assets/images/20260218184820.png
-    image_path: /assets/images/20260218184820.png
----
+<span class="p">![</span><span class="nv">alt</span><span class="p">](</span><span class="sx">{{</span> site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"{{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
 
-&lt;img src="https://josephtesfaye.com/blog/assets/images/filename.jpg" alt=""&gt;
-
-{% include gallery %}
-</code></pre></div></div>
-
-<p>However, this has the overhead of managing files manually, which can be tedious.
-The following methods give you better experience.</p>
-
+{% include gallery %}</code></pre></div> </div>
+          
+<p>However, this has the overhead of managing files manually, which can be tedious. The following methods give you better experience.</p>
 <h2 id="method-2-using-symlinks">Method 2: Using symlinks</h2>
-
-<ol>
-  <li>
-    <p>Create a symlink to the target data inside the site root. Say, if the local
-images reside in <code class="language-plaintext highlighter-rouge">~/Downloads/temp/archive/image/foo/</code> you can create a
-symlink to it under <code class="language-plaintext highlighter-rouge">&lt;project-root&gt;/_site/assets/archive/image/foo</code>:</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;project-root&gt;/_site/
+<ol> <li>
+<p>Create a symlink to the target data inside the site root. Say, if the local images reside in <code>~/Downloads/temp/archive/image/foo/</code> you can create a symlink to it under <code>&lt;project-root&gt;/_site/assets/archive/image/foo</code>: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;project-root&gt;/_site/
 <span class="nb">mkdir</span> <span class="nt">-p</span> assets/archive/image/
-<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Then you can refer to the images using the symlink like the following:</p>
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span></code></pre></div> </div>  </li> <li>
+<p>Then you can refer to the images using the symlink like the following: </p>
+<div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">gallery</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
+    <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
+  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
+    <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
+<span class="nn">---</span>
 
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-gallery:
-  - url: /assets/archive/image/foo/20260218184820.png
-    image_path: /assets/archive/image/foo/20260218184820.png
-  - url: /assets/archive/image/foo/20260218184820.png
-    image_path: /assets/archive/image/foo/20260218184820.png
----
+<span class="p">![](</span><span class="sx">{{site.url}}{{site.baseurl}}/assets/archive/image/foo/20260218184820.png</span><span class="p">)</span>
 
-![]({{site.url}}{{site.baseurl}}/assets/archive/image/foo/20260218184820.png)
-
-{% include gallery %}
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>The symlinks created this way are cleared every time the site is re-built.
-To make them persist we can write a plugin
-<code class="language-plaintext highlighter-rouge">_plugins/symlink_external_assets.rb</code> to create them automatically according
-to the following front matter of a post:</p>
-
-    <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-symlinks:
-  - /assets/archive/image/foo ~/Downloads/temp/archive/image/foo
-  - /assets/archive/video/foo ~/Downloads/temp/archive/video/foo
----
-</code></pre></div>    </div>
-
-    <p><code class="language-plaintext highlighter-rouge">symlink_external_assets.rb</code>:</p>
-
-    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'fileutils'</span>
+{% include gallery %}</code></pre></div> </div>  </li> <li>
+<p>The symlinks created this way are cleared every time the site is re-built. To make them persist we can write a plugin <code>_plugins/symlink_external_assets.rb</code> to create them automatically according to the following front matter of a post: </p>
+<div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">symlinks</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">/assets/archive/image/foo ~/Downloads/temp/archive/image/foo</span>
+  <span class="pi">-</span> <span class="s">/assets/archive/video/foo ~/Downloads/temp/archive/video/foo</span>
+<span class="nn">---</span></code></pre></div> </div>  <p><code>symlink_external_assets.rb</code>:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'fileutils'</span>
 <span class="nb">require</span> <span class="s1">'shellwords'</span>
 
 <span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_read</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
@@ -2642,106 +2614,30 @@ symlinks:
       <span class="k">end</span>
     <span class="k">end</span>
   <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
+<span class="k">end</span></code></pre></div> </div>  </li> </ol>
 <h2 id="method-3-serving-the-files-locally-with-a-web-server">Method 3: Serving the files locally with a web server</h2>
-
 <p>For example, you can serve the images locally with Python’s built-in web server:</p>
+<ol> <li>
+<p>Serve your image folder </p>
+<pre class="example">
+cd ~/Downloads/temp/archive/image/foo/
+python3 -m http.server 8123 --bind 127.0.0.1
+    </pre> <p>If you want the server to run in the background:</p> <pre class="example">
+nohup python3 -m http.server 8123 --bind 127.0.0.1 &gt;/tmp/imgserver.log 2&gt;&amp;1 &amp;
+    </pre> <p>To stop it later:</p> <pre class="example">
+lsof -iTCP:8123 -sTCP:LISTEN
+kill &lt;PID&gt;
+    </pre> </li> <li>
+<p>Use that URL in your post </p>
+<pre class="example">
+![](http://127.0.0.1:8123/foo/20260218184820.png)
+    </pre> </li> </ol>
+<p>You can serve from the directory <code>~/Downloads/temp/archive/image/foo/</code> but use a different mount path in the URL to refer to that directory, e.g., http://localhost:8123/igps/20260218184820.png. To achieve this we can write and run this python script:</p>
 
-<ol>
-  <li>
-    <p>Serve your image folder</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
-python3 <span class="nt">-m</span> http.server 8123 <span class="nt">--bind</span> 127.0.0.1
-</code></pre></div>    </div>
-
-    <p>If you want the server to run in the background:</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup </span>python3 <span class="nt">-m</span> http.server 8123 <span class="nt">--bind</span> 127.0.0.1 <span class="o">&gt;</span>/tmp/imgserver.log 2&gt;&amp;1 &amp;
-</code></pre></div>    </div>
-
-    <p>To stop it later:</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsof <span class="nt">-iTCP</span>:8123 <span class="nt">-sTCP</span>:LISTEN
-<span class="nb">kill</span> &lt;PID&gt;
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Use that URL in your post</p>
-
-    <pre><code class="language-example">![](http://127.0.0.1:8123/foo/20260218184820.png)
-</code></pre>
-  </li>
-</ol>
-
-<p>You can serve from the directory <code class="language-plaintext highlighter-rouge">~/Downloads/temp/archive/image/foo/</code> but use a
-different mount path in the URL to refer to that directory, e.g.,
-<a href="http://localhost:8123/igps/20260218184820.png">http://localhost:8123/igps/20260218184820.png</a>. To achieve this we can write
-and run this python script:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
-python3 server.py
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">server.py</code>:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
-</span><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="n">ThreadingHTTPServer</span><span class="p">,</span> <span class="n">SimpleHTTPRequestHandler</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="c1"># Directory you want to expose
-</span><span class="n">ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s">"~/Downloads/temp/archive/image/foo"</span><span class="p">)).</span><span class="n">resolve</span><span class="p">()</span>
-
-<span class="n">MOUNT</span> <span class="o">=</span> <span class="s">"/igps/"</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">"127.0.0.1"</span>
-<span class="n">PORT</span> <span class="o">=</span> <span class="mi">8123</span>
-
-
-<span class="k">class</span> <span class="nc">MountHandler</span><span class="p">(</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">translate_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="s">"""
-        Map URLs under /igps/... to files under ROOT/...
-        Reject everything else with a 404.
-        """</span>
-        <span class="c1"># Strip query/fragment
-</span>        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"?"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">split</span><span class="p">(</span><span class="s">"#"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">MOUNT</span><span class="p">):</span>
-            <span class="c1"># Send 404 for non-mounted paths
-</span>            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s">"__nonexistent__"</span><span class="p">)</span>
-
-        <span class="n">rel</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">MOUNT</span><span class="p">):]</span>  <span class="c1"># e.g. "20260218184820.png"
-</span>        <span class="c1"># Normalize and prevent path traversal
-</span>        <span class="n">rel_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">rel</span><span class="p">)</span>
-        <span class="n">full</span> <span class="o">=</span> <span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="n">rel_path</span><span class="p">).</span><span class="n">resolve</span><span class="p">()</span>
-
-        <span class="k">if</span> <span class="n">ROOT</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">full</span><span class="p">.</span><span class="n">parents</span> <span class="ow">and</span> <span class="n">full</span> <span class="o">!=</span> <span class="n">ROOT</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROOT</span> <span class="o">/</span> <span class="s">"__nonexistent__"</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">full</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">log_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="c1"># optional: quieter logs
-</span>        <span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"%s - - [%s] %s</span><span class="se">\n</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">client_address</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                              <span class="bp">self</span><span class="p">.</span><span class="n">log_date_time_string</span><span class="p">(),</span>
-                                              <span class="n">fmt</span> <span class="o">%</span> <span class="n">args</span><span class="p">))</span>
-
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ROOT</span><span class="p">.</span><span class="n">exists</span><span class="p">():</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"ERROR: directory does not exist: </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s">"</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="n">sys</span><span class="p">.</span><span class="n">stderr</span><span class="p">)</span>
-        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">httpd</span> <span class="o">=</span> <span class="n">ThreadingHTTPServer</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">MountHandler</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Serving </span><span class="si">{</span><span class="n">ROOT</span><span class="si">}</span><span class="s"> at http://</span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}{</span><span class="n">MOUNT</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-    <span class="n">httpd</span><span class="p">.</span><span class="n">serve_forever</span><span class="p">()</span>
-</code></pre></div></div>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.]]></summary></entry><entry><title type="html">Executing SQL Source Code Blocks in Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/org-sqls/" rel="alternate" type="text/html" title="Executing SQL Source Code Blocks in Org Mode" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/org-sqls</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/org-sqls/"><![CDATA[<p>You can execute SQL source code blocks in Org Mode.</p>
+            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
+python3 server.py</code></pre></div> </div>
+          
+<p>See also: <a href="/blog/_demo/server.py">server.py</a></p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.]]></summary></entry><entry><title type="html">Executing SQL Source Code Blocks in Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/org-sqls/" rel="alternate" type="text/html" title="Executing SQL Source Code Blocks in Org Mode" /><published>2026-02-17T00:00:00+00:00</published><updated>2026-02-17T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/org-sqls</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/org-sqls/"><![CDATA[<p>You can execute SQL source code blocks in Org Mode.</p>
 
 <h2 id="using-built-in-package-ob-sql">Using built-in package <code class="language-plaintext highlighter-rouge">ob-sql</code></h2>
 
