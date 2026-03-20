@@ -558,7 +558,7 @@ descriptor + subject + taxonomic rank
 オにあるマカオ理|工|大|学（り|こう|だい|がく）を4年|制（ねん|せい）の学|士（が
 く|し）課|程（か|てい）で卒業（そつ|ぎょう）しました。</code></pre></div> </div>
           
-<p><ruby>本<rt>ほん</rt>日<rt>じつ</rt></ruby>はお<ruby>時<rt>じ</rt>間<rt>かん</rt></ruby>をいただき、ありがとうございます。私はマカオにあるマカオ<ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby>を4<ruby>年<rt>ねん</rt>制<rt>せい</rt></ruby>の<ruby>学<rt>がく</rt>士<rt>し</rt></ruby><ruby>課<rt>か</rt>程<rt>てい</rt></ruby>で<ruby>卒業<rt>そつぎょう</rt></ruby>しました。</p>
+<p>本|日（ほん|じつ）はお時|間（じ|かん）をいただき、ありがとうございます。私はマカオにあるマカオ理|工|大|学（り|こう|だい|がく）を4年|制（ねん|せい）の学|士（がく|し）課|程（か|てい）で卒業（そつ|ぎょう）しました。</p>
 <h1 id="configurations">Configurations</h1>
 <h2 id="configurations-basic-converter">Basic Converter</h2>
 <p>Here’s how I did the configurations.</p>
@@ -1161,7 +1161,21 @@ Output:
 理|工|大|学（り
 |こう|だい|がく）</code></pre></div> </div>
           
-<p><ruby>本日<rt>ほんじつ</rt></ruby> <ruby>本<rt>ほん</rt>日<rt>じつ</rt></ruby> <ruby>理工大学<rt>りこうだいがく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby> <ruby>理<rt>り</rt>工<rt>こう</rt>大<rt>だい</rt>学<rt>がく</rt></ruby></p>
+<p><ruby>本日<rt>ほんじつ</rt></ruby>本|日（ほん|じつ）<ruby>理工大学<rt>りこうだいがく</rt></ruby>理|工| 大|学（り|こう|だい|がく）理|工|大</p>
+<table>  <tbody><tr>
+<td>学（り</td>
+<td>こう</td>
+<td>だい</td>
+<td>がく）</td>
+</tr></tbody>
+</table>
+<p>理|工|大|学（り| こう|だい|がく）理|工|大|学（り</p>
+<table>  <tbody><tr>
+<td>こう</td>
+<td>だい</td>
+<td>がく）</td>
+</tr></tbody>
+</table>
 <p>Changes:</p>
 
             <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>git diff 1cb2b19..204e959 <span class="nt">--</span> _plugins/org_converter.rb</code></pre></div> </div>
