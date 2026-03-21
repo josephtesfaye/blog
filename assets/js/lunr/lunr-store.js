@@ -281,6 +281,12 @@ var store = [{
         "url": "/blog/web/interview/",
         "teaser": null
       },{
+        "title": "Meeting with Otanarisan",
+        "excerpt":"I’m going to meet with a Japanese friend tomorrow for the first time and we’re going to have lunch and see Sakura together.  What to say when you just see him at the appointed place?    〇〇さん！こんにちは。はじめまして！   〇〇-san! Hello. Nice to meet you (in person)!    今日はお会いできて嬉しいです。よろしくお願いします！   I’m happy to meet you today. Looking forward to it!    本当にいいお天気になりましたね！絶好（ぜっこう）のお花見日和（びより）で良かったです。   It really turned out to be great weather! I’m glad it’s a perfect day for cherry blossom viewing.    お待たせしました！   Sorry to keep you waiting!     A: コウです。追加（ついか）しました！よろしくお願いします。今日はありがとうございました！ B: コウさん、ご連絡いただきありがとうございます！浦中（うらなか）です。こちらこそありがとうございました！ペア成立（せいりつ）嬉（うれ）しいです😃 A: ありがとうございます！私も嬉しいです☺️ B: おはようございます！これからよろしくお願いします😊 今朝、トレーニングに行ってきました🏃‍♂️  A: おはようございます！😊 朝からトレーニング、すごいですね！尊｜敬（そん｜けい）します✨   トレーニングはいつも朝に行っているんですか？  私はいつも起（お）きるのがかなり遅（おそ）くて、ちょうど朝ごはんを食べ終わったところです。早｜起（はや｜お）きできるなんて、本当にすごいですね（尊敬します！）。早起きしたい気持ちはあるんですが、私にはなかなか難しくて（笑）。    B: ありがとうございます！私は早起きして、いつも朝にトレーニングに行ってます！仕事が終わった後のトレーニングは疲れるので朝に行ってます😄   コウさんは夜遅くまで起きてるんですか？    ","categories": ["Dairy"],
+        "tags": ["Japanese"],
+        "url": "/blog/dairy/otonarisan/",
+        "teaser": null
+      },{
         "title": "MetaCore",
         "excerpt":"Metacore is a lightweight, configurable core platform for building no/low-code applications that run offline or in the cloud. Users create complete apps—data schemas, tables, pages, search, filters, and pagination—through declarative configuration, without traditional coding. It serves as a foundation for personal or internal CMS-style systems to manage collections (books, films, albums) and productivity data (goals, schedules, tasks) using a single unified runtime.  ","categories": [],
         "tags": [],
