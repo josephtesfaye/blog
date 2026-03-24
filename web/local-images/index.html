@@ -328,7 +328,7 @@
 
 <span class="p">![</span><span class="nv">alt</span><span class="p">](</span><span class="sx">{{</span> site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
 
-<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"{{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nv">&lt;img src="{{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg" alt=""&gt;</span>
 
 {% include gallery %}</code></pre></div> </div>
           
@@ -338,9 +338,9 @@
 <p>Create a symlink to the target data inside the site root. Say, if the local images reside in <code>~/Downloads/temp/archive/image/foo/</code> you can create a symlink to it under <code>&lt;project-root&gt;/_site/assets/archive/image/foo</code>: </p>
 <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;project-root&gt;/_site/
 <span class="nb">mkdir</span> <span class="nt">-p</span> assets/archive/image/
-<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span></code></pre></div> </div>  </li> <li>
-<p>Then you can refer to the images using the symlink like the following: </p>
-<div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span></code></pre></div> </div>  </li> <li>Then you can refer to the images using the symlink like the following:</li> </ol>
+
+            <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">gallery</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
     <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
@@ -350,7 +350,9 @@
 
 <span class="p">![](</span><span class="sx">{{site.url}}{{site.baseurl}}/assets/archive/image/foo/20260218184820.png</span><span class="p">)</span>
 
-{% include gallery %}</code></pre></div> </div>  </li> <li>
+{% include gallery %}</code></pre></div> </div>
+          
+<ol> <li>
 <p>The symlinks created this way are cleared every time the site is re-built. To make them persist we can write a plugin <code>_plugins/symlink_external_assets.rb</code> to create them automatically according to the following front matter of a post: </p>
 <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">symlinks</span><span class="pi">:</span>
@@ -555,6 +557,54 @@ python3 server.py</code></pre></div> </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/blog/diary/residence-card/" rel="permalink">领到技人国在留卡了
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-24T00:00:00+00:00">March 24, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/blog/dairy/otonarisan/" rel="permalink">Meeting with Otanarisan
 </a>
       
@@ -684,54 +734,6 @@ python3 server.py</code></pre></div> </div>
 
 
     <p class="archive__item-excerpt" itemprop="description">Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I ...</p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/web/minimal-mistakes-plus/" rel="permalink">Minimal Mistakes Plus
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2026-03-01T00:00:00+00:00">March 1, 2026</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          54 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-</p>
   </article>
 </div>
 

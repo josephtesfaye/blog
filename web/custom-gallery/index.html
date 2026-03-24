@@ -307,20 +307,24 @@
       <section class="page__content" itemprop="text">
         
         <p>Here are the customizations I’ve made to the <a href="https://mmistakes.github.io/minimal-mistakes/post%20formats/post-gallery/">gallery</a> feature of Minimal Mistakes:</p>
+<ol> <li>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery such as:</li> </ol>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div> </div>
+          
+<p>The image size should be adjusted automatically.</p>
 <ol> <li>
-<p>Add a <code>columns</code> parameter to each gallery to control the columns of a gallery such as: </p>
-<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>{% include gallery columns=6 %}</code></pre></div> </div>  <p>The image size should be adjusted automatically.</p> </li> <li>
 <p>Support adding images to a gallery by only using the <code>image_path</code> parameter or the URL in the front matter such as: </p>
 <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>gallery:
   - image_path: /assets/archive/image/foo/unsplash-gallery-image-1.jpg
   - /assets/archive/image/foo/unsplash-gallery-image-1.jpg
-  - /assets/archive/image/foo/unsplash-gallery-image-1.jpg</code></pre></div> </div>  <p>The gallery originally requires both <code>url</code> and <code>image_path</code> in order to have a pop-up view of the images. But I think it’s more convenient to write in this way. But you can still use both.</p> </li> <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li> <li>
-<p>Support Liquid links in the image title, e.g., </p>
-<div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
+  - /assets/archive/image/foo/unsplash-gallery-image-1.jpg</code></pre></div> </div>  <p>The gallery originally requires both <code>url</code> and <code>image_path</code> in order to have a pop-up view of the images. But I think it’s more convenient to write in this way. But you can still use both.</p> </li> <li>Use <code>alt</code> for <code>title</code> if <code>title</code> is unspecified.</li> <li>Support Liquid links in the image title, e.g.,</li> </ol>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>---
 gallery:
   - image_path: https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg
-    title: "Prompt: [[{{ site.baseurl }}{% post_url 2026-02-19-local-images %}][Local images]]"
----</code></pre></div> </div>  </li> </ol>
+    title: "Prompt: [Local images]({{ site.baseurl }}{% post_url 2026-02-19-local-images %})"
+---</code></pre></div> </div>
+          
 <p>All of these customizations are backward-compatible, that is, you can still write a gallery in the original way to get the original feel.</p>
 <p>Here’s a demo gallery with the above customizations:</p>
 
@@ -331,7 +335,7 @@ gallery:
   - image_path: foo:unsplash-gallery-image-1.jpg
     alt: "Use alt for title"
   - image_path: foo:unsplash-gallery-image-1.jpg
-    title: "Link to post: [[{{ site.baseurl }}{% post_url 2026-02-19-local-images %}][Local images]]"
+    title: "Link to post: [Local images]({{ site.baseurl }}{% post_url 2026-02-19-local-images %})"
   - image_path: foo:unsplash-gallery-image-1.jpg
   - image_path: foo:unsplash-gallery-image-1.jpg
   - image_path: foo:unsplash-gallery-image-1.jpg
@@ -354,9 +358,9 @@ gallery:
 
 
 <p>Here are the steps to make the changes:</p>
-<ol> <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g. <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into your local <code>_includes</code> directory.</li> <li>
-<p>Apply these changes: </p>
-<div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
+<ol> <li>Copy the default gallery layout from the Minimal Mistakes gem (e.g. <code>~/.gem/ruby/3.1.3/gems/minimal-mistakes-jekyll-4.26.0/_includes/gallery</code>) into your local <code>_includes</code> directory.</li> <li>Apply these changes:</li> </ol>
+
+            <div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gh">diff -u minimal-mistakes/_includes/gallery josephs-blog/_includes/gallery
 </span><span class="gd">--- minimal-mistakes/_includes/gallery	2023-12-15 19:03:51
 </span><span class="gi">+++ josephs-blog/_includes/gallery	2026-03-01 23:18:56
 </span><span class="p">@@ -6,6 +6,8 @@</span>
@@ -422,7 +426,9 @@ gallery:
    {% endif %}
  &lt;/figure&gt;
 <span class="gi">+
-+{% endif %}</span></code></pre></div> </div>  </li> <li>
++{% endif %}</span></code></pre></div> </div>
+          
+<ol> <li>
 <p>Add these styles in your <code>assets/css/main.scss</code>: </p>
 <div class="language-css highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="o">//</span> <span class="nt">Enable</span> <span class="nt">more</span> <span class="nt">columns</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">gallery</span>
 <span class="nc">.page__content</span> <span class="nc">.custom-grid</span> <span class="p">{</span>
@@ -540,6 +546,54 @@ gallery:
   
   <h2 class="page__related-title">You May Also Enjoy</h2>
   <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/diary/residence-card/" rel="permalink">领到技人国在留卡了
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-24T00:00:00+00:00">March 24, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
     
       
       
@@ -680,54 +734,6 @@ gallery:
 
 
     <p class="archive__item-excerpt" itemprop="description">Currently Minimal Mistakes doesn’t support sticky Table of Contents for mobile display, even if you have set toc_sticky: true (see Table of contents). Now I ...</p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/web/minimal-mistakes-plus/" rel="permalink">Minimal Mistakes Plus
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2026-03-01T00:00:00+00:00">March 1, 2026</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          54 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
-</p>
   </article>
 </div>
 
