@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-24T15:05:22+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">领到技人国在留卡了</title><link href="https://josephtesfaye.com/blog/diary/residence-card/" rel="alternate" type="text/html" title="领到技人国在留卡了" /><published>2026-03-24T00:00:00+00:00</published><updated>2026-03-24T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/diary/residence-card</id><content type="html" xml:base="https://josephtesfaye.com/blog/diary/residence-card/"><![CDATA[<p>今天领到新的在留卡了，从留学变更为技人国，从提交申请到领取，历时40天。回到家后申请了三井住友（SMBC）和SBI证券的开户。此文记录一下相关的详细过程。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-28T13:44:47+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Editing Tables in Emacs and Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/tables-in-org/" rel="alternate" type="text/html" title="Editing Tables in Emacs and Org Mode" /><published>2026-03-28T00:00:00+00:00</published><updated>2026-03-28T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/tables-in-org</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/tables-in-org/"><![CDATA[<h1 id="emacs-text-based-tables">Emacs Text-based Tables</h1>
+<p>Emacs has a built-in library called <code>table.el</code> (see <code>info:emacs#Text Based
+  Tables</code> for more details).</p>
+<h2 id="creating-a-table">Creating a Table</h2>
+<p>To create a text-based table from scratch, type <code>M-x table-insert</code>. This command prompts for the number of table columns, the number of table rows, cell width and cell height.</p>
+<p>For example, <code>M-x table-insert 3 RET 3 RET 5 RET 1 RET</code> creates a table which has 3 columns and 3 rows, and every column is 5-characters wide and every row is 1-character high.</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>+-----+-----+-----+
+|     |     |     |
++-----+-----+-----+
+|     |     |     |
++-----+-----+-----+
+|     |     |     |
++-----+-----+-----+</code></pre></div> </div>
+          
+<p>And <code>M-x table-insert 3 RET 3 RET 4 8 12 RET 1 2 3 RET</code> creates a table which has 3 columns and 3 rows, and the columns are 4, 8, 12-character wide respectively and the rows are 1, 2, 3-character high respectively.</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>+----+--------+------------+
+|    |        |            |
++----+--------+------------+
+|    |        |            |
+|    |        |            |
++----+--------+------------+
+|    |        |            |
+|    |        |            |
+|    |        |            |
++----+--------+------------+</code></pre></div> </div>
+          
+<h2 id="editing-a-table">Editing a Table</h2>
+<p>The table inserted by <code>M-x table-insert</code> contains special text properties, which tell Emacs to treat it specially as a text-based table. If you save the buffer to a file and visit it again later, those properties are lost, and the table appears to Emacs as an ordinary piece of text.</p>
+<p>To apply those text properties to all tables (i.e., convert them back into a recognized tables), type <code>M-x table-recognize</code>, to discard them, type <code>M-x
+  table-unrecognize</code>.</p>
+<p>You can also use the following commands to selectively recognize or unrecognize tables:</p>
+<ul> <li>in the current region: <code>table-recognize-region</code>, <code>table-unrecognize-region</code>
+</li> <li>at point: <code>table-recognize-table</code>, <code>table-unrecognize-table</code>
+</li> <li>only the cell at point: <code>table-recognize-cell</code>, <code>table-unrecognize-table</code>
+</li> </ul>
+<p>You can use the following commands to edit the cells. The key-bindings are activated only when the table is recognized.</p>
+<ul> <li>Move point to the next/previous cell: <code>table-forward-cell</code> (<code>TAB</code>), <code>table-backward-cell</code> (<code>S-TAB</code>)</li> <li>
+<p>Insert </p>
+<ul> <li>one or more rows before the current row: <code>table-insert-row</code>
+</li> <li>one or more columns before the current column: <code>table-insert-column</code>
+</li> <li>one or more columns or rows: <code>table-insert-row-column</code> (<code>C-c C-c +</code>)</li> </ul> </li> <li>
+<p>Delete </p>
+<ul> <li>one or more rows: <code>table-delete-row</code>
+</li> <li>one or more columns: <code>table-delete-column</code>
+</li> </ul> </li> <li>
+<p>Enlarge/Shrink the current cell </p>
+<ul> <li>vertically: <code>table-heighten-cell</code> (<code>C-c C-c }</code>), <code>table-shorten-cell</code> (<code>C-c C-c {</code>)</li> <li>horizontally: <code>table-widen-cell</code> (<code>C-c C-c &gt;</code>), <code>table-narrow-cell</code> (<code>C-c C-c &lt;</code>)</li> </ul> </li> </ul>
+<p><b>column- and row-spanning</b></p>
+<ul> <li>Merge the current cell with the adjacent cell: <code>table-span-cell</code> (<code>C-c C-c *</code>)</li> <li>
+<p>Split the current cell </p>
+<ul> <li>vertically: <code>table-split-cell-vertically</code> (<code>C-c C-c -</code>)</li> <li>horizontally: <code>table-split-cell-horizontally</code> (<code>C-c C-c |</code>)</li> <li>vertically or horizontally: <code>table-split-cell</code>
+</li> </ul> </li> </ul>
+<p><b>Alignment</b></p>
+<ul> <li>Justify cell, column, or row: <code>table-justify</code> (<code>C-c C-c :</code>)</li> </ul>
+<p><b>Automatic Line Wrapping</b></p>
+<p>The built-in tables support automatic line wrapping in a cell as you type. The lines are treated as one cell and are preserved when exported to other formats such as HTML.</p>
+<p><b>Other</b></p>
+<ul> <li>Traverse the cells and insert an incremental sequence into each cell: <code>table-insert-sequence</code>
+</li> <li>Report the layout of the table and table cell at point: <code>table-query-dimension</code> (<code>C-c C-c #</code>)</li> <li>Generate a table of a specific format: <code>table-generate-source</code> (<code>C-^</code>)</li> </ul>
+<h2 id="converting-between-plain-text-and-tables">Converting Between Plain Text and Tables</h2>
+<p>The command <code>M-x table-capture</code> captures plain text in a region and turns it into a table.</p>
+<p>For example, suppose we have the following numbers, which are divided into three lines and separated horizontally by commas:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>1, 2, 3, 4
+5, 6, 7, 8
+, 9, 10</code></pre></div> </div>
+          
+<p>Invoking <code>M-x table-capture , RET $ RET RET 5</code> on that text produces this table:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>+-----+-----+-----+-----+
+|1    |2    |3    |4    |
++-----+-----+-----+-----+
+|5    |6    |7    |8    |
++-----+-----+-----+-----+
+|     |9    |10   |     |
++-----+-----+-----+-----+</code></pre></div> </div>
+          
+<p><code>M-x table-release</code> does the opposite: it converts a table back to plain text, removing its cell borders.</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>1     2     3     4
+
+5     6     7     8
+
+      9     10</code></pre></div> </div>
+          
+<h1 id="org-mode-tables">Org Mode Tables</h1>
+<p>Org comes with a fast and intuitive table editor.</p>
+<h2 id="creating-a-table-1">Creating a Table</h2>
+<p>Org treats any line with <code>|</code> as the first non-whitespace character as part of a table. <code>|</code> is also the column separator. Moreover, a line starting with <code>|-</code> is a horizontal rule. It separates rows explicitly. Rows before the first horizontal rule are header lines.</p>
+<p>To create a table of 3 columns you simply type <code>||||</code> and then press <code>TAB</code> or <code>C-c RET</code> (<code>org-ctrl-c-ret</code>):</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>|   |   |   |
+|   |   |   |</code></pre></div> </div>
+          
+<p>To create a table of 3 columns with a horizontal rule type:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>||||
+|-</code></pre></div> </div>
+          
+<p>and then press <code>TAB</code>, which gives you:</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>|   |   |   |
+|---+---+---|
+|   |   |   |</code></pre></div> </div>
+          
+<p>A table is re-aligned automatically each time you press <code>&lt;TAB&gt;</code>, <code>&lt;RET&gt;</code> or <code>C-c
+  C-c</code> inside the table.</p>
+<p>Using the command <code>org-table-create-or-convert-from-region</code> (<code>C-c |</code>):</p>
+<p>It converts an active region to table. If every line contains at least one <code>&lt;TAB&gt;</code> character, the function assumes that the material is tab separated. If every line contains a comma, comma-separated values (CSV) are assumed. If not, lines are split at whitespace into fields.</p>
+<p>You can use a prefix argument to force a specific separator: <code>C-u</code> forces CSV, <code>C-u C-u</code> forces <code>&lt;TAB&gt;</code>, <code>C-u C-u C-u</code> prompts for a regular expression to match the separator, and a numeric argument <code>N</code> indicates that at least N consecutive spaces, or alternatively a <code>&lt;TAB&gt;</code> will be the separator.</p>
+<p>If there is no active region, it creates an empty Org table.</p>
+<h2 id="editing-a-table-1">Editing a Table</h2>
+<ul> <li>
+<p>Move point to the next/previous cell: <code>org-cycle</code> (<code>TAB</code>), <code>org-shifttab</code> (<code>S-TAB</code>) </p>
+<p>This meanwhile re-aligns the table and creates a new row if in the last cell.</p> </li> <li>Move point to the end or beginning of the cell content: <code>org-forward-sentence</code> (<code>M-e</code>), <code>org-backward-sentence</code> (<code>M-a</code>)</li> <li>Move the current column right or left: <code>org-metaright</code> (<code>&lt;M-right&gt;</code>), <code>org-metaleft</code> (<code>&lt;M-left&gt;</code>)</li> <li>Move the current row up or down: <code>org-metaup</code> (<code>&lt;M-up&gt;</code>), <code>org-metadown</code> (<code>&lt;M-down&gt;</code>)</li> <li>Re-align the table: <code>org-cycle</code> (<code>TAB</code>), <code>org-ctrl-c-ctrl-c</code> (<code>C-c C-c</code>)</li> <li>
+<p>Insert a horizontal rule </p>
+<ul> <li>below the current row: <code>org-ctrl-c-minus</code> (<code>C-c -</code>), <code>org-ctrl-c-ret</code> (<code>C-c RET</code>)</li> <li>above the current row: <code>org-ctrl-c-minus</code> (<code>C-u C-c -</code>)</li> </ul> </li> <li>
+<p>Insert </p>
+<ul> <li>a row above the current row:  <code>org-open-line</code> (<code>C-o</code>), <code>org-shiftmetadown</code> (<code>&lt;M-S-down&gt;</code>)</li> <li>a column to the left: <code>org-shiftmetaright</code> (<code>&lt;M-S-right&gt;</code>)</li> </ul> </li> <li>
+<p>Go to the next row of the current column: <code>org-return-indent</code> (<code>C-j</code>) </p>
+<p>It inserts a new row if point is at the last row.</p> </li> <li>Copy the current cell content to the cell below: <code>org-table-copy-down</code> (<code>S-RET</code>)</li> <li>
+<p>Edit cell in a temporary buffer: <code>org-table-edit-field</code> (<code>C-c `</code>) </p>
+<ul> <li>To exit: <code>org-ctrl-c-ctrl-c</code> (<code>C-c C-c</code>)</li> </ul> </li> <li>Clear cell: <code>org-table-blank-field</code> (<code>C-c SPC</code>)</li> <li>
+<p>Delete </p>
+<ul> <li>the current row: <code>org-shiftmetaup</code> (<code>&lt;M-S-up&gt;</code>)</li> <li>the current column: <code>org-shiftmetaleft</code> (<code>&lt;M-S-left&gt;</code>)</li> </ul> </li> <li>Sort the table: <code>org-sort</code> (<code>C-c ^</code>)</li> <li>Toggle column width: <code>org-ctrl-c-tab</code> (<code>C-c TAB</code>)</li> <li>Format table according to column widths: <code>org-table-shrink</code> (<code>C-u C-c TAB</code>)</li> <li>Show field info: <code>org-table-field-info</code> (<code>C-c ?</code>)</li> <li>Toggle the display of Row/Column numbers in tables: <code>org-table-toggle-coordinate-overlays</code> (<code>C-c }</code>)</li> </ul>
+<p><b>Automatic Line Wrapping</b></p>
+<p>Currently there’s no automatic line wrapping in Org tables. But there’s the command <code>org-table-wrap-region</code> to manually wrap the contents in a cell.</p>
+<ul> <li>
+<p>Wrap the line at point to the next row: <code>org-meta-return</code> (<code>M-RET</code>) </p>
+<p>This calls <code>org-table-wrap-region</code> when in a table cell.</p> </li> <li>
+<p>Append the line to the previous row (unwrap): <code>org-ctrl-return</code> (<code>C-RET</code>) </p>
+<p>This is a custom command:</p>  <div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">org-ctrl-return</span> <span class="p">(</span><span class="k">&amp;optional</span> <span class="nv">arg</span><span class="p">)</span>
+  <span class="s">"Insert a new heading or unwrap a region in a table. Calls
+`org-insert-heading-respect-content', or `org-table-wrap-region' (with ARG),
+depending on context."</span>
+
+  <span class="p">(</span><span class="nv">interactive</span> <span class="s">"P"</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">org-fold-check-before-invisible-edit</span> <span class="ss">'insert</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">or</span> <span class="p">(</span><span class="nv">run-hook-with-args-until-success</span> <span class="ss">'org-ctrl-return-hook</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">cond</span> <span class="p">((</span><span class="nv">org-at-table-p</span><span class="p">)</span> <span class="p">(</span><span class="nb">funcall</span> <span class="nf">#'</span><span class="nv">org-table-wrap-region</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="p">(</span><span class="no">t</span> <span class="p">(</span><span class="nv">call-interactively</span> <span class="nf">#'</span><span class="nv">org-insert-heading-respect-content</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="nv">define-key</span> <span class="nv">org-mode-map</span> <span class="p">(</span><span class="nv">kbd</span> <span class="s">"C-&lt;return&gt;"</span><span class="p">)</span> <span class="ss">'org-ctrl-return</span><span class="p">)</span></code></pre></div> </div>  </li> </ul>
+<h2 id="working-with-built-in-tables">Working with Built-in Tables</h2>
+<p>Complex ASCII tables with automatic line wrapping, column- and row-spanning, and alignment can be created using the Emacs <code>table.el</code> package by Takaaki Ota. Org mode recognizes such tables and exports them properly. =C-c ‘= to edit these tables in a special buffer, much like Org’s code blocks. Because of interference with other Org mode functionality, Takaaki Ota tables cannot be edited directly in the Org buffer.</p>
+<ul> <li>
+<p>=C-c ‘= (<code>org-edit-special</code>) </p>
+<p>Edit a <code>table.el</code> table. Works when point is in a <code>table.el</code> table.</p> </li> <li>
+<p><code>C-c ~</code> (<code>org-table-create-with-table.el</code>) </p>
+<p>Insert a <code>table.el</code> table. If there is already a table at point, this command converts it between the <code>table.el</code> format and the Org mode format. See the documentation string of the command <code>org-convert-table</code> for the restrictions under which this is possible.</p> </li> </ul>
+<p>See <a href="info:org#Cooperation">info “(org) Cooperation”</a>.</p>
+<h1 id="complex-tables-in-minimal-mistakes-plus">Complex Tables in Minimal Mistakes Plus</h1>
+<p>While simple Org Mode tables can be parsed by <code>org-ruby</code> some advanced table features aren’t supported, and so we need to implement them on our own.</p>
+<p>Check this <a href="https://josephtesfaye.com/minimal-mistakes-plus/docs/dev/org-mode/#complex-tables">documentation</a> for more details.</p>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Org Mode" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Emacs Text-based Tables]]></summary></entry><entry><title type="html">领到技人国在留卡了</title><link href="https://josephtesfaye.com/blog/diary/residence-card/" rel="alternate" type="text/html" title="领到技人国在留卡了" /><published>2026-03-24T00:00:00+00:00</published><updated>2026-03-24T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/diary/residence-card</id><content type="html" xml:base="https://josephtesfaye.com/blog/diary/residence-card/"><![CDATA[<p>今天领到新的在留卡了，从留学变更为技人国，从提交申请到领取，历时40天。回到家后申请了三井住友（SMBC）和SBI证券的开户。此文记录一下相关的详细过程。</p>
 <h1 id="section">在留資格変更：留学→技人国</h1>
 <p>先说说从留学转为技人国的过程，既申请 <b>在留资格变更</b> 的过程。</p>
 <p>时间线：</p>
@@ -2585,147 +2740,4 @@ alt="" caption="A figure" %}
 <p>This affects the default GitHub Pages build. The classic GitHub Pages build environment strictly enforces safe mode and ignores all files in the <code>_plugins</code> directory. If you push the site using the default settings, it will still host successfully, but your custom plugin will not run and the link abbreviations will remain unparsed.</p>
 <p>To use custom plugins while hosting on GitHub Pages, you must switch your deployment method to GitHub Actions. This modern approach uses your exact Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub Pages.</p>
 <ol> <li>Go to your repository on GitHub.</li> <li>Click on Settings, then select Pages from the left sidebar.</li> <li>Under Build and deployment, change the Source from “Deploy from a branch” to “GitHub Actions”.</li> <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li> <li>Commit the provided <code>.github/workflows/jekyll.yml</code> file to your repository.</li> </ol>
-<p>With this workflow active, GitHub will read your updated Gemfile, run the <code>link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry><entry><title type="html">Loading Local Images in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/local-images/" rel="alternate" type="text/html" title="Loading Local Images in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-02-19T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/local-images</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/local-images/"><![CDATA[<p>I want to be able to load local images when the site is served locally. However, the URL format <code>file:///Users/&lt;username&gt;/archive/image/20260218184820.png</code> doesn’t work.</p>
-<h2 id="why-img-srcfileusers-wont-load">Why <code>&lt;img src="file:///Users/..."&gt;</code> won’t load?</h2>
-<p>Your page is being served over HTTP (e.g. http://localhost:4000). Modern browsers block pages from <code>http(s)://…</code> from loading local files via <code>file://…</code> for security (“cross-origin” / local file access). So even though the HTML is “correctly parsed”, the browser refuses to fetch it.</p>
-<p>That means: a <code>file://</code> URL will not work on a website (local dev server or deployed site). It only works when the page itself is also opened via <code>file://</code> (and even then, policies vary).</p>
-<h2 id="method-1-copying-files-to-project-assets">Method 1: Copying files to project assets</h2>
-<p>The simplest method is to copy the images to <code>&lt;project-root&gt;/assets/images/</code> and then refer to them using the standard syntax:</p>
-
-            <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">gallery</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/images/20260218184820.png</span>
-    <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/images/20260218184820.png</span>
-<span class="nn">---</span>
-
-<span class="p">![</span><span class="nv">alt</span><span class="p">](</span><span class="sx">{{</span> site.url }}{{ site.baseurl }}/assets/images/filename.jpg)
-
-<span class="nv">&lt;img src="{{ site.url }}{{ site.baseurl }}/assets/images/filename.jpg" alt=""&gt;</span>
-
-{% include gallery %}</code></pre></div> </div>
-          
-<p>However, this has the overhead of managing files manually, which can be tedious. The following methods give you better experience.</p>
-<h2 id="method-2-using-symlinks">Method 2: Using symlinks</h2>
-<ol> <li>
-<p>Create a symlink to the target data inside the site root. Say, if the local images reside in <code>~/Downloads/temp/archive/image/foo/</code> you can create a symlink to it under <code>&lt;project-root&gt;/_site/assets/archive/image/foo</code>: </p>
-<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;project-root&gt;/_site/
-<span class="nb">mkdir</span> <span class="nt">-p</span> assets/archive/image/
-<span class="nb">ln</span> <span class="nt">-s</span> <span class="s2">"~/Downloads/temp/archive/image/foo"</span> <span class="s2">"assets/archive/image/foo"</span></code></pre></div> </div>  </li> <li>Then you can refer to the images using the symlink like the following:</li> </ol>
-
-            <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">gallery</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
-    <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
-  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
-    <span class="na">image_path</span><span class="pi">:</span> <span class="s">/assets/archive/image/foo/20260218184820.png</span>
-<span class="nn">---</span>
-
-<span class="p">![](</span><span class="sx">{{site.url}}{{site.baseurl}}/assets/archive/image/foo/20260218184820.png</span><span class="p">)</span>
-
-{% include gallery %}</code></pre></div> </div>
-          
-<ol> <li>
-<p>The symlinks created this way are cleared every time the site is re-built. To make them persist we can write a plugin <code>_plugins/symlink_external_assets.rb</code> to create them automatically according to the following front matter of a post: </p>
-<div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">symlinks</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">/assets/archive/image/foo ~/Downloads/temp/archive/image/foo</span>
-  <span class="pi">-</span> <span class="s">/assets/archive/video/foo ~/Downloads/temp/archive/video/foo</span>
-<span class="nn">---</span></code></pre></div> </div>  <p><code>symlink_external_assets.rb</code>:</p>  <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'fileutils'</span>
-<span class="nb">require</span> <span class="s1">'shellwords'</span>
-
-<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_read</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
-  <span class="k">return</span> <span class="k">if</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">env</span> <span class="o">==</span> <span class="s1">'production'</span>
-
-  <span class="c1"># Store the intended symlinks so we can recreate them in the _site folder later</span>
-  <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">]</span> <span class="o">||=</span> <span class="p">{}</span>
-
-  <span class="n">docs</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">pages</span> <span class="o">+</span> <span class="n">site</span><span class="p">.</span><span class="nf">collections</span><span class="p">.</span><span class="nf">values</span><span class="p">.</span><span class="nf">flat_map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:docs</span><span class="p">)</span>
-  <span class="n">docs</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
-    <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'symlinks'</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
-
-    <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'symlinks'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">symlink_def</span><span class="o">|</span>
-      <span class="k">next</span> <span class="k">unless</span> <span class="n">symlink_def</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">String</span><span class="p">)</span>
-
-      <span class="n">parts</span> <span class="o">=</span> <span class="no">Shellwords</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="n">symlink_def</span><span class="p">)</span>
-      <span class="k">next</span> <span class="k">unless</span> <span class="n">parts</span><span class="p">.</span><span class="nf">size</span> <span class="o">==</span> <span class="mi">2</span>
-
-      <span class="n">link_path_raw</span><span class="p">,</span> <span class="n">target_path_raw</span> <span class="o">=</span> <span class="n">parts</span>
-
-      <span class="n">target_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">target_path_raw</span><span class="p">)</span>
-      <span class="n">relative_link_path</span> <span class="o">=</span> <span class="n">link_path_raw</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">%r{^/}</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
-      <span class="n">link_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">site</span><span class="p">.</span><span class="nf">dest</span><span class="p">,</span> <span class="n">relative_link_path</span><span class="p">)</span>
-
-      <span class="c1"># Verify target exists</span>
-      <span class="k">unless</span> <span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">target_path</span><span class="p">)</span>
-        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin:"</span><span class="p">,</span> <span class="s2">"Skipped. Target does not exist: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">#{</span><span class="n">target_path</span><span class="si">}</span><span class="s2">"</span>
-        <span class="k">next</span>
-      <span class="k">end</span>
-
-      <span class="c1"># Save for the post_write phase</span>
-      <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">][</span><span class="n">relative_link_path</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="ss">target: </span><span class="n">target_path</span><span class="p">,</span>
-        <span class="ss">link: </span><span class="n">link_path</span>
-      <span class="p">}</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="c1"># Inject the symlinks directly into the final build folder</span>
-<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_write</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
-  <span class="k">return</span> <span class="k">if</span> <span class="no">Jekyll</span><span class="p">.</span><span class="nf">env</span> <span class="o">==</span> <span class="s1">'production'</span>
-
-  <span class="n">symlinks</span> <span class="o">=</span> <span class="n">site</span><span class="p">.</span><span class="nf">config</span><span class="p">[</span><span class="s1">'dynamic_symlinks'</span><span class="p">]</span> <span class="o">||</span> <span class="p">{}</span>
-  <span class="n">symlinks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">relative_path</span><span class="p">,</span> <span class="n">link</span><span class="o">|</span>
-    <span class="n">target_path</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="ss">:target</span><span class="p">]</span>
-    <span class="n">link_path</span> <span class="o">=</span> <span class="n">link</span><span class="p">[</span><span class="ss">:link</span><span class="p">]</span>
-    <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">false</span>
-
-    <span class="c1"># If the link already exists but is broken, recreate it. If it's not broken</span>
-    <span class="c1"># or is a file or directory, leave it. Otherwise, create the link.</span>
-    <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">symlink?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
-      <span class="k">if</span> <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
-        <span class="no">File</span><span class="p">.</span><span class="nf">unlink</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
-        <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">true</span>
-      <span class="k">elsif</span> <span class="no">File</span><span class="p">.</span><span class="nf">readlink</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span> <span class="o">!=</span> <span class="n">target_path</span> <span class="c1"># Link has valid target</span>
-        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin: Symlink already exists: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">"</span>
-      <span class="k">end</span>
-    <span class="k">elsif</span> <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
-      <span class="n">needs_creation</span> <span class="o">=</span> <span class="kp">true</span>
-    <span class="k">else</span>                        <span class="c1"># Link path is taken by a file or directory</span>
-      <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin: Symlink path is taken: </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">"</span>
-    <span class="k">end</span>
-
-    <span class="k">if</span> <span class="n">needs_creation</span>
-      <span class="no">FileUtils</span><span class="p">.</span><span class="nf">mkdir_p</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">link_path</span><span class="p">))</span>
-      <span class="k">begin</span>
-        <span class="no">File</span><span class="p">.</span><span class="nf">symlink</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="n">link_path</span><span class="p">)</span>
-        <span class="c1"># Jekyll.logger.info "Symlink Plugin:", "Symlink created: #{link_path} -&gt; #{target_path}"</span>
-      <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
-        <span class="no">Jekyll</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">warn</span> <span class="s2">"Symlink Plugin:"</span><span class="p">,</span> <span class="s2">"Failed to create symlink </span><span class="si">#{</span><span class="n">link_path</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></div> </div>  </li> </ol>
-<h2 id="method-3-serving-the-files-locally-with-a-web-server">Method 3: Serving the files locally with a web server</h2>
-<p>For example, you can serve the images locally with Python’s built-in web server:</p>
-<ol> <li>
-<p>Serve your image folder </p>
-<pre class="example">
-cd ~/Downloads/temp/archive/image/foo/
-python3 -m http.server 8123 --bind 127.0.0.1
-    </pre> <p>If you want the server to run in the background:</p> <pre class="example">
-nohup python3 -m http.server 8123 --bind 127.0.0.1 &gt;/tmp/imgserver.log 2&gt;&amp;1 &amp;
-    </pre> <p>To stop it later:</p> <pre class="example">
-lsof -iTCP:8123 -sTCP:LISTEN
-kill &lt;PID&gt;
-    </pre> </li> <li>
-<p>Use that URL in your post </p>
-<pre class="example">
-![](http://127.0.0.1:8123/foo/20260218184820.png)
-    </pre> </li> </ol>
-<p>You can serve from the directory <code>~/Downloads/temp/archive/image/foo/</code> but use a different mount path in the URL to refer to that directory, e.g., http://localhost:8123/igps/20260218184820.png. To achieve this we can write and run this python script:</p>
-
-            <div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads/temp/archive/image/foo/
-python3 server.py</code></pre></div> </div>
-          
-<p>See also: <a href="/blog/_demo/server.py">server.py</a></p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to load local images when the site is served locally. However, the URL format file:///Users/&lt;username&gt;/archive/image/20260218184820.png doesn’t work.]]></summary></entry></feed>
+<p>With this workflow active, GitHub will read your updated Gemfile, run the <code>link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry></feed>
