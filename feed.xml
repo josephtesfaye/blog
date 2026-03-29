@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-28T16:40:05+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Editing Tables in Emacs and Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/tables-in-org/" rel="alternate" type="text/html" title="Editing Tables in Emacs and Org Mode" /><published>2026-03-28T00:00:00+00:00</published><updated>2026-03-28T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/tables-in-org</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/tables-in-org/"><![CDATA[<h1 id="emacs-text-based-tables">Emacs Text-based Tables</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-03-29T01:01:16+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">Error when opening an Org File Containing an Emacs Table</title><link href="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/" rel="alternate" type="text/html" title="Error when opening an Org File Containing an Emacs Table" /><published>2026-03-29T00:00:00+00:00</published><updated>2026-03-29T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/user-error-org-shrink</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/"><![CDATA[<h1 id="error">Error</h1>
+<p>When I open an Org file containing an Emacs built-in table in Emacs:</p>
+
+            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>* Tables
+
++-----+-----+-------+
+| foo | bar | hello |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+</code></pre></div> </div>
+          
+<p>The error <code>File mode specification error: (user-error Not at a table)</code> is shown. I tried enabling <code>toggle-debug-on-error</code> but the backtrace isn’t shown. So I don’t know exactly what causes the error.</p>
+<h1 id="debug">Debug</h1>
+<p>The reason <code>toggle-debug-on-error</code> (which sets <code>debug-on-error</code> to <code>t</code>) is failing you here comes down to two specific Emacs design choices:</p>
+<ol> <li>The <code>user-error</code> bypass: Emacs treats a <code>user-error</code> differently than a standard error. A <code>user-error</code> is explicitly designed to tell the user they did something wrong (like pressing a command in the wrong context) without popping up the debugger, so it inherently ignores debug-on-error.</li> <li>The <code>normal-mode</code> safety net: When Emacs opens a file, it runs all the initialization functions and hooks inside a condition-case. If a hook crashes, Emacs catches the error, wraps it in that “File mode specification error” message you saw, and forces the buffer to open anyway so you aren’t locked out of your file.</li> </ol>
+<p>To find out exactly what Spacemacs package or hook is causing this, we have to bypass both of those safety nets.</p>
+<p><b>How to Force the Backtrace</b></p>
+<p>The cleanest and most surgical way to catch this is by trapping the specific error message itself before Emacs can suppress the debugger.</p>
+<ol> <li>Open Emacs (before opening the problematic Org file).</li> <li>Press <code>M-:</code> (<code>eval-expression</code>).</li> <li>
+<p>Evaluate this exact expression to tell the debugger to trigger the millisecond it sees that specific string: </p>
+<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">debug-on-message</span> <span class="s">"Not at a table"</span><span class="p">)</span></code></pre></div> </div>  </li> <li>Now, open your problematic Org file.</li> </ol>
+<p>However, this <code>debug-on-message</code> trick may not show the exact function that causes the error because it caught the error at the exact moment Emacs printed the message to your echo area. Because of how normal-mode handles file initialization, it wraps all major-mode hooks in a protective condition-case.</p>
+<p>By the time the message function was called, Emacs had already suppressed the original crash, unwound the call stack, and returned to normal-mode. That’s why the backtrace doesn’t show any Org mode functions at all!</p>
+<p>To find out exactly what is causing the crash, we need to catch the error before the stack unwinds. Since Emacs ignores debug-on-error for user-error types, we can forcefully inject the debugger directly into the user-error function using an advice.</p>
+<p><b>The Surgical Trap</b></p>
+<ol> <li>
+<p>Turn off the old trap first: </p>
+<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">debug-on-message</span> <span class="no">nil</span><span class="p">)</span></code></pre></div> </div>  </li> <li>
+<p>Evaluate this block of Elisp. This temporarily modifies user-error so that if it specifically sees the string “Not at a table”, it immediately pauses execution and opens the debugger right at the source: </p>
+<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">my-catch-table-error</span> <span class="p">(</span><span class="nv">format-string</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nb">string-equal</span> <span class="nv">format-string</span> <span class="s">"Not at a table"</span><span class="p">)</span>
+    <span class="p">(</span><span class="nv">debug</span><span class="p">)))</span>
+<span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'user-error</span> <span class="ss">:before</span> <span class="nf">#'</span><span class="nv">my-catch-table-error</span><span class="p">)</span></code></pre></div> </div>  </li> <li>Open your problematic file again.</li> </ol>
+<p>This time, the backtrace will be much longer and will contain the exact Org or Spacemacs function (likely a hook, a linter, or a minor mode like valign or toc-org) that is scanning your text and choking on the source block.</p>
+<p>(Once you have the backtrace, you can remove the trap by evaluating <code>(advice-remove 'user-error #'my-catch-table-error)</code>).</p>
+
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Debugger entered: nil
+  (progn (debug))
+  (if (string-equal format-string "Not at a table") (progn (debug)))
+  my-catch-table-error("Not at a table")
+  apply(my-catch-table-error "Not at a table")
+  user-error("Not at a table")
+  org-table-shrink()
+  org-table-map-tables(org-table-shrink t)
+  org-mode()
+  set-auto-mode-0(org-mode nil)
+  set-auto-mode--apply-alist((("\\.epub\\'" . nov-mode) ...
+  set-auto-mode()
+  normal-mode(t)
+  after-find-file(nil t)
+  ...</code></pre></div> </div>
+          
+<h1 id="fix">Fix</h1>
+<p><b>Why it happens</b></p>
+<p>Your configuration has the variable <code>org-startup-shrink-all-tables</code> set to <code>t</code> (or the file has a <code>#+STARTUP: shrink</code> keyword).</p>
+<p>When the file loads, <code>org-mode</code> aggressively scans the buffer using a basic regex to find tables to shrink. It sees the | characters in your source block, assumes it is a native Org table, and blindly passes it to <code>org-table-shrink</code>.</p>
+<p>However, <code>org-table-shrink</code> uses a stricter parser. It sees the <code>+------+</code> rows, realizes it’s a <code>table.el</code> table rather than a standard Org table, and immediately throws the <code>Not at a table</code> error, crashing the initialization sequence.</p>
+<p>You can replicate the same error by opening of an Org file with the following contents using vanilla Emacs:</p>
+
+            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>#+STARTUP: shrink
+
+* Tables
+
++-----+-----+-------+
+| foo | bar | hello |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+</code></pre></div> </div>
+          
+<p><b>How to fix it</b></p>
+<p>We can make <code>org-table-shrink</code> ignore tables provided by <code>table.el</code>:</p>
+
+            <div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">advice-org-table-shrink-ignore-table-el</span> <span class="p">(</span><span class="nv">orig-fn</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">org-at-table.el-p</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">apply</span> <span class="nv">orig-fn</span> <span class="nv">args</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'org-table-shrink</span> <span class="ss">:around</span> <span class="nf">#'</span><span class="nv">advice-org-table-shrink-ignore-table-el</span><span class="p">)</span></code></pre></div> </div>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Org Mode" /><summary type="html"><![CDATA[Error]]></summary></entry><entry><title type="html">Editing Tables in Emacs and Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/tables-in-org/" rel="alternate" type="text/html" title="Editing Tables in Emacs and Org Mode" /><published>2026-03-28T00:00:00+00:00</published><updated>2026-03-28T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/tables-in-org</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/tables-in-org/"><![CDATA[<h1 id="emacs-text-based-tables">Emacs Text-based Tables</h1>
 <p>Emacs has a built-in library called <code>table.el</code> (see <code>info:emacs#Text Based
   Tables</code> for more details).</p>
 <h2 id="creating-a-table">Creating a Table</h2>
@@ -2637,107 +2717,4 @@ gallery:
     <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span>
-<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span></code></pre></div> </div>  </li> </ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:]]></summary></entry><entry><title type="html">Enabling Link Abbreviations in Minimal Mistakes</title><link href="https://josephtesfaye.com/blog/web/link-abbr/" rel="alternate" type="text/html" title="Enabling Link Abbreviations in Minimal Mistakes" /><published>2026-02-19T00:00:00+00:00</published><updated>2026-03-06T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/web/link-abbr</id><content type="html" xml:base="https://josephtesfaye.com/blog/web/link-abbr/"><![CDATA[<p>I want to be able to use link abbreviations in Minimal Mistakes, for example, use <code>foo:&lt;filename&gt;</code> in place of the full link for images and images in a gallery like the following:</p>
-
-            <div class="language-markdown highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Link</span><span class="nv"> </span><span class="s">Abbreviations"</span>
-<span class="na">link_abbrs</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">link_abbr</span><span class="pi">:</span> <span class="s">foo https://i.postimg.cc/Vv8jFw8D/</span>
-<span class="na">gallery</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
-    <span class="na">image_path</span><span class="pi">:</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
-    <span class="na">title</span><span class="pi">:</span> <span class="s">Check this [image](foo:unsplash-gallery-image-1.jpg)</span>
-  <span class="pi">-</span> <span class="na">image_path</span><span class="pi">:</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
-  <span class="pi">-</span> <span class="s">foo:unsplash-gallery-image-1.jpg</span>
-<span class="nn">---</span>
-
-<span class="p">![</span><span class="nv">An image</span><span class="p">](</span><span class="sx">foo:unsplash-gallery-image-1.jpg</span><span class="p">)</span>
-
-{% capture fig_img %}
-<span class="p">![</span><span class="nv">An image</span><span class="p">](</span><span class="sx">foo:unsplash-gallery-image-1.jpg</span><span class="p">)</span>
-{% endcapture %}
-
-<span class="nt">&lt;figure&gt;</span>
-  {{ fig_img | markdownify | remove: "<span class="nt">&lt;p&gt;</span>" | remove: "<span class="nt">&lt;/p&gt;</span>" }}
-  <span class="nt">&lt;figcaption&gt;</span>An image with caption<span class="nt">&lt;/figcaption&gt;</span>
-<span class="nt">&lt;/figure&gt;</span>
-
-{% include figure image_path="foo:unsplash-gallery-image-1.jpg" popup=true
-alt="" caption="A figure" %}
-
-{% include gallery columns=3 caption="A gallery" %}</code></pre></div> </div>
-          
-<p>The links can then be translated to their full forms in the built result:</p>
-
-            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>https://i.postimg.cc/Vv8jFw8D/unsplash-gallery-image-1.jpg</code></pre></div> </div>
-          
-<h2 id="create-a-new-ruby-plugin-file">Create a new Ruby plugin file</h2>
-<p>We can create a plugin under <code>_plugins/link_abbr.rb</code> which handles the link abbreviations:</p>
-
-            <div class="language-ruby highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'addressable/uri'</span>
-
-<span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="p">[</span><span class="ss">:pages</span><span class="p">,</span> <span class="ss">:documents</span><span class="p">],</span> <span class="ss">:pre_render</span> <span class="k">do</span> <span class="o">|</span><span class="n">doc</span><span class="o">|</span>
-  <span class="k">next</span> <span class="k">unless</span> <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'link_abbrs'</span><span class="p">].</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
-
-  <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'link_abbrs'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
-    <span class="k">next</span> <span class="k">unless</span> <span class="n">item</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">item</span><span class="p">[</span><span class="s1">'link_abbr'</span><span class="p">]</span>
-
-    <span class="n">key</span><span class="p">,</span> <span class="n">base_url</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">'link_abbr'</span><span class="p">].</span><span class="nf">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="k">next</span> <span class="k">unless</span> <span class="n">key</span> <span class="o">&amp;&amp;</span> <span class="n">base_url</span>
-
-    <span class="c1"># 1. Replaces "](key:filename)" inside the Markdown body content</span>
-    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\]\(</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^\)]+)\)/</span><span class="p">)</span> <span class="k">do</span>
-      <span class="n">escaped_path</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span>
-      <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/blog"</span> <span class="p">:</span> <span class="s2">""</span>
-      <span class="s2">"](</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}#{</span><span class="n">escaped_path</span><span class="si">}</span><span class="s2">)"</span>
-    <span class="k">end</span>
-
-    <span class="c1"># 2. Replace image_path in figures</span>
-    <span class="n">doc</span><span class="p">.</span><span class="nf">content</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/image_path="</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^"]+)"/</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"image_path=</span><span class="se">\"</span><span class="si">#{</span><span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span><span class="si">}</span><span class="se">\"</span><span class="s2">"</span> <span class="p">}</span>
-
-    <span class="c1"># 3. Replace inside ANY front matter array (gallery, gallery1, gallery2, etc.)</span>
-    <span class="n">doc</span><span class="p">.</span><span class="nf">data</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">_</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span>
-      <span class="k">if</span> <span class="n">value</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Array</span><span class="p">)</span>
-        <span class="n">value</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">list_item</span><span class="o">|</span>
-          <span class="k">next</span> <span class="k">unless</span> <span class="n">list_item</span><span class="p">.</span><span class="nf">is_a?</span><span class="p">(</span><span class="no">Hash</span><span class="p">)</span>
-
-          <span class="p">[</span><span class="s1">'url'</span><span class="p">,</span> <span class="s1">'image_path'</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="kp">attr</span><span class="o">|</span>
-            <span class="k">if</span> <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">:"</span><span class="p">)</span>
-              <span class="c1"># Replace the exact abbreviation prefix with the base URL</span>
-              <span class="n">full_path</span> <span class="o">=</span> <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="sr">/^</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:/</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
-              <span class="n">list_item</span><span class="p">[</span><span class="kp">attr</span><span class="p">]</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
-            <span class="k">end</span>
-          <span class="k">end</span>
-
-          <span class="k">if</span> <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
-            <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">list_item</span><span class="p">[</span><span class="s1">'title'</span><span class="p">].</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/\]\(</span><span class="si">#{</span><span class="no">Regexp</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="sr">:([^\)]+)\)/</span><span class="p">)</span> <span class="k">do</span>
-              <span class="n">escaped_path</span> <span class="o">=</span> <span class="no">Addressable</span><span class="o">::</span><span class="no">URI</span><span class="p">.</span><span class="nf">escape</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="vg">$1</span><span class="p">)</span>
-              <span class="n">prefix</span> <span class="o">=</span> <span class="n">base_url</span><span class="p">.</span><span class="nf">start_with?</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">)</span> <span class="p">?</span> <span class="s2">"https://josephtesfaye.com/blog"</span> <span class="p">:</span> <span class="s2">""</span>
-              <span class="s2">"](</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}#{</span><span class="n">escaped_path</span><span class="si">}</span><span class="s2">)"</span>
-            <span class="k">end</span>
-          <span class="k">end</span>
-        <span class="k">end</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span></code></pre></div> </div>
-          
-<p>The <code>github-pages</code> gem enforces strict safe mode and completely disables the <code>_plugins</code> directory to mimic GitHub’s legacy deployment environment, overriding any <code>safe: false</code> settings in your configuration.</p>
-<p>To allow custom plugins to run locally, you need to replace it with the standard Jekyll gem. Since you already have all your plugins explicitly listed in your Gemfile, this is a safe swap.</p>
-<ol> <li>
-<p><code>Gemfile</code>: </p>
-<div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-gem "github-pages", group: :jekyll_plugins
-</span><span class="gi">+gem "jekyll"
-+gem "kramdown-parser-gfm"
-+gem "faraday-retry"</span></code></pre></div> </div>  </li> <li>
-<p><code>_config.yml</code>: </p>
-<div class="language-diff highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="gd">-remote_theme: mmistakes/minimal-mistakes@4.20.2
-</span><span class="gi">+theme: minimal-mistakes-jekyll</span></code></pre></div> </div>  </li> <li>
-<p>Terminal: </p>
-<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
-</span>bundle <span class="nb">exec </span>jekyll serve</code></pre></div> </div>  </li> </ol>
-<h2 id="use-github-actions-to-build-your-github-pages-site">Use GitHub Actions to build your GitHub Pages site</h2>
-<p>This affects the default GitHub Pages build. The classic GitHub Pages build environment strictly enforces safe mode and ignores all files in the <code>_plugins</code> directory. If you push the site using the default settings, it will still host successfully, but your custom plugin will not run and the link abbreviations will remain unparsed.</p>
-<p>To use custom plugins while hosting on GitHub Pages, you must switch your deployment method to GitHub Actions. This modern approach uses your exact Gemfile, executes your Ruby scripts, and then hosts the final output on GitHub Pages.</p>
-<ol> <li>Go to your repository on GitHub.</li> <li>Click on Settings, then select Pages from the left sidebar.</li> <li>Under Build and deployment, change the Source from “Deploy from a branch” to “GitHub Actions”.</li> <li>GitHub will suggest a default Jekyll workflow. Click Configure.</li> <li>Commit the provided <code>.github/workflows/jekyll.yml</code> file to your repository.</li> </ol>
-<p>With this workflow active, GitHub will read your updated Gemfile, run the <code>link_abbr.rb</code> plugin during the build step, and deploy the fully rendered HTML to your live site.</p>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[I want to be able to use link abbreviations in Minimal Mistakes, for example, use foo:&lt;filename&gt; in place of the full link for images and images in a gallery like the following:]]></summary></entry></feed>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="p">.</span><span class="nf">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">LiquifyFilter</span><span class="p">)</span></code></pre></div> </div>  </li> </ol>]]></content><author><name>Joseph Huang</name></author><category term="Web" /><category term="Minimal Mistakes" /><summary type="html"><![CDATA[Here are the customizations I’ve made to the gallery feature of Minimal Mistakes:]]></summary></entry></feed>

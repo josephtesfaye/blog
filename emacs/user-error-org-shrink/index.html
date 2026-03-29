@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Weird behavior of direct links from postimages.org | Orcharinth</title>
-<meta name="description" content="In this demo:">
+<!-- begin _includes/seo.html --><title>Error when opening an Org File Containing an Emacs Table | Orcharinth</title>
+<meta name="description" content="Error">
 
 
   <meta name="author" content="Joseph Huang">
@@ -23,28 +23,28 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Orcharinth">
-<meta property="og:title" content="Weird behavior of direct links from postimages.org">
-<meta property="og:url" content="https://josephtesfaye.com/blog/software/postimages/">
+<meta property="og:title" content="Error when opening an Org File Containing an Emacs Table">
+<meta property="og:url" content="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/">
 
 
-  <meta property="og:description" content="In this demo:">
-
-
-
+  <meta property="og:description" content="Error">
 
 
 
 
-  <meta property="article:published_time" content="2022-06-01T00:00:00+00:00">
 
 
 
-  <meta property="article:modified_time" content="2022-06-01T00:00:00+00:00">
+  <meta property="article:published_time" content="2026-03-29T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-03-29T00:00:00+00:00">
 
 
 
 
-<link rel="canonical" href="https://josephtesfaye.com/blog/software/postimages/">
+<link rel="canonical" href="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/">
 
 
 
@@ -155,7 +155,7 @@
 
   </head>
 
-  <body class="layout--single wide">
+  <body class="layout--single narrow">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -239,7 +239,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/blog/categories/#software" itemprop="item"><span itemprop="name">Software</span></a>
+          <a href="/blog/categories/#emacs" itemprop="item"><span itemprop="name">Emacs</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -247,7 +247,7 @@
     
       
       
-        <li class="current">Weird behavior of direct links from postimages.org</li>
+        <li class="current">Error when opening an Org File Containing an Emacs Table</li>
       
     
   </ol>
@@ -261,16 +261,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Weird behavior of direct links from postimages.org">
-    <meta itemprop="description" content="In this demo:">
-    <meta itemprop="datePublished" content="2022-06-01T00:00:00+00:00">
-    <meta itemprop="dateModified" content="2022-06-01T00:00:00+00:00">
+    <meta itemprop="headline" content="Error when opening an Org File Containing an Emacs Table">
+    <meta itemprop="description" content="Error">
+    <meta itemprop="datePublished" content="2026-03-29T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-03-29T00:00:00+00:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://josephtesfaye.com/blog/software/postimages/" itemprop="url">Weird behavior of direct links from postimages.org
+            <a href="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/" itemprop="url">Error when opening an Org File Containing an Emacs Table
 </a>
           </h1>
           
@@ -281,7 +281,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2022-06-01T00:00:00+00:00">June 1, 2022</time>
+        <time datetime="2026-03-29T00:00:00+00:00">March 29, 2026</time>
       </span>
     
 
@@ -294,7 +294,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          3 minute read
         
       </span>
     
@@ -306,96 +306,95 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>In this <a href="/blog/_demo/postimages.org_image_test.html">demo</a>:</p>
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#error">Error</a></li><li><a href="#debug">Debug</a></li><li><a href="#fix">Fix</a></li></ul>
+            </nav>
+          </aside>
+        
+        <h1 id="error">Error</h1>
+<p>When I open an Org file containing an Emacs built-in table in Emacs:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;title&gt;</span>Image size test<span class="nt">&lt;/title&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/kXzT5mbK/screenshot-2021-09-09-eshell-coding-mismatch.png"</span> <span class="na">alt=</span><span class="s">"1"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/kXzT5-mbK/screenshot-2021-09-09-eshell-coding-mismatch.png"</span> <span class="na">alt=</span><span class="s">"2"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/Hx4Swwdp/Piano-Roll-How-to-Chord-sounding-Indefinitely-Solved.jpg"</span> <span class="na">alt=</span><span class="s">"3"</span><span class="nt">&gt;&lt;br&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://i.postimg.cc/Hx4Sw-wdp/Piano-Roll-How-to-Chord-sounding-Indefinitely-Solved.jpg"</span> <span class="na">alt=</span><span class="s">"4"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
+            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>* Tables
 
-<p>there are four direct links, which are all supposed to load the original-sized images when used in <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tags. However, in reality they have been shown differently in Chrome and Firefox. Their behaviors are summed up to the following table, where each image numbered 1 to 4 (marked in their <code class="language-plaintext highlighter-rouge">alt</code> value) is opened directly in the browser and from the <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> tag, and “original” means the link is opend as the original-sized image, “redirect” means it redirects to another webpage, and “thumbnail” means it is opend as a resolution-reduced thumbnail.</p>
++-----+-----+-------+
+| foo | bar | hello |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+</code></pre></div> </div>
+          
+<p>The error <code>File mode specification error: (user-error Not at a table)</code> is shown. I tried enabling <code>toggle-debug-on-error</code> but the backtrace isn’t shown. So I don’t know exactly what causes the error.</p>
+<h1 id="debug">Debug</h1>
+<p>The reason <code>toggle-debug-on-error</code> (which sets <code>debug-on-error</code> to <code>t</code>) is failing you here comes down to two specific Emacs design choices:</p>
+<ol> <li>The <code>user-error</code> bypass: Emacs treats a <code>user-error</code> differently than a standard error. A <code>user-error</code> is explicitly designed to tell the user they did something wrong (like pressing a command in the wrong context) without popping up the debugger, so it inherently ignores debug-on-error.</li> <li>The <code>normal-mode</code> safety net: When Emacs opens a file, it runs all the initialization functions and hooks inside a condition-case. If a hook crashes, Emacs catches the error, wraps it in that “File mode specification error” message you saw, and forces the buffer to open anyway so you aren’t locked out of your file.</li> </ol>
+<p>To find out exactly what Spacemacs package or hook is causing this, we have to bypass both of those safety nets.</p>
+<p><b>How to Force the Backtrace</b></p>
+<p>The cleanest and most surgical way to catch this is by trapping the specific error message itself before Emacs can suppress the debugger.</p>
+<ol> <li>Open Emacs (before opening the problematic Org file).</li> <li>Press <code>M-:</code> (<code>eval-expression</code>).</li> <li>
+<p>Evaluate this exact expression to tell the debugger to trigger the millisecond it sees that specific string: </p>
+<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">debug-on-message</span> <span class="s">"Not at a table"</span><span class="p">)</span></code></pre></div> </div>  </li> <li>Now, open your problematic Org file.</li> </ol>
+<p>However, this <code>debug-on-message</code> trick may not show the exact function that causes the error because it caught the error at the exact moment Emacs printed the message to your echo area. Because of how normal-mode handles file initialization, it wraps all major-mode hooks in a protective condition-case.</p>
+<p>By the time the message function was called, Emacs had already suppressed the original crash, unwound the call stack, and returned to normal-mode. That’s why the backtrace doesn’t show any Org mode functions at all!</p>
+<p>To find out exactly what is causing the crash, we need to catch the error before the stack unwinds. Since Emacs ignores debug-on-error for user-error types, we can forcefully inject the debugger directly into the user-error function using an advice.</p>
+<p><b>The Surgical Trap</b></p>
+<ol> <li>
+<p>Turn off the old trap first: </p>
+<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">debug-on-message</span> <span class="no">nil</span><span class="p">)</span></code></pre></div> </div>  </li> <li>
+<p>Evaluate this block of Elisp. This temporarily modifies user-error so that if it specifically sees the string “Not at a table”, it immediately pauses execution and opens the debugger right at the source: </p>
+<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">my-catch-table-error</span> <span class="p">(</span><span class="nv">format-string</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nb">string-equal</span> <span class="nv">format-string</span> <span class="s">"Not at a table"</span><span class="p">)</span>
+    <span class="p">(</span><span class="nv">debug</span><span class="p">)))</span>
+<span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'user-error</span> <span class="ss">:before</span> <span class="nf">#'</span><span class="nv">my-catch-table-error</span><span class="p">)</span></code></pre></div> </div>  </li> <li>Open your problematic file again.</li> </ol>
+<p>This time, the backtrace will be much longer and will contain the exact Org or Spacemacs function (likely a hook, a linter, or a minor mode like valign or toc-org) that is scanning your text and choking on the source block.</p>
+<p>(Once you have the backtrace, you can remove the trap by evaluating <code>(advice-remove 'user-error #'my-catch-table-error)</code>).</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Firefox</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Directly</td>
-      <td>original</td>
-      <td>redirect</td>
-      <td>redirect</td>
-      <td>original</td>
-    </tr>
-    <tr>
-      <td>&lt;img&gt;</td>
-      <td>thumbnail</td>
-      <td>original</td>
-      <td>original</td>
-      <td>original</td>
-    </tr>
-    <tr>
-      <td>Chrome</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Directly</td>
-      <td>original</td>
-      <td>redirect</td>
-      <td>redirect</td>
-      <td>redirect</td>
-    </tr>
-    <tr>
-      <td>&lt;img&gt;</td>
-      <td>original</td>
-      <td>original</td>
-      <td>original</td>
-      <td>original</td>
-    </tr>
-  </tbody>
-</table>
+            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Debugger entered: nil
+  (progn (debug))
+  (if (string-equal format-string "Not at a table") (progn (debug)))
+  my-catch-table-error("Not at a table")
+  apply(my-catch-table-error "Not at a table")
+  user-error("Not at a table")
+  org-table-shrink()
+  org-table-map-tables(org-table-shrink t)
+  org-mode()
+  set-auto-mode-0(org-mode nil)
+  set-auto-mode--apply-alist((("\\.epub\\'" . nov-mode) ...
+  set-auto-mode()
+  normal-mode(t)
+  after-find-file(nil t)
+  ...</code></pre></div> </div>
+          
+<h1 id="fix">Fix</h1>
+<p><b>Why it happens</b></p>
+<p>Your configuration has the variable <code>org-startup-shrink-all-tables</code> set to <code>t</code> (or the file has a <code>#+STARTUP: shrink</code> keyword).</p>
+<p>When the file loads, <code>org-mode</code> aggressively scans the buffer using a basic regex to find tables to shrink. It sees the | characters in your source block, assumes it is a native Org table, and blindly passes it to <code>org-table-shrink</code>.</p>
+<p>However, <code>org-table-shrink</code> uses a stricter parser. It sees the <code>+------+</code> rows, realizes it’s a <code>table.el</code> table rather than a standard Org table, and immediately throws the <code>Not at a table</code> error, crashing the initialization sequence.</p>
+<p>You can replicate the same error by opening of an Org file with the following contents using vanilla Emacs:</p>
 
-<p>Link 1 is the direct link copied from <a href="https://postimg.cc/YhN6XT8C">https://postimg.cc/YhN6XT8C</a></p>
+            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>#+STARTUP: shrink
 
-<figure>
-	<a href="https://i.postimg.cc/z5LPFBms/Snipaste-2022-06-01-13-03-30.png"><img src="https://i.postimg.cc/z5LPFBms/Snipaste-2022-06-01-13-03-30.png" /></a>
-</figure>
+* Tables
 
-<p>and is the one that I thought should display the original-sized image but actually displayed a blurry thumbnail. But this only occurred on Firefox. In Chrome it was displayed as the original-sized image. From the inspector of Firefox I could see the actual image retrieved was a much smaller one. Then I found link 3 and 4 that could be displayed in their original size. You can see a slight difference between them, that is, link 4 has an extra hypen. So I tried to mimic this to get link 2 and it worked!</p>
++-----+-----+-------+
+| foo | bar | hello |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+
+|     |     |       |
++-----+-----+-------+</code></pre></div> </div>
+          
+<p><b>How to fix it</b></p>
+<p>We can make <code>org-table-shrink</code> ignore tables provided by <code>table.el</code>:</p>
 
-<p>This problem was spotted when I wrote this <a href="/blog/emacs/emacs-encoding">post</a> where the screenshots were displayed as blurry thumbnails. At first I thought it’s a problem of <a href="https://mmistakes.github.io/minimal-mistakes/">minimal-mistakes</a> but then narrowed it down to the links themselves. The solution is adding an extra hypen before the antepenultimate character!</p>
+            <div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">advice-org-table-shrink-ignore-table-el</span> <span class="p">(</span><span class="nv">orig-fn</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">org-at-table.el-p</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">apply</span> <span class="nv">orig-fn</span> <span class="nv">args</span><span class="p">)))</span>
 
-<p><strong>Update</strong>: After I fiddled around with the demo suddenly the original link (link 1) somehow displayed the original-sized image in Firefox! Now I have no idea what’s going on. Maybe it’s because of the network because I turned on my proxy for a while. Maybe it’s because the server of <a href="https://postimages.org">https://postimages.org</a> detected that someone was trying desperately to get this link right…</p>
-
-<p><strong>Update</strong>: After I cleared the cookies and cache all links above if opend from <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> couldn’t be displayed as original-sized images but returned to blurry thumbnails no matter the browser in use. I guess the reason why they could display as original-sized images at some point is because the browsers were loading them from the cache and those original-sized images were cached at some point! I still don’t know why they weren’t always displayed and how to force them to display in their original size. Guess I just have to change to another image hosting service provider.</p>
-
-<p><strong>Update</strong>: Finally I can say for sure what’s causing all the fuss. It’s because of the network! As all the troubles the GFW has caused this is just yet another one. When I cleared the cache and turned on my proxy every link could display in their original size no matter the browser. It appears postimages.org could still send a thumbnail even if the link was blocked. I feel the effort in making information more transcendent!</p>
+<span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'org-table-shrink</span> <span class="ss">:around</span> <span class="nf">#'</span><span class="nv">advice-org-table-shrink-ignore-table-el</span><span class="p">)</span></code></pre></div> </div>
+          
 
         
       </section>
@@ -412,9 +411,7 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/blog/tags/#file-management" class="page__taxonomy-item p-category" rel="tag">File Management</a><span class="sep">, </span>
-    
-      <a href="/blog/tags/#images" class="page__taxonomy-item p-category" rel="tag">Images</a>
+      <a href="/blog/tags/#org-mode" class="page__taxonomy-item p-category" rel="tag">Org Mode</a>
     
     </span>
   </p>
@@ -431,7 +428,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/blog/categories/#software" class="page__taxonomy-item p-category" rel="tag">Software</a>
+      <a href="/blog/categories/#emacs" class="page__taxonomy-item p-category" rel="tag">Emacs</a>
     
     </span>
   </p>
@@ -439,30 +436,29 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-06-01">June 1, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-29">March 29, 2026</time></p>
 
       </footer>
 
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Weird+behavior+of+direct+links+from+postimages.org%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fsoftware%2Fpostimages%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Error+when+opening+an+Org+File+Containing+an+Emacs+Table%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Femacs%2Fuser-error-org-shrink%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fsoftware%2Fpostimages%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Femacs%2Fuser-error-org-shrink%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/software/postimages/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/emacs/user-error-org-shrink/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/emacs/emacs-encoding/" class="pagination--pager" title="Non-ascii characters displayed as code points in files
+      <a href="/blog/emacs/tables-in-org/" class="pagination--pager" title="Editing Tables in Emacs and Org Mode
 ">Previous</a>
     
     
-      <a href="/blog/emacs/generate-git-texinfo/" class="pagination--pager" title="Generate and use TexInfo documentation for Git
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -487,54 +483,6 @@
   
   <h2 class="page__related-title">You May Also Enjoy</h2>
   <div class="grid__wrapper">
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/emacs/user-error-org-shrink/" rel="permalink">Error when opening an Org File Containing an Emacs Table
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2026-03-29T00:00:00+00:00">March 29, 2026</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Error
-</p>
-  </article>
-</div>
-
     
       
       
@@ -571,7 +519,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-fw fa-clock" aria-hidden="true"></i>
         
-          5 minute read
+          6 minute read
         
       </span>
     
@@ -626,7 +574,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">
+    <p class="archive__item-excerpt" itemprop="description">This post is password protected.
 </p>
   </article>
 </div>
@@ -675,6 +623,54 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">I’m going to meet with a Japanese friend tomorrow for the first time and we’re going to have lunch and see Sakura together.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/web/interview/" rel="permalink">Interview
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-04T00:00:00+00:00">March 4, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Introduce yourself
 </p>
   </article>
 </div>
@@ -774,8 +770,8 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://josephtesfaye.com/blog/software/postimages/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/software/postimages"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "https://josephtesfaye.com/blog/emacs/user-error-org-shrink/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/emacs/user-error-org-shrink"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
