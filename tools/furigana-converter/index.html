@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2026-04-05T16:16:54+00:00">
+  <meta property="article:published_time" content="2026-04-05T17:17:00+00:00">
 
 
 
@@ -525,11 +525,23 @@
       }
 
       try {
+        // Fix Kuromoji path.join() bug corrupting HTTPS absolute URLs
+        if (!window._frgntrXhrPatched) {
+          const origOpen = window.XMLHttpRequest.prototype.open;
+          window.XMLHttpRequest.prototype.open = function(method, url) {
+            if (typeof url === 'string' && url.startsWith('https:/cdn.jsdelivr.net')) {
+              url = url.replace('https:/cdn.jsdelivr.net', 'https://cdn.jsdelivr.net');
+            }
+            return origOpen.apply(this, arguments);
+          };
+          window._frgntrXhrPatched = true;
+        }
+
         if (typeof window.Kuroshiro === 'undefined') {
-          await loadScript("https://" + "cdn.jsdelivr.net/npm/kuroshiro@1.1.2/dist/kuroshiro.min.js");
+          await loadScript("https://cdn.jsdelivr.net/npm/kuroshiro@1.1.2/dist/kuroshiro.min.js");
         }
         if (typeof window.KuromojiAnalyzer === 'undefined') {
-          await loadScript("https://" + "cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js");
+          await loadScript("https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js");
         }
 
         const KsClass = window.Kuroshiro.default || window.Kuroshiro;
@@ -537,7 +549,7 @@
 
         const ks = new KsClass();
         const analyzer = new AnalyzerClass({
-            dictPath: "https://" + "cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/"
+            dictPath: "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/"
         });
 
         const initPromise = ks.init(analyzer);
