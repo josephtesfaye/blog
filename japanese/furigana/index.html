@@ -10,8 +10,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Error when opening an Org File Containing an Emacs Table | Orcharinth</title>
-<meta name="description" content="Error">
+<!-- begin _includes/seo.html --><title>How to Add or Show Furigana for Japanese Text | Orcharinth</title>
+<meta name="description" content="Is there a non-AI software that can add or show furigana to Japanese text automatically and accurately, and can be run on your computer?">
 
 
   <meta name="author" content="Joseph Huang">
@@ -23,28 +23,28 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Orcharinth">
-<meta property="og:title" content="Error when opening an Org File Containing an Emacs Table">
-<meta property="og:url" content="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/">
+<meta property="og:title" content="How to Add or Show Furigana for Japanese Text">
+<meta property="og:url" content="https://josephtesfaye.com/blog/japanese/furigana/">
 
 
-  <meta property="og:description" content="Error">
-
-
-
+  <meta property="og:description" content="Is there a non-AI software that can add or show furigana to Japanese text automatically and accurately, and can be run on your computer?">
 
 
 
 
-  <meta property="article:published_time" content="2026-03-29T00:00:00+00:00">
 
 
 
-  <meta property="article:modified_time" content="2026-03-29T00:00:00+00:00">
+  <meta property="article:published_time" content="2026-04-04T00:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-04-04T02:06:57+00:00">
 
 
 
 
-<link rel="canonical" href="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/">
+<link rel="canonical" href="https://josephtesfaye.com/blog/japanese/furigana/">
 
 
 
@@ -239,7 +239,7 @@
       
         
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/blog/categories/#emacs" itemprop="item"><span itemprop="name">Emacs</span></a>
+          <a href="/blog/categories/#japanese" itemprop="item"><span itemprop="name">Japanese</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -247,7 +247,7 @@
     
       
       
-        <li class="current">Error when opening an Org File Containing an Emacs Table</li>
+        <li class="current">How to Add or Show Furigana for Japanese Text</li>
       
     
   </ol>
@@ -261,16 +261,16 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Error when opening an Org File Containing an Emacs Table">
-    <meta itemprop="description" content="Error">
-    <meta itemprop="datePublished" content="2026-03-29T00:00:00+00:00">
-    <meta itemprop="dateModified" content="2026-03-29T00:00:00+00:00">
+    <meta itemprop="headline" content="How to Add or Show Furigana for Japanese Text">
+    <meta itemprop="description" content=" Is there a non-AI software that can add or show furigana to Japanese text automatically and accurately, and can be run on your computer?">
+    <meta itemprop="datePublished" content="2026-04-04T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-04-04T02:06:57+00:00">
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title" itemprop="headline">
-            <a href="https://josephtesfaye.com/blog/emacs/user-error-org-shrink/" itemprop="url">Error when opening an Org File Containing an Emacs Table
+            <a href="https://josephtesfaye.com/blog/japanese/furigana/" itemprop="url">How to Add or Show Furigana for Japanese Text
 </a>
           </h1>
           
@@ -281,7 +281,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2026-03-29T00:00:00+00:00">March 29, 2026</time>
+        <time datetime="2026-04-04T00:00:00+00:00">April 4, 2026</time>
       </span>
     
 
@@ -309,92 +309,56 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#error">Error</a></li><li><a href="#debug">Debug</a></li><li><a href="#fix">Fix</a></li></ul>
+              <ul class="toc__menu"><li><a href="#editing-documents">Editing Documents</a><ul><li><a href="#microsoft-word">Microsoft Word</a></li><li><a href="#microsoft-excel">Microsoft Excel</a></li><li><a href="#furigana-pdf-macosios">Furigana PDF (macOS/iOS)</a></li></ul></li><li><a href="#reading-weblocal-html-browser-extensions">Reading Web/Local HTML (Browser Extensions)</a><ul><li><a href="#furigana-converter">Furigana Converter</a></li><li><a href="#furiganator">Furiganator</a></li><li><a href="#yomitan">Yomitan</a></li><li><a href="#10ten-japanese-reader">10ten Japanese Reader</a></li></ul></li><li><a href="#batch-processing-files-for-developers">Batch Processing Files (For Developers)</a><ul><li><a href="#anki-with-japanese-support-add-on">Anki with “Japanese Support” Add-on</a></li><li><a href="#kuroshiro">Kuroshiro</a></li><li><a href="#mecab">MeCab</a></li></ul></li><li><a href="#ai-solutions">AI Solutions</a></li></ul>
             </nav>
           </aside>
         
-        <h1 id="error">Error</h1>
-<p>When I open an Org file containing an Emacs built-in table in Emacs:</p>
-
-            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>* Tables
-
-+-----+-----+-------+
-| foo | bar | hello |
-+-----+-----+-------+
-|     |     |       |
-+-----+-----+-------+
-|     |     |       |
-+-----+-----+-------+</code></pre></div> </div>
-          
-<p>The error <code>File mode specification error: (user-error Not at a table)</code> is shown. I tried enabling <code>toggle-debug-on-error</code> but the backtrace isn’t shown. So I don’t know exactly what causes the error.</p>
-<h1 id="debug">Debug</h1>
-<p>The reason <code>toggle-debug-on-error</code> (which sets <code>debug-on-error</code> to <code>t</code>) is failing you here comes down to two specific Emacs design choices:</p>
-<ol> <li>The <code>user-error</code> bypass: Emacs treats a <code>user-error</code> differently than a standard error. A <code>user-error</code> is explicitly designed to tell the user they did something wrong (like pressing a command in the wrong context) without popping up the debugger, so it inherently ignores debug-on-error.</li> <li>The <code>normal-mode</code> safety net: When Emacs opens a file, it runs all the initialization functions and hooks inside a condition-case. If a hook crashes, Emacs catches the error, wraps it in that “File mode specification error” message you saw, and forces the buffer to open anyway so you aren’t locked out of your file.</li> </ol>
-<p>To find out exactly what Spacemacs package or hook is causing this, we have to bypass both of those safety nets.</p>
-<p><b>How to Force the Backtrace</b></p>
-<p>The cleanest and most surgical way to catch this is by trapping the specific error message itself before Emacs can suppress the debugger.</p>
-<ol> <li>Open Emacs (before opening the problematic Org file).</li> <li>Press <code>M-:</code> (<code>eval-expression</code>).</li> <li>
-<p>Evaluate this exact expression to tell the debugger to trigger the millisecond it sees that specific string: </p>
-<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">debug-on-message</span> <span class="s">"Not at a table"</span><span class="p">)</span></code></pre></div> </div>  </li> <li>Now, open your problematic Org file.</li> </ol>
-<p>However, this <code>debug-on-message</code> trick may not show the exact function that causes the error because it caught the error at the exact moment Emacs printed the message to your echo area. Because of how normal-mode handles file initialization, it wraps all major-mode hooks in a protective condition-case.</p>
-<p>By the time the message function was called, Emacs had already suppressed the original crash, unwound the call stack, and returned to normal-mode. That’s why the backtrace doesn’t show any Org mode functions at all!</p>
-<p>To find out exactly what is causing the crash, we need to catch the error before the stack unwinds. Since Emacs ignores debug-on-error for user-error types, we can forcefully inject the debugger directly into the user-error function using an advice.</p>
-<p><b>The Surgical Trap</b></p>
-<ol> <li>
-<p>Turn off the old trap first: </p>
-<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="k">setq</span> <span class="nv">debug-on-message</span> <span class="no">nil</span><span class="p">)</span></code></pre></div> </div>  </li> <li>
-<p>Evaluate this block of Elisp. This temporarily modifies user-error so that if it specifically sees the string “Not at a table”, it immediately pauses execution and opens the debugger right at the source: </p>
-<div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">my-catch-table-error</span> <span class="p">(</span><span class="nv">format-string</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">when</span> <span class="p">(</span><span class="nb">string-equal</span> <span class="nv">format-string</span> <span class="s">"Not at a table"</span><span class="p">)</span>
-    <span class="p">(</span><span class="nv">debug</span><span class="p">)))</span>
-<span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'user-error</span> <span class="ss">:before</span> <span class="nf">#'</span><span class="nv">my-catch-table-error</span><span class="p">)</span></code></pre></div> </div>  </li> <li>Open your problematic file again.</li> </ol>
-<p>This time, the backtrace will be much longer and will contain the exact Org or Spacemacs function (likely a hook, a linter, or a minor mode like valign or toc-org) that is scanning your text and choking on the source block.</p>
-<p>(Once you have the backtrace, you can remove the trap by evaluating <code>(advice-remove 'user-error #'my-catch-table-error)</code>).</p>
-
-            <div class="language-text highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>Debugger entered: nil
-  (progn (debug))
-  (if (string-equal format-string "Not at a table") (progn (debug)))
-  my-catch-table-error("Not at a table")
-  apply(my-catch-table-error "Not at a table")
-  user-error("Not at a table")
-  org-table-shrink()
-  org-table-map-tables(org-table-shrink t)
-  org-mode()
-  set-auto-mode-0(org-mode nil)
-  set-auto-mode--apply-alist((("\\.epub\\'" . nov-mode) ...
-  set-auto-mode()
-  normal-mode(t)
-  after-find-file(nil t)
-  ...</code></pre></div> </div>
-          
-<h1 id="fix">Fix</h1>
-<p><b>Why it happens</b></p>
-<p>Your configuration has the variable <code>org-startup-shrink-all-tables</code> set to <code>t</code> (or the file has a <code>#+STARTUP: shrink</code> keyword).</p>
-<p>When the file loads, <code>org-mode</code> aggressively scans the buffer using a basic regex to find tables to shrink. It sees the | characters in your source block, assumes it is a native Org table, and blindly passes it to <code>org-table-shrink</code>.</p>
-<p>However, <code>org-table-shrink</code> uses a stricter parser. It sees the <code>+------+</code> rows, realizes it’s a <code>table.el</code> table rather than a standard Org table, and immediately throws the <code>Not at a table</code> error, crashing the initialization sequence.</p>
-<p>You can replicate the same error by opening of an Org file with the following contents using vanilla Emacs:</p>
-
-            <div class="language-org highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>#+STARTUP: shrink
-
-* Tables
-
-+-----+-----+-------+
-| foo | bar | hello |
-+-----+-----+-------+
-|     |     |       |
-+-----+-----+-------+
-|     |     |       |
-+-----+-----+-------+</code></pre></div> </div>
-          
-<p><b>How to fix it</b></p>
-<p>We can make <code>org-table-shrink</code> ignore tables provided by <code>table.el</code>:</p>
-
-            <div class="language-elisp highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">defun</span> <span class="nv">advice-org-table-shrink-ignore-table-el</span> <span class="p">(</span><span class="nv">orig-fn</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">unless</span> <span class="p">(</span><span class="nv">org-at-table.el-p</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">apply</span> <span class="nv">orig-fn</span> <span class="nv">args</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'org-table-shrink</span> <span class="ss">:around</span> <span class="nf">#'</span><span class="nv">advice-org-table-shrink-ignore-table-el</span><span class="p">)</span></code></pre></div> </div>
-          
+        <p class="notice"> Is there a non-AI software that can add or show furigana to Japanese text automatically and accurately, and can be run on your computer?</p>
+<p>There are several non-AI, reliable software options for adding or viewing furigana on your computer. These typically use <b>morphological analyzers</b> (like MeCab or Kuromoji) combined with comprehensive dictionaries rather than generative AI models.</p>
+<h1 id="editing-documents">Editing Documents</h1>
+<p>If you already have Microsoft Office installed on your PC or Mac, you can enter furigana text in them.</p>
+<h2 id="microsoft-word">Microsoft Word</h2>
+<p>Select your text and then go to the “Home” tab, and click the “Phonetic Guide” button (usually next to the “Clear All Formatting” or “Change Case” buttons). The icon may be shown differently depending on your OS and system language. In the English interface it’s shown as an “A” with a tiny “abc” above it.</p>
+<p>The “Phonetic Guide” window will appear, where you can enter the furigana (or called “Ruby Text” more generally) for each character.</p>
+<p>For efficiency, you can get it done faster if you enable the Authoring and Proofing Tools for East Asian languages.</p>
+<ol> <li>Go to Preferences (=CMD-,=) &gt; Authoring and Proofing Tools &gt; East Asian Languages.</li> <li>Select Japanese in the “Select a Language” menu.</li> <li>Restart Word.</li> </ol>
+<p>Now when you select a base word and click “Phonetic Guide” the “Ruby text” column should be pre-filled with the readings, and you can apply it to all occurrences of the same word.</p>
+<h2 id="microsoft-excel">Microsoft Excel</h2>
+<p>Unlike Word, the “Phonetic Guide” button is hidden if you haven’t enabled it explicitly. To enable:</p>
+<ol> <li>Go to Preferences (=CMD-,=) &gt; Authoring &gt; East Asian Languages.</li> <li>Select Japanese in the “Select a Language” menu.</li> <li>Restart Excel.</li> </ol>
+<p>Then you can enter furigana in each cell. You can toggle the display of furigana on and off.</p>
+<p>See <a href="https://support.microsoft.com/en-us/office/use-furigana-phonetic-guides-with-japanese-text-673b30ed-6bbd-4759-870f-0e5616955e9a">Use furigana (phonetic guides) with Japanese text</a>.</p>
+<h2 id="furigana-pdf-macosios">Furigana PDF (macOS/iOS)</h2>
+<p>If you deal with PDF documents frequently, <b>Furigana PDF</b> by telethon k.k. is a highly-rated desktop/mobile utility.</p>
+<ul> <li>It processes entire PDF files and injects ruby characters (furigana) into the document.</li> <li>It works <b>entirely offline</b> and doesn’t send data to a server.</li> </ul>
+<h1 id="reading-weblocal-html-browser-extensions">Reading Web/Local HTML (Browser Extensions)</h1>
+<p>For reading Japanese text on the web or locally via a browser, these are the gold standard.</p>
+<h2 id="furigana-converter">Furigana Converter</h2>
+<p>Furigana Converter is a tool for you to add furigana to Japanese text automatically on the fly. Click <a href="/blog/tools/furigana-converter/">here</a> to start using it!</p>
+<p>See the official <a href="/minimal-mistakes-plus/docs/furigana/#furigana-converter">documentation</a> for more details.</p>
+<h2 id="furiganator">Furiganator</h2>
+<p><a href="https://chromewebstore.google.com/detail/furiganator/ijfcmmkkmogaclaafpgcjdfcfibmhcfa">Chrome store</a></p>
+<p>Inserts Furigana (Ruby text) in Hiragana, Katakana or Romaji in the webpage. Perfect companion for Japanese reading practice.</p>
+<ul> <li>Very fast and reliable.</li> <li>Furigana in Hiragana, Katakana or Romaji.</li> <li>Option to show Furigana only on mouse over.</li> <li>Option to make the furigana text unselectable.</li> <li>Option to use color-tags to easily identify the kanji level or grade.</li> <li>Multiple color themes.</li> </ul>
+<p>It works in Chrome, Edge (Install it from Chrome Web Store).</p>
+<h2 id="yomitan">Yomitan</h2>
+<p>Webiste: <a href="https://yomitan.wiki/">https://yomitan.wiki/</a></p>
+<p>Successor to Yomichan, it is a powerful, offline-capable dictionary. Once you import dictionaries (like JMdict), you can hover over any word to see the furigana and definition instantly.</p>
+<h2 id="10ten-japanese-reader">10ten Japanese Reader</h2>
+<p><a href="https://chromewebstore.google.com/detail/10ten-japanese-reader-rik/pnmaklegiibbioifkmfkgpfnmdehdfan">Chrome store</a></p>
+<p>A lighter alternative to Yomitan. It is very fast and provides clean pop-ups with readings and meanings without needing a heavy setup.</p>
+<h1 id="batch-processing-files-for-developers">Batch Processing Files (For Developers)</h1>
+<h2 id="anki-with-japanese-support-add-on">Anki with “Japanese Support” Add-on</h2>
+<p>If your goal is to study the text later, the <a href="https://ankiweb.net/shared/info/3918629684">Japanese Support</a> add-on for Anki is the most efficient desktop tool for bulk generation.</p>
+<ul> <li>When you paste text into a “Source” field, it automatically generates the furigana in a “Reading” field using a local dictionary.</li> <li>It uses a specific syntax: <code>漢字[かんじ]</code>.</li> </ul>
+<h2 id="kuroshiro">Kuroshiro</h2>
+<p><a href="https://github.com/hexenq/kuroshiro">GitHub</a></p>
+<p>Japanese language library for converting Japanese sentence to Hiragana, Katakana or Romaji with furigana and okurigana modes supported.</p>
+<h2 id="mecab">MeCab</h2>
+<p>It is a fast, C++ based morphological analyzer. You can pipe any Japanese text into it, and it will output the base forms, parts of speech, and the readings (furigana).</p>
+<p>How to use:</p>
+<p>You can install it via Homebrew (<code>brew install mecab</code>) on Mac or use a pre-compiled binary for Windows. There are wrappers for Java, Python, and Node.js if you want to build a custom local script to “furiganize” your files.</p>
+<h1 id="ai-solutions">AI Solutions</h1>
 
         
       </section>
@@ -402,21 +366,6 @@
       <footer class="page__meta">
         
         
-  
-
-
-  
-
-  <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
-    <span itemprop="keywords">
-    
-      <a href="/blog/tags/#org-mode" class="page__taxonomy-item p-category" rel="tag">Org Mode</a>
-    
-    </span>
-  </p>
-
-
 
 
   
@@ -428,7 +377,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/blog/categories/#emacs" class="page__taxonomy-item p-category" rel="tag">Emacs</a>
+      <a href="/blog/categories/#japanese" class="page__taxonomy-item p-category" rel="tag">Japanese</a>
     
     </span>
   </p>
@@ -436,30 +385,29 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-03-29">March 29, 2026</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-04-04">April 4, 2026</time></p>
 
       </footer>
 
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Error+when+opening+an+Org+File+Containing+an+Emacs+Table%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Femacs%2Fuser-error-org-shrink%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=How+to+Add+or+Show+Furigana+for+Japanese+Text%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fjapanese%2Ffurigana%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Femacs%2Fuser-error-org-shrink%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fjapanese%2Ffurigana%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/emacs/user-error-org-shrink/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://josephtesfaye.com/blog/japanese/furigana/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/emacs/tables-in-org/" class="pagination--pager" title="Editing Tables in Emacs and Org Mode
+      <a href="/blog/japanese/small-ke/" class="pagination--pager" title="What’s the small ヶ in Japanese names and words?
 ">Previous</a>
     
     
-      <a href="/blog/diary/first-day-of-work/" class="pagination--pager" title="First Day of Work in Japan
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -484,54 +432,6 @@
   
   <h2 class="page__related-title">You May Also Enjoy</h2>
   <div class="grid__wrapper">
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/japanese/furigana/" rel="permalink">How to Add or Show Furigana for Japanese Text
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2026-04-04T00:00:00+00:00">April 4, 2026</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description"> Is there a non-AI software that can add or show furigana to Japanese text automatically and accurately, and can be run on your computer?
-</p>
-  </article>
-</div>
-
     
       
       
@@ -623,7 +523,55 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Today is the very first day I go to work in Japan and since I left my last job two years ago.
+    <p class="archive__item-excerpt" itemprop="description">This post is password protected.
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/emacs/user-error-org-shrink/" rel="permalink">Error when opening an Org File Containing an Emacs Table
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-03-29T00:00:00+00:00">March 29, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Error
 </p>
   </article>
 </div>
@@ -771,8 +719,8 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://josephtesfaye.com/blog/emacs/user-error-org-shrink/";  /* Replace PAGE_URL with your page's canonical URL variable */
-      this.page.identifier = "/emacs/user-error-org-shrink"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+      this.page.url = "https://josephtesfaye.com/blog/japanese/furigana/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/japanese/furigana"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
       var d = document, s = d.createElement('script');
