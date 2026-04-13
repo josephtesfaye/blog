@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2026-04-07T15:18:05+00:00">
+  <meta property="article:published_time" content="2026-04-13T15:54:47+00:00">
 
 
 
@@ -279,9 +279,16 @@
       
 
       <section class="page__content" itemprop="text"><aside class="sidebar__right sticky"><nav class="toc"><header><h4 class="nav__title">
-<i class="fas fa-tools"></i> Tools</h4></header><div class="frgntr-global-toolbar">
-<span class="frgntr-toolbar-label">Furigana</span><div class="frgntr-icon-group">
+<i class="fas fa-tools"></i> Tools</h4></header><div class="frgntr-global-toolbar"><div class="frgntr-toolbar-row" style="display: flex; justify-content: flex-start; align-items: center;"><div class="frgntr-icon-group">
 <div class="frgntr-dropdown" style="position: relative; display: inline-flex; align-items: center;">
+  <i class="fas fa-font frgntr-icon" id="frgntr-trans-btn" title="Live Translation" onclick="frgntrToggleTransDropdown(this)"></i>
+  <div class="frgntr-dropdown-menu" id="frgntr-trans-menu">
+  <div class="frgntr-dropdown-item" data-target="off" data-icon="fa-comment-slash" onclick="frgntrSelectTranslation(this)">Off</div>
+    <div class="frgntr-dropdown-item active" data-target="en" data-icon="fa-font" onclick="frgntrSelectTranslation(this)">English</div>
+<div class="frgntr-dropdown-item" data-target="zh-CN" data-icon="fa-language" onclick="frgntrSelectTranslation(this)">Chinese</div>
+  </div>
+</div>
+ <div class="frgntr-dropdown" style="position: relative; display: inline-flex; align-items: center;">
   <i class="fas fa-language frgntr-icon" id="frgntr-mode-btn" title="Converter Mode" onclick="frgntrToggleDropdown(this)"></i>
   <div class="frgntr-dropdown-menu" id="frgntr-mode-menu">
     <div class="frgntr-dropdown-item active" data-mode="hiragana" data-icon="fa-language" onclick="frgntrSelectMode(this)">Hiragana</div>
@@ -291,8 +298,7 @@
   </div>
 </div>
  <i class="fas fa-eye frgntr-icon" title="Toggle Visibility (Hover Mode)" onclick="frgntrToggleGlobalHover(this)"></i> <i class="fas fa-lock frgntr-icon" title="Toggle Selectability" onclick="frgntrToggleGlobalSelectable(this)"></i>
-</div>
-</div></nav></aside>
+</div></div></div></nav></aside>
         
         <div class="frgntr-live-converter" style="margin-bottom: 1.5em;">
   <textarea class="frgntr-live-input" placeholder="Enter your contents…" oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px'"></textarea>
@@ -424,235 +430,8 @@
 
 
 
-  <script>
-  function frgntrToggleGlobalHover(el) {
-    const isHidden = el.classList.contains('fa-eye-slash');
-    if(isHidden) {
-      el.classList.replace('fa-eye-slash', 'fa-eye');
-      document.querySelectorAll('rt:not(.has-local-hover)').forEach(rt => rt.classList.remove('frgntr_hidden'));
-    } else {
-      el.classList.replace('fa-eye', 'fa-eye-slash');
-      document.querySelectorAll('rt:not(.has-local-hover)').forEach(rt => rt.classList.add('frgntr_hidden'));
-    }
-  }
-  function frgntrToggleGlobalSelectable(el) {
-    const isSelectable = el.classList.contains('fa-unlock');
-    if(isSelectable) {
-      el.classList.replace('fa-unlock', 'fa-lock');
-      document.querySelectorAll('rt:not(.has-local-selectable)').forEach(rt => rt.classList.add('frgntr_unselectable'));
-    } else {
-      el.classList.replace('fa-lock', 'fa-unlock');
-      document.querySelectorAll('rt:not(.has-local-selectable)').forEach(rt => rt.classList.remove('frgntr_unselectable'));
-    }
-  }
-  function frgntrToggleLocalHover(el) {
-    const isHidden = el.classList.contains('fa-eye-slash');
-    const rts = el.parentElement.parentElement.querySelectorAll('rt');
-    if(isHidden) {
-      el.classList.replace('fa-eye-slash', 'fa-eye');
-      rts.forEach(rt => rt.classList.remove('frgntr_hidden'));
-    } else {
-      el.classList.replace('fa-eye', 'fa-eye-slash');
-      rts.forEach(rt => rt.classList.add('frgntr_hidden'));
-    }
-  }
-  function frgntrToggleLocalSelectable(el) {
-    const isSelectable = el.classList.contains('fa-unlock');
-    const rts = el.parentElement.parentElement.querySelectorAll('rt');
-    if(isSelectable) {
-      el.classList.replace('fa-unlock', 'fa-lock');
-      rts.forEach(rt => rt.classList.add('frgntr_unselectable'));
-    } else {
-      el.classList.replace('fa-lock', 'fa-unlock');
-      rts.forEach(rt => rt.classList.remove('frgntr_unselectable'));
-    }
-  }
-
-  function frgntrToggleDropdown(el) {
-    document.getElementById('frgntr-mode-menu').classList.toggle('show');
-  }
-  function frgntrSelectMode(el) {
-    const mode = el.getAttribute('data-mode');
-    const iconClass = el.getAttribute('data-icon');
-    document.querySelectorAll('.frgntr-dropdown-item').forEach(item => item.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('frgntr-mode-btn').className = `fas ${iconClass} frgntr-icon`;
-    window.frgntrLiveMode = mode;
-    document.getElementById('frgntr-mode-menu').classList.remove('show');
-    const liveInput = document.querySelector('.frgntr-live-input');
-    if (liveInput && liveInput.value) {
-      liveInput.dispatchEvent(new Event('input'));
-    }
-  }
-  window.addEventListener('click', function(e) {
-    if (!e.target.matches('#frgntr-mode-btn')) {
-      const menu = document.getElementById('frgntr-mode-menu');
-      if (menu && menu.classList.contains('show')) menu.classList.remove('show');
-    }
-  });
-</script>
-<script>
-  if (typeof window.frgntrLiveInitialized === 'undefined') {
-    window.frgntrLiveInitialized = true;
-
-    const loadScript = (src) => new Promise((resolve, reject) => {
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
-
-    let globalKuroshiro = null;
-    let kuroshiroInitializing = false;
-
-    async function getKuroshiroInstance(statusEl) {
-      if (globalKuroshiro) return globalKuroshiro;
-      if (kuroshiroInitializing) {
-          let attempts = 0;
-          while(kuroshiroInitializing && attempts < 150) {
-              await new Promise(r => setTimeout(r, 100));
-              attempts++;
-          }
-          return globalKuroshiro;
-
-      }
-
-      kuroshiroInitializing = true;
-      if (statusEl) {
-          statusEl.style.display = 'block';
-          statusEl.innerText = "Loading dictionary engine...";
-      }
-
-      try {
-        // Fix Kuromoji path.join() bug corrupting HTTPS absolute URLs
-        if (!window._frgntrXhrPatched) {
-          const origOpen = window.XMLHttpRequest.prototype.open;
-          window.XMLHttpRequest.prototype.open = function(method, url) {
-            if (typeof url === 'string' && url.startsWith('https:/cdn.jsdelivr.net')) {
-              url = url.replace('https:/cdn.jsdelivr.net', 'https://cdn.jsdelivr.net');
-            }
-            return origOpen.apply(this, arguments);
-          };
-          window._frgntrXhrPatched = true;
-        }
-
-        if (typeof window.Kuroshiro === 'undefined') {
-          await loadScript("https://cdn.jsdelivr.net/npm/kuroshiro@1.1.2/dist/kuroshiro.min.js");
-        }
-        if (typeof window.KuromojiAnalyzer === 'undefined') {
-          await loadScript("https://cdn.jsdelivr.net/npm/kuroshiro-analyzer-kuromoji@1.1.0/dist/kuroshiro-analyzer-kuromoji.min.js");
-        }
-
-        const KsClass = window.Kuroshiro.default || window.Kuroshiro;
-        const AnalyzerClass = window.KuromojiAnalyzer.default || window.KuromojiAnalyzer;
-
-        const ks = new KsClass();
-        const analyzer = new AnalyzerClass({
-            dictPath: "https://cdn.jsdelivr.net/npm/kuromoji@0.1.2/dict/"
-        });
-
-        const initPromise = ks.init(analyzer);
-        const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Dictionary load timeout")), 15000));
-        await Promise.race([initPromise, timeoutPromise]);
-
-        globalKuroshiro = ks;
-      } catch (e) {
-        console.error("Furigana Live Converter Error:", e);
-        if (statusEl) statusEl.innerText = "Error loading dictionary.";
-      } finally {
-        kuroshiroInitializing = false;
-        if (statusEl && globalKuroshiro) {
-            statusEl.style.display = 'none';
-        }
-      }
-      return globalKuroshiro;
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.frgntr-live-converter').forEach(container => {
-        const input = container.querySelector('.frgntr-live-input');
-        const output = container.querySelector('.frgntr-live-output');
-        const status = container.querySelector('.frgntr-live-status');
-        let timeout = null;
-
-        input.addEventListener('focus', () => getKuroshiroInstance(status), { once: true });
-
-        input.addEventListener('input', (e) => {
-          clearTimeout(timeout);
-          timeout = setTimeout(async () => {
-            const text = e.target.value;
-            if (!text.trim()) {
-              output.innerHTML = "";
-              return;
-            }
-
-            const ks = await getKuroshiroInstance(status);
-            if (!ks) return;
-
-            let html = await ks.convert(text, { mode: "furigana", to: "hiragana" });
-            const mode = window.frgntrLiveMode || "hiragana";
-
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            doc.querySelectorAll('ruby').forEach(ruby => {
-                const rt = ruby.querySelector('rt');
-                if (!rt) return;
-                let baseText = "";
-                ruby.childNodes.forEach(node => {
-                    if (node.nodeType === Node.TEXT_NODE) baseText += node.textContent;
-                });
-                if (baseText.trim() === rt.textContent.trim()) {
-                    ruby.replaceWith(baseText);
-                }
-            });
-
-            if (mode === "pattern") {
-              doc.querySelectorAll('ruby').forEach(ruby => {
-                  const rt = ruby.querySelector('rt');
-                  if (!rt) return;
-                  const rtText = rt.textContent;
-                  ruby.querySelectorAll('rp, rt').forEach(el => el.remove());
-                  const baseText = ruby.textContent;
-                  ruby.replaceWith(`（${baseText}：${rtText}）`);
-              });
-              output.innerHTML = doc.body.textContent.replace(/\n/g, '<br>');
-              return;
-            }
-
-            if (mode === "katakana" || mode === "romaji") {
-                const rts = doc.querySelectorAll('rt');
-                const uniqueReadings = [...new Set(Array.from(rts).map(rt => rt.textContent))];
-                const readingMap = {};
-                for (const reading of uniqueReadings) {
-                    if (mode === "katakana") readingMap[reading] = reading.replace(/[\u3041-\u3096]/g, m => String.fromCharCode(m.charCodeAt(0) + 0x60));
-                    else readingMap[reading] = await ks.convert(reading, { mode: "normal", to: "romaji" });
-                }
-                rts.forEach(rt => { rt.textContent = readingMap[rt.textContent]; });
-            }
-
-            html = doc.body.innerHTML;
-
-            let classes = [];
-            const isHoverOn = document.querySelector('.frgntr-global-toolbar .fas.fa-eye-slash[title*="Visibility"]');
-            const isSelectOff = document.querySelector('.frgntr-global-toolbar .fas.fa-lock[title*="Selectability"]');
-
-            if (isHoverOn) classes.push('frgntr_hidden');
-            if (isSelectOff) classes.push('frgntr_unselectable');
-
-            const classAttr = classes.length > 0 ? ` class="${classes.join(' ')}"` : '';
-
-            html = html.split('<ruby>').join('<ruby furiganated="true">')
-                       .split('<rp>(</rp><rt>').join(`<rp>(</rp><rt${classAttr}>`)
-                       .split('\n').join('<br>');
-
-            output.innerHTML = html;
-          }, 400);
-        });
-      });
-    });
-  }
-</script>
+  <script>window.frgntrLiveTransTarget = 'en';</script>
+<script src="/blog/assets/js/furigana_global.js"></script>
+<script src="/blog/assets/js/furigana_live.js"></script>
 </body>
 </html>
