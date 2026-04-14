@@ -347,7 +347,7 @@ var store = [{
         "url": "/blog/projects/organki/",
         "teaser": null
       },{
-        "title": "Furigana Converter",
+        "title": "Live Translation",
         "excerpt":"@@FRGNTR_LIVE_CONVERTER|Enter your contents…@@  ","categories": [],
         "tags": [],
         "url": "/blog/tools/furigana-converter/",
