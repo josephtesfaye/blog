@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.26.0 by Michael Rose
+  Copyright 2013-2024 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>PDF Productivity | Orcharinth</title>
+<meta name="description" content="Dark Mode">
+
+
+  <meta name="author" content="Joseph Huang">
+  
+  <meta property="article:author" content="Joseph Huang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Orcharinth">
+<meta property="og:title" content="PDF Productivity">
+<meta property="og:url" content="https://josephtesfaye.com/blog/documents/pdf-productivity/">
+
+
+  <meta property="og:description" content="Dark Mode">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-04-20T19:00:00+00:00">
+
+
+
+  <meta property="article:modified_time" content="2026-04-19T19:33:04+00:00">
+
+
+
+
+<link rel="canonical" href="https://josephtesfaye.com/blog/documents/pdf-productivity/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Orcharinth Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script type="text/javascript">
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <script data-ad-client="ca-pub-2501730911245634" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Make the post width wider when `author_profile: false` -->
+
+<style>
+  /* Only apply these styles if the viewport is at least 80em wide, which is
+     equivalent to 1280px (on a standard browser where 1em = 16px). */
+  @media (min-width: 80em) {
+    .page, .archive, .page__related {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .breadcrumbs ol, .page__related {
+      float: left;
+    }
+  }
+</style>
+
+
+
+<script src="/blog/assets/js/dark_mode_toggle.js"></script>
+
+
+<script>
+  ['mousedown', 'click', 'touchstart'].forEach(function (event) {
+    document.addEventListener(event, function (e) {
+      if (e.target.closest('.mfp-bottom-bar'))
+        e.stopPropagation();
+    }, true);
+  });
+</script>
+
+<!-- Enable sticky TOC for mobile -->
+<script>
+  function initMobileTOC() {
+    var toc = document.querySelector('.sidebar__right.sticky .toc');
+    // Only initialize if a sticky TOC exists and the button hasn't been added yet
+    if (toc && !document.querySelector('.toc-mobile-btn')) {
+      document.body.classList.add('has-toc');
+
+      var btn = document.createElement('button');
+      btn.className = 'toc-mobile-btn';
+      btn.innerHTML = '<i class="fas fa-list-ul"></i>';
+      btn.setAttribute('aria-label', 'Toggle Table of Contents');
+      document.body.appendChild(btn);
+
+      // Toggle TOC visibility on button click
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toc.classList.toggle('is-active');
+      });
+
+      // Close TOC when clicking anywhere outside of it
+      document.addEventListener('click', function (e) {
+        if (toc.classList.contains('is-active') && !toc.contains(e.target) && e.target !== btn) {
+          toc.classList.remove('is-active');
+        }
+      });
+
+      // Automatically close the TOC popup after tapping a link inside it
+      // var tocLinks = toc.querySelectorAll('a');
+      // tocLinks.forEach(function (link) {
+      //   link.addEventListener('click', function () {
+      //     if (window.innerWidth <= 1024) { // Matches the 64em media query
+      //       toc.classList.remove('is-active');
+      //     }
+      //   });
+      // });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initMobileTOC);
+</script>
+
+  </head>
+
+  <body class="layout--single narrow">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/blog/">
+          Orcharinth
+          <span class="site-subtitle">Code. Culture. Cultivation.</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+            <a href="/blog/year-archive/">Posts</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/works/">Works</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/collections/">Collections</a>
+          </li>
+<li class="masthead__menu-item">
+            <a href="/blog/about/">About</a>
+          </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+
+        
+        <button class="theme-toggle-btn" onclick="switchTheme()">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/blog/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1">
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/blog/categories/#documents" itemprop="item"><span itemprop="name">Documents</span></a>
+          <meta itemprop="position" content="2">
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">PDF Productivity</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="PDF Productivity">
+    <meta itemprop="description" content="Dark Mode">
+    <meta itemprop="datePublished" content="2026-04-20T19:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-04-19T19:33:04+00:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">
+            <a href="https://josephtesfaye.com/blog/documents/pdf-productivity/" itemprop="url">PDF Productivity
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-04-20T19:00:00+00:00">April 20, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li>
+<a href="#dark-mode">Dark Mode</a><ul>
+<li><a href="#the-mechanism-behind-pdf-tools">The Mechanism Behind pdf-tools
+</a></li>
+<li><a href="#best-macos-tools-for-dark-mode">Best macOS Tools for Dark Mode</a></li>
+<li><a href="#best-ios-tools-for-dark-mode">Best iOS Tools for Dark Mode</a></li>
+</ul>
+</li></ul>
+<li>
+<a href="#ocr">OCR</a><ul>
+<li><a href="#does-macos-natively-support-this">Does macOS Natively Support This?</a></li>
+<li>
+<a href="#best-approaches-for-2026">Best Approaches for 2026</a><ul>
+<li><a href="#the-power-user-efficient-method-ocrmypdf">The “Power User” Efficient Method: ocrmypdf
+</a></li>
+<li><a href="#the-best-native-feel-gui-textify-or-pdf-expert">The Best “Native-Feel” GUI: Textify or PDF Expert</a></li>
+<li><a href="#the-standard-high-quality-method-adobe-acrobat-pro">The “Standard” High-Quality Method: Adobe Acrobat Pro</a></li>
+<li><a href="#summary-comparison">Summary Comparison</a></li>
+</ul>
+</li>
+</ul>
+</li>
+            </nav>
+          </aside>
+        
+        <h1 id="dark-mode">Dark Mode</h1>
+<p class="notice"> How to view PDF in dark mode on macOS and iOS? What are the best tools for this? Currently I find https://github.com/vedang/pdf-tools on Emacs has decent output. Is there an app using the same mechanism underneath?</p>
+<p>Viewing PDFs in dark mode varies significantly between a simple “Invert Colors” filter and the sophisticated color remapping found in tools like <code>pdf-tools</code>. The mechanism used by <code>pdf-tools</code> (specifically via the Poppler library) involves re-rendering the document by remapping the background and foreground color values, which preserves image quality better than a global system inversion.</p>
+<h3 id="the-mechanism-behind-pdf-tools">The Mechanism Behind <code>pdf-tools</code>
+</h3>
+<p>The <code>pdf-view-midnight-minor-mode</code> in Emacs works by modifying the rendering parameters of the Poppler engine. Instead of simply flipping the pixels of a rendered image, it tells the engine to replace specific color hex codes (like ​#FFFFFF for background) with a dark alternative and lightens the text colors accordingly.</p>
+<h3 id="best-macos-tools-for-dark-mode">Best macOS Tools for Dark Mode</h3>
+<ul> <li>
+<p><b>Sioyek</b> This is perhaps the closest spiritual successor to the <code>pdf-tools</code> experience for a standalone application. It is a PDF viewer designed for technical documentation and research. </p>
+<ul> <li>
+<b>Mechanism:</b> Like <code>pdf-tools</code>, it allows for custom color mapping. You can define specific background and foreground colors in your configuration file.</li> <li>
+<b>Usage:</b> Press <code>r</code> to toggle “Smart Dark Mode,” which intelligently inverts text while attempting to keep images visible.</li> <li>
+<b>Verbatim:</b> Configurable via <code>prefs_user.config</code>.</li> </ul> </li> <li>
+<p><b>Okular</b> A cross-platform viewer originally from the KDE project but available on macOS via Homebrew (<code>brew install okular</code>). </p>
+<ul> <li>
+<b>Mechanism:</b> It also uses the Poppler backend. It provides a “Change Dark/Light Colors” feature under accessibility settings.</li> <li>
+<b>Capability:</b> It allows you to choose a “Recolor” mode that mimics the midnight mode of Emacs almost perfectly, where you can pick the exact dark gray and light text colors you prefer.</li> </ul> </li> <li>
+<p><b>PDF Expert</b> The most polished GUI option for macOS. </p>
+<ul> <li>
+<b>Mechanism:</b> It provides a “Themes” toggle (Day, Sepia, Night).</li> <li>
+<b>Quality:</b> The “Night” mode is well-tuned for legibility, though it is less customizable than the open-source engines.</li> </ul> </li> </ul>
+<h3 id="best-ios-tools-for-dark-mode">Best iOS Tools for Dark Mode</h3>
+<p>Native way: Using Smart Invert</p>
+<p>In any PDF viewer that doesn’t support or turn on dark mode, you can turn on Settings &gt; Accessibility &gt; Display &amp; Text Size &gt; Smart Invert to view the PDF in dark mode.</p>
+<p>Viewing PDFs on iOS with high-quality dark mode is more restrictive due to the reliance on Apple’s PDFKit, but a few apps implement their own rendering logic.</p>
+<ul> <li>
+<b>PDF Expert (iOS)</b> Similar to its macOS counterpart, it offers a “Night” theme. It is widely considered the smoothest implementation on iPad and iPhone. It changes the page background to a deep dark gray and adjusts the text to a readable white/gray.</li> <li>
+<p><b>KyBook 3</b> While primarily an E-book reader, its PDF rendering engine is highly customizable. </p>
+<ul> <li>
+<b>Capability:</b> It allows for custom “Themes” where you can specify the background color and text color independently. It handles heavy PDFs well and provides a very “paper-like” dark mode.</li> </ul> </li> <li>
+<b>MarginNote 3</b> For academic work, MarginNote allows you to apply a dark theme to the entire workspace, including the PDF document. It uses a color overlay method that is effective for long reading sessions.</li> </ul>
+<h1 id="ocr">OCR</h1>
+<p class="notice"> How to OCR a PDF with both English and Japanese texts on macOS efficiently and with high quality? The OCR in the PDF should be permanent and usable in other platforms. Does macOS natively support this? What are the best approaches?</p>
+<p>To OCR a PDF with mixed English and Japanese text on macOS efficiently, you need a solution that “embeds” a searchable text layer (OCR layer) into the file. While macOS has incredible built-in text recognition, the way it handles PDFs is slightly different from what you might expect for cross-platform compatibility.</p>
+<h2 id="does-macos-natively-support-this">Does macOS Natively Support This?</h2>
+<p><b>The short answer: Partially.</b></p>
+<p>macOS (including the latest <b>macOS 17 “Tahoe”*) uses a feature called *Live Text</b>. When you open a scanned PDF in <code>Preview.app</code>, macOS automatically detects text (including Japanese and English) and allows you to select, copy, or search it <i>locally</i>.</p>
+<p><b>The catch:</b> This text layer is often “virtual.” If you send that file to a Windows or Linux user, they may see it only as a flat image with no searchable text. macOS does not natively provide a “one-click” button in Preview to “Burn OCR into PDF” for permanent, cross-platform use.</p>
+<h2 id="best-approaches-for-2026" class="ordered">Best Approaches for 2026</h2>
+
+<h3 id="the-power-user-efficient-method-ocrmypdf">
+<span class="heading-number">1. </span>The “Power User” Efficient Method: <code>ocrmypdf</code>
+</h3>
+<p>As a software engineer, this is your best bet. It is an open-source command-line tool that uses the <b>Tesseract OCR</b> engine. It is exceptionally good at handling bilingual documents and optimizing file size.</p>
+<ul> <li>
+<p><b>Setup:</b> </p>
+<ol> <li>Install via Homebrew: <code>brew install ocrmypdf</code>
+</li> <li>Install the language packs: <code>brew install tesseract-lang</code>
+</li> </ol> </li> <li>
+<p><b>Execution:</b> Run the following command in your terminal to process a mixed-language file: </p>
+<div class="language-sh highlighter-rouge"> <div class="highlight"><pre class="highlight"><code>ocrmypdf <span class="nt">-l</span> eng+jpn input.pdf output.pdf</code></pre></div> </div>  </li> <li>
+<b>Why it’s great:</b> It creates a <b>PDF/A</b> (archive standard) file with a permanent invisible text layer that works on every platform. The <code>-l eng+jpn</code> flag tells the engine to look for both character sets simultaneously, significantly increasing accuracy for technical documents.</li> </ul>
+<h3 id="the-best-native-feel-gui-textify-or-pdf-expert">
+<span class="heading-number">2. </span>The Best “Native-Feel” GUI: Textify or PDF Expert</h3>
+<p>If you prefer a graphical interface that leverages Apple’s latest <b>Vision Framework</b> (which is arguably more accurate for Japanese than Tesseract), these are the top choices:</p>
+<ul> <li>
+<b>Textify:</b> A lightweight App Store utility specifically designed for macOS Tahoe. It can “import” a scanned PDF and “export” a searchable version. It is very fast and respects your privacy by processing everything on-device.</li> <li>
+<p><b>PDF Expert:</b> The gold standard for PDF management on Mac. It has a dedicated “OCR” tab. You simply click <b>OCR</b>, select <b>English</b> and <b>Japanese</b> from the language settings, and it will generate the text layer permanently. </p>
+<p class="notice"> However, in the version I’ve installed, to recognize both languages, you should choose only Japanese. Choosing both languages fails to recognize Japanese for some reason.</p> </li> </ul>
+<h3 id="the-standard-high-quality-method-adobe-acrobat-pro">
+<span class="heading-number">3. </span>The “Standard” High-Quality Method: Adobe Acrobat Pro</h3>
+<p>If “high quality” is the absolute priority (e.g., complex layouts, tables, or vertical Japanese text), <b>Adobe Acrobat</b> remains the industry leader. * <b>Workflow:</b> Open the PDF → <b>Scan &amp; OCR</b> → <b>Recognize Text</b>. * <b>Pro Tip:</b> In the settings, ensure <b>Output Style</b> is set to <b>Searchable Image</b> to keep the original scan’s appearance while adding the text underneath.</p>
+<h3 id="summary-comparison">
+<span class="heading-number">4. </span>Summary Comparison</h3>
+<table>      <thead><tr>
+<th>Method</th>
+<th>Effort</th>
+<th>Quality (Mixed Text)</th>
+<th>Cost</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Preview (Native)</td>
+<td>Zero</td>
+<td>High (but not permanent)</td>
+<td>Free</td>
+</tr>
+<tr>
+<td>ocrmypdf (CLI)</td>
+<td>Medium</td>
+<td>Very High</td>
+<td>Free (Open Source)</td>
+</tr>
+<tr>
+<td>Textify</td>
+<td>Low</td>
+<td>High (Uses Apple Vision)</td>
+<td>Paid (Low cost)</td>
+</tr>
+<tr>
+<td>Adobe Acrobat</td>
+<td>Low</td>
+<td>Highest</td>
+<td>Subscription</td>
+</tr>
+</tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/blog/categories/#documents" class="page__taxonomy-item p-category" rel="tag">Documents</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2026-04-20">April 20, 2026</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=PDF+Productivity%20https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fdocuments%2Fpdf-productivity%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjosephtesfaye.com%2Fblog%2Fdocuments%2Fpdf-productivity%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://josephtesfaye.com/blog/documents/pdf-productivity/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/japanese/workplace-japanese-words-dialogs/" class="pagination--pager" title="Workplace Japanese Words and Dialogs
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You May Also Enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/japanese/workplace-japanese-words-dialogs/" rel="permalink">Workplace Japanese Words and Dialogs
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-04-07T00:00:00+00:00">April 7, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">How to Ask
+Who is …?
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/japanese/furigana/" rel="permalink">How to Add or Show Furigana for Japanese Text
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-04-04T00:00:00+00:00">April 4, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description"> Is there a non-AI software that can add or show furigana to Japanese text automatically and accurately, and can be run on your computer?
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/japanese/small-ke/" rel="permalink">What’s the small ヶ in Japanese names and words?
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-04-01T00:00:00+00:00">April 1, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">The small ヶ is a classic Japanese name and place name that often trips up learners because of that mysterious little character!
+</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/diary/first-day-of-work/" rel="permalink">First Day of Work in Japan
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2026-04-01T00:00:00+00:00">April 1, 2026</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This post is password protected.
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://josephtesfaye.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-home" aria-hidden="true"></i> Home</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/orcharinth" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+        
+          <li><a href="https://github.com/josephtesfaye" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2026
+  <a href="/josephs-blog/about/">
+    Joseph Huang
+  </a>. Built with Love ♥ ♪ ♫ ♬
+</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GESMRQ2DV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9GESMRQ2DV', { 'anonymize_ip': false});
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://josephtesfaye.com/blog/documents/pdf-productivity/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/documents/pdf-productivity"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://josephsblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>
