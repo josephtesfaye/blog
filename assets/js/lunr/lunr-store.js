@@ -335,6 +335,12 @@ var store = [{
         "url": "/blog/documents/pdf-productivity/",
         "teaser": null
       },{
+        "title": "🔒 Protected Content",
+        "excerpt":" No: 202604221129 Birthday: 2026/04/22 11:29 Name: 高橋蓮 Ren Takahashi Generation method: ChatGPT                                                                                                         ","categories": ["AI"],
+        "tags": ["Men"],
+        "url": "/blog/ai/ren-takahashi/",
+        "teaser": null
+      },{
         "title": "MetaCore",
         "excerpt":"Metacore is a lightweight, configurable core platform for building no/low-code applications that run offline or in the cloud. Users create complete apps—data schemas, tables, pages, search, filters, and pagination—through declarative configuration, without traditional coding. It serves as a foundation for personal or internal CMS-style systems to manage collections (books, films, albums) and productivity data (goals, schedules, tasks) using a single unified runtime.  ","categories": [],
         "tags": [],
