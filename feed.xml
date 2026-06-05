@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-04-27T09:44:31+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">🔒 Protected Content</title><link href="https://josephtesfaye.com/blog/ai/ren-takahashi/" rel="alternate" type="text/html" title="🔒 Protected Content" /><published>2026-04-26T07:57:21+00:00</published><updated>2026-04-26T07:57:21+00:00</updated><id>https://josephtesfaye.com/blog/ai/ren-takahashi</id><content type="html" xml:base="https://josephtesfaye.com/blog/ai/ren-takahashi/"><![CDATA[<ul> <li>No: 202604221129</li> <li>Birthday: 2026/04/22 11:29</li> <li>Name: 高橋蓮 Ren Takahashi</li> <li>Generation method: ChatGPT</li> </ul>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://josephtesfaye.com/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://josephtesfaye.com/blog/" rel="alternate" type="text/html" /><updated>2026-06-05T13:21:36+00:00</updated><id>https://josephtesfaye.com/blog/feed.xml</id><title type="html">Orcharinth</title><subtitle>A curated sanctuary where the complexity of code and science meets the organic rhythm of art, health, and thought.</subtitle><author><name>Joseph Huang</name></author><entry><title type="html">🔒 Protected Content</title><link href="https://josephtesfaye.com/blog/ai/ren-takahashi/" rel="alternate" type="text/html" title="🔒 Protected Content" /><published>2026-04-26T07:57:21+00:00</published><updated>2026-04-26T07:57:21+00:00</updated><id>https://josephtesfaye.com/blog/ai/ren-takahashi</id><content type="html" xml:base="https://josephtesfaye.com/blog/ai/ren-takahashi/"><![CDATA[<ul> <li>No: 202604221129</li> <li>Birthday: 2026/04/22 11:29</li> <li>Name: 高橋蓮 Ren Takahashi</li> <li>Generation method: ChatGPT</li> </ul>
 
 
 
@@ -332,7 +332,7 @@ Maintain the existing indoor lighting, color grading, shadows, background, camer
 <span class="p">(</span><span class="nv">advice-add</span> <span class="ss">'org-table-shrink</span> <span class="ss">:around</span> <span class="nf">#'</span><span class="nv">advice-org-table-shrink-ignore-table-el</span><span class="p">)</span></code></pre></div> </div>]]></content><author><name>Joseph Huang</name></author><category term="Emacs" /><category term="Org Mode" /><summary type="html"><![CDATA[Error]]></summary></entry><entry><title type="html">Editing Tables in Emacs and Org Mode</title><link href="https://josephtesfaye.com/blog/emacs/tables-in-org/" rel="alternate" type="text/html" title="Editing Tables in Emacs and Org Mode" /><published>2026-03-28T00:00:00+00:00</published><updated>2026-03-28T00:00:00+00:00</updated><id>https://josephtesfaye.com/blog/emacs/tables-in-org</id><content type="html" xml:base="https://josephtesfaye.com/blog/emacs/tables-in-org/"><![CDATA[<h1 id="emacs-text-based-tables">Emacs Text-based Tables</h1>
 <p>Emacs has a built-in library called <code>table.el</code> (see <code>info:emacs#Text Based
   Tables</code> for more details).</p>
-<h2 id="creating-a-table">Creating a Table</h2>
+<h2 id="create-a-table">Create a Table</h2>
 <p>To create a text-based table from scratch, type <code>M-x table-insert</code>. This command prompts for the number of table columns, the number of table rows, cell width and cell height.</p>
 <p>For example, <code>M-x table-insert 3 RET 3 RET 5 RET 1 RET</code> creates a table which has 3 columns and 3 rows, and every column is 5-characters wide and every row is 1-character high.</p>
 
@@ -357,7 +357,8 @@ Maintain the existing indoor lighting, color grading, shadows, background, camer
 |    |        |            |
 +----+--------+------------+</code></pre></div> </div>
           
-<h2 id="editing-a-table">Editing a Table</h2>
+<h2 id="edit-the-table">Edit the Table</h2>
+<h3 id="recognize-the-table">Recognize the Table</h3>
 <p>The table inserted by <code>M-x table-insert</code> contains special text properties, which tell Emacs to treat it specially as a text-based table. If you save the buffer to a file and visit it again later, those properties are lost, and the table appears to Emacs as an ordinary piece of text.</p>
 <p>To apply those text properties to all tables (i.e., convert them back into a recognized tables), type <code>M-x table-recognize</code>, to discard them, type <code>M-x
   table-unrecognize</code>.</p>
@@ -366,31 +367,48 @@ Maintain the existing indoor lighting, color grading, shadows, background, camer
 </li> <li>at point: <code>table-recognize-table</code>, <code>table-unrecognize-table</code>
 </li> <li>only the cell at point: <code>table-recognize-cell</code>, <code>table-unrecognize-table</code>
 </li> </ul>
-<p>You can use the following commands to edit the cells. The key-bindings are activated only when the table is recognized.</p>
-<ul> <li>Move point to the next/previous cell: <code>table-forward-cell</code> (<code>TAB</code>), <code>table-backward-cell</code> (<code>S-TAB</code>)</li> <li>
+<h3 id="edit-rows-columns-cells">Edit Rows, Columns, Cells</h3>
+<p>You can use the following commands to edit the cells. The key-bindings are activated only when the table is recognized and the point is in the table.</p>
+<ul> <li>
+<p>Navigation </p>
+<ul> <li>Move point to the next/previous cell: <code>table-forward-cell</code> (<code>TAB</code>), <code>table-backward-cell</code> (<code>S-TAB</code>)</li> </ul> </li> <li>
+<p>Rows and columns </p>
+<ul> <li>
 <p>Insert </p>
-<ul> <li>one or more rows before the current row: <code>table-insert-row</code>
+<ul> <li>one or more columns or rows: <code>table-insert-row-column</code> (<code>C-+</code>, <code>C-c C-c +</code>)</li> <li>one or more rows before the current row: <code>table-insert-row</code>
 </li> <li>one or more columns before the current column: <code>table-insert-column</code>
-</li> <li>one or more columns or rows: <code>table-insert-row-column</code> (<code>C-c C-c +</code>)</li> </ul> </li> <li>
+</li> </ul> </li> <li>
 <p>Delete </p>
 <ul> <li>one or more rows: <code>table-delete-row</code>
 </li> <li>one or more columns: <code>table-delete-column</code>
 </li> </ul> </li> <li>
-<p>Enlarge/Shrink the current cell </p>
-<ul> <li>vertically: <code>table-heighten-cell</code> (<code>C-c C-c }</code>), <code>table-shorten-cell</code> (<code>C-c C-c {</code>)</li> <li>horizontally: <code>table-widen-cell</code> (<code>C-c C-c &gt;</code>), <code>table-narrow-cell</code> (<code>C-c C-c &lt;</code>)</li> </ul> </li> </ul>
-<p><b>column- and row-spanning</b></p>
-<ul> <li>Merge the current cell with the adjacent cell: <code>table-span-cell</code> (<code>C-c C-c *</code>)</li> <li>
+<p>Enlarge or shrink the current cell </p>
+<ul> <li>vertically: <code>table-heighten-cell</code> (<code>C-}</code>, <code>C-c C-c }</code>), <code>table-shorten-cell</code> (<code>C-{</code>, <code>C-c C-c {</code>)</li> <li>horizontally: <code>table-widen-cell</code> (<code>C-&gt;</code>, <code>C-c C-c &gt;</code>), <code>table-narrow-cell</code> (<code>C-&lt;</code>, <code>C-c C-c &lt;</code>)</li> </ul> </li> <li>
+<p>Column- and row-spanning </p>
+<ul> <li>Merge the current cell with the adjacent cell: <code>table-span-cell</code> (<code>C-*</code>, <code>C-c C-c *</code>)</li> <li>
 <p>Split the current cell </p>
-<ul> <li>vertically: <code>table-split-cell-vertically</code> (<code>C-c C-c -</code>)</li> <li>horizontally: <code>table-split-cell-horizontally</code> (<code>C-c C-c |</code>)</li> <li>vertically or horizontally: <code>table-split-cell</code>
-</li> </ul> </li> </ul>
-<p><b>Alignment</b></p>
-<ul> <li>Justify cell, column, or row: <code>table-justify</code> (<code>C-c C-c :</code>)</li> </ul>
-<p><b>Automatic Line Wrapping</b></p>
-<p>The built-in tables support automatic line wrapping in a cell as you type. The lines are treated as one cell and are preserved when exported to other formats such as HTML.</p>
-<p><b>Other</b></p>
-<ul> <li>Traverse the cells and insert an incremental sequence into each cell: <code>table-insert-sequence</code>
-</li> <li>Report the layout of the table and table cell at point: <code>table-query-dimension</code> (<code>C-c C-c #</code>)</li> <li>Generate a table of a specific format: <code>table-generate-source</code> (<code>C-^</code>)</li> </ul>
-<h2 id="converting-between-plain-text-and-tables">Converting Between Plain Text and Tables</h2>
+<ul> <li>vertically: <code>table-split-cell-vertically</code> (<code>C--</code>, <code>C-c C-c -</code>)</li> <li>horizontally: <code>table-split-cell-horizontally</code> (<code>C-|</code>, <code>C-c C-c |</code>)</li> <li>vertically or horizontally: <code>table-split-cell</code>
+</li> </ul> </li> </ul> </li> </ul> </li> <li>
+<p>Cell contents </p>
+<ul> <li>
+<p>Point navigation </p>
+<p>When point is in a cell you can think of it in a buffer where you can use the common point navigating commands such as:</p> <ul> <li>Go to line start: <code>*table--cell-move-beginning-of-line</code> (<code>C-a</code>)</li> <li>Go to line end: <code>*table--cell-move-end-of-line</code> (<code>C-e</code>)</li> <li>Go to sentence start: <code>*table--cell-backward-sentence</code> (<code>M-a</code>)</li> <li>Go to sentence end: <code>*table--cell-backward-sentence</code> (<code>M-e</code>)</li> <li>Go to next paragraph: <code>*table--cell-forward-paragraph</code> (<code>M-}</code>)</li> <li>Go to previous paragraph: <code>*table--cell-backward-paragraph</code> (<code>M-{</code>)</li> <li>Go to buffer end: <code>*table--cell-end-of-buffer</code> (<code>M-&gt;</code>)</li> <li>Go to buffer start: <code>*table--cell-beginning-of-buffer</code> (<code>M-&lt;</code>)</li> </ul> </li> <li>
+<p>Copy the text in a cell: </p>
+<ul> <li>
+<p>using the built-in commands: </p>
+<ol> <li>
+<code>C-SPC</code> (<code>set-mark-command</code>) to set the mark.</li> <li>Go the end of the string you want to copy.</li> <li>
+<code>M-w</code> (<code>*table--cell-kill-ring-save</code>) to copy the text.</li> </ol> </li> <li>using the custom command: <code>table-copy-cell</code> (<code>C-c c</code>)</li> </ul> </li> <li>
+<p>Alignment </p>
+<ul> <li>Justify cell, column, or row: <code>table-justify</code> (<code>C-:</code>, <code>C-c C-c :</code>)</li> </ul> </li> <li>
+<p>Automatic Line Wrapping </p>
+<p>The built-in tables support automatic line wrapping in a cell as you type. The lines are treated as one cell and are preserved when exported to other formats such as HTML.</p> </li> <li>Traverse the cells and insert an incremental sequence into each cell: <code>table-insert-sequence</code>
+</li> </ul> </li> <li>
+<p>Table metadata </p>
+<ul> <li>Report the layout of the table and table cell at point: <code>table-query-dimension</code> (<code>C-#</code>, <code>C-c C-c #</code>)</li> </ul> </li> </ul>
+<h2 id="export-to-other-formats">Export to other formats</h2>
+<ul> <li>Generate a table of a specific format: <code>table-generate-source</code> (<code>C-^</code>)</li> </ul>
+<h2 id="convert-between-plain-text-and-tables">Convert Between Plain Text and Tables</h2>
 <p>The command <code>M-x table-capture</code> captures plain text in a region and turns it into a table.</p>
 <p>For example, suppose we have the following numbers, which are divided into three lines and separated horizontally by commas:</p>
 
@@ -418,7 +436,7 @@ Maintain the existing indoor lighting, color grading, shadows, background, camer
           
 <h1 id="org-mode-tables">Org Mode Tables</h1>
 <p>Org comes with a fast and intuitive table editor.</p>
-<h2 id="creating-a-table-1">Creating a Table</h2>
+<h2 id="create-a-table-1">Create a Table</h2>
 <p>Org treats any line with <code>|</code> as the first non-whitespace character as part of a table. <code>|</code> is also the column separator. Moreover, a line starting with <code>|-</code> is a horizontal rule. It separates rows explicitly. Rows before the first horizontal rule are header lines.</p>
 <p>To create a table of 3 columns you simply type <code>||||</code> and then press <code>TAB</code> or <code>C-c RET</code> (<code>org-ctrl-c-ret</code>):</p>
 
@@ -442,7 +460,7 @@ Maintain the existing indoor lighting, color grading, shadows, background, camer
 <p>It converts an active region to table. If every line contains at least one <code>&lt;TAB&gt;</code> character, the function assumes that the material is tab separated. If every line contains a comma, comma-separated values (CSV) are assumed. If not, lines are split at whitespace into fields.</p>
 <p>You can use a prefix argument to force a specific separator: <code>C-u</code> forces CSV, <code>C-u C-u</code> forces <code>&lt;TAB&gt;</code>, <code>C-u C-u C-u</code> prompts for a regular expression to match the separator, and a numeric argument <code>N</code> indicates that at least N consecutive spaces, or alternatively a <code>&lt;TAB&gt;</code> will be the separator.</p>
 <p>If there is no active region, it creates an empty Org table.</p>
-<h2 id="editing-a-table-1">Editing a Table</h2>
+<h2 id="edit-the-table-1">Edit the Table</h2>
 <ul> <li>
 <p>Move point to the next/previous cell: <code>org-cycle</code> (<code>TAB</code>), <code>org-shifttab</code> (<code>S-TAB</code>) </p>
 <p>This meanwhile re-aligns the table and creates a new row if in the last cell.</p> </li> <li>Move point to the end or beginning of the cell content: <code>org-forward-sentence</code> (<code>M-e</code>), <code>org-backward-sentence</code> (<code>M-a</code>)</li> <li>Move the current column right or left: <code>org-metaright</code> (<code>&lt;M-right&gt;</code>), <code>org-metaleft</code> (<code>&lt;M-left&gt;</code>)</li> <li>Move the current row up or down: <code>org-metaup</code> (<code>&lt;M-up&gt;</code>), <code>org-metadown</code> (<code>&lt;M-down&gt;</code>)</li> <li>Re-align the table: <code>org-cycle</code> (<code>TAB</code>), <code>org-ctrl-c-ctrl-c</code> (<code>C-c C-c</code>)</li> <li>
